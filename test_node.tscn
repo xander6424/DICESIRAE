@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cx8qphuh7x1kf"]
 
-[ext_resource type="Script" uid="uid://bblk1unn3nu56" path="res://die.gd" id="1_6uery"]
+[ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://dice.tscn" id="1_6uery"]
 
 [node name="Game" type="Node2D" unique_id=1296620639]
 
@@ -15,9 +15,5 @@ text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Die" type="Label" parent="." unique_id=324035173]
-offset_left = 316.0
-offset_top = 209.0
-offset_right = 356.0
-offset_bottom = 232.0
-script = ExtResource("1_6uery")
+[node name="Dice" parent="." unique_id=732832586 instance=ExtResource("1_6uery")]
+position = Vector2(572, 328)
