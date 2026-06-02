@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://cx8qphuh7x1kf"]
 
-[node name="TEST NODE" type="Node2D" unique_id=1296620639]
+[node name="Node2D" type="Node2D" unique_id=1296620639]
+
+[node name="Label" type="Label" parent="." unique_id=837264721]
+offset_left = 376.0
+offset_top = 8.0
+offset_right = 776.0
+offset_bottom = 108.0
+pivot_offset = Vector2(200, 50)
+theme_override_font_sizes/font_size = 70
+text = "DICESIRAE"
+horizontal_alignment = 1
+vertical_alignment = 1

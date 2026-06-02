@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="DICESIRAE"
+run/main_scene="uid://cx8qphuh7x1kf"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
