@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cx8qphuh7x1kf"]
 
-[node name="Node2D" type="Node2D" unique_id=1296620639]
+[ext_resource type="Script" uid="uid://bblk1unn3nu56" path="res://die.gd" id="1_6uery"]
 
-[node name="Label" type="Label" parent="." unique_id=837264721]
+[node name="Game" type="Node2D" unique_id=1296620639]
+
+[node name="Title" type="Label" parent="." unique_id=837264721]
 offset_left = 376.0
 offset_top = 8.0
 offset_right = 776.0
@@ -12,3 +14,10 @@ theme_override_font_sizes/font_size = 70
 text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Die" type="Label" parent="." unique_id=324035173]
+offset_left = 316.0
+offset_top = 209.0
+offset_right = 356.0
+offset_bottom = 232.0
+script = ExtResource("1_6uery")
