@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cx8qphuh7x1kf"]
+
+[ext_resource type="Script" uid="uid://7cmu8rbpyh5k" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://dice.tscn" id="2_h2yge"]
+
+[node name="Game" type="Node2D" unique_id=1296620639]
+script = ExtResource("1_0xm2m")
+
+[node name="Title" type="Label" parent="." unique_id=837264721]
+offset_left = 48.0
+offset_right = 273.0
+offset_bottom = 55.0
+pivot_offset = Vector2(112.5, 27.5)
+theme_override_font_sizes/font_size = 40
+text = "DICESIRAE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=1765731583]
+unique_name_in_owner = true
+offset_left = 136.0
+offset_top = 56.0
+offset_right = 184.0
+offset_bottom = 79.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dice" parent="." unique_id=732832586 instance=ExtResource("2_h2yge")]
+position = Vector2(160, 138)
+
+[connection signal="roll_done" from="Dice" to="." method="_on_dice_roll_done"]
