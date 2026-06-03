@@ -5,12 +5,11 @@
 [node name="Game" type="Node2D" unique_id=1296620639]
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
-offset_left = -41.0
-offset_top = -10.0
-offset_right = 359.0
-offset_bottom = 90.0
-pivot_offset = Vector2(200, 50)
-theme_override_font_sizes/font_size = 70
+offset_left = 48.0
+offset_right = 273.0
+offset_bottom = 55.0
+pivot_offset = Vector2(112.5, 27.5)
+theme_override_font_sizes/font_size = 40
 text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
