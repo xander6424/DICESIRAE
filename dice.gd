@@ -41,4 +41,5 @@ func _roll_dice():
 	
 	rolling = false
 	
+	# Return basic D6 dice roll
 	roll_done.emit(current_index + 1)
