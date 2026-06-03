@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-# change???
 signal roll_done(index: int)
 
 @onready var faces: Node2D = %Faces
