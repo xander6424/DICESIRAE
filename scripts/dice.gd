@@ -8,7 +8,6 @@ var rolling = false
 var current_index = 0
 var new_index = 0
 
-# Runs when node(s) enter the scene tree
 func _ready() -> void:
 	for face in faces.get_children():
 		face.hide()
