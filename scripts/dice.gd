@@ -3,6 +3,7 @@ extends RigidBody2D
 signal roll_done(index: int)
 
 @onready var faces: Node2D = %Faces
+@onready var roll_button: Button = %RollButton
 
 var rolling = false
 var current_index = 0
@@ -15,9 +16,11 @@ func _ready() -> void:
 	# Select a starting face at random
 	var starting_index = faces.get_children().pick_random().get_index()
 	faces.get_child(starting_index).show()
+	
+	roll_button.pressed.connect(roll_button_pressed)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Roll") and !rolling:
+func roll_button_pressed():
+	if !rolling:
 		_roll_dice()
 
 func _roll_dice():

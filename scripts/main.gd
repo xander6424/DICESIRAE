@@ -3,6 +3,7 @@ extends Node2D
 @onready var score_label: Label = %Score
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
+@onready var roll_button: Button = %RollButton
 
 var dice_in_play = 5
 var roll_total = 0
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 		 
 		if lots <= 0:
 			# No more rolling, then
+			roll_button.disabled = true
 			enter_shop()
 
 func _on_dice_roll_done(roll: int) -> void:

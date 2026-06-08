@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://7cmu8rbpyh5k" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://scenes/dice.tscn" id="2_h2yge"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_sugp2"]
+events = [SubResource("InputEventKey_0wfyh")]
+
 [node name="Game" type="Node2D" unique_id=1296620639]
 script = ExtResource("1_0xm2m")
 
@@ -42,25 +50,37 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dice Set" type="Node2D" parent="." unique_id=950121212]
+[node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
 
-[node name="Dice1" parent="Dice Set" unique_id=732832586 instance=ExtResource("2_h2yge")]
+[node name="Dice1" parent="DiceSet" unique_id=732832586 instance=ExtResource("2_h2yge")]
 position = Vector2(96, 138)
 
-[node name="Dice2" parent="Dice Set" unique_id=1615588097 instance=ExtResource("2_h2yge")]
+[node name="Dice2" parent="DiceSet" unique_id=1615588097 instance=ExtResource("2_h2yge")]
 position = Vector2(128, 138)
 
-[node name="Dice3" parent="Dice Set" unique_id=390506587 instance=ExtResource("2_h2yge")]
+[node name="Dice3" parent="DiceSet" unique_id=390506587 instance=ExtResource("2_h2yge")]
 position = Vector2(160, 138)
 
-[node name="Dice4" parent="Dice Set" unique_id=100785189 instance=ExtResource("2_h2yge")]
+[node name="Dice4" parent="DiceSet" unique_id=100785189 instance=ExtResource("2_h2yge")]
 position = Vector2(192, 138)
 
-[node name="Dice5" parent="Dice Set" unique_id=308140988 instance=ExtResource("2_h2yge")]
+[node name="Dice5" parent="DiceSet" unique_id=308140988 instance=ExtResource("2_h2yge")]
 position = Vector2(224, 138)
 
-[connection signal="roll_done" from="Dice Set/Dice1" to="." method="_on_dice_roll_done"]
-[connection signal="roll_done" from="Dice Set/Dice2" to="." method="_on_dice_roll_done"]
-[connection signal="roll_done" from="Dice Set/Dice3" to="." method="_on_dice_roll_done"]
-[connection signal="roll_done" from="Dice Set/Dice4" to="." method="_on_dice_roll_done"]
-[connection signal="roll_done" from="Dice Set/Dice5" to="." method="_on_dice_roll_done"]
+[node name="RollButton" type="Button" parent="." unique_id=34327213]
+unique_name_in_owner = true
+offset_left = 270.0
+offset_top = 130.0
+offset_right = 310.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 12
+action_mode = 0
+shortcut = SubResource("Shortcut_sugp2")
+text = "ROLL"
+icon_alignment = 1
+
+[connection signal="roll_done" from="DiceSet/Dice1" to="." method="_on_dice_roll_done"]
+[connection signal="roll_done" from="DiceSet/Dice2" to="." method="_on_dice_roll_done"]
+[connection signal="roll_done" from="DiceSet/Dice3" to="." method="_on_dice_roll_done"]
+[connection signal="roll_done" from="DiceSet/Dice4" to="." method="_on_dice_roll_done"]
+[connection signal="roll_done" from="DiceSet/Dice5" to="." method="_on_dice_roll_done"]
