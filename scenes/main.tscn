@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://7cmu8rbpyh5k" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://scenes/dice.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c44hnm2btsig0" path="res://assets/button-on.png" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cqc6ornt7tcxx" path="res://assets/button-off.png" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cdyqgg1lu5v7p" path="res://assets/button-hover.png" id="5_tbgi4"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -67,17 +70,18 @@ position = Vector2(192, 138)
 [node name="Dice5" parent="DiceSet" unique_id=308140988 instance=ExtResource("2_h2yge")]
 position = Vector2(224, 138)
 
-[node name="RollButton" type="Button" parent="." unique_id=34327213]
+[node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true
 offset_left = 270.0
 offset_top = 130.0
 offset_right = 310.0
 offset_bottom = 170.0
-theme_override_font_sizes/font_size = 12
 action_mode = 0
 shortcut = SubResource("Shortcut_sugp2")
-text = "ROLL"
-icon_alignment = 1
+shortcut_in_tooltip = false
+texture_normal = ExtResource("3_sugp2")
+texture_hover = ExtResource("5_tbgi4")
+texture_disabled = ExtResource("4_jyhfs")
 
 [connection signal="roll_done" from="DiceSet/Dice1" to="." method="_on_dice_roll_done"]
 [connection signal="roll_done" from="DiceSet/Dice2" to="." method="_on_dice_roll_done"]

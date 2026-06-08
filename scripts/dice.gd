@@ -3,7 +3,7 @@ extends RigidBody2D
 signal roll_done(index: int)
 
 @onready var faces: Node2D = %Faces
-@onready var roll_button: Button = %RollButton
+@onready var roll_button: TextureButton = %RollButton
 
 var rolling = false
 var current_index = 0
@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func roll_button_pressed():
 	if !rolling:
+		roll_button.disabled = true # do i even need rolling bool?
 		_roll_dice()
 
 func _roll_dice():
@@ -41,6 +42,7 @@ func _roll_dice():
 		duration -= 0.1
 	
 	rolling = false
+	roll_button.disabled = false
 	
 	# Return basic D6 dice roll
 	roll_done.emit(current_index + 1)

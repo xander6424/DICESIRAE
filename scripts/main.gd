@@ -3,7 +3,7 @@ extends Node2D
 @onready var score_label: Label = %Score
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
-@onready var roll_button: Button = %RollButton
+@onready var roll_button: TextureButton = %RollButton
 
 var dice_in_play = 5
 var roll_total = 0
