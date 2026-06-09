@@ -11,6 +11,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4jp2"]
 size = Vector2(16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb8pk"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dicg2"]
+bg_color = Color(0, 0, 0, 0.5137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocjtb"]
+bg_color = Color(0, 0, 0, 0.28627452)
+
 [node name="Dice" type="RigidBody2D" unique_id=732832586]
 gravity_scale = 0.0
 script = ExtResource("1_y4pxb")
@@ -38,3 +47,13 @@ texture = ExtResource("7_60lre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884191497]
 shape = SubResource("RectangleShape2D_m4jp2")
+
+[node name="Button" type="Button" parent="." unique_id=1658616986]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pb8pk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dicg2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ocjtb")
+action_mode = 0

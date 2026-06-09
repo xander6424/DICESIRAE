@@ -6,6 +6,7 @@ signal roll_done(index: int)
 @onready var roll_button: TextureButton = %RollButton
 
 var rolling = false
+var saved = false
 var current_index = 0
 var new_index = 0
 
@@ -20,8 +21,8 @@ func _ready() -> void:
 	roll_button.pressed.connect(roll_button_pressed)
 
 func roll_button_pressed():
-	if !rolling:
-		roll_button.disabled = true # do i even need rolling bool?
+	if !rolling and !saved:
+		roll_button.disabled = true
 		_roll_dice()
 
 func _roll_dice():
@@ -46,3 +47,8 @@ func _roll_dice():
 	
 	# Return basic D6 dice roll
 	roll_done.emit(current_index + 1)
+
+# func save_button_pressed():
+	# If !rolling
+	# saved = true
+	# Send a signal to save the dice to an array

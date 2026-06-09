@@ -35,7 +35,7 @@ func _on_dice_roll_done(roll: int) -> void:
 	# Doesn't count a roll until all dice are scored
 	if dice_rolled == dice_in_play:
 		rerolls -= 1
-		dice_list.sort()
+		#dice_list.sort() for checking categories
 		update_score(roll_total)
 		update_labels()
 		
