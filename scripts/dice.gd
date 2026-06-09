@@ -1,9 +1,11 @@
 extends RigidBody2D
 
 signal roll_done(index: int)
+signal saved_pressed()
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
+@onready var save_button: Button = %SaveButton
 
 var rolling = false
 var saved = false
@@ -19,6 +21,8 @@ func _ready() -> void:
 	faces.get_child(starting_index).show()
 	
 	roll_button.pressed.connect(roll_button_pressed)
+	save_button.pressed.connect(_save_button_pressed)
+
 
 func roll_button_pressed():
 	if !rolling and !saved:
@@ -48,7 +52,9 @@ func _roll_dice():
 	# Return basic D6 dice roll
 	roll_done.emit(current_index + 1)
 
-# func save_button_pressed():
-	# If !rolling
-	# saved = true
-	# Send a signal to save the dice to an array
+
+func _save_button_pressed():
+	if !rolling:
+		saved = true
+		save_button.disabled = true
+		saved_pressed.emit()

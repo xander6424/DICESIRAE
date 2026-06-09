@@ -86,7 +86,12 @@ texture_disabled = ExtResource("4_jyhfs")
 texture_click_mask = ExtResource("6_tefeu")
 
 [connection signal="roll_done" from="DiceSet/Dice1" to="." method="_on_dice_roll_done"]
+[connection signal="saved_pressed" from="DiceSet/Dice1" to="." method="_on_saved_pressed"]
 [connection signal="roll_done" from="DiceSet/Dice2" to="." method="_on_dice_roll_done"]
+[connection signal="saved_pressed" from="DiceSet/Dice2" to="." method="_on_saved_pressed"]
 [connection signal="roll_done" from="DiceSet/Dice3" to="." method="_on_dice_roll_done"]
+[connection signal="saved_pressed" from="DiceSet/Dice3" to="." method="_on_saved_pressed"]
 [connection signal="roll_done" from="DiceSet/Dice4" to="." method="_on_dice_roll_done"]
+[connection signal="saved_pressed" from="DiceSet/Dice4" to="." method="_on_saved_pressed"]
 [connection signal="roll_done" from="DiceSet/Dice5" to="." method="_on_dice_roll_done"]
+[connection signal="saved_pressed" from="DiceSet/Dice5" to="." method="_on_saved_pressed"]

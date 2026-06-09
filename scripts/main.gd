@@ -8,7 +8,8 @@ extends Node2D
 var dice_in_play = 5
 var roll_total = 0
 var dice_rolled = 0
-var dice_list = []
+var rolling_dice_list = []
+var saved_dice_list = []
 var lots = 3
 var rerolls = 2
 
@@ -30,7 +31,7 @@ func _process(delta: float) -> void:
 func _on_dice_roll_done(roll: int) -> void:
 	roll_total += roll
 	dice_rolled += 1
-	dice_list.append(roll)
+	rolling_dice_list.append(roll)
 	
 	# Doesn't count a roll until all dice are scored
 	if dice_rolled == dice_in_play:
@@ -39,12 +40,12 @@ func _on_dice_roll_done(roll: int) -> void:
 		update_score(roll_total)
 		update_labels()
 		
-		print(dice_list)
+		print(rolling_dice_list) # Show numbers in output
 		
 		# Reset for new roll
 		dice_rolled = 0
 		roll_total = 0
-		dice_list.clear()
+		rolling_dice_list.clear()
 
 func update_score(score_total: int):
 	score_label.text = str(score_total)
@@ -55,3 +56,9 @@ func update_labels():
 	
 func enter_shop():
 	print("SHOP")
+
+
+func _on_saved_pressed() -> void:
+	dice_in_play -= 1
+	#saved_dice_list
+	pass
