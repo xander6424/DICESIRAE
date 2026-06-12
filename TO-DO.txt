@@ -1,5 +1,6 @@
 DICESIRAE TO-DO LIST
 
-1. Figure out dice saving system
+1. Rework dice saved button outright disabling when clicked
 2. Save & remove dice in between rolls from saved
 3. Reorganize UI
+4. Reorganize & Comment code

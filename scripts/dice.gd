@@ -1,12 +1,14 @@
 extends RigidBody2D
 
+signal reset()
 signal roll_done(index: int)
-signal saved_pressed()
+signal saved_pressed(number_rolled: int)
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
 @onready var save_button: Button = %SaveButton
 
+var number_rolled
 var rolling = false
 var saved = false
 var current_index = 0
@@ -27,6 +29,7 @@ func _ready() -> void:
 func roll_button_pressed():
 	if !rolling and !saved:
 		roll_button.disabled = true
+		reset.emit()
 		_roll_dice()
 
 func _roll_dice():
@@ -46,15 +49,16 @@ func _roll_dice():
 		current_index = new_index
 		duration -= 0.1
 	
+	number_rolled = current_index + 1
 	rolling = false
 	roll_button.disabled = false
 	
 	# Return basic D6 dice roll
-	roll_done.emit(current_index + 1)
+	roll_done.emit(number_rolled)
 
 
 func _save_button_pressed():
 	if !rolling:
 		saved = true
 		save_button.disabled = true
-		saved_pressed.emit()
+		saved_pressed.emit(number_rolled)

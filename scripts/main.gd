@@ -19,6 +19,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if rerolls <= 0:
+		
+		# Append all remaining dice to saved
+		
 		lots -= 1
 		rerolls = 2
 		update_labels()
@@ -27,6 +30,13 @@ func _process(delta: float) -> void:
 			# No more rolling, then
 			roll_button.disabled = true
 			enter_shop()
+
+func _on_reset() -> void:
+	# Reset for new roll
+	dice_rolled = 0
+	roll_total = 0
+	rolling_dice_list.clear()
+
 
 func _on_dice_roll_done(roll: int) -> void:
 	roll_total += roll
@@ -40,12 +50,9 @@ func _on_dice_roll_done(roll: int) -> void:
 		update_score(roll_total)
 		update_labels()
 		
-		print(rolling_dice_list) # Show numbers in output
-		
-		# Reset for new roll
-		dice_rolled = 0
-		roll_total = 0
-		rolling_dice_list.clear()
+		print("DICE ROLLED: ", rolling_dice_list) # Show numbers in output
+		print("DICE SAVED: ", saved_dice_list)
+
 
 func update_score(score_total: int):
 	score_label.text = str(score_total)
@@ -58,7 +65,11 @@ func enter_shop():
 	print("SHOP")
 
 
-func _on_saved_pressed() -> void:
+func _on_saved_pressed(number_rolled: int) -> void:
 	dice_in_play -= 1
-	#saved_dice_list
-	pass
+	
+	for dice in rolling_dice_list:
+		if dice == number_rolled:
+			print("APPENDED") # REMOVE
+			saved_dice_list.append(number_rolled)
+			break
