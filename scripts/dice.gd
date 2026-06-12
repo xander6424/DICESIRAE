@@ -2,13 +2,13 @@ extends RigidBody2D
 
 signal reset()
 signal roll_done(index: int)
-signal saved_pressed(number_rolled: int)
+signal saved_pressed(number_rolled: int, saved: bool)
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
 @onready var save_button: Button = %SaveButton
 
-var number_rolled
+var number_rolled = 0
 var rolling = false
 var saved = false
 var current_index = 0
@@ -37,7 +37,7 @@ func _roll_dice():
 	rolling = true
 	
 	while duration > 0:
-		# Prevent duplicate faces from being shown
+		# Prevent duplicate faces from being shown in a row
 		while current_index == new_index:
 			new_index = faces.get_children().pick_random().get_index()
 		
@@ -59,6 +59,11 @@ func _roll_dice():
 
 func _save_button_pressed():
 	if !rolling:
-		saved = true
-		save_button.disabled = true
-		saved_pressed.emit(number_rolled)
+		if !saved:
+			saved = true
+			position.y += 25
+		else:
+			saved = false
+			position.y -= 25
+		
+		saved_pressed.emit(number_rolled, saved)

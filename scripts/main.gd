@@ -20,19 +20,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if rerolls <= 0:
 		
-		# Append all remaining dice to saved
+		# Append all remaining dice to saved here
 		
 		lots -= 1
 		rerolls = 2
 		update_labels()
+		
+		# Start scoring
 		 
 		if lots <= 0:
 			# No more rolling, then
 			roll_button.disabled = true
+			
 			enter_shop()
 
 func _on_reset() -> void:
-	# Reset for new roll
+	# Reset for new roll when pressing the roll button
 	dice_rolled = 0
 	roll_total = 0
 	rolling_dice_list.clear()
@@ -46,11 +49,13 @@ func _on_dice_roll_done(roll: int) -> void:
 	# Doesn't count a roll until all dice are scored
 	if dice_rolled == dice_in_play:
 		rerolls -= 1
+		
 		#dice_list.sort() for checking categories
 		update_score(roll_total)
 		update_labels()
 		
-		print("DICE ROLLED: ", rolling_dice_list) # Show numbers in output
+		# Show numbers in output (remove later)
+		print("DICE ROLLED: ", rolling_dice_list)
 		print("DICE SAVED: ", saved_dice_list)
 
 
@@ -65,11 +70,27 @@ func enter_shop():
 	print("SHOP")
 
 
-func _on_saved_pressed(number_rolled: int) -> void:
+func _on_saved_pressed(number_rolled: int, saved: bool) -> void:
+	var index = 0
 	dice_in_play -= 1
 	
-	for dice in rolling_dice_list:
-		if dice == number_rolled:
-			print("APPENDED") # REMOVE
-			saved_dice_list.append(number_rolled)
-			break
+	if saved:
+		for dice in rolling_dice_list:
+			if dice == number_rolled:
+				print("APPENDED") # REMOVE
+				saved_dice_list.append(number_rolled)
+				rolling_dice_list.remove_at(index)
+				break
+			index += 1
+	else:
+		for dice in saved_dice_list:
+			if dice  == number_rolled:
+				print("REMOVED") # REMOVE
+				rolling_dice_list.append(number_rolled)
+				saved_dice_list.remove_at(index)
+				break
+			index += 1
+			
+	# Show numbers in output (remove later)
+	print("DICE ROLLED: ", rolling_dice_list)
+	print("DICE SAVED: ", saved_dice_list)
