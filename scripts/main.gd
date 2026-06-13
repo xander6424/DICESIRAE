@@ -5,13 +5,13 @@ extends Node2D
 @onready var reroll_label: Label = %Rerolls
 @onready var roll_button: TextureButton = %RollButton
 
+var lots = 3
+var rerolls = 3
 var dice_in_play = 5
 var roll_total = 0
 var dice_rolled = 0
 var rolling_dice_list = []
 var saved_dice_list = []
-var lots = 3
-var rerolls = 3
 
 func _ready() -> void:
 	update_score(roll_total)
@@ -22,12 +22,20 @@ func _process(delta: float) -> void:
 		# Append all remaining dice to saved list
 		for dice in rolling_dice_list:
 			saved_dice_list.append(dice)
+		rolling_dice_list.clear()
 		
-		# Start scoring here
+		# Show numbers in output (remove later)
+		print("DICE ROLLED: ", rolling_dice_list)
+		print("DICE SAVED: ", saved_dice_list)
 		
+		roll_button.disabled = true
 		lots -= 1
 		rerolls = 3
-		update_labels()
+		
+		# START SCORING HERE (function call done once)
+		score_dice()
+		
+		update_labels() # after scoring actually happens
 		
 		# Go to the shop after all lots used
 		if lots <= 0:
@@ -62,11 +70,17 @@ func _on_dice_roll_done(roll: int) -> void:
 
 func update_score(score_total: int):
 	score_label.text = str(score_total)
-	
+
 func update_labels():
 	lots_label.text = "Lots: " + str(lots)
 	reroll_label.text = "Rerolls: " + str(rerolls)
+
+func score_dice():
+	print("SCORING TIME")
 	
+	var scored = false
+
+
 func enter_shop():
 	print("SHOP")
 
@@ -74,6 +88,7 @@ func enter_shop():
 func _on_saved_pressed(number_rolled: int, saved: bool) -> void:
 	var index = 0
 	
+	# Dice to be saved
 	if saved:
 		dice_in_play -= 1
 		
@@ -84,6 +99,7 @@ func _on_saved_pressed(number_rolled: int, saved: bool) -> void:
 				rolling_dice_list.remove_at(index)
 				break
 			index += 1
+	# Dice to be unsaved
 	else:
 		dice_in_play += 1
 		

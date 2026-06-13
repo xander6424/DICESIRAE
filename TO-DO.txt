@@ -1,6 +1,7 @@
 DICESIRAE TO-DO LIST
 
-1. Rework dice saved button outright disabling when clicked
-2. Save & remove dice in between rolls from saved
-3. Reorganize UI
-4. Reorganize & Comment code
+1. Append all dice to saved when all rerolls used
+2. Scoring Card system
+3. Fix dice saving when pressing space?
+4. Reorganize UI
+5. Reorganize & Comment code

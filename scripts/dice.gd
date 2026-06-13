@@ -9,10 +9,10 @@ signal saved_pressed(number_rolled: int, saved: bool)
 @onready var save_button: Button = %SaveButton
 
 var number_rolled = 0
-var rolling = false
-var saved = false
 var current_index = 0
 var new_index = 0
+var rolling = false
+var saved = false
 
 func _ready() -> void:
 	for face in faces.get_children():

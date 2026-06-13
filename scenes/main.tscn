@@ -78,7 +78,6 @@ offset_left = 270.0
 offset_top = 130.0
 offset_right = 310.0
 offset_bottom = 170.0
-action_mode = 0
 shortcut = SubResource("Shortcut_sugp2")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("3_sugp2")

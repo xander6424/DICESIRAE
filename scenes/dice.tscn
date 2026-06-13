@@ -61,4 +61,3 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pb8pk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dicg2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ocjtb")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pgf55")
-action_mode = 0
