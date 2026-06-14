@@ -12,6 +12,7 @@ var roll_total = 0
 var dice_rolled = 0
 var rolling_dice_list = []
 var saved_dice_list = []
+var current_scored = false
 
 func _ready() -> void:
 	update_score(roll_total)
@@ -20,22 +21,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if rerolls <= 0:
 		# Append all remaining dice to saved list
-		for dice in rolling_dice_list:
-			saved_dice_list.append(dice)
-		rolling_dice_list.clear()
-		
-		# Show numbers in output (remove later)
-		print("DICE ROLLED: ", rolling_dice_list)
-		print("DICE SAVED: ", saved_dice_list)
+		if rolling_dice_list.size() == 0:
+			for dice in rolling_dice_list:
+				saved_dice_list.append(dice)
+			rolling_dice_list.clear()
 		
 		roll_button.disabled = true
-		lots -= 1
-		rerolls = 3
 		
 		# START SCORING HERE (function call done once)
-		score_dice()
+		current_scored = score_dice()
 		
-		update_labels() # after scoring actually happens
+		if current_scored:
+			lots -= 1
+			rerolls = 3
+			update_labels() # after scoring actually happens
+		else:
+			pass
 		
 		# Go to the shop after all lots used
 		if lots <= 0:
@@ -75,10 +76,14 @@ func update_labels():
 	lots_label.text = "Lots: " + str(lots)
 	reroll_label.text = "Rerolls: " + str(rerolls)
 
-func score_dice():
+
+# SIGNAL CALL
+func score_dice() -> bool:
 	print("SCORING TIME")
 	
 	var scored = false
+	
+	return scored
 
 
 func enter_shop():

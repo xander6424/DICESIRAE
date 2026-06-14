@@ -1,7 +1,6 @@
 DICESIRAE TO-DO LIST
 
-1. Append all dice to saved when all rerolls used
-2. Scoring Card system
-3. Fix dice saving when pressing space?
-4. Reorganize UI
-5. Reorganize & Comment code
+1. Scoring Card system
+2. Fix dice saving when pressing space?
+3. Reorganize UI
+4. Reorganize & Comment code
