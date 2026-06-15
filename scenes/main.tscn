@@ -18,6 +18,11 @@ events = [SubResource("InputEventKey_0wfyh")]
 [node name="Game" type="Node2D" unique_id=1296620639]
 script = ExtResource("1_0xm2m")
 
+[node name="Background" type="ColorRect" parent="." unique_id=696497787]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.13258654, 0.09360496, 0.17509753, 1)
+
 [node name="Title" type="Label" parent="." unique_id=837264721]
 offset_left = 48.0
 offset_top = -5.0
