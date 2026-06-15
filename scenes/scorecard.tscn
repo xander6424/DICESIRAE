@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dxbwxwmifxg8x"]
 
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_bv5yb"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ufj2"]
 bg_color = Color(0.8672607, 0.8672607, 0.86726046, 1)
 border_width_left = 2
@@ -20,11 +22,9 @@ grow_vertical = 2
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.05
-anchor_right = 0.4
-anchor_bottom = 0.794
-offset_top = -9.0
-offset_bottom = -8.919998
+anchor_right = 0.425
+anchor_bottom = 0.49400002
+offset_bottom = 0.0799942
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ufj2")
@@ -38,21 +38,23 @@ theme_override_constants/margin_bottom = 2
 
 [node name="VCategoryContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1523358228]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="HCategoryContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=375467602]
+[node name="HCategoryContainer1" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1242680188]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1286817898]
+[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1" unique_id=1777881328]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 7
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "Aces:"
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1417191481]
+[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1" unique_id=2048856967]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
 
@@ -62,13 +64,15 @@ layout_mode = 2
 [node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=1725738941]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 7
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "Twos:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=2104456316]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
 
@@ -78,13 +82,15 @@ layout_mode = 2
 [node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=90150924]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 7
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "Threes:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=649307882]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
 
@@ -94,13 +100,15 @@ layout_mode = 2
 [node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1369870935]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 7
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "Two Pair:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1589129638]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
 
@@ -110,12 +118,14 @@ layout_mode = 2
 [node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=1315914761]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 7
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "Three of a Kind:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=814175496]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("1_bv5yb")
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
