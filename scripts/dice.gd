@@ -51,7 +51,6 @@ func _roll_dice():
 	
 	number_rolled = current_index + 1
 	rolling = false
-	roll_button.disabled = false
 	
 	# Return basic D6 dice roll
 	roll_done.emit(number_rolled)

@@ -23,18 +23,18 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if rerolls <= 0:
+		roll_button.disabled = true
+		rerolls = 3
+		
 		# Append all remaining dice to saved list
 		if rolling_dice_list.size() == 0:
 			for dice in rolling_dice_list:
 				saved_dice_list.append(dice)
 			rolling_dice_list.clear()
 		
-		roll_button.disabled = true
-		rerolls = 3
-		
 		# Go to the shop after all lots used
 		if lots <= 0:
-			roll_button.disabled = true
+			#roll_button.disabled = true
 			enter_shop()
 	
 	if current_scored:
@@ -50,13 +50,21 @@ func _on_reset() -> void:
 
 
 func _on_dice_roll_done(roll: int) -> void:
-	roll_total += roll
 	dice_rolled += 1
 	rolling_dice_list.append(roll)
 	
 	# Doesn't count a roll until all dice are scored
 	if dice_rolled == dice_in_play:
 		rerolls -= 1
+		
+		if rerolls > 0:
+			roll_button.disabled = false
+		
+		# Add all dice (saved & unsaved) together
+		for dice in rolling_dice_list:
+			roll_total += dice
+		for dice in saved_dice_list:
+			roll_total += dice
 		
 		#dice_list.sort() for checking categories
 		update_score(roll_total)
