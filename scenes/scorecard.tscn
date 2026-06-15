@@ -43,10 +43,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1286817898]
+[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1286817898]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 7
 text = "Aces:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1417191481]
@@ -59,10 +59,10 @@ horizontal_alignment = 2
 [node name="HCategoryContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1051480724]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=1725738941]
+[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=1725738941]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 7
 text = "Twos:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=2104456316]
@@ -75,10 +75,10 @@ horizontal_alignment = 2
 [node name="HCategoryContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1371584541]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=90150924]
+[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=90150924]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 7
 text = "Threes:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=649307882]
@@ -91,10 +91,10 @@ horizontal_alignment = 2
 [node name="HCategoryContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1342339284]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1369870935]
+[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1369870935]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 7
 text = "Two Pair:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1589129638]
@@ -107,10 +107,10 @@ horizontal_alignment = 2
 [node name="HCategoryContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1763710265]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=1315914761]
+[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=1315914761]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Three of a Kind:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=814175496]

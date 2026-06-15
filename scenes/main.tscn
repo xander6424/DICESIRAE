@@ -22,7 +22,7 @@ script = ExtResource("1_0xm2m")
 [node name="Background" type="ColorRect" parent="." unique_id=696497787]
 offset_right = 320.0
 offset_bottom = 180.0
-color = Color(0.13258654, 0.09360496, 0.17509753, 1)
+color = Color(0.25275356, 0.25275356, 0.25275356, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
 offset_top = 1.0

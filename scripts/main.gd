@@ -12,7 +12,10 @@ var roll_total = 0
 var dice_rolled = 0
 var rolling_dice_list = []
 var saved_dice_list = []
+
+# Altered with a button press on scorecard
 var current_scored = false
+
 
 func _ready() -> void:
 	update_score(roll_total)
@@ -27,22 +30,17 @@ func _process(delta: float) -> void:
 			rolling_dice_list.clear()
 		
 		roll_button.disabled = true
-		
-		# START SCORING HERE (function call done once)
-		current_scored = score_dice()
-		
-		if current_scored:
-			lots -= 1
-			rerolls = 3
-			update_labels() # after scoring actually happens
-		else:
-			pass
+		rerolls = 3
 		
 		# Go to the shop after all lots used
 		if lots <= 0:
 			roll_button.disabled = true
-			
 			enter_shop()
+	
+	if current_scored:
+		lots -= 1
+		update_labels() # after scoring actually happens
+		current_scored = false
 
 func _on_reset() -> void:
 	# Reset for new roll when pressing the roll button
