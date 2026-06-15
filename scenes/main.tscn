@@ -99,6 +99,13 @@ texture_hover = ExtResource("5_tbgi4")
 texture_disabled = ExtResource("4_jyhfs")
 texture_click_mask = ExtResource("6_tefeu")
 
+[node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
+offset_left = 33.0
+offset_top = 144.0
+offset_right = 92.0
+offset_bottom = 175.0
+text = "SCORE"
+
 [node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
 offset_left = 62.0
 offset_top = 96.0
