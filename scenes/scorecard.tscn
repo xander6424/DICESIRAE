@@ -17,13 +17,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1914653162]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.05
 anchor_right = 0.4
 anchor_bottom = 0.794
-offset_top = 7.0
-offset_bottom = -6.919998
+offset_top = -9.0
+offset_bottom = -8.919998
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ufj2")
 
@@ -39,6 +41,7 @@ layout_mode = 2
 
 [node name="HCategoryContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=375467602]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1286817898]
 layout_mode = 2
@@ -48,7 +51,7 @@ text = "Aces:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer" unique_id=1417191481]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "0"
 horizontal_alignment = 2
@@ -64,7 +67,7 @@ text = "Twos:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=2104456316]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "0"
 horizontal_alignment = 2
@@ -80,7 +83,7 @@ text = "Threes:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=649307882]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "0"
 horizontal_alignment = 2
@@ -96,7 +99,7 @@ text = "Two Pair:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1589129638]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "0"
 horizontal_alignment = 2
@@ -112,7 +115,7 @@ text = "Three of a Kind:"
 
 [node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=814175496]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "0"
 horizontal_alignment = 2
