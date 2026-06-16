@@ -3,12 +3,33 @@
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_bv5yb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ufj2"]
-bg_color = Color(0.8672607, 0.8672607, 0.86726046, 1)
+bg_color = Color(0.5258939, 0.5258941, 0.5258936, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bv5yb"]
+bg_color = Color(0.3500639, 0.35006398, 0.3500638, 1)
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dv0f"]
+bg_color = Color(0.20655441, 0.20655426, 0.20655426, 1)
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuxe3"]
+bg_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d4b4"]
+bg_color = Color(0.58344966, 0.58344996, 0.5834498, 0)
 
 [node name="Scorecard" type="Control" unique_id=1927596429]
 layout_mode = 3
@@ -43,89 +64,104 @@ size_flags_vertical = 4
 [node name="HCategoryContainer1" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1242680188]
 layout_mode = 2
 
-[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1" unique_id=1777881328]
+[node name="CategoryLabel1" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1" unique_id=1777881328]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_bv5yb")
 theme_override_font_sizes/font_size = 16
 text = "Aces:"
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1" unique_id=2048856967]
+[node name="CategoryButton1" type="Button" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1" unique_id=575975187]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_bv5yb")
-theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv5yb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4dv0f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 text = "0"
-horizontal_alignment = 2
+alignment = 2
 
 [node name="HCategoryContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1051480724]
 layout_mode = 2
 
-[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=1725738941]
+[node name="CategoryLabel2" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=1725738941]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_bv5yb")
 theme_override_font_sizes/font_size = 16
 text = "Twos:"
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=2104456316]
+[node name="CategoryButton2" type="Button" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2" unique_id=1220625607]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_bv5yb")
-theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv5yb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4dv0f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 text = "0"
-horizontal_alignment = 2
+alignment = 2
 
 [node name="HCategoryContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1371584541]
 layout_mode = 2
 
-[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=90150924]
+[node name="CategoryLabel3" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=90150924]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_bv5yb")
 theme_override_font_sizes/font_size = 16
 text = "Threes:"
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=649307882]
+[node name="CategoryButton3" type="Button" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3" unique_id=1637966389]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_bv5yb")
-theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv5yb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4dv0f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 text = "0"
-horizontal_alignment = 2
+alignment = 2
 
 [node name="HCategoryContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1342339284]
 layout_mode = 2
 
-[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1369870935]
+[node name="CategoryLabel4" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1369870935]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_bv5yb")
 theme_override_font_sizes/font_size = 16
 text = "Two Pair:"
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1589129638]
+[node name="CategoryButton4" type="Button" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4" unique_id=1487140658]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_bv5yb")
-theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv5yb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4dv0f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 text = "0"
-horizontal_alignment = 2
+alignment = 2
 
 [node name="HCategoryContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1763710265]
 layout_mode = 2
 
-[node name="Category" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=1315914761]
+[node name="CategoryLabel5" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=1315914761]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_bv5yb")
 theme_override_font_sizes/font_size = 16
 text = "Three of a Kind:"
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=814175496]
+[node name="CategoryButton5" type="Button" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5" unique_id=1459513618]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_bv5yb")
-theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv5yb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4dv0f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 text = "0"
-horizontal_alignment = 2
+alignment = 2
