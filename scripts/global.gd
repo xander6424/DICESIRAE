@@ -4,7 +4,6 @@ var lots: int = 3
 var rerolls: int = 3
 var rolling_dice_list: Array[int] = []
 var saved_dice_list: Array[int] = []
-var roll_completed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

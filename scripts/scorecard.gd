@@ -18,15 +18,23 @@ func _ready() -> void:
 		category.pressed.connect(category_button_pressed)
 
 func _process(delta: float) -> void:
-	if Global.roll_completed and !category_score_updated:
-		category_score_updated = true
-		print("TRUE")
-	
-	if category_score_updated:
-		category_score_updated = false
+	pass
 
 
 func category_button_pressed() -> void:
 	for button in category_button_list:
 		if button.button_pressed:
 			button.disabled = true
+
+
+func _on_update_scorecard() -> void:
+	var aces_total = 0
+	
+	for dice in Global.rolling_dice_list:
+		if dice == 1:
+			aces_total += dice
+	for dice in Global.saved_dice_list:
+		if dice == 1:
+			aces_total += dice
+	
+	category_button_list[0].text = str(aces_total)

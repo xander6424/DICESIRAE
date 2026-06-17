@@ -1,5 +1,7 @@
 extends Node2D
 
+signal update_scorecard()
+
 @onready var score_label: Label = %Score
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
@@ -44,7 +46,6 @@ func _on_reset() -> void:
 	# Reset for new roll when pressing the roll button
 	dice_rolled = 0
 	roll_total = 0
-	Global.roll_completed = false
 	Global.rolling_dice_list.clear()
 
 
@@ -55,7 +56,7 @@ func _on_dice_roll_done(roll: int) -> void:
 	# Doesn't count a roll until all dice are scored
 	if dice_rolled == dice_in_play:
 		Global.rerolls -= 1
-		Global.roll_completed = true
+		update_scorecard.emit()
 		
 		if Global.rerolls > 0:
 			roll_button.disabled = false

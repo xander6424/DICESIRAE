@@ -112,6 +112,7 @@ offset_top = 96.0
 offset_right = 62.0
 offset_bottom = 96.0
 
+[connection signal="update_scorecard" from="." to="Scorecard" method="_on_update_scorecard"]
 [connection signal="reset" from="DiceSet/Dice1" to="." method="_on_reset"]
 [connection signal="roll_done" from="DiceSet/Dice1" to="." method="_on_dice_roll_done"]
 [connection signal="saved_pressed" from="DiceSet/Dice1" to="." method="_on_saved_pressed"]
