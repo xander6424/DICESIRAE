@@ -16,7 +16,6 @@ var saved_dice_list = []
 # Altered with a button press on scorecard
 var current_scored = false
 
-
 func _ready() -> void:
 	update_score(roll_total)
 	update_labels()

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxbwxwmifxg8x"]
 
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_bv5yb"]
-[ext_resource type="Script" uid="uid://fg58pndsglp6" path="res://scenes/scorecard.gd" id="1_fuxe3"]
+[ext_resource type="Script" uid="uid://fg58pndsglp6" path="res://scripts/scorecard.gd" id="1_fuxe3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ufj2"]
 bg_color = Color(0.5258939, 0.5258941, 0.5258936, 1)
