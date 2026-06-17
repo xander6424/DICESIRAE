@@ -122,7 +122,12 @@ func _on_saved_pressed(number_rolled: int, saved: bool) -> void:
 				Global.saved_dice_list.remove_at(index)
 				break
 			index += 1
-			
+	
+	if Global.rolling_dice_list.is_empty():
+		roll_button.disabled = true
+	else:
+		roll_button.disabled = false
+	
 	# Show numbers in output (remove later)
 	print("DICE ROLLED: ", Global.rolling_dice_list)
 	print("DICE SAVED: ", Global.saved_dice_list)
