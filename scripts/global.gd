@@ -1,6 +1,9 @@
 extends Node
 
-var test_num = 5
+var lots = 3
+var rerolls = 3
+var rolling_dice_list = []
+var saved_dice_list = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -25,6 +25,11 @@ func _ready() -> void:
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)
 
+func _process(delta: float) -> void:
+	if Global.rerolls <= 0 and save_button.disabled == false:
+		save_button.disabled = true
+		print("DISABLED")
+
 
 func roll_button_pressed():
 	if !rolling and !saved:
