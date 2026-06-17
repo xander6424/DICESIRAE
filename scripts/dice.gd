@@ -27,8 +27,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Global.rerolls <= 0 and save_button.disabled == false:
+		_save_button_pressed()
 		save_button.disabled = true
-		print("DISABLED")
 
 
 func roll_button_pressed():
@@ -66,7 +66,7 @@ func _save_button_pressed():
 		if !saved:
 			saved = true
 			position.y += 25
-		else:
+		elif saved and Global.rerolls > 0:
 			saved = false
 			position.y -= 25
 		

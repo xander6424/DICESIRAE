@@ -18,13 +18,13 @@ func _ready() -> void:
 	update_labels()
 
 func _process(delta: float) -> void:
+	# Checks if all rerolls have been used
 	if Global.rerolls <= 0 and !reroll_checked:
-		print("CHECKED")
 		roll_button.disabled = true
 		reroll_checked = true
 		
 		# Append all remaining dice to saved list
-		if Global.rolling_dice_list.size() == 0:
+		if Global.rolling_dice_list.size() != 0:
 			for dice in Global.rolling_dice_list:
 				Global.saved_dice_list.append(dice)
 			Global.rolling_dice_list.clear()
@@ -44,6 +44,7 @@ func _on_reset() -> void:
 	# Reset for new roll when pressing the roll button
 	dice_rolled = 0
 	roll_total = 0
+	Global.roll_completed = false
 	Global.rolling_dice_list.clear()
 
 
@@ -54,6 +55,7 @@ func _on_dice_roll_done(roll: int) -> void:
 	# Doesn't count a roll until all dice are scored
 	if dice_rolled == dice_in_play:
 		Global.rerolls -= 1
+		Global.roll_completed = true
 		
 		if Global.rerolls > 0:
 			roll_button.disabled = false

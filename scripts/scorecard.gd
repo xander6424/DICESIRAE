@@ -5,6 +5,7 @@ extends Control
 
 var game_scorecard_info = ["Aces", "Twos", "Threes", "Two Pair", "Three of a Kind"]
 
+var category_score_updated: bool = false
 
 func _ready() -> void:
 	var i = 0
@@ -17,7 +18,12 @@ func _ready() -> void:
 		category.pressed.connect(category_button_pressed)
 
 func _process(delta: float) -> void:
-	pass
+	if Global.roll_completed and !category_score_updated:
+		category_score_updated = true
+		print("TRUE")
+	
+	if category_score_updated:
+		category_score_updated = false
 
 
 func category_button_pressed() -> void:
