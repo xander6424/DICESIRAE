@@ -6,9 +6,30 @@ extends Control
 
 var game_scorecard_info = ["Aces", "Twos", "Threes", "Two Pair", "Three of a Kind"]
 
-var category_score_updated: bool = false
+enum Categories {ACES, TWOS, THREES, FOURS, TWO_PAIR, THREE_OF_A_KIND}
+
+class CategoryInfo:
+	var name: String
+	var base_score: int
+	var id: Categories
+	
+	func _init(name: String, base_score: int, id: Categories):
+		self.name = name
+		self.base_score = base_score
+		self.id = id
+
+var aces = CategoryInfo.new("Aces", 5, Categories.ACES)
+var twos = CategoryInfo.new("Twos", 5, Categories.TWOS)
+var threes = CategoryInfo.new("Threes", 10, Categories.THREES)
+var fours = CategoryInfo.new("Fours", 10, Categories.FOURS)
+var two_pair = CategoryInfo.new("Two Pair", 20, Categories.TWO_PAIR)
+var three_of_a_kind = CategoryInfo.new("Three of a Kind", 30, Categories.THREE_OF_A_KIND)
+var category_list = [aces, twos, threes, fours, two_pair, three_of_a_kind]
 
 func _ready() -> void:
+	
+	
+	
 	# Put each category name on scorecard
 	var i = 0
 	for category in category_label_list:
@@ -20,9 +41,6 @@ func _ready() -> void:
 		category.text = "0"
 		category.pressed.connect(category_button_pressed)
 	score_button.pressed.connect(score_button_pressed)
-
-func _process(delta: float) -> void:
-	pass
 
 
 func category_button_pressed() -> void:
