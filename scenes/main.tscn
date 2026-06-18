@@ -21,47 +21,47 @@ events = [SubResource("InputEventKey_0wfyh")]
 script = ExtResource("1_0xm2m")
 
 [node name="Background" type="ColorRect" parent="." unique_id=696497787]
-offset_right = 320.0
-offset_bottom = 180.0
+offset_right = 640.0
+offset_bottom = 360.0
 color = Color(0.25275356, 0.25275356, 0.25275356, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
-offset_top = 1.0
-offset_right = 125.0
-offset_bottom = 46.0
+offset_left = 16.0
+offset_right = 232.0
+offset_bottom = 76.0
 pivot_offset = Vector2(112.5, 27.5)
 theme_override_fonts/font = ExtResource("2_tipki")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 96
 text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Lots" type="Label" parent="." unique_id=2012264648]
 unique_name_in_owner = true
-offset_left = 145.0
-offset_top = 12.0
-offset_right = 207.0
-offset_bottom = 35.0
+offset_left = 344.0
+offset_top = 16.0
+offset_right = 406.0
+offset_bottom = 42.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Lots: "
 
 [node name="Rerolls" type="Label" parent="." unique_id=1891017188]
 unique_name_in_owner = true
-offset_left = 223.0
-offset_top = 12.0
-offset_right = 285.0
-offset_bottom = 35.0
+offset_left = 422.0
+offset_top = 16.0
+offset_right = 488.0
+offset_bottom = 42.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Rerolls: "
 
 [node name="Score" type="Label" parent="." unique_id=1765731583]
 unique_name_in_owner = true
-offset_left = 196.0
-offset_top = 56.0
-offset_right = 244.0
-offset_bottom = 92.0
+offset_left = 400.0
+offset_top = 112.0
+offset_right = 448.0
+offset_bottom = 150.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 48
 text = "0"
@@ -69,29 +69,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
-position = Vector2(40, 1)
+position = Vector2(424, 288)
 
 [node name="Dice1" parent="DiceSet" unique_id=732832586 instance=ExtResource("2_h2yge")]
-position = Vector2(112, 138)
+position = Vector2(-48, 0)
 
 [node name="Dice2" parent="DiceSet" unique_id=1615588097 instance=ExtResource("2_h2yge")]
-position = Vector2(136, 138)
+position = Vector2(-24, 0)
 
 [node name="Dice3" parent="DiceSet" unique_id=390506587 instance=ExtResource("2_h2yge")]
-position = Vector2(160, 138)
 
 [node name="Dice4" parent="DiceSet" unique_id=100785189 instance=ExtResource("2_h2yge")]
-position = Vector2(184, 138)
+position = Vector2(24, 0)
 
 [node name="Dice5" parent="DiceSet" unique_id=308140988 instance=ExtResource("2_h2yge")]
-position = Vector2(208, 138)
+position = Vector2(48, 0)
 
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true
-offset_left = 272.0
-offset_top = 131.0
-offset_right = 312.0
-offset_bottom = 171.0
+offset_left = 585.0
+offset_top = 305.0
+offset_right = 625.0
+offset_bottom = 345.0
 shortcut = SubResource("Shortcut_sugp2")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("3_sugp2")
@@ -101,17 +100,17 @@ texture_click_mask = ExtResource("6_tefeu")
 
 [node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
 unique_name_in_owner = true
-offset_left = 33.0
-offset_top = 144.0
-offset_right = 92.0
-offset_bottom = 175.0
+offset_left = 32.0
+offset_top = 184.0
+offset_right = 91.0
+offset_bottom = 215.0
 text = "SCORE"
 
 [node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
-offset_left = 62.0
-offset_top = 96.0
-offset_right = 62.0
-offset_bottom = 96.0
+offset_left = 144.0
+offset_top = 120.0
+offset_right = 144.0
+offset_bottom = 120.0
 
 [connection signal="update_scorecard" from="." to="Scorecard" method="_on_update_scorecard"]
 [connection signal="reset" from="DiceSet/Dice1" to="." method="_on_reset"]

@@ -45,12 +45,14 @@ grow_vertical = 2
 script = ExtResource("1_fuxe3")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1914653162]
-custom_minimum_size = Vector2(125, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.425
+anchor_right = 0.46600002
 anchor_bottom = 0.49400002
-offset_bottom = 0.0799942
+offset_top = 2.0
+offset_right = -48.24002
+offset_bottom = 2.0799866
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ufj2")
