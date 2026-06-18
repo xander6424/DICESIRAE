@@ -100,6 +100,7 @@ texture_disabled = ExtResource("4_jyhfs")
 texture_click_mask = ExtResource("6_tefeu")
 
 [node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
+unique_name_in_owner = true
 offset_left = 33.0
 offset_top = 144.0
 offset_right = 92.0
