@@ -11,20 +11,23 @@ signal update_scorecard()
 var dice_in_play = 5
 var roll_total = 0
 var dice_rolled = 0
-var reroll_checked: bool = false
 
-# Altered with a button press on scorecard
-var current_roll_scored = false
 
 func _ready() -> void:
 	update_score(roll_total)
 	_on_update_labels()
 
-func _process(delta: float) -> void:
+func _on_reset() -> void:
+	# Reset for new roll when pressing the roll button
+	dice_rolled = 0
+	roll_total = 0
+	Global.rolling_dice_list.clear()
+
+
+func _update_game_status(current_roll_scored: bool) -> void:
 	# Checks if all rerolls have been used
-	if Global.rerolls <= 0 and !reroll_checked:
+	if Global.rerolls <= 0:
 		roll_button.disabled = true
-		reroll_checked = true
 		
 		# Append all remaining dice to saved list
 		if Global.rolling_dice_list.size() != 0:
@@ -34,20 +37,12 @@ func _process(delta: float) -> void:
 		
 		# Go to the shop after all lots used
 		if Global.lots <= 0:
-			#roll_button.disabled = true
-			enter_shop()
+			enter_shop() # changes scene
 	
 	if current_roll_scored:
 		Global.rerolls = 3
 		Global.lots -= 1
-		_on_update_labels() # after scoring actually happens
-		current_roll_scored = false
-
-func _on_reset() -> void:
-	# Reset for new roll when pressing the roll button
-	dice_rolled = 0
-	roll_total = 0
-	Global.rolling_dice_list.clear()
+		_on_update_labels()
 
 
 func _on_dice_roll_done(roll: int) -> void:
@@ -69,8 +64,10 @@ func _on_dice_roll_done(roll: int) -> void:
 			roll_total += dice
 		
 		#dice_list.sort() for checking categories
-		update_score(roll_total)
+		update_score(roll_total) # temp
 		_on_update_labels()
+		_update_game_status(false)
+		
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)
@@ -81,13 +78,11 @@ func update_score(score_total: int):
 	score_label.text = str(score_total)
 
 func _on_update_labels() -> void:
-	print("HI")
 	lots_label.text = "Lots: " + str(Global.lots)
 	reroll_label.text = "Rerolls: " + str(Global.rerolls)
 	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
 
 
-# SIGNAL CALL
 func score_dice() -> bool:
 	print("SCORING TIME")
 	
@@ -130,7 +125,3 @@ func _on_saved_pressed(number_rolled: int, saved: bool) -> void:
 		roll_button.disabled = true
 	else:
 		roll_button.disabled = false
-	
-	# Show numbers in output (remove later)
-	print("DICE ROLLED: ", Global.rolling_dice_list)
-	print("DICE SAVED: ", Global.saved_dice_list)

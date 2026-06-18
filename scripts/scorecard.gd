@@ -1,6 +1,7 @@
 extends Control
 
 signal update_labels()
+signal update_game_status(current_roll_scored: bool)
 
 @onready var score_button: Button = %ScoreButton
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
@@ -81,6 +82,7 @@ func _score_button_pressed() -> void:
 			Global.grand_total += scored_total
 		
 		update_labels.emit()
+		update_game_status.emit(true)
 		
 	else:
 		print("Please select a category")
