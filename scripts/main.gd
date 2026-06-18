@@ -5,6 +5,7 @@ signal update_scorecard()
 @onready var score_label: Label = %Score
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
+@onready var grand_total_label: Label = $Total
 @onready var roll_button: TextureButton = %RollButton
 
 var dice_in_play = 5
@@ -82,6 +83,7 @@ func update_score(score_total: int):
 func update_labels():
 	lots_label.text = "Lots: " + str(Global.lots)
 	reroll_label.text = "Rerolls: " + str(Global.rerolls)
+	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
 
 
 # SIGNAL CALL

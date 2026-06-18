@@ -27,8 +27,9 @@ color = Color(0.25275356, 0.25275356, 0.25275356, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
 offset_left = 16.0
+offset_top = -8.0
 offset_right = 232.0
-offset_bottom = 76.0
+offset_bottom = 68.0
 pivot_offset = Vector2(112.5, 27.5)
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 96
@@ -68,6 +69,15 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Total" type="Label" parent="." unique_id=200728729]
+offset_left = 16.0
+offset_top = 184.0
+offset_right = 97.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 48
+text = "TOTAL: "
+
 [node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
 position = Vector2(424, 288)
 
@@ -101,16 +111,16 @@ texture_click_mask = ExtResource("6_tefeu")
 [node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
 unique_name_in_owner = true
 offset_left = 32.0
-offset_top = 184.0
+offset_top = 232.0
 offset_right = 91.0
-offset_bottom = 215.0
+offset_bottom = 263.0
 text = "SCORE"
 
 [node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
-offset_left = 144.0
-offset_top = 120.0
-offset_right = 144.0
-offset_bottom = 120.0
+offset_left = 168.0
+offset_top = 160.0
+offset_right = 168.0
+offset_bottom = 160.0
 
 [connection signal="update_scorecard" from="." to="Scorecard" method="_on_update_scorecard"]
 [connection signal="reset" from="DiceSet/Dice1" to="." method="_on_reset"]

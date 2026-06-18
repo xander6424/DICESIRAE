@@ -53,16 +53,24 @@ func category_button_pressed() -> void:
 	print("PRESSED")
 
 func score_button_pressed() -> void:
+	var current_category
 	var category_selected: bool = false
 	
 	# Find which category was selected
-	for button in category_button_list:
-		if button.button_pressed:
+	for category in active_category_info_list:
+		if category.button.button_pressed:
+			current_category = category
 			category_selected = true
 			break
 	
 	if category_selected:
-		print("Scoring category")
+		var scored_total = current_category.base_score + current_category.total
+		current_category.scored = true
+		current_category.button.disabled = true
+		current_category.button.text = str(scored_total)
+		Global.grand_total += scored_total
+		
+		# Emit a signal to decrease lot count and update labels.
 	else:
 		print("Please select a category")
 
