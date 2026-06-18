@@ -1,5 +1,7 @@
 extends Control
 
+signal update_labels()
+
 @onready var score_button: Button = %ScoreButton
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
@@ -46,13 +48,20 @@ func _ready() -> void:
 			active_category_info_list.append(category)
 			scorecard_index += 1
 	
-	score_button.pressed.connect(score_button_pressed)
+	score_button.pressed.connect(_score_button_pressed)
 
 
 func category_button_pressed() -> void:
-	print("PRESSED")
+	# Find which category was selected
+	var current_category
+	for category in active_category_info_list:
+		if category.button.button_pressed:
+			current_category = category
+			break
+	
+	# Don't select category if zero
 
-func score_button_pressed() -> void:
+func _score_button_pressed() -> void:
 	var current_category
 	var category_selected: bool = false
 	
@@ -64,13 +73,15 @@ func score_button_pressed() -> void:
 			break
 	
 	if category_selected:
-		var scored_total = current_category.base_score + current_category.total
-		current_category.scored = true
-		current_category.button.disabled = true
-		current_category.button.text = str(scored_total)
-		Global.grand_total += scored_total
+		if current_category.total > 0:
+			var scored_total = current_category.base_score + current_category.total
+			current_category.scored = true
+			current_category.button.disabled = true
+			current_category.button.text = str(scored_total)
+			Global.grand_total += scored_total
 		
-		# Emit a signal to decrease lot count and update labels.
+		update_labels.emit()
+		
 	else:
 		print("Please select a category")
 

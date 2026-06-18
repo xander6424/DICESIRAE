@@ -138,3 +138,4 @@ offset_bottom = 160.0
 [connection signal="reset" from="DiceSet/Dice5" to="." method="_on_reset"]
 [connection signal="roll_done" from="DiceSet/Dice5" to="." method="_on_dice_roll_done"]
 [connection signal="saved_pressed" from="DiceSet/Dice5" to="." method="_on_saved_pressed"]
+[connection signal="update_labels" from="Scorecard" to="." method="_on_update_labels"]

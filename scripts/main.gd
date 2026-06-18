@@ -18,7 +18,7 @@ var current_roll_scored = false
 
 func _ready() -> void:
 	update_score(roll_total)
-	update_labels()
+	_on_update_labels()
 
 func _process(delta: float) -> void:
 	# Checks if all rerolls have been used
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	if current_roll_scored:
 		Global.rerolls = 3
 		Global.lots -= 1
-		update_labels() # after scoring actually happens
+		_on_update_labels() # after scoring actually happens
 		current_roll_scored = false
 
 func _on_reset() -> void:
@@ -70,7 +70,7 @@ func _on_dice_roll_done(roll: int) -> void:
 		
 		#dice_list.sort() for checking categories
 		update_score(roll_total)
-		update_labels()
+		_on_update_labels()
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)
@@ -80,7 +80,8 @@ func _on_dice_roll_done(roll: int) -> void:
 func update_score(score_total: int):
 	score_label.text = str(score_total)
 
-func update_labels():
+func _on_update_labels() -> void:
+	print("HI")
 	lots_label.text = "Lots: " + str(Global.lots)
 	reroll_label.text = "Rerolls: " + str(Global.rerolls)
 	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
