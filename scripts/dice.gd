@@ -1,12 +1,14 @@
 extends RigidBody2D
 
-signal reset()
-signal roll_done(index: int)
-signal saved_pressed(number_rolled: int, saved: bool)
+#signal roll_done(index: int)
+#signal saved_pressed(number_rolled: int, saved: bool)
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
 @onready var save_button: Button = %SaveButton
+
+var dice_in_play: int = 5
+var dice_rolled: int = 0
 
 var number_rolled = 0
 var current_index = 0
@@ -33,8 +35,11 @@ func _process(delta: float) -> void:
 
 func roll_button_pressed():
 	if !rolling and !saved:
+		# Reset necessary variables
+		dice_rolled = 0
+		Global.rolling_dice_list.clear()
+		
 		roll_button.disabled = true
-		reset.emit()
 		_roll_dice()
 
 func _roll_dice():
@@ -57,8 +62,25 @@ func _roll_dice():
 	number_rolled = current_index + 1
 	rolling = false
 	
-	# Return basic D6 dice roll
-	roll_done.emit(number_rolled)
+	# OLD FUNCTION
+	
+	dice_rolled += 1
+	Global.rolling_dice_list.append(number_rolled)
+	
+	# Doesn't count a roll until all dice are scored
+	if dice_rolled == dice_in_play:
+		Global.rerolls -= 1
+		update_scorecard.emit()
+		
+		if Global.rerolls > 0:
+			roll_button.disabled = false
+		
+		_update_round_status(false)
+		
+		
+		# Show numbers in output (remove later)
+		print("DICE ROLLED: ", Global.rolling_dice_list)
+		print("DICE SAVED: ", Global.saved_dice_list)
 
 
 func _save_button_pressed():
@@ -70,4 +92,33 @@ func _save_button_pressed():
 			saved = false
 			position.y -= 25
 		
-		saved_pressed.emit(number_rolled, saved)
+	
+	# OLD FUNCTION
+	
+	var index: int = 0
+	
+	# Dice to be saved
+	if saved:
+		dice_in_play -= 1
+		
+		for dice in Global.rolling_dice_list:
+			if dice == number_rolled:
+				Global.saved_dice_list.append(number_rolled)
+				Global.rolling_dice_list.remove_at(index)
+				break
+			index += 1
+	# Dice to be unsaved
+	else:
+		dice_in_play += 1
+		
+		for dice in Global.saved_dice_list:
+			if dice  == number_rolled:
+				Global.rolling_dice_list.append(number_rolled)
+				Global.saved_dice_list.remove_at(index)
+				break
+			index += 1
+	
+	if Global.rolling_dice_list.is_empty():
+		roll_button.disabled = true
+	else:
+		roll_button.disabled = false
