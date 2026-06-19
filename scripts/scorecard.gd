@@ -63,29 +63,30 @@ func category_button_pressed() -> void:
 	# Don't select category if zero
 
 func _score_button_pressed() -> void:
-	var current_category
-	var category_selected: bool = false
-	
-	# Find which category was selected
-	for category in active_category_info_list:
-		if category.button.button_pressed:
-			current_category = category
-			category_selected = true
-			break
-	
-	if category_selected:
-		if current_category.total > 0:
-			var scored_total = current_category.base_score + current_category.total
-			current_category.scored = true
-			current_category.button.disabled = true
-			current_category.button.text = str(scored_total)
-			Global.grand_total += scored_total
+	if Global.rerolls != 3:
+		var current_category
+		var category_selected: bool = false
 		
-		update_labels.emit()
-		update_game_status.emit(true)
+		# Find which category was selected
+		for category in active_category_info_list:
+			if category.button.button_pressed:
+				current_category = category
+				category_selected = true
+				break
 		
-	else:
-		print("Please select a category")
+		if category_selected:
+			if current_category.total > 0:
+				var scored_total = current_category.base_score + current_category.total
+				current_category.scored = true
+				current_category.button.disabled = true
+				current_category.button.text = str(scored_total)
+				Global.grand_total += scored_total
+			
+			update_labels.emit()
+			update_game_status.emit(true)
+			
+		else:
+			print("Please select a category")
 
 
 func _on_update_scorecard() -> void:
