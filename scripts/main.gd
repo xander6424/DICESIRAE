@@ -27,7 +27,3 @@ func _update_round_status(current_roll_scored: bool) -> void:
 		Global.rerolls = 3
 		
 	_update_labels.emit()
-
-
-func _on_update_round_status() -> void:
-	pass # Replace with function body.

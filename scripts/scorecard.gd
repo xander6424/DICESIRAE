@@ -1,6 +1,6 @@
 extends Control
 
-signal _update_game_status(current_roll_scored: bool)
+signal _update_round_status(current_roll_scored: bool)
 
 @onready var score_button: Button = %ScoreButton
 @onready var lots_label: Label = %Lots
@@ -91,7 +91,7 @@ func _score_button_pressed() -> void:
 				Global.grand_total += scored_total
 			
 			_update_labels()
-			_update_game_status.emit(true)
+			_update_round_status.emit(true)
 			
 		else:
 			print("Please select a category")

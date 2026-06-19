@@ -9,7 +9,8 @@ signal _update_round_status(current_roll_scored: bool)
 @onready var save_button: Button = %SaveButton
 
 static var total_dice_rolled: int = 0
-var dice_in_play: int = 5
+static var dice_in_play: int = 5
+
 var number_rolled: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
@@ -83,38 +84,34 @@ func roll_dice():
 
 func _save_button_pressed():
 	if !rolling:
+		var index: int = 0
+		
+		# Dice to be saved
 		if !dice_saved:
 			dice_saved = true
 			position.y += 25
+			
+			dice_in_play -= 1
+		
+			for dice in Global.rolling_dice_list:
+				if dice == number_rolled:
+					Global.saved_dice_list.append(number_rolled)
+					Global.rolling_dice_list.remove_at(index)
+					break
+				index += 1
+		# Dice to be unsaved
 		elif dice_saved and Global.rerolls > 0: # Then I don't need to disable?
 			dice_saved = false
 			position.y -= 25
-		
-	
-	# OLD FUNCTION
-	
-	var index: int = 0
-	
-	# Dice to be saved
-	if dice_saved:
-		dice_in_play -= 1
-		
-		for dice in Global.rolling_dice_list:
-			if dice == number_rolled:
-				Global.saved_dice_list.append(number_rolled)
-				Global.rolling_dice_list.remove_at(index)
-				break
-			index += 1
-	# Dice to be unsaved
-	else:
-		dice_in_play += 1
-		
-		for dice in Global.saved_dice_list:
-			if dice  == number_rolled:
-				Global.rolling_dice_list.append(number_rolled)
-				Global.saved_dice_list.remove_at(index)
-				break
-			index += 1
+			
+			dice_in_play += 1
+			
+			for dice in Global.saved_dice_list:
+				if dice  == number_rolled:
+					Global.rolling_dice_list.append(number_rolled)
+					Global.saved_dice_list.remove_at(index)
+					break
+				index += 1
 	
 	if Global.rolling_dice_list.is_empty():
 		roll_button.disabled = true
