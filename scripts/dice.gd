@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-#signal roll_done(index: int)
-#signal saved_pressed(number_rolled: int, saved: bool)
 signal _update_round_status(current_roll_scored: bool)
 
 @onready var faces: Node2D = %Faces
@@ -30,7 +28,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.rerolls <= 0 and save_button.disabled == false:
 		_save_button_pressed()
-		save_button.disabled = true
 
 
 func roll_button_pressed():
@@ -90,7 +87,6 @@ func _save_button_pressed():
 		if !dice_saved:
 			dice_saved = true
 			position.y += 25
-			
 			dice_in_play -= 1
 		
 			for dice in Global.rolling_dice_list:
@@ -100,10 +96,9 @@ func _save_button_pressed():
 					break
 				index += 1
 		# Dice to be unsaved
-		elif dice_saved and Global.rerolls > 0: # Then I don't need to disable?
+		elif dice_saved and Global.rerolls > 0:
 			dice_saved = false
 			position.y -= 25
-			
 			dice_in_play += 1
 			
 			for dice in Global.saved_dice_list:
@@ -112,8 +107,8 @@ func _save_button_pressed():
 					Global.saved_dice_list.remove_at(index)
 					break
 				index += 1
-	
-	if Global.rolling_dice_list.is_empty():
-		roll_button.disabled = true
-	else:
-		roll_button.disabled = false
+		
+		if Global.rolling_dice_list.is_empty():
+			roll_button.disabled = true
+		else:
+			roll_button.disabled = false

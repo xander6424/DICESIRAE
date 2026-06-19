@@ -10,7 +10,7 @@ signal _update_round_status(current_roll_scored: bool)
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
 enum Categories {ACES, TWOS, THREES, FOURS, TWO_PAIR, THREE_OF_A_KIND}
-var starting_category_list = [Categories.ACES, Categories.TWOS, Categories.THREES, Categories.TWO_PAIR, Categories.THREE_OF_A_KIND]
+var starting_category_list: Array[Categories] = [Categories.ACES, Categories.TWOS, Categories.THREES, Categories.TWO_PAIR, Categories.THREE_OF_A_KIND]
 
 class CategoryInfo:
 	var name: String
@@ -28,14 +28,15 @@ class CategoryInfo:
 		self.id = id
 
 # Initialize category name, base score, and id
-var aces = CategoryInfo.new("Aces", 5, Categories.ACES)
-var twos = CategoryInfo.new("Twos", 5, Categories.TWOS)
-var threes = CategoryInfo.new("Threes", 10, Categories.THREES)
-var fours = CategoryInfo.new("Fours", 10, Categories.FOURS)
-var two_pair = CategoryInfo.new("Two Pair", 20, Categories.TWO_PAIR)
-var three_of_a_kind = CategoryInfo.new("Three of a Kind", 30, Categories.THREE_OF_A_KIND)
-var category_info_list = [aces, twos, threes, fours, two_pair, three_of_a_kind]
-var active_category_info_list = []
+var aces: CategoryInfo = CategoryInfo.new("Aces", 5, Categories.ACES)
+var twos: CategoryInfo = CategoryInfo.new("Twos", 5, Categories.TWOS)
+var threes: CategoryInfo = CategoryInfo.new("Threes", 10, Categories.THREES)
+var fours: CategoryInfo = CategoryInfo.new("Fours", 10, Categories.FOURS)
+var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 20, Categories.TWO_PAIR)
+var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 30, Categories.THREE_OF_A_KIND)
+
+var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pair, three_of_a_kind]
+var active_category_info_list: Array[CategoryInfo] = []
 
 func _ready() -> void:
 	var scorecard_index: int = 0
@@ -43,7 +44,7 @@ func _ready() -> void:
 		if category.id in starting_category_list:
 			category_label_list[scorecard_index].text = category.name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0"
-			category_button_list[scorecard_index].pressed.connect(category_button_pressed)
+			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
 			
 			category.label = category_label_list[scorecard_index]
 			category.button = category_button_list[scorecard_index]
@@ -60,19 +61,9 @@ func _update_labels() -> void:
 	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
 
 
-func category_button_pressed() -> void:
-	# Find which category was selected
-	var current_category
-	for category in active_category_info_list:
-		if category.button.button_pressed:
-			current_category = category
-			break
-	
-	# Don't select category if zero
-
 func _score_button_pressed() -> void:
 	if Global.rerolls != 3:
-		var current_category
+		var current_category: CategoryInfo
 		var category_selected: bool = false
 		
 		# Find which category was selected
@@ -84,7 +75,7 @@ func _score_button_pressed() -> void:
 		
 		if category_selected:
 			if current_category.total > 0:
-				var scored_total = current_category.base_score + current_category.total
+				var scored_total: int = current_category.base_score + current_category.total
 				current_category.scored = true
 				current_category.button.disabled = true
 				current_category.button.text = str(scored_total)
@@ -97,8 +88,9 @@ func _score_button_pressed() -> void:
 			print("Please select a category")
 
 
-func _on_update_scorecard() -> void:
-	var scorecard_dice_list = []
+func _update_scorecard() -> void:
+	var scorecard_dice_list: Array[int] = []
+	
 	for dice in Global.rolling_dice_list:
 		scorecard_dice_list.append(dice)
 	for dice in Global.saved_dice_list:
