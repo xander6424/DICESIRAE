@@ -7,3 +7,11 @@ DICESIRAE TO-DO LIST
 4. Correctly check for reroll and lot amounts
 5. Enter a new shop scene when all lots are used and scored
 6. Reorganize & Comment code
+
+- GLOBAL SCRIPT
+
+	- MAIN SCRIPT
+	
+		- DICE SCRIPT
+		- SCORING SCRIPT
+		- SHOP SCRIPT

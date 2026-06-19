@@ -5,3 +5,4 @@ var rerolls: int = 3
 var grand_total: int = 0
 var rolling_dice_list: Array[int] = []
 var saved_dice_list: Array[int] = []
+var current_lot_scored: bool = false

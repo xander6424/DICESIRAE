@@ -8,19 +8,15 @@ signal update_scorecard()
 @onready var grand_total_label: Label = $Total
 @onready var roll_button: TextureButton = %RollButton
 
-var dice_in_play = 5
-var roll_total = 0
-var dice_rolled = 0
-
+var dice_in_play: int = 5
+var dice_rolled: int = 0
 
 func _ready() -> void:
-	update_score(roll_total)
 	_on_update_labels()
 
 func _on_reset() -> void:
 	# Reset for new roll when pressing the roll button
 	dice_rolled = 0
-	roll_total = 0
 	Global.rolling_dice_list.clear()
 
 
@@ -57,14 +53,7 @@ func _on_dice_roll_done(roll: int) -> void:
 		if Global.rerolls > 0:
 			roll_button.disabled = false
 		
-		# Add all dice (saved & unsaved) together
-		for dice in Global.rolling_dice_list:
-			roll_total += dice
-		for dice in Global.saved_dice_list:
-			roll_total += dice
-		
 		#dice_list.sort() for checking categories
-		update_score(roll_total) # temp
 		_on_update_labels()
 		_update_game_status(false)
 		
