@@ -121,4 +121,5 @@ func _update_scorecard() -> void:
 			Categories.THREE_OF_A_KIND:
 				pass
 		
+		# Fix output
 		category.button.text = str(category.base_score) + " + " + str(category.total)
