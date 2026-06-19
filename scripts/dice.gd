@@ -2,7 +2,7 @@ extends RigidBody2D
 
 #signal roll_done(index: int)
 #signal saved_pressed(number_rolled: int, saved: bool)
-signal update_scorecard()
+signal _update_round_status(current_roll_scored: bool)
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
@@ -66,19 +66,15 @@ func roll_dice():
 	number_rolled = current_index + 1
 	Global.rolling_dice_list.append(number_rolled)
 	
-	print(total_dice_rolled, " == ", dice_in_play)
-	
 	# Doesn't count a roll until all dice are scored
 	if total_dice_rolled == dice_in_play:
 		Global.rerolls -= 1
-		update_scorecard.emit()
+		total_dice_rolled = 0
 		
 		if Global.rerolls > 0:
 			roll_button.disabled = false
 		
-		#_update_round_status(false)
-		
-		total_dice_rolled = 0
+		_update_round_status.emit(false)
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)

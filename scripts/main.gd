@@ -1,5 +1,7 @@
 extends Node2D
 
+signal _update_labels()
+
 @onready var roll_button: TextureButton = %RollButton
 
 #func _ready() -> void:
@@ -23,4 +25,9 @@ func _update_round_status(current_roll_scored: bool) -> void:
 	
 	if current_roll_scored:
 		Global.rerolls = 3
-		Global.lots -= 1
+		
+	_update_labels.emit()
+
+
+func _on_update_round_status() -> void:
+	pass # Replace with function body.
