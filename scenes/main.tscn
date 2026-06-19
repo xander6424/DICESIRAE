@@ -68,21 +68,21 @@ theme_override_font_sizes/font_size = 48
 text = "TOTAL: "
 
 [node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
-position = Vector2(424, 288)
+position = Vector2(416, 280)
 
 [node name="Dice1" parent="DiceSet" unique_id=732832586 instance=ExtResource("2_h2yge")]
-position = Vector2(-48, 0)
+position = Vector2(-96, 0)
 
 [node name="Dice2" parent="DiceSet" unique_id=1615588097 instance=ExtResource("2_h2yge")]
-position = Vector2(-24, 0)
+position = Vector2(-48, 0)
 
 [node name="Dice3" parent="DiceSet" unique_id=390506587 instance=ExtResource("2_h2yge")]
 
 [node name="Dice4" parent="DiceSet" unique_id=100785189 instance=ExtResource("2_h2yge")]
-position = Vector2(24, 0)
+position = Vector2(48, 0)
 
 [node name="Dice5" parent="DiceSet" unique_id=308140988 instance=ExtResource("2_h2yge")]
-position = Vector2(48, 0)
+position = Vector2(96, 0)
 
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true

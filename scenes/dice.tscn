@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://5ueudmkrdrm3"]
 
-[ext_resource type="Texture2D" uid="uid://ct3lhdmtqhay4" path="res://assets/die1.png" id="1_ju2fo"]
 [ext_resource type="Script" uid="uid://b7su0mda6y3af" path="res://scripts/dice.gd" id="1_y4pxb"]
-[ext_resource type="Texture2D" uid="uid://bqa603kymqlsj" path="res://assets/die2.png" id="3_1erj6"]
-[ext_resource type="Texture2D" uid="uid://c3osefskt8b8r" path="res://assets/die3.png" id="4_g08j5"]
-[ext_resource type="Texture2D" uid="uid://cjqnpbtpc18vu" path="res://assets/die4.png" id="5_k2puv"]
-[ext_resource type="Texture2D" uid="uid://dgsfdw8d1kiby" path="res://assets/die5.png" id="6_wa5hx"]
-[ext_resource type="Texture2D" uid="uid://cejwrct6odnyy" path="res://assets/die6.png" id="7_60lre"]
+[ext_resource type="Texture2D" uid="uid://0g2hw2yi7ahj" path="res://assets/die1_32p.png" id="2_pb8pk"]
+[ext_resource type="Texture2D" uid="uid://y5k4sgd7m0ax" path="res://assets/die2_32p.png" id="3_ocjtb"]
+[ext_resource type="Texture2D" uid="uid://cgeuufgijyfrm" path="res://assets/die3_32p.png" id="4_dicg2"]
+[ext_resource type="Texture2D" uid="uid://b41ewysw5q5w8" path="res://assets/die4_32p.png" id="5_pgf55"]
+[ext_resource type="Texture2D" uid="uid://d0wtavxqx5a2a" path="res://assets/die5_32p.png" id="6_dlvbc"]
+[ext_resource type="Texture2D" uid="uid://c78k2icikwp7g" path="res://assets/die6_32p.png" id="7_skxya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4jp2"]
-size = Vector2(16, 16)
+size = Vector2(29, 29)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb8pk"]
 bg_color = Color(0, 0, 0, 0)
@@ -31,32 +31,33 @@ script = ExtResource("1_y4pxb")
 unique_name_in_owner = true
 
 [node name="1" type="Sprite2D" parent="Faces" unique_id=567955937]
-texture = ExtResource("1_ju2fo")
+texture = ExtResource("2_pb8pk")
 
 [node name="2" type="Sprite2D" parent="Faces" unique_id=618310227]
-texture = ExtResource("3_1erj6")
+texture = ExtResource("3_ocjtb")
 
 [node name="3" type="Sprite2D" parent="Faces" unique_id=340551694]
-texture = ExtResource("4_g08j5")
+texture = ExtResource("4_dicg2")
 
 [node name="4" type="Sprite2D" parent="Faces" unique_id=1407171171]
-texture = ExtResource("5_k2puv")
+texture = ExtResource("5_pgf55")
 
 [node name="5" type="Sprite2D" parent="Faces" unique_id=1560482424]
-texture = ExtResource("6_wa5hx")
+texture = ExtResource("6_dlvbc")
 
 [node name="6" type="Sprite2D" parent="Faces" unique_id=923552919]
-texture = ExtResource("7_60lre")
+texture = ExtResource("7_skxya")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884191497]
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_m4jp2")
 
 [node name="SaveButton" type="Button" parent="." unique_id=1658616986]
 unique_name_in_owner = true
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_pb8pk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dicg2")
