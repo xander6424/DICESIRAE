@@ -111,9 +111,4 @@ offset_top = 160.0
 offset_right = 168.0
 offset_bottom = 160.0
 
-[connection signal="update_scorecard" from="DiceSet/Dice1" to="Scorecard" method="_on_update_scorecard"]
-[connection signal="update_scorecard" from="DiceSet/Dice2" to="Scorecard" method="_on_update_scorecard"]
-[connection signal="update_scorecard" from="DiceSet/Dice3" to="Scorecard" method="_on_update_scorecard"]
-[connection signal="update_scorecard" from="DiceSet/Dice4" to="Scorecard" method="_on_update_scorecard"]
-[connection signal="update_scorecard" from="DiceSet/Dice5" to="Scorecard" method="_on_update_scorecard"]
 [connection signal="update_game_status" from="Scorecard" to="." method="_update_round_status"]

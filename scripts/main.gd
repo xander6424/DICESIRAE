@@ -1,12 +1,9 @@
 extends Node2D
 
-signal update_scorecard()
-
 @onready var roll_button: TextureButton = %RollButton
 
-
-func _ready() -> void:
-	pass
+#func _ready() -> void:
+	#pass
 
 
 func _update_round_status(current_roll_scored: bool) -> void:

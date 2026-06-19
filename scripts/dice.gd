@@ -2,31 +2,30 @@ extends RigidBody2D
 
 #signal roll_done(index: int)
 #signal saved_pressed(number_rolled: int, saved: bool)
+signal update_scorecard()
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
 @onready var save_button: Button = %SaveButton
 
 var dice_in_play: int = 5
-var dice_rolled: int = 0
-
-var number_rolled = 0
-var current_index = 0
-var new_index = 0
-var rolling = false
-var saved = false
+var total_dice_rolled: int = 0
+var number_rolled: int = 0
+var rolling: bool = false
+var dice_saved: bool = false
 
 func _ready() -> void:
 	for face in faces.get_children():
 		face.hide()
 	
 	# Select a starting face at random
-	var starting_index = faces.get_children().pick_random().get_index()
+	var starting_index: int = faces.get_children().pick_random().get_index()
 	faces.get_child(starting_index).show()
 	
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)
 
+# FIX THIS SYSTEM
 func _process(delta: float) -> void:
 	if Global.rerolls <= 0 and save_button.disabled == false:
 		_save_button_pressed()
@@ -34,18 +33,22 @@ func _process(delta: float) -> void:
 
 
 func roll_button_pressed():
-	if !rolling and !saved:
+	if !rolling and !dice_saved:
 		# Reset necessary variables
-		dice_rolled = 0
+		total_dice_rolled = 0
 		Global.rolling_dice_list.clear()
 		
 		roll_button.disabled = true
-		_roll_dice()
+		roll_dice()
 
-func _roll_dice():
-	var duration = 0.8
+func roll_dice():
 	rolling = true
 	
+	var duration: float = Global.ROLL_DURATION
+	var current_index: int = 0
+	var new_index: int = 0
+	
+	# Roll the dice
 	while duration > 0:
 		# Prevent duplicate faces from being shown in a row
 		while current_index == new_index:
@@ -59,23 +62,23 @@ func _roll_dice():
 		current_index = new_index
 		duration -= 0.1
 	
-	number_rolled = current_index + 1
+	# Finish rolling dice and add it to the list
 	rolling = false
-	
-	# OLD FUNCTION
-	
-	dice_rolled += 1
+	total_dice_rolled += 1
+	number_rolled = current_index + 1
 	Global.rolling_dice_list.append(number_rolled)
 	
+	print(total_dice_rolled, " == ", dice_in_play)
+	
 	# Doesn't count a roll until all dice are scored
-	if dice_rolled == dice_in_play:
+	if total_dice_rolled == dice_in_play:
 		Global.rerolls -= 1
 		update_scorecard.emit()
 		
 		if Global.rerolls > 0:
 			roll_button.disabled = false
 		
-		_update_round_status(false)
+		#_update_round_status(false)
 		
 		
 		# Show numbers in output (remove later)
@@ -85,11 +88,11 @@ func _roll_dice():
 
 func _save_button_pressed():
 	if !rolling:
-		if !saved:
-			saved = true
+		if !dice_saved:
+			dice_saved = true
 			position.y += 25
-		elif saved and Global.rerolls > 0:
-			saved = false
+		elif dice_saved and Global.rerolls > 0: # Then I don't need to disable?
+			dice_saved = false
 			position.y -= 25
 		
 	
@@ -98,7 +101,7 @@ func _save_button_pressed():
 	var index: int = 0
 	
 	# Dice to be saved
-	if saved:
+	if dice_saved:
 		dice_in_play -= 1
 		
 		for dice in Global.rolling_dice_list:
