@@ -8,8 +8,8 @@ signal update_scorecard()
 @onready var roll_button: TextureButton = %RollButton
 @onready var save_button: Button = %SaveButton
 
+static var total_dice_rolled: int = 0
 var dice_in_play: int = 5
-var total_dice_rolled: int = 0
 var number_rolled: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
@@ -34,8 +34,6 @@ func _process(delta: float) -> void:
 
 func roll_button_pressed():
 	if !rolling and !dice_saved:
-		# Reset necessary variables
-		total_dice_rolled = 0
 		Global.rolling_dice_list.clear()
 		
 		roll_button.disabled = true
@@ -80,6 +78,7 @@ func roll_dice():
 		
 		#_update_round_status(false)
 		
+		total_dice_rolled = 0
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)
