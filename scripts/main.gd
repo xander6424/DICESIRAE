@@ -17,7 +17,7 @@ func _on_reset() -> void:
 	Global.rolling_dice_list.clear()
 
 
-func _update_game_status(current_roll_scored: bool) -> void:
+func _update_round_status(current_roll_scored: bool) -> void:
 	# Checks if all rerolls have been used
 	if Global.rerolls <= 0:
 		roll_button.disabled = true
@@ -30,7 +30,7 @@ func _update_game_status(current_roll_scored: bool) -> void:
 		
 		# Go to the shop after all lots used
 		if Global.lots <= 0:
-			enter_shop() # changes scene
+			print("SHOP?")
 	
 	if current_roll_scored:
 		Global.rerolls = 3
@@ -49,24 +49,12 @@ func _on_dice_roll_done(roll: int) -> void:
 		if Global.rerolls > 0:
 			roll_button.disabled = false
 		
-		_update_game_status(false)
+		_update_round_status(false)
 		
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)
 		print("DICE SAVED: ", Global.saved_dice_list)
-
-
-func score_dice() -> bool:
-	print("SCORING TIME")
-	
-	var scored = false
-	
-	return scored
-
-
-func enter_shop():
-	print("SHOP")
 
 
 func _on_saved_pressed(number_rolled: int, saved: bool) -> void:
