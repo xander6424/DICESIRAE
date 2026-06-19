@@ -57,19 +57,8 @@ theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Rerolls: "
 
-[node name="Score" type="Label" parent="." unique_id=1765731583]
-unique_name_in_owner = true
-offset_left = 400.0
-offset_top = 112.0
-offset_right = 448.0
-offset_bottom = 150.0
-theme_override_fonts/font = ExtResource("2_tipki")
-theme_override_font_sizes/font_size = 48
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Total" type="Label" parent="." unique_id=200728729]
+unique_name_in_owner = true
 offset_left = 16.0
 offset_top = 184.0
 offset_right = 97.0
@@ -139,4 +128,3 @@ offset_bottom = 160.0
 [connection signal="roll_done" from="DiceSet/Dice5" to="." method="_on_dice_roll_done"]
 [connection signal="saved_pressed" from="DiceSet/Dice5" to="." method="_on_saved_pressed"]
 [connection signal="update_game_status" from="Scorecard" to="." method="_update_game_status"]
-[connection signal="update_labels" from="Scorecard" to="." method="_on_update_labels"]

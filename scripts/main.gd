@@ -3,16 +3,13 @@ extends Node2D
 signal update_scorecard()
 
 @onready var score_label: Label = %Score
-@onready var lots_label: Label = %Lots
-@onready var reroll_label: Label = %Rerolls
-@onready var grand_total_label: Label = $Total
 @onready var roll_button: TextureButton = %RollButton
 
 var dice_in_play: int = 5
 var dice_rolled: int = 0
 
 func _ready() -> void:
-	_on_update_labels()
+	pass
 
 func _on_reset() -> void:
 	# Reset for new roll when pressing the roll button
@@ -38,7 +35,6 @@ func _update_game_status(current_roll_scored: bool) -> void:
 	if current_roll_scored:
 		Global.rerolls = 3
 		Global.lots -= 1
-		_on_update_labels()
 
 
 func _on_dice_roll_done(roll: int) -> void:
@@ -53,23 +49,12 @@ func _on_dice_roll_done(roll: int) -> void:
 		if Global.rerolls > 0:
 			roll_button.disabled = false
 		
-		#dice_list.sort() for checking categories
-		_on_update_labels()
 		_update_game_status(false)
 		
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)
 		print("DICE SAVED: ", Global.saved_dice_list)
-
-
-func update_score(score_total: int):
-	score_label.text = str(score_total)
-
-func _on_update_labels() -> void:
-	lots_label.text = "Lots: " + str(Global.lots)
-	reroll_label.text = "Rerolls: " + str(Global.rerolls)
-	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
 
 
 func score_dice() -> bool:

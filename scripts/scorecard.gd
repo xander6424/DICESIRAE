@@ -1,9 +1,11 @@
 extends Control
 
-signal update_labels()
 signal update_game_status(current_roll_scored: bool)
 
 @onready var score_button: Button = %ScoreButton
+@onready var lots_label: Label = %Lots
+@onready var reroll_label: Label = %Rerolls
+@onready var grand_total_label: Label = %Total
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
@@ -14,8 +16,8 @@ class CategoryInfo:
 	var name: String
 	var base_score: int
 	var total: int = 0
-	var id: Categories
 	var scored: bool = false
+	var id: Categories
 	
 	var label: Label = null
 	var button: Button = null
@@ -50,6 +52,12 @@ func _ready() -> void:
 			scorecard_index += 1
 	
 	score_button.pressed.connect(_score_button_pressed)
+	update_labels()
+
+func update_labels() -> void:
+	lots_label.text = "Lots: " + str(Global.lots)
+	reroll_label.text = "Rerolls: " + str(Global.rerolls)
+	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
 
 
 func category_button_pressed() -> void:
@@ -82,7 +90,7 @@ func _score_button_pressed() -> void:
 				current_category.button.text = str(scored_total)
 				Global.grand_total += scored_total
 			
-			update_labels.emit()
+			update_labels()
 			update_game_status.emit(true)
 			
 		else:
