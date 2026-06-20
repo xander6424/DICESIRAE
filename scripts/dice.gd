@@ -4,7 +4,7 @@ signal _update_round_status(current_roll_scored: bool)
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
-@onready var save_button: Button = %SaveButton
+@onready var save_button: TextureButton = %SaveButton
 
 static var total_dice_rolled: int = 0
 static var dice_in_play: int = 5
@@ -86,7 +86,7 @@ func _save_button_pressed():
 		# Dice to be saved
 		if !dice_saved:
 			dice_saved = true
-			position.y += 25
+			position.y += 40
 			dice_in_play -= 1
 		
 			for dice in Global.rolling_dice_list:
@@ -98,7 +98,7 @@ func _save_button_pressed():
 		# Dice to be unsaved
 		elif dice_saved and Global.rerolls > 0:
 			dice_saved = false
-			position.y -= 25
+			position.y -= 40
 			dice_in_play += 1
 			
 			for dice in Global.saved_dice_list:

@@ -7,21 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://b41ewysw5q5w8" path="res://assets/die4_32p.png" id="5_pgf55"]
 [ext_resource type="Texture2D" uid="uid://d0wtavxqx5a2a" path="res://assets/die5_32p.png" id="6_dlvbc"]
 [ext_resource type="Texture2D" uid="uid://c78k2icikwp7g" path="res://assets/die6_32p.png" id="7_skxya"]
+[ext_resource type="Texture2D" uid="uid://t2lnk76opcq5" path="res://assets/dieblank_hover_32p.png" id="8_dicg2"]
+[ext_resource type="BitMap" uid="uid://cnrn1rs24jdhp" path="res://assets/diemask_32p.png" id="8_ocjtb"]
+[ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dieblank_pressed_32p.png" id="8_pgf55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4jp2"]
 size = Vector2(29, 29)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb8pk"]
-bg_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dicg2"]
-bg_color = Color(0, 0, 0, 0.5137255)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocjtb"]
-bg_color = Color(0, 0, 0, 0.28627452)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgf55"]
-bg_color = Color(0, 0, 0, 0.5137255)
 
 [node name="Dice" type="RigidBody2D" unique_id=732832586]
 gravity_scale = 0.0
@@ -52,14 +43,13 @@ texture = ExtResource("7_skxya")
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_m4jp2")
 
-[node name="SaveButton" type="Button" parent="." unique_id=1658616986]
+[node name="SaveButton" type="TextureButton" parent="." unique_id=1849972289]
 unique_name_in_owner = true
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_pb8pk")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dicg2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ocjtb")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_pgf55")
+texture_pressed = ExtResource("8_pgf55")
+texture_hover = ExtResource("8_dicg2")
+texture_click_mask = ExtResource("8_ocjtb")
