@@ -83,6 +83,8 @@ func _score_button_pressed() -> void:
 				current_category.button.text = str(scored_total)
 				Global.grand_total += scored_total
 				Global.current_lot_scored = true
+				
+				#Global.saved_dice_list.clear()
 			
 			_update_labels()
 			_update_round_status.emit()

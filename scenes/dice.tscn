@@ -52,4 +52,5 @@ offset_bottom = 16.0
 focus_mode = 0
 texture_pressed = ExtResource("8_pgf55")
 texture_hover = ExtResource("8_dicg2")
+texture_disabled = ExtResource("8_pgf55")
 texture_click_mask = ExtResource("8_ocjtb")

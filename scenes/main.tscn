@@ -111,6 +111,11 @@ offset_top = 160.0
 offset_right = 168.0
 offset_bottom = 160.0
 
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice1" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice2" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice3" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice4" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice5" method="_save_button_pressed"]
 [connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
 [connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
 [connection signal="_update_round_status" from="DiceSet/Dice1" to="." method="_update_round_status"]

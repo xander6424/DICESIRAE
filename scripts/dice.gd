@@ -24,11 +24,6 @@ func _ready() -> void:
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)
 
-# FIX THIS SYSTEM
-func _process(delta: float) -> void:
-	if Global.rerolls <= 0 and save_button.disabled == false:
-		_save_button_pressed()
-
 
 func roll_button_pressed():
 	if !rolling and !dice_saved:
@@ -112,3 +107,7 @@ func _save_button_pressed():
 			roll_button.disabled = true
 		else:
 			roll_button.disabled = false
+		
+		# Show numbers in output (remove later)
+		print("DICE ROLLED: ", Global.rolling_dice_list)
+		print("DICE SAVED: ", Global.saved_dice_list)
