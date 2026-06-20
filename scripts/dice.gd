@@ -28,6 +28,7 @@ func _ready() -> void:
 func roll_button_pressed():
 	if !rolling and !dice_saved:
 		Global.rolling_dice_list.clear()
+		Global.first_round_roll = false
 		
 		roll_button.disabled = true
 		roll_dice()
@@ -75,39 +76,42 @@ func roll_dice():
 
 
 func _save_button_pressed():
-	if !rolling:
-		var index: int = 0
+	if !rolling and !Global.first_round_roll:
+		save_dice()
+
+func save_dice():
+	# Dice to be saved
+	var index: int = 0
+	
+	if !dice_saved and !Global.current_lot_scored:
+		dice_saved = true
+		position.y += 40
+		dice_in_play -= 1
+	
+		for dice in Global.rolling_dice_list:
+			if dice == number_rolled:
+				Global.saved_dice_list.append(number_rolled)
+				Global.rolling_dice_list.remove_at(index)
+				break
+			index += 1
+	# Dice to be unsaved
+	elif dice_saved and Global.rerolls > 0:
+		dice_saved = false
+		position.y -= 40
+		dice_in_play += 1
 		
-		# Dice to be saved
-		if !dice_saved:
-			dice_saved = true
-			position.y += 40
-			dice_in_play -= 1
-		
-			for dice in Global.rolling_dice_list:
-				if dice == number_rolled:
-					Global.saved_dice_list.append(number_rolled)
-					Global.rolling_dice_list.remove_at(index)
-					break
-				index += 1
-		# Dice to be unsaved
-		elif dice_saved and Global.rerolls > 0:
-			dice_saved = false
-			position.y -= 40
-			dice_in_play += 1
-			
-			for dice in Global.saved_dice_list:
-				if dice  == number_rolled:
-					Global.rolling_dice_list.append(number_rolled)
-					Global.saved_dice_list.remove_at(index)
-					break
-				index += 1
-		
-		if Global.rolling_dice_list.is_empty():
-			roll_button.disabled = true
-		else:
-			roll_button.disabled = false
-		
-		# Show numbers in output (remove later)
-		print("DICE ROLLED: ", Global.rolling_dice_list)
-		print("DICE SAVED: ", Global.saved_dice_list)
+		for dice in Global.saved_dice_list:
+			if dice  == number_rolled:
+				Global.rolling_dice_list.append(number_rolled)
+				Global.saved_dice_list.remove_at(index)
+				break
+			index += 1
+	
+	if Global.rolling_dice_list.is_empty():
+		roll_button.disabled = true
+	else:
+		roll_button.disabled = false
+	
+	# Show numbers in output (remove later)
+	print("DICE ROLLED: ", Global.rolling_dice_list)
+	print("DICE SAVED: ", Global.saved_dice_list)

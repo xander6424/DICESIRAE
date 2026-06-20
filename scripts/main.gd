@@ -29,8 +29,9 @@ func _update_round_status() -> void:
 	if Global.current_lot_scored:
 		Global.lots -= 1
 		Global.rerolls = 3
-		Global.current_lot_scored = false
 		_save_button_pressed.emit() # Unsave all dice
+		Global.first_round_roll = true
+		Global.current_lot_scored = false
 		
 	_update_labels.emit()
 	_update_scorecard.emit()
