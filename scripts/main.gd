@@ -8,7 +8,7 @@ signal _update_scorecard()
 #func _ready() -> void:
 	#pass
 
-func _update_round_status(current_roll_scored: bool) -> void:
+func _update_round_status() -> void:
 	# Checks if all rerolls have been used
 	if Global.rerolls <= 0:
 		roll_button.disabled = true
@@ -24,9 +24,10 @@ func _update_round_status(current_roll_scored: bool) -> void:
 			print("SHOP?")
 	
 	# Checks if a category has been scored
-	if current_roll_scored:
+	if Global.current_lot_scored:
 		Global.lots -= 1
 		Global.rerolls = 3
+		Global.current_lot_scored = false
 		
 	_update_labels.emit()
 	_update_scorecard.emit()

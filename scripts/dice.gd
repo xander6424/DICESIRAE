@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-signal _update_round_status(current_roll_scored: bool)
+signal _update_round_status()
 
 @onready var faces: Node2D = %Faces
 @onready var roll_button: TextureButton = %RollButton
@@ -72,7 +72,7 @@ func roll_dice():
 		if Global.rerolls > 0:
 			roll_button.disabled = false
 		
-		_update_round_status.emit(false)
+		_update_round_status.emit()
 		
 		# Show numbers in output (remove later)
 		print("DICE ROLLED: ", Global.rolling_dice_list)

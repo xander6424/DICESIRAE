@@ -1,6 +1,6 @@
 extends Control
 
-signal _update_round_status(current_roll_scored: bool)
+signal _update_round_status()
 
 @onready var score_button: Button = %ScoreButton
 @onready var lots_label: Label = %Lots
@@ -14,10 +14,12 @@ var starting_category_list: Array[Categories] = [Categories.ACES, Categories.TWO
 
 class CategoryInfo:
 	var name: String
+	var level: int = 1
 	var base_score: int
+	var id: Categories
+	
 	var total: int = 0
 	var scored: bool = false
-	var id: Categories
 	
 	var label: Label = null
 	var button: Button = null
@@ -80,9 +82,10 @@ func _score_button_pressed() -> void:
 				current_category.button.disabled = true
 				current_category.button.text = str(scored_total)
 				Global.grand_total += scored_total
+				Global.current_lot_scored = true
 			
 			_update_labels()
-			_update_round_status.emit(true)
+			_update_round_status.emit()
 			
 		else:
 			print("Please select a category")
@@ -99,27 +102,28 @@ func _update_scorecard() -> void:
 	for category in active_category_info_list:
 		category.total = 0
 		
-		match category.id:
-			Categories.ACES:
-				for dice in scorecard_dice_list:
-					if dice == 1:
-						category.total += dice
-			Categories.TWOS:
-				for dice in scorecard_dice_list:
-					if dice == 2:
-						category.total += dice
-			Categories.THREES:
-				for dice in scorecard_dice_list:
-					if dice == 3:
-						category.total += dice
-			Categories.FOURS:
-				for dice in scorecard_dice_list:
-					if dice == 4:
-						category.total += dice
-			Categories.TWO_PAIR:
-				pass
-			Categories.THREE_OF_A_KIND:
-				pass
-		
-		# Fix output
-		category.button.text = str(category.base_score) + " + " + str(category.total)
+		if !category.scored:
+			match category.id:
+				Categories.ACES:
+					for dice in scorecard_dice_list:
+						if dice == 1:
+							category.total += dice
+				Categories.TWOS:
+					for dice in scorecard_dice_list:
+						if dice == 2:
+							category.total += dice
+				Categories.THREES:
+					for dice in scorecard_dice_list:
+						if dice == 3:
+							category.total += dice
+				Categories.FOURS:
+					for dice in scorecard_dice_list:
+						if dice == 4:
+							category.total += dice
+				Categories.TWO_PAIR:
+					pass
+				Categories.THREE_OF_A_KIND:
+					pass
+			
+			# Fix output
+			category.button.text = str(category.base_score) + " + " + str(category.total)
