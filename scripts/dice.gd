@@ -111,7 +111,3 @@ func save_dice():
 		roll_button.disabled = true
 	else:
 		roll_button.disabled = false
-	
-	# Show numbers in output (remove later)
-	print("DICE ROLLED: ", Global.rolling_dice_list)
-	print("DICE SAVED: ", Global.saved_dice_list)

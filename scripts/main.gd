@@ -6,20 +6,11 @@ signal _save_button_pressed()
 
 @onready var roll_button: TextureButton = %RollButton
 
-#func _ready() -> void:
-	#pass
-
 func _update_round_status() -> void:
 	# Checks if all rerolls have been used
 	if Global.rerolls <= 0:
 		_save_button_pressed.emit() # Save all dice
 		roll_button.disabled = true
-		
-		# Append all remaining dice to saved list
-		if Global.rolling_dice_list.size() != 0:
-			for dice in Global.rolling_dice_list:
-				Global.saved_dice_list.append(dice)
-			Global.rolling_dice_list.clear()
 		
 		# Go to the shop after all lots used?
 		if Global.lots <= 0:
