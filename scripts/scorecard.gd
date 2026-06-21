@@ -9,7 +9,7 @@ signal _update_round_status()
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
-enum Categories {ACES, TWOS, THREES, FOURS, TWO_PAIR, THREE_OF_A_KIND}
+enum Categories {ACES, TWOS, THREES, FOURS, CHOICE, TWO_PAIR, THREE_OF_A_KIND}
 var starting_category_list: Array[Categories] = [Categories.ACES, Categories.TWOS, Categories.THREES, Categories.TWO_PAIR, Categories.THREE_OF_A_KIND]
 
 class CategoryInfo:
@@ -34,6 +34,7 @@ var aces: CategoryInfo = CategoryInfo.new("Aces", 5, Categories.ACES)
 var twos: CategoryInfo = CategoryInfo.new("Twos", 5, Categories.TWOS)
 var threes: CategoryInfo = CategoryInfo.new("Threes", 10, Categories.THREES)
 var fours: CategoryInfo = CategoryInfo.new("Fours", 10, Categories.FOURS)
+var choice: CategoryInfo = CategoryInfo.new("Choice", 0, Categories.CHOICE)
 var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 20, Categories.TWO_PAIR)
 var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 30, Categories.THREE_OF_A_KIND)
 
@@ -43,6 +44,7 @@ var active_category_info_list: Array[CategoryInfo] = []
 func _ready() -> void:
 	var scorecard_index: int = 0
 	for category in category_info_list:
+		# Add starting categories only to the scorecard
 		if category.id in starting_category_list:
 			category_label_list[scorecard_index].text = category.name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0"
@@ -64,7 +66,7 @@ func _update_labels() -> void:
 
 
 func _score_button_pressed() -> void:
-	if Global.rerolls != 3:
+	if !Global.first_round_roll:
 		var current_category: CategoryInfo
 		var category_selected: bool = false
 		
@@ -76,15 +78,15 @@ func _score_button_pressed() -> void:
 				break
 		
 		if category_selected:
+			var scored_total: int = 0
 			if current_category.total > 0:
-				var scored_total: int = current_category.base_score + current_category.total
-				current_category.scored = true
-				current_category.button.disabled = true
-				current_category.button.text = str(scored_total)
+				scored_total = current_category.base_score + current_category.total
 				Global.grand_total += scored_total
-				Global.current_lot_scored = true
 				
-				#Global.saved_dice_list.clear()
+			current_category.scored = true
+			current_category.button.disabled = true
+			current_category.button.text = str(scored_total)
+			Global.current_lot_scored = true
 			
 			_update_labels()
 			_update_round_status.emit()
@@ -122,6 +124,9 @@ func _update_scorecard() -> void:
 					for dice in scorecard_dice_list:
 						if dice == 4:
 							category.total += dice
+				Categories.CHOICE:
+					for dice in scorecard_dice_list:
+						category.total += dice
 				Categories.TWO_PAIR:
 					var pairs: int = 0
 					var banned_face: int = -1
