@@ -37,27 +37,28 @@ func roll_dice():
 	rolling = true
 	
 	var duration: float = Global.ROLL_DURATION
-	var current_index: int = 0
-	var new_index: int = 0
+	var current_index: int = faces.get_children().find(faces.get_children().filter(func(f): return f.visible)[0])
+	var face_count: int = faces.get_child_count()
 	
 	# Roll the dice
 	while duration > 0:
+		var new_index: int = current_index
+		
 		# Prevent duplicate faces from being shown in a row
 		while current_index == new_index:
-			new_index = faces.get_children().pick_random().get_index()
+			new_index = randi() % face_count
 		
 		faces.get_child(current_index).hide()
 		faces.get_child(new_index).show()
+		current_index = new_index
 		
 		await get_tree().create_timer(0.1).timeout
-		
-		current_index = new_index
 		duration -= 0.1
 	
 	# Finish rolling dice and add it to the list
 	rolling = false
 	total_dice_rolled += 1
-	number_rolled = current_index + 1
+	number_rolled = int(faces.get_child(current_index).name)
 	Global.rolling_dice_list.append(number_rolled)
 	
 	# Doesn't count a roll until all dice are scored
