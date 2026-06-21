@@ -125,14 +125,17 @@ func _update_scorecard() -> void:
 				Categories.TWO_PAIR:
 					var pairs: int = 0
 					var banned_face: int = -1
+					var four_of_a_kind: bool = false
 					
 					for dice in scorecard_dice_list:
 						# Check for possible four of a kind
 						if scorecard_dice_list.count(dice) >= 4:
+							four_of_a_kind = true
 							category.total += dice * 4
 							break
 						# Check for a pair
 						elif scorecard_dice_list.count(dice) >= 2 and dice != banned_face:
+							print("THERES A PAIR")
 							category.total += dice * 2
 							banned_face = dice
 							pairs += 1
@@ -140,9 +143,9 @@ func _update_scorecard() -> void:
 							# Exit if a two pair is found
 							if pairs == 2:
 								break
-					
+						
 					# Reset score if no two pair is found
-					if pairs < 2:
+					if pairs < 2 and !four_of_a_kind:
 						category.total = 0
 				Categories.THREE_OF_A_KIND:
 					for dice in scorecard_dice_list:
