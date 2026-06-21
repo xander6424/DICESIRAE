@@ -1,17 +1,7 @@
 DICESIRAE TO-DO LIST
 
 1. Redo UI arrangement
-2. Implement scoring
-	- Add a total amount below the scorecard
-3. Create a good data type for the category information
-4. Correctly check for reroll and lot amounts
-5. Enter a new shop scene when all lots are used and scored
-6. Reorganize & Comment code
-
-- GLOBAL SCRIPT
-
-	- MAIN SCRIPT
-	
-		- DICE SCRIPT
-		- SCORING SCRIPT
-		- SHOP SCRIPT
+2. Main menu (entering and exiting new scenes)
+	- Loading screen?
+3. Enter a new shop scene when all lots are used and scored
+4. Optimize code and comment
