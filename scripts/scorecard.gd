@@ -14,29 +14,31 @@ var starting_category_list: Array[Categories] = [Categories.ACES, Categories.TWO
 
 class CategoryInfo:
 	var name: String
-	var level: int = 1
-	var base_score: int
 	var id: Categories
-	
-	var total: int = 0
+	var level: int = 1
 	var scored: bool = false
+	
+	var base_score: int
+	var total: int = 0
+	var mult_score: int
 	
 	var label: Label = null
 	var button: Button = null
 	
-	func _init(name: String, base_score: int, id: Categories):
+	func _init(name: String, base_score: int, mult_score: int, id: Categories):
 		self.name = name
 		self.base_score = base_score
+		self.mult_score = mult_score
 		self.id = id
 
-# Initialize category name, base score, and id
-var aces: CategoryInfo = CategoryInfo.new("Aces", 5, Categories.ACES)
-var twos: CategoryInfo = CategoryInfo.new("Twos", 5, Categories.TWOS)
-var threes: CategoryInfo = CategoryInfo.new("Threes", 10, Categories.THREES)
-var fours: CategoryInfo = CategoryInfo.new("Fours", 10, Categories.FOURS)
-var choice: CategoryInfo = CategoryInfo.new("Choice", 0, Categories.CHOICE)
-var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 20, Categories.TWO_PAIR)
-var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 30, Categories.THREE_OF_A_KIND)
+# Initialize category name, base score, mult score, and id
+var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, Categories.ACES)
+var twos: CategoryInfo = CategoryInfo.new("Twos", 5, 1, Categories.TWOS)
+var threes: CategoryInfo = CategoryInfo.new("Threes", 10, 1, Categories.THREES)
+var fours: CategoryInfo = CategoryInfo.new("Fours", 10, 1, Categories.FOURS)
+var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, Categories.CHOICE)
+var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 20, 2, Categories.TWO_PAIR)
+var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 30, 3, Categories.THREE_OF_A_KIND)
 
 var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pair, three_of_a_kind]
 var active_category_info_list: Array[CategoryInfo] = []
@@ -47,7 +49,7 @@ func _ready() -> void:
 		# Add starting categories only to the scorecard
 		if category.id in starting_category_list:
 			category_label_list[scorecard_index].text = category.name + ":"
-			category_button_list[scorecard_index].text = str(category.base_score) + " + 0"
+			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
 			
 			category.label = category_label_list[scorecard_index]
@@ -80,7 +82,7 @@ func _score_button_pressed() -> void:
 		if category_selected:
 			var scored_total: int = 0
 			if current_category.total > 0:
-				scored_total = current_category.base_score + current_category.total
+				scored_total = (current_category.base_score + current_category.total) * current_category.mult_score
 				Global.grand_total += scored_total
 				
 			current_category.scored = true
@@ -158,4 +160,4 @@ func _update_scorecard() -> void:
 							break
 			
 			# Fix output
-			category.button.text = str(category.base_score) + " + " + str(category.total)
+			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
