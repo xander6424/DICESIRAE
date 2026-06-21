@@ -135,7 +135,6 @@ func _update_scorecard() -> void:
 							break
 						# Check for a pair
 						elif scorecard_dice_list.count(dice) >= 2 and dice != banned_face:
-							print("THERES A PAIR")
 							category.total += dice * 2
 							banned_face = dice
 							pairs += 1

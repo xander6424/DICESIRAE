@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgeuufgijyfrm"
-path="res://.godot/imported/die3_32p.png-38eb75af67ddbbd4f5effba574f9bc8c.ctex"
+uid="uid://0y1mpioim66n"
+path="res://.godot/imported/rollbutton-hover-32p.png-21422e971539b23f8c8613a6293584f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/die3_32p.png"
-dest_files=["res://.godot/imported/die3_32p.png-38eb75af67ddbbd4f5effba574f9bc8c.ctex"]
+source_file="res://assets/rollbutton-hover-32p.png"
+dest_files=["res://.godot/imported/rollbutton-hover-32p.png-21422e971539b23f8c8613a6293584f4.ctex"]
 
 [params]
 

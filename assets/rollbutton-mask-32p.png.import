@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bdnjd1palx2yv"
+path="res://.godot/imported/rollbutton-mask-32p.png-9b87574751d3e0e42386b4e69cd77067.res"
+
+[deps]
+
+source_file="res://assets/rollbutton-mask-32p.png"
+dest_files=["res://.godot/imported/rollbutton-mask-32p.png-9b87574751d3e0e42386b4e69cd77067.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

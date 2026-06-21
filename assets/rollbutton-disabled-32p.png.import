@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c78k2icikwp7g"
-path="res://.godot/imported/die6_32p.png-d4555d5b48c3b38b09f43d127a017009.ctex"
+uid="uid://cja3760rqtt23"
+path="res://.godot/imported/rollbutton-disabled-32p.png-0daabe392a685a37db89e7cb555efef6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/die6_32p.png"
-dest_files=["res://.godot/imported/die6_32p.png-d4555d5b48c3b38b09f43d127a017009.ctex"]
+source_file="res://assets/rollbutton-disabled-32p.png"
+dest_files=["res://.godot/imported/rollbutton-disabled-32p.png-0daabe392a685a37db89e7cb555efef6.ctex"]
 
 [params]
 
