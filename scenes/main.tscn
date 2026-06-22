@@ -68,6 +68,7 @@ theme_override_font_sizes/font_size = 48
 text = "TOTAL: "
 
 [node name="TotalToBeat" type="Label" parent="." unique_id=1343467017]
+unique_name_in_owner = true
 offset_left = 16.0
 offset_top = 216.0
 offset_right = 162.0

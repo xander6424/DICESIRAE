@@ -18,18 +18,20 @@ class CategoryInfo:
 	var level: int = 1
 	var scored: bool = false
 	
+	# (Base Score + Total Rolled) * Mult Score
 	var base_score: int
 	var total: int = 0
 	var mult_score: int
 	
+	# Current label and button associated with a category
 	var label: Label = null
 	var button: Button = null
 	
-	func _init(name: String, base_score: int, mult_score: int, id: Categories):
-		self.name = name
-		self.base_score = base_score
-		self.mult_score = mult_score
-		self.id = id
+	func _init(input_name: String, input_base_score: int, input_mult_score: int, input_id: Categories):
+		self.name = input_name
+		self.base_score = input_base_score
+		self.mult_score = input_mult_score
+		self.id = input_id
 
 # Initialize category name, base score, mult score, and id
 var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, Categories.ACES)
@@ -37,8 +39,8 @@ var twos: CategoryInfo = CategoryInfo.new("Twos", 5, 1, Categories.TWOS)
 var threes: CategoryInfo = CategoryInfo.new("Threes", 10, 1, Categories.THREES)
 var fours: CategoryInfo = CategoryInfo.new("Fours", 10, 1, Categories.FOURS)
 var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, Categories.CHOICE)
-var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 20, 2, Categories.TWO_PAIR)
-var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 30, 3, Categories.THREE_OF_A_KIND)
+var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 15, 2, Categories.TWO_PAIR)
+var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 20, 3, Categories.THREE_OF_A_KIND)
 
 var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pair, three_of_a_kind]
 var active_category_info_list: Array[CategoryInfo] = []

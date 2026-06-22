@@ -5,3 +5,14 @@ DICESIRAE TO-DO LIST
 	- Loading screen?
 3. Enter a new shop scene when all lots are used and scored
 4. Optimize code and comment
+
+
+ROUND OVER
+- Level up a category
+- Gain a game piece
+- Modify a dice
+
+ANTE? OVER
+- Swap for a new category
+- Gain a game piece slot
+- Gain a new dice
