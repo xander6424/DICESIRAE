@@ -6,6 +6,7 @@ signal _update_round_status()
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
 @onready var grand_total_label: Label = %Total
+@onready var total_to_beat_label: Label = %TotalToBeat
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
@@ -46,9 +47,10 @@ var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pa
 var active_category_info_list: Array[CategoryInfo] = []
 
 func _ready() -> void:
+	# Add only starting categories to the scorecard
 	var scorecard_index: int = 0
+	
 	for category in category_info_list:
-		# Add starting categories only to the scorecard
 		if category.id in starting_category_list:
 			category_label_list[scorecard_index].text = category.name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
@@ -67,6 +69,7 @@ func _update_labels() -> void:
 	lots_label.text = "Lots: " + str(Global.lots)
 	reroll_label.text = "Rerolls: " + str(Global.rerolls)
 	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
+	total_to_beat_label.text = "Score to Beat: " + str(Global.score_to_beat) # Change?
 
 
 func _score_button_pressed() -> void:

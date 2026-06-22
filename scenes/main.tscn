@@ -75,7 +75,7 @@ offset_right = 162.0
 offset_bottom = 242.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
-text = "Score to Beat: 100"
+text = "Score to Beat: "
 
 [node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
 position = Vector2(373, 280)

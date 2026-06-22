@@ -19,11 +19,13 @@ func _update_round_status() -> void:
 		_save_button_pressed.emit() # Unsave all dice
 		Global.first_round_roll = true
 		Global.current_lot_scored = false
-	
-	# Go to the shop after all lots used?
-	if Global.lots <= 0:
-		roll_button.disabled = true
-		print("SHOP?")
+		
+		if Global.grand_total >= Global.score_to_beat:
+			print("WIN!!!")
+			print("SHOP?") # Shop signal/scene should unload everything?
+		elif Global.lots <= 0:
+			roll_button.disabled = true
+			print("LOSE.")
 	
 	_update_labels.emit()
 	_update_scorecard.emit()
