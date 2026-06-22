@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://digpfyk77xf68"]
 
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://bdnf42umy2as2" path="res://scripts/shop.gd" id="1_xfvoa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
 border_width_left = 3
@@ -12,6 +13,7 @@ border_color = Color(0, 0, 0, 1)
 [node name="Shop" type="Control" unique_id=1416667480]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_xfvoa")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1433349288]
 layout_mode = 0
@@ -22,14 +24,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bdmwb")
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=159889567]
 layout_mode = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=811411592]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=555337154]
+[node name="ShopTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=555337154]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lx5au")
 theme_override_font_sizes/font_size = 64
@@ -37,17 +39,48 @@ text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=708687829]
+[node name="HBoxContainer1" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=51677210]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Price" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer1" unique_id=1781418158]
+layout_mode = 2
+text = "$3"
+
+[node name="PieceButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer1" unique_id=708687829]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "RANDOM GAME PIECE"
 
-[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1166547829]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1490187772]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Price" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1259407567]
+layout_mode = 2
+text = "$5"
+
+[node name="UpgradeCategoryButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1166547829]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "UPGRADE CATEGORY"
 
-[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=331295347]
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1667319967]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Price" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=159340442]
+layout_mode = 2
+text = "$4"
+
+[node name="ModifyDiceButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=331295347]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "MODIFY DICE"
+
+[node name="SkipButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2049923186]
+layout_mode = 2
+text = "SKIP"

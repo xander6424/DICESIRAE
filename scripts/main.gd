@@ -5,10 +5,15 @@ signal _update_scorecard()
 signal _save_button_pressed()
 
 @onready var roll_button: TextureButton = %RollButton
+@onready var shop_block: ColorRect = %ShopBlock
 
 
 func _ready() -> void:
-	pass
+	_reset_round()
+
+# Reset all labels, dice, and categories
+func _reset_round() -> void:
+	shop_block.visible = false
 
 
 func _update_round_status() -> void:
@@ -32,12 +37,14 @@ func _update_round_status() -> void:
 		if Global.grand_total >= Global.score_to_beat:
 			Global.round_won = true
 			roll_button.disabled = true
+			shop_block.visible = true
 			_change_scene_status(Global.round_won)
 		elif Global.lots <= 0:
 			_change_scene_status(Global.round_won)
 	
 	_update_labels.emit()
 	_update_scorecard.emit()
+
 
 func _change_scene_status(round_won: bool) -> void:
 	if round_won:
