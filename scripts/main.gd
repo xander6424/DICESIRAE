@@ -24,8 +24,10 @@ func _update_round_status() -> void:
 			print("WIN!!!")
 			print("SHOP?") # Shop signal/scene should unload everything?
 		elif Global.lots <= 0:
-			roll_button.disabled = true
 			print("LOSE.")
+	
+	if Global.lots <= 0:
+		roll_button.disabled = true
 	
 	_update_labels.emit()
 	_update_scorecard.emit()
