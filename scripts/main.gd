@@ -31,6 +31,7 @@ func _update_round_status() -> void:
 		# Manages win condition
 		if Global.grand_total >= Global.score_to_beat:
 			Global.round_won = true
+			roll_button.disabled = true
 			_change_scene_status(Global.round_won)
 		elif Global.lots <= 0:
 			_change_scene_status(Global.round_won)
@@ -40,11 +41,11 @@ func _update_round_status() -> void:
 
 func _change_scene_status(round_won: bool) -> void:
 	if round_won:
-		# Load the shop scene
 		print("WIN!!!")
 		
+		# Load the shop scene to the main scene
 		var shop_instance: Control = Global.SHOP_SCENE.instantiate()
-		shop_instance.position = Vector2(100, 0)
+		shop_instance.position = Vector2(273, 25)
 		get_tree().current_scene.add_child(shop_instance)
 	else:
 		# Load the game over scene

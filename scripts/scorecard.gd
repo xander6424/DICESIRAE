@@ -5,6 +5,7 @@ signal _update_round_status()
 @onready var score_button: Button = %ScoreButton
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
+@onready var money_label: Label = %Money
 @onready var grand_total_label: Label = %Total
 @onready var total_to_beat_label: Label = %TotalToBeat
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
@@ -68,6 +69,7 @@ func _ready() -> void:
 func _update_labels() -> void:
 	lots_label.text = "Lots: " + str(Global.lots)
 	reroll_label.text = "Rerolls: " + str(Global.rerolls)
+	money_label.text = "Money: $" + str(Global.money)
 	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
 	total_to_beat_label.text = "Score to Beat: " + str(Global.score_to_beat) # Change?
 

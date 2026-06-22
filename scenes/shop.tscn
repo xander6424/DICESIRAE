@@ -1,10 +1,53 @@
 [gd_scene format=3 uid="uid://digpfyk77xf68"]
 
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_lx5au"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
 [node name="Shop" type="Control" unique_id=1416667480]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1433349288]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 200.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdmwb")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=159889567]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=811411592]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=555337154]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lx5au")
+theme_override_font_sizes/font_size = 64
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=708687829]
+layout_mode = 2
+size_flags_vertical = 3
+text = "RANDOM GAME PIECE"
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1166547829]
+layout_mode = 2
+size_flags_vertical = 3
+text = "UPGRADE CATEGORY"
+
+[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=331295347]
+layout_mode = 2
+size_flags_vertical = 3
+text = "MODIFY DICE"
