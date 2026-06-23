@@ -9,7 +9,7 @@ const STARTING_LOTS: int = 3
 const STARTING_REROLLS: int = 3
 const STARTING_MONEY: int = 5
 const ROLL_DURATION: float = 0.8
-const ROUND_SCORE_SCALING: Array[int] = [100, 250, 400]
+const ROUND_SCORE_SCALING: Array[int] = [100, 150, 250]
 
 var lots: int = STARTING_LOTS
 var rerolls: int = STARTING_REROLLS
