@@ -149,6 +149,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 0.29411766)
 
+[connection signal="_reset_scorecard" from="." to="Scorecard" method="_reset_scorecard"]
 [connection signal="_save_button_pressed" from="." to="DiceSet/Dice1" method="_save_button_pressed"]
 [connection signal="_save_button_pressed" from="." to="DiceSet/Dice2" method="_save_button_pressed"]
 [connection signal="_save_button_pressed" from="." to="DiceSet/Dice3" method="_save_button_pressed"]

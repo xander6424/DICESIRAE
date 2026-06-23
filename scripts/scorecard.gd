@@ -48,23 +48,10 @@ var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pa
 var active_category_info_list: Array[CategoryInfo] = []
 
 func _ready() -> void:
-	# Add only starting categories to the scorecard
-	var scorecard_index: int = 0
-	
-	for category in category_info_list:
-		if category.id in starting_category_list:
-			category_label_list[scorecard_index].text = category.name + ":"
-			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
-			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
-			
-			category.label = category_label_list[scorecard_index]
-			category.button = category_button_list[scorecard_index]
-			
-			active_category_info_list.append(category)
-			scorecard_index += 1
-	
 	score_button.pressed.connect(_score_button_pressed)
+	
 	_update_labels()
+	_reset_scorecard()
 
 func _update_labels() -> void:
 	lots_label.text = "Lots: " + str(Global.lots)
@@ -103,6 +90,24 @@ func _score_button_pressed() -> void:
 		else:
 			print("Please select a category")
 
+
+func _reset_scorecard() -> void:
+	# Add only starting categories to the scorecard
+	var scorecard_index: int = 0
+	
+	for category in category_info_list:
+		if category.id in starting_category_list:
+			category_label_list[scorecard_index].text = category.name + ":"
+			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
+			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
+			
+			category.label = category_label_list[scorecard_index]
+			category.button = category_button_list[scorecard_index]
+			category.button.disabled = false
+			category.scored = false
+			
+			active_category_info_list.append(category)
+			scorecard_index += 1
 
 func _update_scorecard() -> void:
 	var scorecard_dice_list: Array[int] = []

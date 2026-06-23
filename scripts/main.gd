@@ -1,6 +1,7 @@
 extends Node2D
 
 signal _update_labels()
+signal _reset_scorecard()
 signal _update_scorecard()
 signal _save_button_pressed()
 
@@ -30,14 +31,14 @@ func _on_reset_round() -> void:
 	
 	if shop_instance:
 		shop_instance.queue_free()
-	
-	_update_labels.emit()
+		_update_labels.emit()
+		_reset_scorecard.emit()
 
 
 func _update_round_status() -> void:
 	# Checks if all rerolls have been used
 	if Global.rerolls <= 0:
-		_save_button_pressed.emit() # Save all dice
+		_save_button_pressed.emit() # Save all remaining dice
 		roll_button.disabled = true
 	
 	# Checks if a category has been scored
