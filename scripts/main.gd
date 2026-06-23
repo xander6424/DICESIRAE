@@ -7,6 +7,7 @@ signal _save_button_pressed()
 @onready var roll_button: TextureButton = %RollButton
 @onready var shop_block: ColorRect = %ShopBlock
 
+var round_number: int = 0
 var shop_instance: Control
 
 
@@ -16,10 +17,21 @@ func _ready() -> void:
 
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
+	round_number += 1
+	
+	Global.lots = Global.STARTING_LOTS
+	Global.rerolls = Global.STARTING_REROLLS
+	Global.grand_total = 0
+	Global.score_to_beat = Global.ROUND_SCORE_SCALING[round_number - 1]
+	Global.round_won = false
+	
 	shop_block.visible = false
+	roll_button.disabled = false
 	
 	if shop_instance:
 		shop_instance.queue_free()
+	
+	_update_labels.emit()
 
 
 func _update_round_status() -> void:

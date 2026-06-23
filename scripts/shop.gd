@@ -8,6 +8,11 @@ extends Control
 func _ready() -> void:
 	skip_button.pressed.connect(_shop_skip_button_pressed)
 
+# Piece button
+
+# Upgrade category button
+
+# Modify dice button
 
 func _shop_skip_button_pressed() -> void:
 	Global._reset_round.emit()

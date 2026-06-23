@@ -9,12 +9,13 @@ const STARTING_LOTS: int = 3
 const STARTING_REROLLS: int = 3
 const STARTING_MONEY: int = 5
 const ROLL_DURATION: float = 0.8
+const ROUND_SCORE_SCALING: Array[int] = [100, 250, 400]
 
 var lots: int = STARTING_LOTS
 var rerolls: int = STARTING_REROLLS
 var money: int = STARTING_MONEY
 var grand_total: int = 0
-var score_to_beat: int = 100 # Change to an array? How does score scaling work?
+var score_to_beat: int = ROUND_SCORE_SCALING[0]
 
 var rolling_dice_list: Array[int] = []
 var saved_dice_list: Array[int] = []
