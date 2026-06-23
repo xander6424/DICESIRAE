@@ -19,6 +19,7 @@ func _ready() -> void:
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
 	round_number += 1
+	print("ROUND ", round_number)
 	
 	Global.lots = Global.STARTING_LOTS
 	Global.rerolls = Global.STARTING_REROLLS

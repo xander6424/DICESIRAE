@@ -104,6 +104,7 @@ func _reset_scorecard() -> void:
 			category.label = category_label_list[scorecard_index]
 			category.button = category_button_list[scorecard_index]
 			category.button.disabled = false
+			category.button.button_pressed = false
 			category.scored = false
 			
 			active_category_info_list.append(category)
