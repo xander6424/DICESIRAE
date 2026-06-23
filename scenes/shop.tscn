@@ -82,5 +82,6 @@ size_flags_vertical = 3
 text = "MODIFY DICE"
 
 [node name="SkipButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2049923186]
+unique_name_in_owner = true
 layout_mode = 2
 text = "SKIP"

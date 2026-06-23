@@ -7,13 +7,19 @@ signal _save_button_pressed()
 @onready var roll_button: TextureButton = %RollButton
 @onready var shop_block: ColorRect = %ShopBlock
 
+var shop_instance: Control
+
 
 func _ready() -> void:
-	_reset_round()
+	Global._reset_round.connect(_on_reset_round)
+	_on_reset_round()
 
 # Reset all labels, dice, and categories
-func _reset_round() -> void:
+func _on_reset_round() -> void:
 	shop_block.visible = false
+	
+	if shop_instance:
+		shop_instance.queue_free()
 
 
 func _update_round_status() -> void:
@@ -51,7 +57,7 @@ func _change_scene_status(round_won: bool) -> void:
 		print("WIN!!!")
 		
 		# Load the shop scene to the main scene
-		var shop_instance: Control = Global.SHOP_SCENE.instantiate()
+		shop_instance = Global.SHOP_SCENE.instantiate()
 		shop_instance.position = Vector2(273, 25)
 		get_tree().current_scene.add_child(shop_instance)
 	else:

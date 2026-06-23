@@ -1,5 +1,7 @@
 extends Node
 
+signal _reset_round()
+
 const SHOP_FILE_PATH: String = "res://scenes/shop.tscn"
 const SHOP_SCENE = preload(Global.SHOP_FILE_PATH)
 
