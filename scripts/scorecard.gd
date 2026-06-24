@@ -11,6 +11,7 @@ signal _update_round_status()
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
+# Identification of valid categories
 enum Categories {ACES, TWOS, THREES, FOURS, CHOICE, TWO_PAIR, THREE_OF_A_KIND}
 var starting_category_list: Array[Categories] = [Categories.ACES, Categories.TWOS, Categories.THREES, Categories.TWO_PAIR, Categories.THREE_OF_A_KIND]
 
@@ -62,6 +63,7 @@ func _update_labels() -> void:
 
 
 func _score_button_pressed() -> void:
+	# Category won't score until dice have been rolled once
 	if !Global.first_round_roll:
 		var current_category: CategoryInfo
 		var category_selected: bool = false
@@ -172,5 +174,4 @@ func _update_scorecard() -> void:
 							category.total += dice * 3
 							break
 			
-			# Fix output
 			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)

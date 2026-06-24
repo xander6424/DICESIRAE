@@ -7,6 +7,7 @@ signal _save_button_pressed()
 
 @onready var roll_button: TextureButton = %RollButton
 @onready var shop_block: ColorRect = %ShopBlock
+@onready var game_over_label: Label = %GameOver
 
 var round_number: int = 0
 var shop_instance: Control
@@ -15,6 +16,10 @@ var shop_instance: Control
 func _ready() -> void:
 	Global._reset_round.connect(_on_reset_round)
 	_on_reset_round()
+
+# Signal to fully reset the whole game
+func reset_game() -> void:
+	pass
 
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
@@ -78,5 +83,6 @@ func _change_scene_status(round_won: bool) -> void:
 		# Load the game over scene
 		shop_block.color = Color(25.397, 0.0, 0.0, 0.5)
 		shop_block.visible = true
+		game_over_label.visible = true
 		print("LOSE.")
 		pass

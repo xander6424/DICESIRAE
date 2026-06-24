@@ -16,4 +16,3 @@ func _ready() -> void:
 
 func _shop_skip_button_pressed() -> void:
 	Global._reset_round.emit()
-	pass
