@@ -1,10 +1,19 @@
 DICESIRAE TO-DO LIST
 
-1. Redo UI arrangement
-2. Main menu (entering and exiting new scenes)
+1. Piece Class
+	- Separate file that manages info
+	- Move categories to something similar?
+2. Pieces Section
+	- Ordering matters
+3. Other test shop stuff
+	- Level up categories
+	- Modify dice
+4. Dice Physics
+	- Starting location
+	- Saving location
+5. Main menu (entering and exiting new scenes)
 	- Loading screen?
-3. Enter a new shop scene when all lots are used and scored
-4. Optimize code and comment
+6. Optimize code and comment
 
 
 ROUND OVER
