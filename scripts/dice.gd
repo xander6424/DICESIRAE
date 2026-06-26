@@ -8,7 +8,7 @@ signal _update_round_status()
 
 static var total_dice_rolled: int = 0
 static var dice_in_play: int = 5
-
+static var any_dice_rolling = false
 var number_rolled: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
@@ -31,6 +31,7 @@ func roll_button_pressed():
 		Global.first_round_roll = false
 		
 		roll_button.disabled = true
+		any_dice_rolling = true
 		roll_dice()
 
 func roll_dice():
@@ -65,6 +66,7 @@ func roll_dice():
 	if total_dice_rolled == dice_in_play:
 		Global.rerolls -= 1
 		total_dice_rolled = 0
+		any_dice_rolling = false
 		
 		if Global.rerolls > 0:
 			roll_button.disabled = false
@@ -77,7 +79,7 @@ func roll_dice():
 
 
 func _save_button_pressed():
-	if !rolling and !Global.first_round_roll:
+	if !any_dice_rolling and !Global.first_round_roll:
 		save_dice()
 
 func save_dice():
