@@ -55,16 +55,16 @@ func _ready() -> void:
 	_reset_scorecard()
 
 func _update_labels() -> void:
-	lots_label.text = "Lots: " + str(Global.lots)
-	reroll_label.text = "Rerolls: " + str(Global.rerolls)
-	money_label.text = "Money: $" + str(Global.money)
-	grand_total_label.text = "TOTAL: " + str(Global.grand_total)
-	total_to_beat_label.text = "Score to Beat: " + str(Global.score_to_beat) # Change?
+	lots_label.text = "Lots: " + str(GameData.lots)
+	reroll_label.text = "Rerolls: " + str(GameData.rerolls)
+	money_label.text = "Money: $" + str(GameData.money)
+	grand_total_label.text = "TOTAL: " + str(GameData.grand_total)
+	total_to_beat_label.text = "Score to Beat: " + str(GameData.score_to_beat) # Change?
 
 
 func _score_button_pressed() -> void:
 	# Category won't score until dice have been rolled once
-	if !Global.first_round_roll:
+	if !GameData.first_round_roll:
 		var current_category: CategoryInfo
 		var category_selected: bool = false
 		
@@ -79,12 +79,12 @@ func _score_button_pressed() -> void:
 			var scored_total: int = 0
 			if current_category.total > 0:
 				scored_total = (current_category.base_score + current_category.total) * current_category.mult_score
-				Global.grand_total += scored_total
+				GameData.grand_total += scored_total
 				
 			current_category.scored = true
 			current_category.button.disabled = true
 			current_category.button.text = str(scored_total)
-			Global.current_lot_scored = true
+			GameData.current_lot_scored = true
 			
 			_update_labels()
 			_update_round_status.emit()
@@ -115,9 +115,9 @@ func _reset_scorecard() -> void:
 func _update_scorecard() -> void:
 	var scorecard_dice_list: Array[int] = []
 	
-	for dice in Global.rolling_dice_list:
+	for dice in GameData.rolling_dice_list:
 		scorecard_dice_list.append(dice)
-	for dice in Global.saved_dice_list:
+	for dice in GameData.saved_dice_list:
 		scorecard_dice_list.append(dice)
 	
 	for category in active_category_info_list:

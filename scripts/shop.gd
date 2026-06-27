@@ -15,4 +15,4 @@ func _ready() -> void:
 # Modify dice button
 
 func _shop_skip_button_pressed() -> void:
-	Global._reset_round.emit()
+	GameData._reset_round.emit()

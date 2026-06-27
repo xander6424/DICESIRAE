@@ -14,7 +14,7 @@ var shop_instance: Control
 
 
 func _ready() -> void:
-	Global._reset_round.connect(_on_reset_round)
+	GameData._reset_round.connect(_on_reset_round)
 	_on_reset_round()
 
 # Signal to fully reset the whole game
@@ -26,11 +26,11 @@ func _on_reset_round() -> void:
 	round_number += 1
 	print("ROUND ", round_number)
 	
-	Global.lots = Global.STARTING_LOTS
-	Global.rerolls = Global.STARTING_REROLLS
-	Global.grand_total = 0
-	Global.score_to_beat = Global.ROUND_SCORE_SCALING[round_number - 1]
-	Global.round_won = false
+	GameData.lots = GameData.STARTING_LOTS
+	GameData.rerolls = GameData.STARTING_REROLLS
+	GameData.grand_total = 0
+	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[round_number - 1]
+	GameData.round_won = false
 	
 	shop_block.visible = false
 	roll_button.disabled = false
@@ -43,28 +43,28 @@ func _on_reset_round() -> void:
 
 func _update_round_status() -> void:
 	# Checks if all rerolls have been used
-	if Global.rerolls <= 0:
+	if GameData.rerolls <= 0:
 		_save_button_pressed.emit() # Save all remaining dice
 		roll_button.disabled = true
 	
 	# Checks if a category has been scored
-	if Global.current_lot_scored:
-		Global.lots -= 1
-		Global.rerolls = 3
+	if GameData.current_lot_scored:
+		GameData.lots -= 1
+		GameData.rerolls = 3
 		_save_button_pressed.emit() # Unsave all dice
-		Global.first_round_roll = true
-		Global.current_lot_scored = false
+		GameData.first_round_roll = true
+		GameData.current_lot_scored = false
 		
-		if Global.lots <= 0:
+		if GameData.lots <= 0:
 			roll_button.disabled = true
 		
 		# Manages win condition
-		if Global.grand_total >= Global.score_to_beat:
-			Global.round_won = true
+		if GameData.grand_total >= GameData.score_to_beat:
+			GameData.round_won = true
 			roll_button.disabled = true
-			_change_scene_status(Global.round_won)
-		elif Global.lots <= 0:
-			_change_scene_status(Global.round_won)
+			_change_scene_status(GameData.round_won)
+		elif GameData.lots <= 0:
+			_change_scene_status(GameData.round_won)
 	
 	_update_labels.emit()
 	_update_scorecard.emit()
@@ -76,7 +76,7 @@ func _change_scene_status(round_won: bool) -> void:
 		shop_block.visible = true
 		
 		# Load the shop scene to the main scene
-		shop_instance = Global.SHOP_SCENE.instantiate()
+		shop_instance = GameData.SHOP_SCENE.instantiate()
 		shop_instance.position = Vector2(273, 25)
 		get_tree().current_scene.add_child(shop_instance)
 	else:

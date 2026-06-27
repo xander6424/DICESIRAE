@@ -27,8 +27,8 @@ func _ready() -> void:
 
 func roll_button_pressed():
 	if !rolling and !dice_saved:
-		Global.rolling_dice_list.clear()
-		Global.first_round_roll = false
+		GameData.rolling_dice_list.clear()
+		GameData.first_round_roll = false
 		
 		roll_button.disabled = true
 		any_dice_rolling = true
@@ -37,7 +37,7 @@ func roll_button_pressed():
 func roll_dice():
 	rolling = true
 	
-	var duration: float = Global.ROLL_DURATION
+	var duration: float = GameData.ROLL_DURATION
 	var current_index: int = faces.get_children().find(faces.get_children().filter(func(f): return f.visible)[0])
 	var face_count: int = faces.get_child_count()
 	
@@ -60,57 +60,57 @@ func roll_dice():
 	rolling = false
 	total_dice_rolled += 1
 	number_rolled = int(faces.get_child(current_index).name)
-	Global.rolling_dice_list.append(number_rolled)
+	GameData.rolling_dice_list.append(number_rolled)
 	
 	# Doesn't count a roll until all dice are scored
 	if total_dice_rolled == dice_in_play:
-		Global.rerolls -= 1
+		GameData.rerolls -= 1
 		total_dice_rolled = 0
 		any_dice_rolling = false
 		
-		if Global.rerolls > 0:
+		if GameData.rerolls > 0:
 			roll_button.disabled = false
 		
 		_update_round_status.emit()
 		
 		# Show numbers in output (remove later)
-		print("DICE ROLLED: ", Global.rolling_dice_list)
-		print("DICE SAVED: ", Global.saved_dice_list)
+		print("DICE ROLLED: ", GameData.rolling_dice_list)
+		print("DICE SAVED: ", GameData.saved_dice_list)
 
 
 func _save_button_pressed():
-	if !any_dice_rolling and !Global.first_round_roll:
+	if !any_dice_rolling and !GameData.first_round_roll:
 		save_dice()
 
 func save_dice():
 	var index: int = 0
 	
 	# Dice to be saved
-	if !dice_saved and !Global.current_lot_scored:
+	if !dice_saved and !GameData.current_lot_scored:
 		dice_saved = true
 		position.y += 40
 		dice_in_play -= 1
 	
-		for dice in Global.rolling_dice_list:
+		for dice in GameData.rolling_dice_list:
 			if dice == number_rolled:
-				Global.saved_dice_list.append(number_rolled)
-				Global.rolling_dice_list.remove_at(index)
+				GameData.saved_dice_list.append(number_rolled)
+				GameData.rolling_dice_list.remove_at(index)
 				break
 			index += 1
 	# Dice to be unsaved
-	elif dice_saved and Global.rerolls > 0:
+	elif dice_saved and GameData.rerolls > 0:
 		dice_saved = false
 		position.y -= 40
 		dice_in_play += 1
 		
-		for dice in Global.saved_dice_list:
+		for dice in GameData.saved_dice_list:
 			if dice  == number_rolled:
-				Global.rolling_dice_list.append(number_rolled)
-				Global.saved_dice_list.remove_at(index)
+				GameData.rolling_dice_list.append(number_rolled)
+				GameData.saved_dice_list.remove_at(index)
 				break
 			index += 1
 	
-	if Global.rolling_dice_list.is_empty():
+	if GameData.rolling_dice_list.is_empty():
 		roll_button.disabled = true
 	else:
 		roll_button.disabled = false
