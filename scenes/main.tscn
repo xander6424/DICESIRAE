@@ -121,6 +121,7 @@ offset_left = 528.0
 offset_top = 296.0
 offset_right = 624.0
 offset_bottom = 344.0
+focus_mode = 0
 shortcut = SubResource("Shortcut_sugp2")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("4_tipki")
@@ -134,6 +135,7 @@ offset_left = 21.0
 offset_top = 296.0
 offset_right = 221.0
 offset_bottom = 336.0
+focus_mode = 0
 text = "SCORE"
 
 [node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
