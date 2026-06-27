@@ -3,7 +3,7 @@ extends Node
 signal _reset_round()
 
 const SHOP_FILE_PATH: String = "res://scenes/shop.tscn"
-const SHOP_SCENE = preload(Global.SHOP_FILE_PATH)
+const SHOP_SCENE = preload(SHOP_FILE_PATH)
 
 const STARTING_LOTS: int = 3
 const STARTING_REROLLS: int = 3

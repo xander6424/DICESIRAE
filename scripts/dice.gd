@@ -83,9 +83,9 @@ func _save_button_pressed():
 		save_dice()
 
 func save_dice():
-	# Dice to be saved
 	var index: int = 0
 	
+	# Dice to be saved
 	if !dice_saved and !Global.current_lot_scored:
 		dice_saved = true
 		position.y += 40

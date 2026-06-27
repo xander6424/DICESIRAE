@@ -30,11 +30,11 @@ class CategoryInfo:
 	var label: Label = null
 	var button: Button = null
 	
-	func _init(input_name: String, input_base_score: int, input_mult_score: int, input_id: Categories):
-		self.name = input_name
-		self.base_score = input_base_score
-		self.mult_score = input_mult_score
-		self.id = input_id
+	func _init(_name: String, _base_score: int, _mult_score: int, _id: Categories):
+		name = _name
+		base_score = _base_score
+		mult_score = _mult_score
+		id = _id
 
 # Initialize category name, base score, mult score, and id
 var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, Categories.ACES)

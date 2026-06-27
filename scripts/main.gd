@@ -46,10 +46,9 @@ func _update_round_status() -> void:
 	if Global.rerolls <= 0:
 		_save_button_pressed.emit() # Save all remaining dice
 		roll_button.disabled = true
-	print("UPDATING...")
+	
 	# Checks if a category has been scored
 	if Global.current_lot_scored:
-		print("SCORED")
 		Global.lots -= 1
 		Global.rerolls = 3
 		_save_button_pressed.emit() # Unsave all dice
