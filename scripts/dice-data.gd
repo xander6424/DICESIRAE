@@ -1,29 +1,43 @@
 extends Node
 
-enum Size {D6, D8, D10, D12, D14, D16, D18, D20}
+enum Size {
+	D6 = 6, 
+	D8 = 8, 
+	D10 = 10, 
+	D12 = 12, 
+	D14 = 14, 
+	D16 = 16, 
+	D18 = 18, 
+	D20 = 20
+}
+
 enum Type {
 	NORMAL, 
 	RED, 
 	BLUE, 
 	YELLOW, 
 	GREEN, 
+	
 	CRYSTAL, 
 	GHOST, 
 	MITOSIS, 
 	VOID
 }
+
 enum Face {
 	NORMAL, 
+	BLANK, 
 	RUBY, 
 	DIAMOND, 
 	GOLD, 
 	EMERALD, 
+	
 	SPRING, 
 	PARTY, 
 	METAL, 
-	GLUE, 
-	BLANK
+	GLUE
 }
+
 enum Category {
 	ACES, 
 	TWOS, 
@@ -31,6 +45,7 @@ enum Category {
 	FOURS, 
 	FIVES,
 	SIXES,
+	
 	CHOICE, 
 	TWO_PAIR, 
 	THREE_OF_A_KIND,
@@ -41,6 +56,8 @@ enum Category {
 	DICESIRAE
 }
 
+
+# The starting scorecard for a given game played
 var starting_category_list: Array[Category] = [
 	Category.ACES, 
 	Category.TWOS, 
