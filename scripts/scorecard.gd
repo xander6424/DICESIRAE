@@ -11,13 +11,9 @@ signal _update_round_status()
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
-# Identification of valid categories
-enum Categories {ACES, TWOS, THREES, FOURS, CHOICE, TWO_PAIR, THREE_OF_A_KIND}
-var starting_category_list: Array[Categories] = [Categories.ACES, Categories.TWOS, Categories.THREES, Categories.TWO_PAIR, Categories.THREE_OF_A_KIND]
-
 class CategoryInfo:
 	var name: String
-	var id: Categories
+	var id: DiceData.Category
 	var level: int = 1
 	var scored: bool = false
 	
@@ -30,20 +26,20 @@ class CategoryInfo:
 	var label: Label = null
 	var button: Button = null
 	
-	func _init(_name: String, _base_score: int, _mult_score: int, _id: Categories):
+	func _init(_name: String, _base_score: int, _mult_score: int, _id: DiceData.Category):
 		name = _name
 		base_score = _base_score
 		mult_score = _mult_score
 		id = _id
 
 # Initialize category name, base score, mult score, and id
-var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, Categories.ACES)
-var twos: CategoryInfo = CategoryInfo.new("Twos", 5, 1, Categories.TWOS)
-var threes: CategoryInfo = CategoryInfo.new("Threes", 10, 1, Categories.THREES)
-var fours: CategoryInfo = CategoryInfo.new("Fours", 10, 1, Categories.FOURS)
-var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, Categories.CHOICE)
-var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 15, 2, Categories.TWO_PAIR)
-var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 20, 3, Categories.THREE_OF_A_KIND)
+var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, DiceData.Category.ACES)
+var twos: CategoryInfo = CategoryInfo.new("Twos", 5, 1, DiceData.Category.TWOS)
+var threes: CategoryInfo = CategoryInfo.new("Threes", 10, 1, DiceData.Category.THREES)
+var fours: CategoryInfo = CategoryInfo.new("Fours", 10, 1, DiceData.Category.FOURS)
+var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, DiceData.Category.CHOICE)
+var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 15, 2, DiceData.Category.TWO_PAIR)
+var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 20, 3, DiceData.Category.THREE_OF_A_KIND)
 
 var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pair, three_of_a_kind]
 var active_category_info_list: Array[CategoryInfo] = []
@@ -98,7 +94,7 @@ func _reset_scorecard() -> void:
 	var scorecard_index: int = 0
 	
 	for category in category_info_list:
-		if category.id in starting_category_list:
+		if category.id in DiceData.starting_category_list:
 			category_label_list[scorecard_index].text = category.name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
@@ -125,26 +121,26 @@ func _update_scorecard() -> void:
 		
 		if !category.scored:
 			match category.id:
-				Categories.ACES:
+				DiceData.Category.ACES:
 					for dice in scorecard_dice_list:
 						if dice == 1:
 							category.total += dice
-				Categories.TWOS:
+				DiceData.Category.TWOS:
 					for dice in scorecard_dice_list:
 						if dice == 2:
 							category.total += dice
-				Categories.THREES:
+				DiceData.Category.THREES:
 					for dice in scorecard_dice_list:
 						if dice == 3:
 							category.total += dice
-				Categories.FOURS:
+				DiceData.Category.FOURS:
 					for dice in scorecard_dice_list:
 						if dice == 4:
 							category.total += dice
-				Categories.CHOICE:
+				DiceData.Category.CHOICE:
 					for dice in scorecard_dice_list:
 						category.total += dice
-				Categories.TWO_PAIR:
+				DiceData.Category.TWO_PAIR:
 					var pairs: int = 0
 					var banned_face: int = -1
 					var four_of_a_kind: bool = false
@@ -168,7 +164,7 @@ func _update_scorecard() -> void:
 					# Reset score if no two pair is found
 					if pairs < 2 and !four_of_a_kind:
 						category.total = 0
-				Categories.THREE_OF_A_KIND:
+				DiceData.Category.THREE_OF_A_KIND:
 					for dice in scorecard_dice_list:
 						if scorecard_dice_list.count(dice) >= 3:
 							category.total += dice * 3
