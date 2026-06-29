@@ -22,7 +22,7 @@ var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, DiceData.Category.CH
 var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 15, 2, DiceData.Category.TWO_PAIR)
 var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 20, 3, DiceData.Category.THREE_OF_A_KIND)
 
-var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, two_pair, three_of_a_kind]
+var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, choice, two_pair, three_of_a_kind]
 var active_category_info_list: Array[CategoryInfo] = []
 
 func _ready() -> void:
@@ -39,44 +39,13 @@ func _update_labels() -> void:
 	total_to_beat_label.text = "Score to Beat: " + str(GameData.score_to_beat) # Change?
 
 
-func _score_button_pressed() -> void:
-	# Category won't score until dice have been rolled once
-	if !GameData.first_round_roll:
-		var current_category: CategoryInfo
-		var category_selected: bool = false
-		
-		# Find which category was selected
-		for category in active_category_info_list:
-			if category.button.button_pressed:
-				current_category = category
-				category_selected = true
-				break
-		
-		if category_selected:
-			var scored_total: int = 0
-			if current_category.total > 0:
-				scored_total = (current_category.base_score + current_category.total) * current_category.mult_score
-				GameData.grand_total += scored_total
-				
-			current_category.scored = true
-			current_category.button.disabled = true
-			current_category.button.text = str(scored_total)
-			GameData.current_lot_scored = true
-			
-			_update_labels()
-			_update_round_status.emit()
-			
-		else:
-			print("Please select a category")
-
-
 func _reset_scorecard() -> void:
 	# Add only starting categories to the scorecard
 	var scorecard_index: int = 0
 	
 	for category in category_info_list:
 		if category.id in DiceData.starting_category_list:
-			category_label_list[scorecard_index].text = category.name + ":"
+			category_label_list[scorecard_index].text = category.category_name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
 			
@@ -152,3 +121,34 @@ func _update_scorecard() -> void:
 							break
 			
 			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
+
+
+func _score_button_pressed() -> void:
+	# Category won't score until dice have been rolled once
+	if !GameData.first_round_roll:
+		var current_category: CategoryInfo
+		var category_selected: bool = false
+		
+		# Find which category was selected
+		for category in active_category_info_list:
+			if category.button.button_pressed:
+				current_category = category
+				category_selected = true
+				break
+		
+		if category_selected:
+			var scored_total: int = 0
+			if current_category.total > 0:
+				scored_total = (current_category.base_score + current_category.total) * current_category.mult_score
+				GameData.grand_total += scored_total
+				
+			current_category.scored = true
+			current_category.button.disabled = true
+			current_category.button.text = str(scored_total)
+			GameData.current_lot_scored = true
+			
+			_update_labels()
+			_update_round_status.emit()
+			
+		else:
+			print("Please select a category")
