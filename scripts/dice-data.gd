@@ -58,10 +58,7 @@ enum Category {
 
 
 # The starting scorecard for a given game played
-var starting_category_list: Array[Category] = [
-	Category.ACES, 
-	Category.TWOS, 
-	Category.THREES, 
-	Category.TWO_PAIR, 
-	Category.THREE_OF_A_KIND
+var starting_category_list = [
+	[Category.ACES, Category.TWOS, Category.THREES, Category.TWO_PAIR, Category.THREE_OF_A_KIND],
+	[Category.ACES, Category.TWOS, Category.FOURS, Category.CHOICE, Category.TWO_PAIR]
 ]
