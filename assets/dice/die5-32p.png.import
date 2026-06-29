@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y5k4sgd7m0ax"
-path="res://.godot/imported/die2-32p.png-19db9abda36285e344fc4c9196ef4d52.ctex"
+uid="uid://d0wtavxqx5a2a"
+path="res://.godot/imported/die5-32p.png-4f486a2c5d9127b445cf375401cc2d4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/die2-32p.png"
-dest_files=["res://.godot/imported/die2-32p.png-19db9abda36285e344fc4c9196ef4d52.ctex"]
+source_file="res://assets/dice/die5-32p.png"
+dest_files=["res://.godot/imported/die5-32p.png-4f486a2c5d9127b445cf375401cc2d4a.ctex"]
 
 [params]
 

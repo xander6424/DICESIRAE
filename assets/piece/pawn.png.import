@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgeuufgijyfrm"
-path="res://.godot/imported/die3-32p.png-c5458ca4a7f4b75ac557854812486ec0.ctex"
+uid="uid://dswd1t4k027o0"
+path="res://.godot/imported/pawn.png-3d2d634c3d11026f060f1b8eaf49e5ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/die3-32p.png"
-dest_files=["res://.godot/imported/die3-32p.png-c5458ca4a7f4b75ac557854812486ec0.ctex"]
+source_file="res://assets/piece/pawn.png"
+dest_files=["res://.godot/imported/pawn.png-3d2d634c3d11026f060f1b8eaf49e5ec.ctex"]
 
 [params]
 

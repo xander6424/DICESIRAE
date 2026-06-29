@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cnrn1rs24jdhp"
+path="res://.godot/imported/diemask-32p.png-ccfc65a47d44f8f4657b6a784d6dd2e0.res"
+
+[deps]
+
+source_file="res://assets/dice/diemask-32p.png"
+dest_files=["res://.godot/imported/diemask-32p.png-ccfc65a47d44f8f4657b6a784d6dd2e0.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
