@@ -11,26 +11,7 @@ signal _update_round_status()
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
-class CategoryInfo:
-	var name: String
-	var id: DiceData.Category
-	var level: int = 1
-	var scored: bool = false
-	
-	# (Base Score + Total Rolled) * Mult Score
-	var base_score: int
-	var total: int = 0
-	var mult_score: int
-	
-	# Current label and button associated with a category
-	var label: Label = null
-	var button: Button = null
-	
-	func _init(_name: String, _base_score: int, _mult_score: int, _id: DiceData.Category):
-		name = _name
-		base_score = _base_score
-		mult_score = _mult_score
-		id = _id
+# removed category class from here
 
 # Initialize category name, base score, mult score, and id
 var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, DiceData.Category.ACES)
