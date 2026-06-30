@@ -37,10 +37,8 @@ func _on_reset_round() -> void:
 	shop_block.visible = false
 	roll_button.disabled = false
 	
-	if shop_instance:
-		shop_instance.queue_free()
-		_update_labels.emit()
-		_reset_scorecard.emit()
+	_update_labels.emit()
+	_reset_scorecard.emit()
 
 
 func _update_round_status() -> void:
@@ -88,3 +86,13 @@ func _change_scene_status(round_won: bool) -> void:
 		game_over_label.visible = true
 		print("LOSE.")
 		pass
+
+
+
+
+
+# GOD MODE - FOR DEBUGGING
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("God Mode"):
+		GameData.round_won = true
+		_change_scene_status(GameData.round_won)
