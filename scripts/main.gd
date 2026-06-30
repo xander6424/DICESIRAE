@@ -8,6 +8,7 @@ signal _save_button_pressed()
 @onready var roll_button: TextureButton = %RollButton
 @onready var shop_block: ColorRect = %ShopBlock
 @onready var game_over_label: Label = %GameOver
+@onready var shop: Control = %Shop
 
 var round_number: int = 0
 var shop_instance: Control
@@ -32,6 +33,7 @@ func _on_reset_round() -> void:
 	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[round_number - 1]
 	GameData.round_won = false
 	
+	shop.visible = false
 	shop_block.visible = false
 	roll_button.disabled = false
 	
@@ -74,10 +76,10 @@ func _change_scene_status(round_won: bool) -> void:
 	if round_won:
 		print("WIN!!!")
 		shop_block.visible = true
+		shop.visible = true
 		
 		# Load the shop scene to the main scene
-		shop_instance = GameData.SHOP_SCENE.instantiate()
-		shop_instance.position = Vector2(273, 25)
+		
 		get_tree().current_scene.add_child(shop_instance)
 	else:
 		# Load the game over scene

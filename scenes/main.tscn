@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
 [ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -26,9 +27,9 @@ offset_bottom = 360.0
 color = Color(0.25275356, 0.25275356, 0.25275356, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
-offset_left = 16.0
+offset_left = 8.0
 offset_top = -8.0
-offset_right = 232.0
+offset_right = 224.0
 offset_bottom = 68.0
 pivot_offset = Vector2(112.5, 27.5)
 theme_override_fonts/font = ExtResource("2_tipki")
@@ -46,9 +47,9 @@ offset_bottom = 40.0
 [node name="Lots" type="Label" parent="Labels" unique_id=2012264648]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 528.0
+offset_left = 535.0
 offset_top = 208.0
-offset_right = 590.0
+offset_right = 599.0
 offset_bottom = 234.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
@@ -57,9 +58,9 @@ text = "Lots: "
 [node name="Rerolls" type="Label" parent="Labels" unique_id=1891017188]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 528.0
+offset_left = 535.0
 offset_top = 234.0
-offset_right = 594.0
+offset_right = 601.0
 offset_bottom = 260.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
@@ -68,9 +69,9 @@ text = "Rerolls: "
 [node name="Money" type="Label" parent="Labels" unique_id=1964803275]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 528.0
+offset_left = 535.0
 offset_top = 260.0
-offset_right = 590.0
+offset_right = 599.0
 offset_bottom = 286.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
@@ -99,7 +100,7 @@ theme_override_font_sizes/font_size = 32
 text = "Score to Beat: "
 
 [node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
-position = Vector2(373, 280)
+position = Vector2(370, 280)
 
 [node name="Dice1" parent="DiceSet" unique_id=732832586 instance=ExtResource("2_h2yge")]
 position = Vector2(-96, 0)
@@ -131,17 +132,17 @@ texture_click_mask = ExtResource("7_ya4ey")
 
 [node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
 unique_name_in_owner = true
-offset_left = 21.0
+offset_left = 11.0
 offset_top = 296.0
-offset_right = 221.0
+offset_right = 211.0
 offset_bottom = 336.0
 focus_mode = 0
 text = "SCORE"
 
 [node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
-offset_left = 168.0
+offset_left = 160.0
 offset_top = 160.0
-offset_right = 168.0
+offset_right = 160.0
 offset_bottom = 160.0
 
 [node name="ShopBlock" type="ColorRect" parent="." unique_id=1697646110]
@@ -150,6 +151,14 @@ visible = false
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 0.29411766)
+
+[node name="Shop" parent="." unique_id=1416667480 instance=ExtResource("9_85g3d")]
+unique_name_in_owner = true
+visible = false
+offset_left = 225.0
+offset_top = 25.0
+offset_right = 225.0
+offset_bottom = 25.0
 
 [node name="GameOver" type="Label" parent="." unique_id=1974167419]
 unique_name_in_owner = true
