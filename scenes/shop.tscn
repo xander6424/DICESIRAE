@@ -48,6 +48,7 @@ layout_mode = 2
 text = "$3"
 
 [node name="PieceButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer1" unique_id=708687829]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -62,6 +63,7 @@ layout_mode = 2
 text = "$5"
 
 [node name="UpgradeCategoryButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1166547829]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -76,6 +78,7 @@ layout_mode = 2
 text = "$4"
 
 [node name="ModifyDiceButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=331295347]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

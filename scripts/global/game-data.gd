@@ -21,7 +21,7 @@ var score_to_beat: int = ROUND_SCORE_SCALING[0]
 var rolling_dice_list: Array[int] = []
 var saved_dice_list: Array[int] = []
 
-var active_piece_list: Array[PieceInstance] = []
+var active_piece_list: Array[PieceData] = []
 
 var first_round_roll: bool = true
 var current_lot_scored: bool = false

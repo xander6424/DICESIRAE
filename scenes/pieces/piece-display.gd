@@ -1,6 +1,10 @@
 extends Area2D
 
-@export var piece_data: PieceInstance:
+class_name PieceDisplay
+
+signal clicked(piece: PieceDisplay)
+
+@export var piece_data: PieceData:
 	set(value):
 		piece_data = value
 		if is_inside_tree():
@@ -8,7 +12,9 @@ extends Area2D
 
 @onready var piece_sprite: Sprite2D = %PieceSprite
 
+
 func _ready() -> void:
+	input_event.connect(_on_input_event)
 	update_visuals()
 
 func update_visuals() -> void:
@@ -18,5 +24,6 @@ func update_visuals() -> void:
 	if "texture" in piece_data and piece_data.texture:
 		piece_sprite.texture = piece_data.texture
 
-func _purchase_piece() -> void:
-	GameData.active_piece_list.append(piece_data)
+func _on_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		clicked.emit(self)

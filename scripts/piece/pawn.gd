@@ -1,4 +1,4 @@
-extends PieceInstance
+extends PieceData
 
 class_name Pawn
 
