@@ -6,5 +6,9 @@ class_name Pawn
 # Enchances to a random chess piece after 3 rounds.
 # No secret synergies.
 
-func dice_scored():
+func _ready() -> void:
 	pass
+
+func dice_scored():
+	var dice_scored: int = 2
+	
