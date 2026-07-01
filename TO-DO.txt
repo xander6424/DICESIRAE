@@ -1,8 +1,10 @@
 DICESIRAE TO-DO LIST
 
-1. Piece Class
-	- Separate file that manages info
-	- Move categories to something similar?
+1. Scoring Pieces
+	- Reworking the scorecard script
+	- Updating scorecard is still good
+	- Scoring a category needs changed to actually add piece effects
+	- Also include on round start and on round end functionality
 2. Pieces Section
 	- Ordering matters
 3. Other test shop stuff
