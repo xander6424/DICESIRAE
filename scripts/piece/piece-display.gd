@@ -2,7 +2,7 @@ extends Area2D
 
 class_name PieceDisplay
 
-signal clicked(piece: PieceDisplay)
+#signal clicked(piece: PieceDisplay)
 
 @export var piece_data: PieceData:
 	set(value):
@@ -14,7 +14,7 @@ signal clicked(piece: PieceDisplay)
 
 
 func _ready() -> void:
-	input_event.connect(_on_input_event)
+	#input_event.connect(_on_input_event)
 	update_visuals()
 
 func update_visuals() -> void:
@@ -24,6 +24,6 @@ func update_visuals() -> void:
 	if "texture" in piece_data and piece_data.texture:
 		piece_sprite.texture = piece_data.texture
 
-func _on_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		clicked.emit(self)
+#func _on_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
+	#if event is InputEventMouseButton and event.pressed:
+		#clicked.emit(self)
