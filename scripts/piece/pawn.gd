@@ -10,4 +10,4 @@ func dice_scored():
 	# Enchances to a random chess piece after 3 rounds.
 	# No secret synergies.
 	
-	print("SCORIGNG!!!")
+	print("SCORIGNG THE PAWN PIECE!!!")

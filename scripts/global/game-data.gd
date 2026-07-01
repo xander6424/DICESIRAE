@@ -2,12 +2,15 @@ extends Node
 
 signal _reset_round()
 
+# Constant basic values
 const STARTING_LOTS: int = 3
 const STARTING_REROLLS: int = 3
 const STARTING_MONEY: int = 5
 const ROLL_DURATION: float = 0.8
 const ROUND_SCORE_SCALING: Array[int] = [100, 150, 250, 500, 1200]
 
+# Constant piece values
+const PAWN = preload("uid://dcnrojwwbbqqs")
 
 var lots: int = STARTING_LOTS
 var rerolls: int = STARTING_REROLLS
@@ -18,8 +21,12 @@ var score_to_beat: int = ROUND_SCORE_SCALING[0]
 var rolling_dice_list: Array[int] = []
 var saved_dice_list: Array[int] = []
 
-var active_piece_list: Array[PieceData] = []
-
 var first_round_roll: bool = true
 var current_lot_scored: bool = false
 var round_won: bool = false
+
+# New piece stuff
+const game_pieces_list: Array[PieceData] = [
+	PAWN
+]
+var active_piece_list: Array[PieceData] = []

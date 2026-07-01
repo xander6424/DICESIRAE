@@ -8,6 +8,7 @@ class_name PieceData
 @export var texture: Texture2D
 
 @export var sell_value: int
+var using: bool = false
 
 
 func piece_scored(): pass

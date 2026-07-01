@@ -1,6 +1,6 @@
 extends Control
 
-signal _buy_piece()
+#signal _buy_piece()
 
 @onready var piece_button: Button = %PieceButton
 @onready var skip_button: Button = %SkipButton
@@ -13,7 +13,17 @@ func _ready() -> void:
 
 # Random piece button
 func piece_button_pressed() -> void:
-	print("CLICKED")
+	if GameData.money >= 3:
+		var random_piece: PieceData = GameData.game_pieces_list.pick_random()
+		GameData.active_piece_list.append(random_piece)
+		print(GameData.active_piece_list)
+		
+		# Test to activate the piece
+		GameData.active_piece_list[0].dice_scored()
+		
+		GameData.money -= 3
+	else:
+		print("NOT ENOUGH MONEY")
 
 # Upgrade category button
 
