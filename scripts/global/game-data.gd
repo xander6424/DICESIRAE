@@ -29,6 +29,7 @@ var score_to_beat: int = ROUND_SCORE_SCALING[0]
 
 var rolling_dice_list: Array[int] = []
 var saved_dice_list: Array[int] = []
+var scoring_dice_list: Array[int] = []
 
 var first_round_roll: bool = true
 var current_lot_scored: bool = false
@@ -49,3 +50,4 @@ const FULL_CATEGORY_LIST: Array[CategoryInfo] = [
 	TWO_PAIR,
 	THREE_OF_A_KIND
 ]
+var active_category_info_list: Array[CategoryInfo] = []
