@@ -55,65 +55,10 @@ func _update_scorecard() -> void:
 	for category in GameData.active_category_info_list:
 		category.total = 0
 		
+		# Checks if a category exists in current hand
 		if !category.scored:
 			category.check_validity()
-			
-			# Edit button text with format
 			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
-			
-			"""
-			
-			match category.id:
-				DiceData.Category.ACES:
-					category.check_validity()
-					for dice in GameData.scoring_dice_list:
-						if dice == 1:
-							category.total += dice
-				DiceData.Category.TWOS:
-					for dice in GameData.scoring_dice_list:
-						if dice == 2:
-							category.total += dice
-				DiceData.Category.THREES:
-					for dice in GameData.scoring_dice_list:
-						if dice == 3:
-							category.total += dice
-				DiceData.Category.FOURS:
-					for dice in GameData.scoring_dice_list:
-						if dice == 4:
-							category.total += dice
-				DiceData.Category.CHOICE:
-					for dice in GameData.scoring_dice_list:
-						category.total += dice
-				DiceData.Category.TWO_PAIR:
-					var pairs: int = 0
-					var banned_face: int = -1
-					var four_of_a_kind: bool = false
-					
-					for dice in GameData.scoring_dice_list:
-						# Check for possible four of a kind
-						if GameData.scoring_dice_list.count(dice) >= 4:
-							four_of_a_kind = true
-							category.total += dice * 4
-							break
-						# Check for a pair
-						elif GameData.scoring_dice_list.count(dice) >= 2 and dice != banned_face:
-							category.total += dice * 2
-							banned_face = dice
-							pairs += 1
-							
-							# Exit if a two pair is found
-							if pairs == 2:
-								break
-						
-					# Reset score if no two pair is found
-					if pairs < 2 and !four_of_a_kind:
-						category.total = 0
-				DiceData.Category.THREE_OF_A_KIND:
-					for dice in GameData.scoring_dice_list:
-						if GameData.scoring_dice_list.count(dice) >= 3:
-							category.total += dice * 3
-							break
-			"""
 
 
 func _score_button_pressed() -> void:
