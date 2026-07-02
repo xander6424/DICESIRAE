@@ -12,6 +12,7 @@ const ROUND_SCORE_SCALING: Array[int] = [100, 150, 250, 500, 1200]
 # Constant piece values
 const PAWN = preload("uid://dcnrojwwbbqqs")
 
+# Constant category values
 const ACES = preload("uid://d0dnckugihorb")
 const TWOS = preload("uid://bdli131rdnkn8")
 const THREES = preload("uid://w1i6ic0hoa5l")
@@ -41,6 +42,7 @@ const FULL_PIECE_LIST: Array[PieceData] = [
 ]
 var active_piece_list: Array[PieceData] = []
 
+# New category stuff
 const FULL_CATEGORY_LIST: Array[CategoryInfo] = [
 	ACES,
 	TWOS,
