@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*uid://co41fko3hjjb3"
-CategoryType="*uid://dcpdfdj5nx56f"
 DiceData="*uid://cp5t52r2o8h6k"
 
 [display]
