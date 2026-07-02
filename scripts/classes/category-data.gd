@@ -9,8 +9,8 @@ var scored: bool = false
 
 # (Base Score + Total Rolled) * Mult Score
 var base_score: int
-var total: int = 0
 var mult_score: int
+var total: int = 0
 
 # Current label and button associated with a category
 var label: Label = null

@@ -75,16 +75,12 @@ func _change_scene_status(round_won: bool) -> void:
 		print("WIN!!!")
 		shop_block.visible = true
 		shop.visible = true
-		
-		# Load the shop scene to the main scene
-		
-		get_tree().current_scene.add_child(shop_instance)
 	else:
+		print("LOSE.")
 		# Load the game over scene
 		shop_block.color = Color(25.397, 0.0, 0.0, 0.5)
 		shop_block.visible = true
 		game_over_label.visible = true
-		print("LOSE.")
 		pass
 
 
