@@ -1,6 +1,10 @@
 extends CategoryInfo
 
-class_name Aces
+class_name Fours
+
 
 func check_validity() -> void:
-	print("CHECKING IF ACES VALID")
+	pass
+
+func score_category():
+	pass

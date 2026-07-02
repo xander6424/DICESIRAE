@@ -1,7 +1,10 @@
-[gd_resource type="Resource" format=3 uid="uid://d0dnckugihorb"]
+[gd_resource type="Resource" script_class="Aces" format=3 uid="uid://d0dnckugihorb"]
 
-[ext_resource type="Script" uid="uid://csemfdlw6p3eb" path="res://resources/categories/aces.gd" id="1_8hfg2"]
+[ext_resource type="Script" uid="uid://csemfdlw6p3eb" path="res://scripts/classes/aces.gd" id="1_8hfg2"]
 
 [resource]
 script = ExtResource("1_8hfg2")
+category_name = "Aces"
+base_score = 5
+mult_score = 1
 metadata/_custom_type_script = "uid://dcpdfdj5nx56f"

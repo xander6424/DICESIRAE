@@ -2,30 +2,23 @@ extends Resource
 
 class_name CategoryInfo
 
-var category_name: String
-var id: DiceData.Category
+@export var category_name: String
+@export var id: DiceData.Category
+
+# (Base Score + Total Rolled) * Mult Score
+@export var base_score: int
+@export var mult_score: int
+
 var level: int = 1
 var valid: bool = false
 var scored: bool = false
-
-# (Base Score + Total Rolled) * Mult Score
-var base_score: int
-var mult_score: int
 var total: int = 0
 
 # Current label and button associated with a category
 var label: Label = null
 var button: Button = null
 
-func set_category_values() -> void: pass
-
 func check_validity() -> void: pass
 
 func score_category(): pass
 	# Score individual piece(s) at the end
-
-func _init(_name: String, _base_score: int, _mult_score: int, _id: DiceData.Category):
-	category_name = _name
-	base_score = _base_score
-	mult_score = _mult_score
-	id = _id

@@ -14,20 +14,21 @@ signal _update_round_status()
 # removed category class from here
 
 # Initialize category name, base score, mult score, and id
-var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, DiceData.Category.ACES)
-var twos: CategoryInfo = CategoryInfo.new("Twos", 5, 1, DiceData.Category.TWOS)
-var threes: CategoryInfo = CategoryInfo.new("Threes", 10, 1, DiceData.Category.THREES)
-var fours: CategoryInfo = CategoryInfo.new("Fours", 10, 1, DiceData.Category.FOURS)
-var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, DiceData.Category.CHOICE)
-var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 15, 2, DiceData.Category.TWO_PAIR)
-var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 20, 3, DiceData.Category.THREE_OF_A_KIND)
 
-var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, choice, two_pair, three_of_a_kind]
+
+#var aces: CategoryInfo = CategoryInfo.new("Aces", 5, 1, DiceData.Category.ACES)
+#var twos: CategoryInfo = CategoryInfo.new("Twos", 5, 1, DiceData.Category.TWOS)
+#var threes: CategoryInfo = CategoryInfo.new("Threes", 10, 1, DiceData.Category.THREES)
+#var fours: CategoryInfo = CategoryInfo.new("Fours", 10, 1, DiceData.Category.FOURS)
+#var choice: CategoryInfo = CategoryInfo.new("Choice", 0, 1, DiceData.Category.CHOICE)
+#var two_pair: CategoryInfo = CategoryInfo.new("Two Pair", 15, 2, DiceData.Category.TWO_PAIR)
+#var three_of_a_kind: CategoryInfo = CategoryInfo.new("Three of a Kind", 20, 3, DiceData.Category.THREE_OF_A_KIND)
+
+#var category_info_list: Array[CategoryInfo] = [aces, twos, threes, fours, choice, two_pair, three_of_a_kind]
 var active_category_info_list: Array[CategoryInfo] = []
 
 func _ready() -> void:
 	score_button.pressed.connect(_score_button_pressed)
-	
 	_update_labels()
 
 func _update_labels() -> void:
@@ -43,7 +44,7 @@ func _reset_scorecard() -> void:
 	var scorecard_index: int = 0
 	active_category_info_list.clear()
 	
-	for category in category_info_list:
+	for category in GameData.FULL_CATEGORY_LIST:
 		if category.id in DiceData.starting_category_list[0]:
 			category_label_list[scorecard_index].text = category.category_name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
