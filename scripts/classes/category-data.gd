@@ -1,10 +1,11 @@
-extends Node
+extends Resource
 
 class_name CategoryInfo
 
 var category_name: String
 var id: DiceData.Category
 var level: int = 1
+var valid: bool = false
 var scored: bool = false
 
 # (Base Score + Total Rolled) * Mult Score
@@ -16,12 +17,12 @@ var total: int = 0
 var label: Label = null
 var button: Button = null
 
-func check_validity() -> void:
-	print("CHECKING IF VALID")
-	pass
+func set_category_values() -> void: pass
 
-func score_category():
-	pass
+func check_validity() -> void: pass
+
+func score_category(): pass
+	# Score individual piece(s) at the end
 
 func _init(_name: String, _base_score: int, _mult_score: int, _id: DiceData.Category):
 	category_name = _name

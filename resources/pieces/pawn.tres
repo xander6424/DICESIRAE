@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Pawn" format=3 uid="uid://dcnrojwwbbqqs"]
 
-[ext_resource type="Script" uid="uid://cxp2ci6v34r14" path="res://scripts/piece/pawn.gd" id="1_rviw0"]
-[ext_resource type="Texture2D" uid="uid://dswd1t4k027o0" path="res://assets/piece/pawn.png" id="2_y35cy"]
+[ext_resource type="Script" uid="uid://cxp2ci6v34r14" path="res://scripts/piece/pawn.gd" id="1_qwvow"]
+[ext_resource type="Texture2D" uid="uid://dswd1t4k027o0" path="res://assets/piece/pawn.png" id="2_knxm7"]
 
 [resource]
-script = ExtResource("1_rviw0")
+script = ExtResource("1_qwvow")
 piece_name = "Pawn"
 piece_description = "Add +10 to the first 2 dice in scoring. Upgrades to a random chess piece after 3 rounds."
-texture = ExtResource("2_y35cy")
+texture = ExtResource("2_knxm7")
 sell_value = 1
 metadata/_custom_type_script = "uid://cxp2ci6v34r14"

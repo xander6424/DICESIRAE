@@ -14,7 +14,7 @@ func _ready() -> void:
 # Random piece button
 func piece_button_pressed() -> void:
 	if GameData.money >= 3:
-		var random_piece: PieceData = GameData.game_pieces_list.pick_random()
+		var random_piece: PieceData = GameData.FULL_PIECES_LIST.pick_random()
 		GameData.active_piece_list.append(random_piece)
 		print(GameData.active_piece_list)
 		

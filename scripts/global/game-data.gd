@@ -12,6 +12,9 @@ const ROUND_SCORE_SCALING: Array[int] = [100, 150, 250, 500, 1200]
 # Constant piece values
 const PAWN = preload("uid://dcnrojwwbbqqs")
 
+const ACES = preload("uid://d0dnckugihorb")
+
+
 var lots: int = STARTING_LOTS
 var rerolls: int = STARTING_REROLLS
 var money: int = STARTING_MONEY
@@ -26,7 +29,11 @@ var current_lot_scored: bool = false
 var round_won: bool = false
 
 # New piece stuff
-const game_pieces_list: Array[PieceData] = [
+const FULL_PIECES_LIST: Array[PieceData] = [
 	PAWN
 ]
 var active_piece_list: Array[PieceData] = []
+
+const FULL_CATEGORIES_LIST: Array[CategoryInfo] = [
+	ACES
+]

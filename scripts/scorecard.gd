@@ -72,7 +72,7 @@ func _update_scorecard() -> void:
 		if !category.scored:
 			match category.id:
 				DiceData.Category.ACES:
-					#category.check_validity()
+					category.check_validity()
 					for dice in scorecard_dice_list:
 						if dice == 1:
 							category.total += dice
