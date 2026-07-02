@@ -29,7 +29,6 @@ func _ready() -> void:
 	score_button.pressed.connect(_score_button_pressed)
 	
 	_update_labels()
-	_reset_scorecard()
 
 func _update_labels() -> void:
 	lots_label.text = "Lots: " + str(GameData.lots)
@@ -42,6 +41,7 @@ func _update_labels() -> void:
 func _reset_scorecard() -> void:
 	# Add only starting categories to the scorecard
 	var scorecard_index: int = 0
+	active_category_info_list.clear()
 	
 	for category in category_info_list:
 		if category.id in DiceData.starting_category_list[0]:
@@ -72,6 +72,7 @@ func _update_scorecard() -> void:
 		if !category.scored:
 			match category.id:
 				DiceData.Category.ACES:
+					#category.check_validity()
 					for dice in scorecard_dice_list:
 						if dice == 1:
 							category.total += dice

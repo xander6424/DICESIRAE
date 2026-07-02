@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://cx8qphuh7x1kf"]
+
+[ext_resource type="Script" uid="uid://7cmu8rbpyh5k" path="res://scripts/main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://scenes/dice.tscn" id="2_h2yge"]
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="2_tipki"]
+[ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/rollbutton-32p.png" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
+[ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
+[ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_sugp2"]
+events = [SubResource("InputEventKey_0wfyh")]
+
+[node name="Game" type="Node2D" unique_id=1296620639]
+script = ExtResource("1_0xm2m")
+
+[node name="Background" type="ColorRect" parent="." unique_id=696497787]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.25275356, 0.25275356, 0.25275356, 1)
+
+[node name="Title" type="Label" parent="." unique_id=837264721]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 224.0
+offset_bottom = 68.0
+pivot_offset = Vector2(112.5, 27.5)
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 96
+text = "DICESIRAE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Labels" type="Control" parent="." unique_id=2014806734]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Lots" type="Label" parent="Labels" unique_id=2012264648]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 535.0
+offset_top = 208.0
+offset_right = 599.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 32
+text = "Lots: "
+
+[node name="Rerolls" type="Label" parent="Labels" unique_id=1891017188]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 535.0
+offset_top = 234.0
+offset_right = 601.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 32
+text = "Rerolls: "
+
+[node name="Money" type="Label" parent="Labels" unique_id=1964803275]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 535.0
+offset_top = 260.0
+offset_right = 599.0
+offset_bottom = 286.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 32
+text = "Money: "
+
+[node name="Total" type="Label" parent="Labels" unique_id=200728729]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 184.0
+offset_right = 97.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 48
+text = "TOTAL: "
+
+[node name="TotalToBeat" type="Label" parent="Labels" unique_id=1343467017]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 216.0
+offset_right = 162.0
+offset_bottom = 242.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 32
+text = "Score to Beat: "
+
+[node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
+position = Vector2(370, 280)
+
+[node name="Dice1" parent="DiceSet" unique_id=732832586 instance=ExtResource("2_h2yge")]
+position = Vector2(-96, 0)
+
+[node name="Dice2" parent="DiceSet" unique_id=1615588097 instance=ExtResource("2_h2yge")]
+position = Vector2(-48, 0)
+
+[node name="Dice3" parent="DiceSet" unique_id=390506587 instance=ExtResource("2_h2yge")]
+
+[node name="Dice4" parent="DiceSet" unique_id=100785189 instance=ExtResource("2_h2yge")]
+position = Vector2(48, 0)
+
+[node name="Dice5" parent="DiceSet" unique_id=308140988 instance=ExtResource("2_h2yge")]
+position = Vector2(96, 0)
+
+[node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
+unique_name_in_owner = true
+offset_left = 528.0
+offset_top = 296.0
+offset_right = 624.0
+offset_bottom = 344.0
+focus_mode = 0
+shortcut = SubResource("Shortcut_sugp2")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("4_tipki")
+texture_hover = ExtResource("5_85g3d")
+texture_disabled = ExtResource("6_choun")
+texture_click_mask = ExtResource("7_ya4ey")
+
+[node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
+unique_name_in_owner = true
+offset_left = 11.0
+offset_top = 296.0
+offset_right = 211.0
+offset_bottom = 336.0
+focus_mode = 0
+text = "SCORE"
+
+[node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
+offset_left = 160.0
+offset_top = 160.0
+offset_right = 160.0
+offset_bottom = 160.0
+
+[node name="ShopBlock" type="ColorRect" parent="." unique_id=1697646110]
+unique_name_in_owner = true
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Shop" parent="." unique_id=1416667480 instance=ExtResource("9_85g3d")]
+unique_name_in_owner = true
+visible = false
+offset_left = 225.0
+offset_top = 25.0
+offset_right = 225.0
+offset_bottom = 25.0
+
+[node name="GameOver" type="Label" parent="." unique_id=1974167419]
+unique_name_in_owner = true
+visible = false
+offset_left = 176.0
+offset_top = 144.0
+offset_right = 464.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="_reset_scorecard" from="." to="Scorecard" method="_reset_scorecard"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice1" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice2" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice3" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice4" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceSet/Dice5" method="_save_button_pressed"]
+[connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
+[connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
+[connection signal="_update_round_status" from="DiceSet/Dice1" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceSet/Dice2" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceSet/Dice3" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceSet/Dice4" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceSet/Dice5" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="Scorecard" to="." method="_update_round_status"]

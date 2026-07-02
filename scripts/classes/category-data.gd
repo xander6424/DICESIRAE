@@ -16,6 +16,13 @@ var total: int = 0
 var label: Label = null
 var button: Button = null
 
+func check_validity() -> void:
+	print("CHECKING IF VALID")
+	pass
+
+func score_category():
+	pass
+
 func _init(_name: String, _base_score: int, _mult_score: int, _id: DiceData.Category):
 	category_name = _name
 	base_score = _base_score
