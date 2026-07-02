@@ -17,4 +17,11 @@ func check_validity() -> void:
 		label.add_theme_color_override("font_color", Color.WHITE)
 
 func score_category():
-	pass
+	for dice in GameData.scoring_dice_list:
+		if GameData.scoring_dice_list.count(dice) >= 3:
+			total += dice * 3
+			break
+	
+	label.add_theme_color_override("font_color", Color.WHITE)
+	
+	return total

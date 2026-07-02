@@ -29,4 +29,23 @@ func check_validity() -> void:
 		label.add_theme_color_override("font_color", Color.WHITE)
 
 func score_category():
-	pass
+	var pairs: int = 0
+	var banned_face: int = -1
+	
+	for dice in GameData.scoring_dice_list:
+		# Check for a pair
+		if GameData.scoring_dice_list.count(dice) >= 2 and dice != banned_face:
+			total += dice * 2
+			banned_face = dice
+			pairs += 1
+			
+			# Exit if a two pair is found
+			if pairs == 2:
+				break
+		
+	if pairs < 2:
+		total = 0
+	
+	label.add_theme_color_override("font_color", Color.WHITE)
+	
+	return total
