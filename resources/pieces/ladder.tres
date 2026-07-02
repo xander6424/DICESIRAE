@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="PieceData" format=3 uid="uid://xekun4e8jy6f"]
+[gd_resource type="Resource" script_class="Ladder" format=3 uid="uid://xekun4e8jy6f"]
 
-[ext_resource type="Script" uid="uid://clrtmo8q1dyst" path="res://scripts/pieces-data.gd" id="1_msjjp"]
+[ext_resource type="Script" uid="uid://cq5ijsfb26hyq" path="res://scripts/piece/ladder.gd" id="1_2xgo2"]
+[ext_resource type="Texture2D" uid="uid://dhpxyhp0td62m" path="res://assets/piece/ladder.png" id="2_q04u0"]
 
 [resource]
-script = ExtResource("1_msjjp")
+script = ExtResource("1_2xgo2")
+piece_name = "Ladder"
+piece_description = "+1 Lot"
+texture = ExtResource("2_q04u0")
+sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

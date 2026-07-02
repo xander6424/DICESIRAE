@@ -20,5 +20,5 @@ var button: Button = null
 
 func check_validity() -> void: pass
 
-func score_category(): pass
-	# Score individual piece(s) at the end
+func score_category() -> int:
+	return 0

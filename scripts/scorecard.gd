@@ -76,8 +76,10 @@ func _score_button_pressed() -> void:
 		
 		if category_selected:
 			var scored_total: int = 0
-			if current_category.total > 0:
-				scored_total = (current_category.base_score + current_category.total) * current_category.mult_score
+			
+			if current_category.valid:
+				scored_total = current_category.base_score + current_category.score_category()
+				scored_total *= current_category.mult_score
 				GameData.grand_total += scored_total
 				
 			current_category.scored = true
@@ -87,6 +89,3 @@ func _score_button_pressed() -> void:
 			
 			_update_labels()
 			_update_round_status.emit()
-			
-		else:
-			print("Please select a category")
