@@ -38,6 +38,7 @@ enum Face {
 	GLUE
 }
 
+
 enum Category {
 	ACES, 
 	TWOS, 
@@ -62,3 +63,9 @@ var starting_category_list = [
 	[Category.ACES, Category.TWOS, Category.THREES, Category.TWO_PAIR, Category.THREE_OF_A_KIND],
 	[Category.ACES, Category.TWOS, Category.FOURS, Category.CHOICE, Category.TWO_PAIR]
 ]
+
+
+enum Piece {
+	PAWN,
+	LADDER
+}

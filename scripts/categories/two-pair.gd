@@ -46,6 +46,4 @@ func score_category():
 	if pairs < 2:
 		total = 0
 	
-	label.add_theme_color_override("font_color", Color.WHITE)
-	
 	return total

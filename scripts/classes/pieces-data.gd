@@ -2,7 +2,7 @@ extends Resource
 
 class_name PieceData
 
-@export var piece_id: String = "" # Change to enum?
+@export var piece_id: DiceData.Piece
 @export var piece_name: String = ""
 @export var piece_description: String = ""
 @export var texture: Texture2D

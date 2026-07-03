@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_2xgo2")
+piece_id = 1
 piece_name = "Ladder"
 piece_description = "+1 Lot"
 texture = ExtResource("2_q04u0")

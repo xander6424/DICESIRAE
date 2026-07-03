@@ -11,6 +11,8 @@ const ROUND_SCORE_SCALING: Array[int] = [100, 150, 250, 500, 1200]
 
 # Constant piece values
 const PAWN = preload("uid://dcnrojwwbbqqs")
+const LADDER = preload("uid://xekun4e8jy6f")
+
 
 # Constant category values
 const ACES = preload("uid://d0dnckugihorb")
@@ -38,7 +40,8 @@ var round_won: bool = false
 
 # New piece stuff
 const FULL_PIECE_LIST: Array[PieceData] = [
-	PAWN
+	PAWN,
+	LADDER
 ]
 var active_piece_list: Array[PieceData] = []
 

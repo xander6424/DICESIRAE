@@ -22,6 +22,4 @@ func score_category():
 			total += dice * 3
 			break
 	
-	label.add_theme_color_override("font_color", Color.WHITE)
-	
 	return total

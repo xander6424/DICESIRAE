@@ -75,16 +75,18 @@ func _score_button_pressed() -> void:
 				break
 		
 		if category_selected:
-			var scored_total: int = 0
+			var total_scored: int = 0
 			
 			if current_category.valid:
-				scored_total = current_category.base_score + current_category.score_category()
-				scored_total *= current_category.mult_score
-				GameData.grand_total += scored_total
+				total_scored = current_category.base_score + current_category.score_category()
+				total_scored *= current_category.mult_score
+				GameData.grand_total += total_scored
+				
+				current_category.label.add_theme_color_override("font_color", Color.WHITE)
 				
 			current_category.scored = true
 			current_category.button.disabled = true
-			current_category.button.text = str(scored_total)
+			current_category.button.text = str(total_scored)
 			GameData.current_lot_scored = true
 			
 			_update_labels()

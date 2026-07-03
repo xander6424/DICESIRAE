@@ -37,6 +37,10 @@ func _on_reset_round() -> void:
 	shop_block.visible = false
 	roll_button.disabled = false
 	
+	# Activate pieces at beginning of round
+	for piece in GameData.active_piece_list:
+		piece.round_started()
+	
 	_update_labels.emit()
 	_reset_scorecard.emit()
 

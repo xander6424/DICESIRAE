@@ -21,6 +21,4 @@ func score_category():
 		if dice == 4:
 			total += dice
 	
-	label.add_theme_color_override("font_color", Color.WHITE)
-	
 	return total
