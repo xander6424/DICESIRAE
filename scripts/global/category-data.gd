@@ -8,6 +8,7 @@ const FOURS = preload("uid://dkv7n3esqthwv")
 const FIVES = preload("uid://x88dmurq18bq")
 const SIXES = preload("uid://coobduor34qyh")
 
+const CHOICE = preload("uid://dh1qbs23toj22")
 const TWO_PAIR = preload("uid://c4cblgubhmop6")
 const THREE_OF_A_KIND = preload("uid://dnd8frrk8gh6n")
 
@@ -21,6 +22,7 @@ const FULL_CATEGORY_LIST: Array[CategoryInfo] = [
 	FIVES,
 	SIXES,
 	
+	CHOICE,
 	TWO_PAIR,
 	THREE_OF_A_KIND
 ]

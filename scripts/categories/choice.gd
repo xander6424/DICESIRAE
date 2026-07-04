@@ -1,14 +1,12 @@
 extends CategoryInfo
 
-class_name Fives
-
-const VALUE = 5
+class_name Choice
 
 
 func check_validity() -> void:
 	valid = false
 	
-	if VALUE in GameData.scoring_dice_list:
+	if GameData.scoring_dice_list.size() > 0:
 		valid = true
 	
 	if valid:
@@ -18,7 +16,6 @@ func check_validity() -> void:
 
 func score_category() -> int:
 	for dice in GameData.scoring_dice_list:
-		if dice == VALUE:
-			total += dice
+		total += dice
 	
 	return total

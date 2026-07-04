@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://dh1qbs23toj22"]
+
+[ext_resource type="Script" uid="uid://cuyjv368ynu0" path="res://scripts/categories/choice.gd" id="1_3i7tt"]
+
+[resource]
+script = ExtResource("1_3i7tt")
+category_name = "Choice"
+id = 6
+mult_score = 1
+metadata/_custom_type_script = "uid://dcpdfdj5nx56f"

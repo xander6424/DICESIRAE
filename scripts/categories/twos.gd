@@ -2,14 +2,14 @@ extends CategoryInfo
 
 class_name Twos
 
+const VALUE = 2
+
 
 func check_validity() -> void:
 	valid = false
 	
-	for dice in GameData.scoring_dice_list:
-		if dice == 2:
-			valid = true
-			break
+	if VALUE in GameData.scoring_dice_list:
+		valid = true
 	
 	if valid:
 		label.add_theme_color_override("font_color", Color.YELLOW)
@@ -18,7 +18,7 @@ func check_validity() -> void:
 
 func score_category():
 	for dice in GameData.scoring_dice_list:
-		if dice == 2:
+		if dice == VALUE:
 			total += dice
 	
 	return total
