@@ -56,6 +56,7 @@ func _update_round_status() -> void:
 		GameData.lots -= 1
 		GameData.rerolls = 3
 		_save_button_pressed.emit() # Unsave all dice
+		GameData.rolling_dice_list.clear()
 		GameData.first_round_roll = true
 		GameData.current_lot_scored = false
 		
