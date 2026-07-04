@@ -10,3 +10,9 @@ const FULL_PIECE_LIST: Array[PieceInfo] = [
 	LADDER
 ]
 var active_piece_list: Array[PieceInfo] = []
+
+# Piece ID
+enum Piece {
+	PAWN,
+	LADDER
+}

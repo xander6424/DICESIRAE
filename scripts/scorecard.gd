@@ -31,7 +31,7 @@ func _reset_scorecard() -> void:
 	CategoryData.active_category_info_list.clear()
 	
 	for category in CategoryData.FULL_CATEGORY_LIST:
-		if category.id in DiceData.starting_category_list[0]:
+		if category.id in CategoryData.starting_category_list[0]:
 			category_label_list[scorecard_index].text = category.category_name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)

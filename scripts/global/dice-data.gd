@@ -11,7 +11,7 @@ enum Size {
 	D20 = 20
 }
 
-enum Type {
+enum DiceType {
 	NORMAL, 
 	RED, 
 	BLUE, 
@@ -24,7 +24,7 @@ enum Type {
 	VOID
 }
 
-enum Face {
+enum FaceType {
 	NORMAL, 
 	BLANK, 
 	RUBY, 
@@ -36,36 +36,4 @@ enum Face {
 	PARTY, 
 	METAL, 
 	GLUE
-}
-
-
-enum Category {
-	ACES, 
-	TWOS, 
-	THREES, 
-	FOURS, 
-	FIVES,
-	SIXES,
-	
-	CHOICE, 
-	TWO_PAIR, 
-	THREE_OF_A_KIND,
-	FOUR_OF_A_KIND,
-	FULL_HOUSE,
-	SMALL_STRAIGHT,
-	LARGE_STRAIGHT,
-	DICESIRAE
-}
-
-
-# The starting scorecard for a given game played
-var starting_category_list = [
-	[Category.ACES, Category.TWOS, Category.THREES, Category.TWO_PAIR, Category.THREE_OF_A_KIND],
-	[Category.ACES, Category.TWOS, Category.FOURS, Category.CHOICE, Category.TWO_PAIR]
-]
-
-
-enum Piece {
-	PAWN,
-	LADDER
 }

@@ -3,7 +3,7 @@ extends Resource
 class_name CategoryInfo
 
 @export var category_name: String
-@export var id: DiceData.Category
+@export var id: CategoryData.Category
 
 # (Base Score + Total Rolled) * Mult Score
 @export var base_score: int
