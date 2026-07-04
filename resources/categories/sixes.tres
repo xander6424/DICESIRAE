@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sixes" format=3 uid="uid://coobduor34qyh"]
+
+[ext_resource type="Script" uid="uid://twjum56xto8u" path="res://scripts/categories/sixes.gd" id="1_80cmq"]
+
+[resource]
+script = ExtResource("1_80cmq")
+category_name = "Sixes"
+id = 5
+base_score = 15
+mult_score = 1
+metadata/_custom_type_script = "uid://dcpdfdj5nx56f"

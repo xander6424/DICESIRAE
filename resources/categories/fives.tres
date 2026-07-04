@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Fives" format=3 uid="uid://x88dmurq18bq"]
+
+[ext_resource type="Script" uid="uid://bmptv7wk14x7t" path="res://scripts/categories/fives.gd" id="1_qg8fo"]
+
+[resource]
+script = ExtResource("1_qg8fo")
+category_name = "Fives"
+id = 4
+base_score = 15
+mult_score = 1
+metadata/_custom_type_script = "uid://dcpdfdj5nx56f"
