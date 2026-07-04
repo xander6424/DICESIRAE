@@ -1,6 +1,6 @@
 extends Resource
 
-class_name PieceData
+class_name PieceInfo
 
 @export var piece_id: DiceData.Piece
 @export var piece_name: String = ""

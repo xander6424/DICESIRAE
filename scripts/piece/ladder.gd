@@ -1,4 +1,4 @@
-extends PieceData
+extends PieceInfo
 
 class_name Ladder
 

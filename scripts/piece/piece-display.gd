@@ -4,7 +4,7 @@ class_name PieceDisplay
 
 #signal clicked(piece: PieceDisplay)
 
-@export var piece_data: PieceData:
+@export var piece_data: PieceInfo:
 	set(value):
 		piece_data = value
 		if is_inside_tree():

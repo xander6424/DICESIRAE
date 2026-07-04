@@ -28,9 +28,9 @@ func _update_labels() -> void:
 func _reset_scorecard() -> void:
 	# Add only starting categories to the scorecard
 	var scorecard_index: int = 0
-	GameData.active_category_info_list.clear()
+	CategoryData.active_category_info_list.clear()
 	
-	for category in GameData.FULL_CATEGORY_LIST:
+	for category in CategoryData.FULL_CATEGORY_LIST:
 		if category.id in DiceData.starting_category_list[0]:
 			category_label_list[scorecard_index].text = category.category_name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
@@ -42,7 +42,7 @@ func _reset_scorecard() -> void:
 			category.button.button_pressed = false
 			category.scored = false
 			
-			GameData.active_category_info_list.append(category)
+			CategoryData.active_category_info_list.append(category)
 			scorecard_index += 1
 
 func _update_scorecard() -> void:
@@ -52,7 +52,7 @@ func _update_scorecard() -> void:
 	for dice in GameData.saved_dice_list:
 		GameData.scoring_dice_list.append(dice)
 	
-	for category in GameData.active_category_info_list:
+	for category in CategoryData.active_category_info_list:
 		category.total = 0
 		
 		# Checks if a category exists in current hand
@@ -68,7 +68,7 @@ func _score_button_pressed() -> void:
 		var category_selected: bool = false
 		
 		# Find which category was selected
-		for category in GameData.active_category_info_list:
+		for category in CategoryData.active_category_info_list:
 			if category.button.button_pressed:
 				current_category = category
 				category_selected = true
