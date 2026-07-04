@@ -67,6 +67,10 @@ func _update_round_status() -> void:
 		if GameData.grand_total >= GameData.score_to_beat:
 			GameData.round_won = true
 			roll_button.disabled = true
+			
+			# TEMP GIVE MONEY
+			GameData.money += 2
+			
 			_change_scene_status(GameData.round_won)
 		elif GameData.lots <= 0:
 			_change_scene_status(GameData.round_won)

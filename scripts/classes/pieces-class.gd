@@ -11,9 +11,9 @@ class_name PieceInfo
 var using: bool = false
 
 
-func piece_scored(): pass
+func piece_scored() -> int: return 0
 
-func dice_scored(): pass
+func dice_scored() -> int: return 0
 
 func round_started(): pass
 

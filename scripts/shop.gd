@@ -16,10 +16,7 @@ func piece_button_pressed() -> void:
 	if GameData.money >= 3:
 		var random_piece: PieceInfo = PieceData.FULL_PIECE_LIST.pick_random()
 		PieceData.active_piece_list.append(random_piece)
-		print(PieceData.active_piece_list)
-		
-		# Test to activate the piece
-		PieceData.active_piece_list[0].dice_scored()
+		print("PURCHASED: ", random_piece.piece_name)
 		
 		GameData.money -= 3
 	else:

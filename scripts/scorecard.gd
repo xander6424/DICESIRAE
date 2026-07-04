@@ -11,7 +11,6 @@ signal _update_round_status()
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
-# removed category class from here
 
 func _ready() -> void:
 	score_button.pressed.connect(_score_button_pressed)
@@ -79,6 +78,11 @@ func _score_button_pressed() -> void:
 			
 			if current_category.valid:
 				total_scored = current_category.base_score + current_category.score_category()
+				
+				# TEMP PIECE DICE ACTIVATION (ADD ONLY)
+				for piece in PieceData.active_piece_list:
+					total_scored += piece.dice_scored()
+				
 				total_scored *= current_category.mult_score
 				GameData.grand_total += total_scored
 				
