@@ -7,8 +7,8 @@ signal _save_button_pressed()
 
 @onready var roll_button: TextureButton = %RollButton
 @onready var shop_block: ColorRect = %ShopBlock
-@onready var game_over_label: Label = %GameOver
 @onready var shop: Control = %Shop
+@onready var game_over: Control = %GameOver
 
 var round_number: int = 0
 var shop_instance: Control
@@ -86,11 +86,7 @@ func _change_scene_status(round_won: bool) -> void:
 		shop.visible = true
 	else:
 		print("LOSE.")
-		# Load the game over scene
-		shop_block.color = Color(25.397, 0.0, 0.0, 0.5)
-		shop_block.visible = true
-		game_over_label.visible = true
-		pass
+		game_over.visible = true
 
 
 

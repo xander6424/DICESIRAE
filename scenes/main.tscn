@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
 [ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/game-over.tscn" id="10_choun"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -160,18 +161,9 @@ offset_top = 25.0
 offset_right = 225.0
 offset_bottom = 25.0
 
-[node name="GameOver" type="Label" parent="." unique_id=1974167419]
+[node name="GameOver" parent="." unique_id=173250450 instance=ExtResource("10_choun")]
 unique_name_in_owner = true
 visible = false
-offset_left = 176.0
-offset_top = 144.0
-offset_right = 464.0
-offset_bottom = 224.0
-theme_override_fonts/font = ExtResource("2_tipki")
-theme_override_font_sizes/font_size = 96
-text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="_reset_scorecard" from="." to="Scorecard" method="_reset_scorecard"]
 [connection signal="_save_button_pressed" from="." to="DiceSet/Dice1" method="_save_button_pressed"]

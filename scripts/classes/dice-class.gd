@@ -7,7 +7,10 @@ class_name DiceInfo
 # var faces: Array[unique Face class] = []
 
 func roll() -> int:
-	return -1
+	return 0
 
 func save() -> void:
 	pass
+
+func score_dice() -> int:
+	return 0

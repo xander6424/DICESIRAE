@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bgl00tujay1nm"]
+
+[ext_resource type="Script" uid="uid://b7q5gtmr7gekl" path="res://scripts/game-over-screen.gd" id="1_4sy36"]
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_i8wdk"]
+
+[node name="GameOver" type="Control" unique_id=173250450]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sy36")
+
+[node name="GameOverBlock" type="ColorRect" parent="." unique_id=354270472]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(25, 0, 0, 0.5)
+
+[node name="GameOverLabel" type="Label" parent="GameOverBlock" unique_id=1126902249]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 176.0
+offset_top = 96.0
+offset_right = 464.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("1_i8wdk")
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="GameOverBlock" unique_id=1018309022]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 248.0
+offset_top = 192.0
+offset_right = 392.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
