@@ -16,11 +16,13 @@ var shop_instance: Control
 
 func _ready() -> void:
 	GameData._reset_round.connect(_on_reset_round)
+	reset_game()
 	_on_reset_round()
 
 # Signal to fully reset the whole game
 func reset_game() -> void:
-	pass
+	print("STARTING NEW GAME...")
+	DiceManager.create_starting_dice()
 
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
