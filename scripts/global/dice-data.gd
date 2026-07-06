@@ -16,6 +16,7 @@ enum Size {
 	D20 = 20
 }
 
+# The entire dice type (doesn't override face types)
 enum DiceType {
 	NORMAL, 
 	
@@ -30,6 +31,7 @@ enum DiceType {
 	VOID
 }
 
+# For individual dice faces
 enum FaceType {
 	NORMAL, 
 	BLANK, 
