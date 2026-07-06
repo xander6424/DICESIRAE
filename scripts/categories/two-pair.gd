@@ -3,7 +3,7 @@ extends CategoryInfo
 class_name TwoPair
 
 
-func check_validity() -> void:
+func check_validity() -> bool:
 	valid = false
 	
 	var pairs: int = 0
@@ -23,10 +23,7 @@ func check_validity() -> void:
 	if pairs >= 2:
 		valid = true
 	
-	if valid:
-		label.add_theme_color_override("font_color", Color.YELLOW)
-	else:
-		label.add_theme_color_override("font_color", Color.WHITE)
+	return valid
 
 func score_category():
 	var pairs: int = 0

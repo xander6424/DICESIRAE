@@ -5,16 +5,13 @@ class_name Threes
 const VALUE = 3
 
 
-func check_validity() -> void:
+func check_validity() -> bool:
 	valid = false
 	
 	if VALUE in DiceManager.scoring_value_list:
 		valid = true
 	
-	if valid:
-		label.add_theme_color_override("font_color", Color.YELLOW)
-	else:
-		label.add_theme_color_override("font_color", Color.WHITE)
+	return valid
 
 func score_category():
 	for dice in DiceManager.scoring_value_list:
