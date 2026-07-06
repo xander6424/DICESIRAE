@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7cmu8rbpyh5k" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://scenes/dice.tscn" id="2_h2yge"]
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="2_tipki"]
+[ext_resource type="Script" uid="uid://cnpmdpxg85t2q" path="res://scripts/dice_hand.gd" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/rollbutton-32p.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
@@ -100,21 +101,24 @@ theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Score to Beat: "
 
-[node name="DiceSet" type="Node2D" parent="." unique_id=950121212]
+[node name="DiceHand" type="Node2D" parent="." unique_id=950121212]
+unique_name_in_owner = true
 position = Vector2(370, 280)
+script = ExtResource("3_ya4ey")
+dice_scene = ExtResource("2_h2yge")
 
-[node name="Dice1" parent="DiceSet" unique_id=732832586 instance=ExtResource("2_h2yge")]
+[node name="Dice1" parent="DiceHand" unique_id=732832586 instance=ExtResource("2_h2yge")]
 position = Vector2(-96, 0)
 
-[node name="Dice2" parent="DiceSet" unique_id=1615588097 instance=ExtResource("2_h2yge")]
+[node name="Dice2" parent="DiceHand" unique_id=1615588097 instance=ExtResource("2_h2yge")]
 position = Vector2(-48, 0)
 
-[node name="Dice3" parent="DiceSet" unique_id=390506587 instance=ExtResource("2_h2yge")]
+[node name="Dice3" parent="DiceHand" unique_id=390506587 instance=ExtResource("2_h2yge")]
 
-[node name="Dice4" parent="DiceSet" unique_id=100785189 instance=ExtResource("2_h2yge")]
+[node name="Dice4" parent="DiceHand" unique_id=100785189 instance=ExtResource("2_h2yge")]
 position = Vector2(48, 0)
 
-[node name="Dice5" parent="DiceSet" unique_id=308140988 instance=ExtResource("2_h2yge")]
+[node name="Dice5" parent="DiceHand" unique_id=308140988 instance=ExtResource("2_h2yge")]
 position = Vector2(96, 0)
 
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
@@ -166,16 +170,16 @@ unique_name_in_owner = true
 visible = false
 
 [connection signal="_reset_scorecard" from="." to="Scorecard" method="_reset_scorecard"]
-[connection signal="_save_button_pressed" from="." to="DiceSet/Dice1" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceSet/Dice2" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceSet/Dice3" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceSet/Dice4" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceSet/Dice5" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceHand/Dice1" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceHand/Dice2" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceHand/Dice3" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceHand/Dice4" method="_save_button_pressed"]
+[connection signal="_save_button_pressed" from="." to="DiceHand/Dice5" method="_save_button_pressed"]
 [connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
 [connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
-[connection signal="_update_round_status" from="DiceSet/Dice1" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceSet/Dice2" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceSet/Dice3" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceSet/Dice4" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceSet/Dice5" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceHand/Dice1" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceHand/Dice2" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceHand/Dice3" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceHand/Dice4" to="." method="_update_round_status"]
+[connection signal="_update_round_status" from="DiceHand/Dice5" to="." method="_update_round_status"]
 [connection signal="_update_round_status" from="Scorecard" to="." method="_update_round_status"]

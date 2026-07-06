@@ -1,5 +1,7 @@
 extends Node
 
+signal _on_hand_drawn()
+
 const HAND_SIZE: int = 5
 const STARTING_DRAW_PILE_SIZE: int = 10
 
@@ -26,7 +28,7 @@ func draw_dice() -> void:
 			break
 		rolling_dice_list.append(draw_pile.pop_back())
 	
-	print(rolling_dice_list)
+	_on_hand_drawn.emit()
 
 
 # Save and unsave dice here instead

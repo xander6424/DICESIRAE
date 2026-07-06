@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name DiceNode
+
 signal _update_round_status()
 
 @onready var faces: Node2D = %Faces
@@ -13,7 +15,13 @@ var number_rolled: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
 
+@export var dice: DiceInfo
+
+
 func _ready() -> void:
+	if dice == null:
+		dice = DiceInfo.new()
+	
 	for face in faces.get_children():
 		face.hide()
 	
