@@ -5,16 +5,13 @@ class_name Fours
 const VALUE = 4
 
 
-func check_validity() -> void:
+func check_validity() -> bool:
 	valid = false
 	
 	if VALUE in GameData.scoring_dice_list:
 		valid = true
 	
-	if valid:
-		label.add_theme_color_override("font_color", Color.YELLOW)
-	else:
-		label.add_theme_color_override("font_color", Color.WHITE)
+	return valid
 
 func score_category():
 	for dice in GameData.scoring_dice_list:
