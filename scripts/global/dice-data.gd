@@ -1,5 +1,10 @@
 extends Node
 
+
+# active dice list
+# all dice from draw pile
+# all dice from discard pile
+
 enum Size {
 	D6 = 6, 
 	D8 = 8, 
@@ -13,6 +18,7 @@ enum Size {
 
 enum DiceType {
 	NORMAL, 
+	
 	RED, 
 	BLUE, 
 	YELLOW, 
@@ -27,6 +33,7 @@ enum DiceType {
 enum FaceType {
 	NORMAL, 
 	BLANK, 
+	
 	RUBY, 
 	DIAMOND, 
 	GOLD, 
