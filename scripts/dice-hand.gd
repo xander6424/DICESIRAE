@@ -3,7 +3,7 @@ extends Node2D
 class_name DiceHand
 
 @export var dice_scene: PackedScene
-@export var spacing: float = 90.0
+@export var spacing: float = 50.0
 @export var row_y: float = 0.0
 
 var dice_nodes: Dictionary = {}

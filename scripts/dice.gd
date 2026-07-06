@@ -5,17 +5,16 @@ class_name DiceNode
 signal _update_round_status()
 
 @onready var faces: Node2D = %Faces
-@onready var roll_button: TextureButton = %RollButton
+@onready var roll_button = get_parent().get_parent().get_node("RollButton") # THIS SUCKS
 @onready var save_button: TextureButton = %SaveButton
 
+@export var dice: DiceInfo
 static var total_dice_rolled: int = 0
 static var dice_in_play: int = 5
 static var any_dice_rolling = false
 var number_rolled: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
-
-@export var dice: DiceInfo
 
 
 func _ready() -> void:
@@ -31,6 +30,15 @@ func _ready() -> void:
 	
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)
+
+func setup(new_dice: DiceInfo):
+	dice = new_dice
+	dice_saved = false
+	rolling = false
+	
+	# faces display
+	# color change
+
 
 
 func roll_button_pressed():

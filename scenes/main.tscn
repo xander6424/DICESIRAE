@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7cmu8rbpyh5k" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://scenes/dice.tscn" id="2_h2yge"]
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="2_tipki"]
-[ext_resource type="Script" uid="uid://cnpmdpxg85t2q" path="res://scripts/dice_hand.gd" id="3_ya4ey"]
+[ext_resource type="Script" uid="uid://cnpmdpxg85t2q" path="res://scripts/dice-hand.gd" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/rollbutton-32p.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
