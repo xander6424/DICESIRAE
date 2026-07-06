@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://5ueudmkrdrm3"]
 
 [ext_resource type="Script" uid="uid://b7su0mda6y3af" path="res://scripts/dice.gd" id="1_y4pxb"]
-[ext_resource type="Texture2D" uid="uid://0g2hw2yi7ahj" path="res://assets/dice/die1-32p.png" id="2_pb8pk"]
-[ext_resource type="Texture2D" uid="uid://y5k4sgd7m0ax" path="res://assets/dice/die2-32p.png" id="3_ocjtb"]
-[ext_resource type="Texture2D" uid="uid://cgeuufgijyfrm" path="res://assets/dice/die3-32p.png" id="4_dicg2"]
-[ext_resource type="Texture2D" uid="uid://b41ewysw5q5w8" path="res://assets/dice/die4-32p.png" id="5_pgf55"]
-[ext_resource type="Texture2D" uid="uid://d0wtavxqx5a2a" path="res://assets/dice/die5-32p.png" id="6_dlvbc"]
-[ext_resource type="Texture2D" uid="uid://c78k2icikwp7g" path="res://assets/dice/die6-32p.png" id="7_skxya"]
+[ext_resource type="Texture2D" uid="uid://0g2hw2yi7ahj" path="res://assets/dice/die1-32p.png" id="2_pgf55"]
+[ext_resource type="Texture2D" uid="uid://y5k4sgd7m0ax" path="res://assets/dice/die2-32p.png" id="3_dlvbc"]
+[ext_resource type="Texture2D" uid="uid://cgeuufgijyfrm" path="res://assets/dice/die3-32p.png" id="4_skxya"]
+[ext_resource type="Texture2D" uid="uid://b41ewysw5q5w8" path="res://assets/dice/die4-32p.png" id="5_4kp1s"]
+[ext_resource type="Texture2D" uid="uid://d0wtavxqx5a2a" path="res://assets/dice/die5-32p.png" id="6_nkpnt"]
+[ext_resource type="Texture2D" uid="uid://c78k2icikwp7g" path="res://assets/dice/die6-32p.png" id="7_mvkvt"]
 [ext_resource type="Texture2D" uid="uid://t2lnk76opcq5" path="res://assets/dice/dieblank-hover_32p.png" id="8_dicg2"]
 [ext_resource type="BitMap" uid="uid://cnrn1rs24jdhp" path="res://assets/dice/diemask-32p.png" id="8_ocjtb"]
 [ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dice/dieblank-pressed_32p.png" id="8_pgf55"]
@@ -17,27 +17,10 @@ size = Vector2(29, 29)
 [node name="Dice" type="RigidBody2D" unique_id=732832586]
 gravity_scale = 0.0
 script = ExtResource("1_y4pxb")
+face_textures = Array[Texture2D]([ExtResource("2_pgf55"), ExtResource("3_dlvbc"), ExtResource("4_skxya"), ExtResource("5_4kp1s"), ExtResource("6_nkpnt"), ExtResource("7_mvkvt")])
 
-[node name="Faces" type="Node2D" parent="." unique_id=1828883366]
+[node name="FaceSprite" type="Sprite2D" parent="." unique_id=389677390]
 unique_name_in_owner = true
-
-[node name="1" type="Sprite2D" parent="Faces" unique_id=567955937]
-texture = ExtResource("2_pb8pk")
-
-[node name="2" type="Sprite2D" parent="Faces" unique_id=618310227]
-texture = ExtResource("3_ocjtb")
-
-[node name="3" type="Sprite2D" parent="Faces" unique_id=340551694]
-texture = ExtResource("4_dicg2")
-
-[node name="4" type="Sprite2D" parent="Faces" unique_id=1407171171]
-texture = ExtResource("5_pgf55")
-
-[node name="5" type="Sprite2D" parent="Faces" unique_id=1560482424]
-texture = ExtResource("6_dlvbc")
-
-[node name="6" type="Sprite2D" parent="Faces" unique_id=923552919]
-texture = ExtResource("7_skxya")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884191497]
 position = Vector2(-0.5, -0.5)
