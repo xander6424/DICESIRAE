@@ -20,15 +20,15 @@ enum Size {
 enum DiceType {
 	NORMAL, 
 	
-	RED, 
-	BLUE, 
-	YELLOW, 
-	GREEN, 
+	RED, # Add value to mult score
+	BLUE, # Add value to add score
+	YELLOW, # ???
+	GREEN, # Add value to money
 	
-	CRYSTAL, 
-	GHOST, 
-	MITOSIS, 
-	VOID
+	CRYSTAL, # Score dice no matter what
+	GHOST, # Score top and bottom dice faces in scoring
+	MITOSIS, # Dice duplicates and splits in two during rolling
+	VOID # Extra powerful but absorbs all other scored faces
 }
 
 # For individual dice faces
@@ -36,13 +36,13 @@ enum FaceType {
 	NORMAL, 
 	BLANK, 
 	
-	RUBY, 
-	DIAMOND, 
-	GOLD, 
-	EMERALD, 
+	RUBY, # Add face to mult score
+	DIAMOND, # Add face to add score
+	GOLD, # ???
+	EMERALD, # Add face to money
 	
-	SPRING, 
-	PARTY, 
-	METAL, 
-	GLUE
+	SPRING, # Free reroll to undesired face
+	PARTY, # Generate 1-10 randomly
+	METAL, # Prioritize opposite side
+	GLUE # Sticks to prioritize opposite side. (2 uses)
 }
