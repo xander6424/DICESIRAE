@@ -107,20 +107,6 @@ position = Vector2(370, 280)
 script = ExtResource("3_ya4ey")
 dice_scene = ExtResource("2_h2yge")
 
-[node name="Dice1" parent="DiceHand" unique_id=732832586 instance=ExtResource("2_h2yge")]
-position = Vector2(-96, 0)
-
-[node name="Dice2" parent="DiceHand" unique_id=1615588097 instance=ExtResource("2_h2yge")]
-position = Vector2(-48, 0)
-
-[node name="Dice3" parent="DiceHand" unique_id=390506587 instance=ExtResource("2_h2yge")]
-
-[node name="Dice4" parent="DiceHand" unique_id=100785189 instance=ExtResource("2_h2yge")]
-position = Vector2(48, 0)
-
-[node name="Dice5" parent="DiceHand" unique_id=308140988 instance=ExtResource("2_h2yge")]
-position = Vector2(96, 0)
-
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true
 offset_left = 528.0
@@ -170,16 +156,6 @@ unique_name_in_owner = true
 visible = false
 
 [connection signal="_reset_scorecard" from="." to="Scorecard" method="_reset_scorecard"]
-[connection signal="_save_button_pressed" from="." to="DiceHand/Dice1" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceHand/Dice2" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceHand/Dice3" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceHand/Dice4" method="_save_button_pressed"]
-[connection signal="_save_button_pressed" from="." to="DiceHand/Dice5" method="_save_button_pressed"]
 [connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
 [connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
-[connection signal="_update_round_status" from="DiceHand/Dice1" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceHand/Dice2" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceHand/Dice3" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceHand/Dice4" to="." method="_update_round_status"]
-[connection signal="_update_round_status" from="DiceHand/Dice5" to="." method="_update_round_status"]
 [connection signal="_update_round_status" from="Scorecard" to="." method="_update_round_status"]
