@@ -19,4 +19,18 @@ func create_starting_dice() -> void:
 		draw_pile.append(DiceInfo.new())
 	
 	draw_pile.shuffle()
-	print(draw_pile)
+
+func draw_dice() -> void:
+	while rolling_dice_list.size() < HAND_SIZE:
+		if draw_pile.is_empty():
+			break
+		rolling_dice_list.append(draw_pile.pop_back())
+	
+	print(rolling_dice_list)
+
+
+# Save and unsave dice here instead
+
+# Roll fully finished (recieve signal to then activate main stuff)
+
+# Discard hand

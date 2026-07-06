@@ -34,6 +34,7 @@ func _on_reset_round() -> void:
 	GameData.grand_total = 0
 	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[round_number - 1]
 	GameData.round_won = false
+	DiceManager.draw_dice()
 	
 	shop.visible = false
 	shop_block.visible = false
