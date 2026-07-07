@@ -2,8 +2,6 @@ extends RigidBody2D
 
 class_name DiceNode
 
-signal _update_round_status() # FIX and move this to dice manager!!!
-
 @onready var face_sprite: Sprite2D = %FaceSprite
 @onready var roll_button = get_parent().get_parent().get_node("RollButton") # THIS SUCKS
 @onready var save_button: TextureButton = %SaveButton
@@ -72,21 +70,21 @@ func roll_dice():
 	
 	rolling = false
 	dice_currently_rolling -= 1
-	# EMIT THE RESULT TO MANAGER
 	
 	# Doesn't count a roll until all dice are scored
 	if dice_currently_rolling == 0:
-		GameData.rerolls -= 1
-		# CHANGE THIS TO A SIGNAL?? and move reroll decrease to main
-		
 		if GameData.rerolls > 0:
 			roll_button.disabled = false
 		
-		_update_round_status.emit() # move?
+		GameData.rerolls -= 1 # change this?
+		DiceManager._hand_rolling_done.emit()
+
+
+
 
 
 func _save_button_pressed():
-	if !any_dice_rolling and !GameData.first_round_roll:
+	#if !any_dice_rolling and !GameData.first_round_roll:
 		save_dice()
 
 func save_dice():
@@ -96,26 +94,26 @@ func save_dice():
 	if !dice_saved and !GameData.current_lot_scored:
 		dice_saved = true
 		position.y += 40
-		dice_in_play -= 1
+		#dice_in_play -= 1
 	
 		for dice in GameData.rolling_dice_list:
-			if dice == number_rolled:
-				GameData.saved_dice_list.append(number_rolled)
-				GameData.rolling_dice_list.remove_at(index)
-				break
+			#if dice == number_rolled:
+				#GameData.saved_dice_list.append(number_rolled)
+				#GameData.rolling_dice_list.remove_at(index)
+				#break
 			index += 1
 	# Dice to be unsaved
 	elif dice_saved and GameData.rerolls > 0:
 		dice_saved = false
 		position.y -= 40
-		dice_in_play += 1
+		#dice_in_play += 1
 		
-		for dice in GameData.saved_dice_list:
-			if dice  == number_rolled:
-				GameData.rolling_dice_list.append(number_rolled)
-				GameData.saved_dice_list.remove_at(index)
-				break
-			index += 1
+		#for dice in GameData.saved_dice_list:
+			#if dice  == number_rolled:
+				#GameData.rolling_dice_list.append(number_rolled)
+				#GameData.saved_dice_list.remove_at(index)
+				#break
+			#index += 1
 	
 	if GameData.rolling_dice_list.is_empty():
 		roll_button.disabled = true

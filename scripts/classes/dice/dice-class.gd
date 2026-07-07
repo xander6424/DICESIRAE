@@ -4,8 +4,9 @@ class_name DiceInfo
 
 @export var dice_size: DiceData.Size = DiceData.Size.D6
 @export var dice_type: DiceData.DiceType = DiceData.DiceType.NORMAL
+
 var faces: Array[DiceFace] = []
-var current_face_index: int = 0 # make this random?
+var current_face_index: int = 0
 
 
 func _init(_dice_size: DiceData.Size = DiceData.Size.D6, _dice_type: DiceData.DiceType = DiceData.DiceType.NORMAL) -> void:

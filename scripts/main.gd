@@ -16,6 +16,7 @@ var shop_instance: Control
 
 func _ready() -> void:
 	GameData._reset_round.connect(_on_reset_round)
+	DiceManager._update_round_status.connect(_on_update_round_status)
 	reset_game()
 	_on_reset_round()
 
@@ -48,7 +49,7 @@ func _on_reset_round() -> void:
 	_reset_scorecard.emit()
 
 
-func _update_round_status() -> void:
+func _on_update_round_status() -> void:
 	# Checks if all rerolls have been used
 	if GameData.rerolls <= 0:
 		_save_button_pressed.emit() # Save all remaining dice

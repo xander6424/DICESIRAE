@@ -1,6 +1,8 @@
 extends Node
 
 signal _on_hand_drawn()
+signal _hand_rolling_done()
+signal _update_round_status()
 
 const HAND_SIZE: int = 5
 const STARTING_DRAW_PILE_SIZE: int = 10
@@ -10,6 +12,9 @@ var rolling_dice_list: Array[DiceInfo] = []
 var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
 
+
+func _ready() -> void:
+	_hand_rolling_done.connect(_on_hand_rolling_done)
 
 func create_starting_dice() -> void:
 	draw_pile.clear()
@@ -30,6 +35,9 @@ func draw_dice() -> void:
 	
 	_on_hand_drawn.emit()
 
+func _on_hand_rolling_done() -> void:
+	print("HAND DONE ROLLING")
+	_update_round_status.emit()
 
 # Save and unsave dice here instead
 
