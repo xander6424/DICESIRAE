@@ -3,7 +3,6 @@ extends Node2D
 signal _update_labels()
 signal _reset_scorecard()
 signal _update_scorecard()
-signal _save_button_pressed()
 
 @onready var roll_button: TextureButton = %RollButton
 @onready var shop_block: ColorRect = %ShopBlock
@@ -54,15 +53,14 @@ func _on_update_round_status() -> void:
 	print("UPDATING ROUND STATUS")
 	
 	if GameData.rerolls <= 0:
-		_save_button_pressed.emit() # Save all remaining dice
 		roll_button.disabled = true
 	
 	# Checks if a category has been scored
 	if GameData.current_lot_scored:
+		print("LOT SCORED")
 		GameData.lots -= 1
 		GameData.rerolls = 3
-		_save_button_pressed.emit() # Unsave all dice
-		GameData.rolling_dice_list.clear()
+		#GameData.rolling_dice_list.clear()
 		GameData.first_round_roll = true
 		GameData.current_lot_scored = false
 		

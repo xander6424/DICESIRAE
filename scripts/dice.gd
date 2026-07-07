@@ -84,17 +84,18 @@ func _save_button_pressed():
 
 func save_dice():
 	# Dice to be saved
-	if !dice_saved and !GameData.current_lot_scored:
+	if !dice_saved:
 		dice_saved = true
 		position.y += 40
 		DiceManager.save_dice(dice)
 	# Dice to be unsaved
-	elif dice_saved and GameData.rerolls > 0:
+	elif dice_saved:
 		dice_saved = false
 		position.y -= 40
 		DiceManager.unsave_dice(dice)
 	
-	roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
+	if GameData.rerolls > 0:
+		roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
 
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1

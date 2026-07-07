@@ -1,6 +1,6 @@
 extends Control
 
-signal _update_round_status()
+signal _on_update_round_status()
 
 @onready var score_button: Button = %ScoreButton
 @onready var lots_label: Label = %Lots
@@ -88,4 +88,4 @@ func _score_button_pressed() -> void:
 			GameData.current_lot_scored = true
 			
 			_update_labels()
-			_update_round_status.emit()
+			_on_update_round_status.emit()
