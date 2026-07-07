@@ -45,15 +45,18 @@ func _reset_scorecard() -> void:
 			scorecard_index += 1
 
 func _update_scorecard() -> void:
+	check_category_existance()
+
+func check_category_existance() -> void:
 	for category in CategoryData.active_category_info_list:
 		category.total = 0
 		
 		# Checks if a category exists in current hand
 		if !category.scored:
-			var valid: bool = category.check_validity()
+			var exists_in_hand: bool = category.check_hand_existance(DiceManager.scoring_dice_list)
 			
 			# Indicate if category exists in hand
-			if valid:
+			if exists_in_hand:
 				category.label.add_theme_color_override("font_color", Color.YELLOW)
 			else:
 				category.label.add_theme_color_override("font_color", Color.WHITE)

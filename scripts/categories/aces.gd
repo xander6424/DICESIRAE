@@ -5,13 +5,16 @@ class_name Aces
 const VALUE = 1
 
 
-func check_validity() -> bool:
-	valid = false
+func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
+	exists_in_hand = false
 	
-	if VALUE in DiceManager.scoring_value_list:
-		valid = true
+	for i in dice_list.size():
+		var index: int = dice_list[i].current_face_index
+		if dice_list[i].faces[index].face_value == VALUE:
+			exists_in_hand = true
+			break
 	
-	return valid
+	return exists_in_hand
 
 func score_category() -> int:
 	for dice in DiceManager.scoring_value_list:
