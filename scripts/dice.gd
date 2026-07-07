@@ -36,9 +36,7 @@ func setup(new_dice: DiceInfo):
 
 func roll_button_pressed():
 	if !rolling and !dice_saved:
-		#GameData.rolling_dice_list.clear()
-		#GameData.first_round_roll = false
-		
+		GameData.first_round_roll = false
 		roll_button.disabled = true
 		roll_dice()
 
@@ -80,46 +78,23 @@ func roll_dice():
 		DiceManager._hand_rolling_done.emit()
 
 
-
-
-
 func _save_button_pressed():
-	#if !any_dice_rolling and !GameData.first_round_roll:
+	if !rolling and !GameData.first_round_roll:
 		save_dice()
 
 func save_dice():
-	var index: int = 0
-	
 	# Dice to be saved
 	if !dice_saved and !GameData.current_lot_scored:
 		dice_saved = true
 		position.y += 40
-		#dice_in_play -= 1
-	
-		for dice in GameData.rolling_dice_list:
-			#if dice == number_rolled:
-				#GameData.saved_dice_list.append(number_rolled)
-				#GameData.rolling_dice_list.remove_at(index)
-				#break
-			index += 1
+		DiceManager.save_dice(dice)
 	# Dice to be unsaved
 	elif dice_saved and GameData.rerolls > 0:
 		dice_saved = false
 		position.y -= 40
-		#dice_in_play += 1
-		
-		#for dice in GameData.saved_dice_list:
-			#if dice  == number_rolled:
-				#GameData.rolling_dice_list.append(number_rolled)
-				#GameData.saved_dice_list.remove_at(index)
-				#break
-			#index += 1
+		DiceManager.unsave_dice(dice)
 	
-	if GameData.rolling_dice_list.is_empty():
-		roll_button.disabled = true
-	else:
-		roll_button.disabled = false
-
+	roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
 
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1

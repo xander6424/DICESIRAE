@@ -39,7 +39,16 @@ func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")
 	_update_round_status.emit()
 
-# Save and unsave dice here instead
+
+func save_dice(dice: DiceInfo) -> void:
+	if rolling_dice_list.has(dice):
+		rolling_dice_list.erase(dice)
+		saved_dice_list.append(dice)
+
+func unsave_dice(dice: DiceInfo) -> void:
+	if saved_dice_list.has(dice):
+		saved_dice_list.erase(dice)
+		rolling_dice_list.append(dice)
 
 # Roll fully finished (recieve signal to then activate main stuff)
 
