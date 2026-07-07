@@ -8,7 +8,7 @@ const VALUE = 3
 func check_validity() -> void:
 	valid = false
 	
-	if VALUE in GameData.scoring_dice_list:
+	if VALUE in DiceManager.scoring_value_list:
 		valid = true
 	
 	if valid:
@@ -17,7 +17,7 @@ func check_validity() -> void:
 		label.add_theme_color_override("font_color", Color.WHITE)
 
 func score_category():
-	for dice in GameData.scoring_dice_list:
+	for dice in DiceManager.scoring_value_list:
 		if dice == VALUE:
 			total += dice
 	

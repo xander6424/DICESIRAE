@@ -12,6 +12,9 @@ var rolling_dice_list: Array[DiceInfo] = []
 var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
 
+var scoring_dice_list: Array[DiceInfo] = []
+var scoring_value_list: Array[int] = []
+
 
 func _ready() -> void:
 	_hand_rolling_done.connect(_on_hand_rolling_done)
@@ -37,6 +40,22 @@ func draw_dice() -> void:
 
 func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")
+	
+	# Move all rolled/saved dice in a scoring list to be checked
+	scoring_dice_list.clear()
+	scoring_value_list.clear()
+	for dice in rolling_dice_list:
+		var index: int = dice.current_face_index
+		
+		scoring_dice_list.append(dice)
+		scoring_value_list.append(dice.faces[index].face_value)
+	for dice in saved_dice_list:
+		var index: int = dice.current_face_index
+		
+		scoring_dice_list.append(dice)
+		scoring_value_list.append(dice.faces[index].face_value)
+	
+	print(scoring_value_list)
 	_update_round_status.emit()
 
 

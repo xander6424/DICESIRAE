@@ -9,9 +9,9 @@ func check_validity() -> void:
 	var pairs: int = 0
 	var banned_face: int = -1
 	
-	for dice in GameData.scoring_dice_list:
+	for dice in DiceManager.scoring_value_list:
 		# Check for a pair
-		if GameData.scoring_dice_list.count(dice) >= 2 and dice != banned_face:
+		if DiceManager.scoring_value_list.count(dice) >= 2 and dice != banned_face:
 			banned_face = dice
 			pairs += 1
 			
@@ -32,9 +32,9 @@ func score_category():
 	var pairs: int = 0
 	var banned_face: int = -1
 	
-	for dice in GameData.scoring_dice_list:
+	for dice in DiceManager.scoring_value_list:
 		# Check for a pair
-		if GameData.scoring_dice_list.count(dice) >= 2 and dice != banned_face:
+		if DiceManager.scoring_value_list.count(dice) >= 2 and dice != banned_face:
 			total += dice * 2
 			banned_face = dice
 			pairs += 1

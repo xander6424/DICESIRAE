@@ -45,12 +45,6 @@ func _reset_scorecard() -> void:
 			scorecard_index += 1
 
 func _update_scorecard() -> void:
-	GameData.scoring_dice_list.clear()
-	for dice in GameData.rolling_dice_list:
-		GameData.scoring_dice_list.append(dice)
-	for dice in GameData.saved_dice_list:
-		GameData.scoring_dice_list.append(dice)
-	
 	for category in CategoryData.active_category_info_list:
 		category.total = 0
 		
