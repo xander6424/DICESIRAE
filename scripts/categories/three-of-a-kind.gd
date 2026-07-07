@@ -3,7 +3,7 @@ extends CategoryInfo
 class_name ThreeOfAKind
 
 
-func check_validity() -> bool:
+func check_validity() -> void:
 	valid = false
 	
 	for dice in GameData.scoring_dice_list:
@@ -11,7 +11,10 @@ func check_validity() -> bool:
 			valid = true
 			break
 	
-	return valid
+	if valid:
+		label.add_theme_color_override("font_color", Color.YELLOW)
+	else:
+		label.add_theme_color_override("font_color", Color.WHITE)
 
 func score_category():
 	for dice in GameData.scoring_dice_list:

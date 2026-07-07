@@ -56,14 +56,7 @@ func _update_scorecard() -> void:
 		
 		# Checks if a category exists in current hand
 		if !category.scored:
-			var valid: bool = category.check_validity()
-			
-			# Indicate if category exists in hand
-			if valid:
-				category.label.add_theme_color_override("font_color", Color.YELLOW)
-			else:
-				category.label.add_theme_color_override("font_color", Color.WHITE)
-			
+			category.check_validity()
 			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
 
 

@@ -18,7 +18,7 @@ var total: int = 0
 var label: Label = null
 var button: Button = null
 
-func check_validity() -> bool: return false
+func check_validity() -> void: pass
 
 func score_category() -> int:
 	return 0
