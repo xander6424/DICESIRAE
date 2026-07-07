@@ -7,6 +7,7 @@ class_name DiceInfo
 
 var faces: Array[DiceFace] = []
 var current_face_index: int = 0
+var scored: bool = false
 
 
 func _init(_dice_size: DiceData.Size = DiceData.Size.D6, _dice_type: DiceData.DiceType = DiceData.DiceType.NORMAL) -> void:
@@ -36,4 +37,4 @@ func roll() -> DiceFace:
 
 
 func score_dice() -> int:
-	return 0
+	return faces[current_face_index].face_value # only number

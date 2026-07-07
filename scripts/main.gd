@@ -66,6 +66,8 @@ func _on_update_round_status() -> void:
 		
 		if GameData.lots <= 0:
 			roll_button.disabled = true
+		else:
+			roll_button.disabled = false
 		
 		# Manages win condition
 		if GameData.grand_total >= GameData.score_to_beat:

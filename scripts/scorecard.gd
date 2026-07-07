@@ -70,15 +70,27 @@ func _score_button_pressed() -> void:
 		if category_selected:
 			var total_scored: int = 0
 			
+			# Only checks to score if category is even valid
 			if current_category.valid:
-				total_scored = current_category.base_score + current_category.score_category()
+				var dice_scored: int = 0
 				
-				# TEMP PIECE DICE ACTIVATION (ADD ONLY)
-				for piece in PieceData.active_piece_list:
-					total_scored += piece.dice_scored()
+				# Score saved dice only
+				for dice in DiceManager.saved_dice_list:
+					
+					# Make a separate list of what dice will actually be scored that are saved?
+					
+					print(dice.faces[dice.current_face_index].face_value)
+					total_scored += dice.score_dice()
+					dice_scored += 1
 				
-				total_scored *= current_category.mult_score
-				GameData.grand_total += total_scored
+					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
+					#for piece in PieceData.active_piece_list:
+						#total_scored += piece.dice_scored()
+				
+				if dice_scored > 0:
+					total_scored += current_category.base_score
+					total_scored *= current_category.mult_score
+					GameData.grand_total += total_scored
 				
 				current_category.label.add_theme_color_override("font_color", Color.WHITE)
 				
