@@ -5,7 +5,7 @@ class_name Twos
 const VALUE = 2
 
 
-func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 	exists_in_hand = false
 	
 	for i in dice_list.size():
@@ -13,8 +13,6 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
 		if dice_list[i].faces[index].face_value == VALUE:
 			exists_in_hand = true
 			break
-	
-	return exists_in_hand
 
 func score_category():
 	for dice in DiceManager.scoring_value_list:

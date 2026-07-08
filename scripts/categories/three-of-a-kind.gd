@@ -3,7 +3,7 @@ extends CategoryInfo
 class_name ThreeOfAKind
 
 
-func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 	exists_in_hand = false
 	
 	var scoring_value_list: Array[int] = []
@@ -17,8 +17,6 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
 		if scoring_value_list.count(face) >= 3:
 			exists_in_hand = true
 			break
-	
-	return exists_in_hand
 
 func score_category():
 	for dice in DiceManager.scoring_value_list:

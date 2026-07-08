@@ -19,8 +19,8 @@ var exists_in_saved: bool = false
 var label: Label = null
 var button: Button = null
 
-func check_hand_existance(dice_list: Array[DiceInfo]) -> bool: 
-	return false
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void: 
+	dice_list.is_empty()
 
 func score_category() -> int:
 	return 0

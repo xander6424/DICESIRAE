@@ -5,7 +5,7 @@ class_name Fives
 const VALUE = 5
 
 
-func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 	exists_in_hand = false
 	
 	for i in dice_list.size():
@@ -13,8 +13,6 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
 		if dice_list[i].faces[index].face_value == VALUE:
 			exists_in_hand = true
 			break
-	
-	return exists_in_hand
 
 func score_category() -> int:
 	for dice in GameData.scoring_dice_list:

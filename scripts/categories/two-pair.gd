@@ -3,7 +3,7 @@ extends CategoryInfo
 class_name TwoPair
 
 
-func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 	exists_in_hand = false
 	
 	var pairs: int = 0
@@ -28,8 +28,6 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> bool:
 	# Valid if 2 pairs are found
 	if pairs >= 2:
 		exists_in_hand = true
-	
-	return exists_in_hand
 
 func score_category():
 	var pairs: int = 0

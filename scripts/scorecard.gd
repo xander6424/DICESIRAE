@@ -53,10 +53,10 @@ func check_category_existance() -> void:
 		
 		# Checks if a category exists in current hand
 		if !category.scored:
-			var exists_in_hand: bool = category.check_hand_existance(DiceManager.scoring_dice_list)
+			category.check_hand_existance(DiceManager.scoring_dice_list)
 			
 			# Indicate if category exists in hand
-			if exists_in_hand:
+			if category.exists_in_hand:
 				category.label.add_theme_color_override("font_color", Color.YELLOW)
 			else:
 				category.label.add_theme_color_override("font_color", Color.WHITE)
@@ -81,7 +81,7 @@ func _score_button_pressed() -> void:
 			var total_scored: int = 0
 			
 			# Only checks to score if category is even valid
-			if current_category.valid:
+			if current_category.valid: # exists_in_SAVED
 				var dice_scored: int = 0
 				
 				# Score saved dice only
