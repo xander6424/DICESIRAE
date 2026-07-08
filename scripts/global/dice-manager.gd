@@ -1,6 +1,7 @@
 extends Node
 
 signal _on_hand_drawn()
+signal _on_saved_discarded()
 signal _hand_rolling_done()
 signal _update_round_status()
 
@@ -22,6 +23,7 @@ func create_starting_dice() -> void:
 	draw_pile.clear()
 	rolling_dice_list.clear()
 	saved_dice_list.clear()
+	all_dice_list.clear()
 	discard_pile.clear()
 	
 	for i in range(STARTING_DRAW_PILE_SIZE):
@@ -36,6 +38,18 @@ func draw_dice() -> void:
 		rolling_dice_list.append(draw_pile.pop_back())
 	
 	_on_hand_drawn.emit()
+
+func discard_dice() -> void:
+	for dice in saved_dice_list:
+		if dice.scored:
+			discard_pile.append(dice)
+			dice.scored = false
+		else:
+			rolling_dice_list.append(dice)
+	
+	saved_dice_list.clear()
+	
+	_on_saved_discarded.emit()
 
 func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")
@@ -65,7 +79,3 @@ func unsave_dice(dice: DiceInfo) -> void:
 		
 		# Check if category exists in saved
 		_update_round_status.emit()
-
-# Roll fully finished (recieve signal to then activate main stuff)
-
-# Discard hand

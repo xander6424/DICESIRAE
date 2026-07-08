@@ -25,4 +25,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 			valid_dice_list.append(dice_list[i])
 	
 	# test output
-	print("ACES: ", valid_dice_list)
+	#print("ACES: ", valid_dice_list)

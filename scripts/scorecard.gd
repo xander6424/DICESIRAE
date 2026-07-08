@@ -26,7 +26,11 @@ func _update_labels() -> void:
 	total_to_beat_label.text = "Score to Beat: " + str(GameData.score_to_beat) # Change?
 	draw_pile_label.text = str(DiceManager.draw_pile.size()) + "/" + str(DiceManager.STARTING_DRAW_PILE_SIZE)
 	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.STARTING_DRAW_PILE_SIZE)
-
+	
+	print("ROLLING LIST: ", DiceManager.rolling_dice_list)
+	print("SAVED LIST: ", DiceManager.saved_dice_list)
+	print("DISCARD PILE: ", DiceManager.discard_pile)
+	
 
 func _reset_scorecard() -> void:
 	# Add only starting categories to the scorecard

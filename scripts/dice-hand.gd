@@ -10,6 +10,7 @@ var dice_nodes: Dictionary = {}
 
 func _ready() -> void:
 	DiceManager._on_hand_drawn.connect(_on_hand_drawn)
+	DiceManager._on_saved_discarded.connect(_on_saved_discarded)
 
 func _on_hand_drawn() -> void:
 	for node in dice_nodes.values():
@@ -22,6 +23,14 @@ func _on_hand_drawn() -> void:
 		spawn_dice(DiceManager.rolling_dice_list[i], positions[i])
 	
 	print("HAND DRAWN")
+
+func _on_saved_discarded() -> void:
+	for node in dice_nodes.values():
+		if node.dice.scored:
+			node.queue_free()
+	
+	print("HAND DISCARDED")
+
 
 func compute_dice_positions(count: int) -> Array[Vector2]:
 	var positions: Array[Vector2] = []

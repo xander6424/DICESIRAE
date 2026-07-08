@@ -71,24 +71,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 		valid_dice_list.clear()
 	
 	# test output
-	print("TWO PAIR: ", valid_dice_list)
-
-func score_category():
-	var pairs: int = 0
-	var banned_face: int = -1
-	
-	for dice in DiceManager.scoring_value_list:
-		# Check for a pair
-		if DiceManager.scoring_value_list.count(dice) >= 2 and dice != banned_face:
-			total += dice * 2
-			banned_face = dice
-			pairs += 1
-			
-			# Exit if a two pair is found
-			if pairs == 2:
-				break
-		
-	if pairs < 2:
-		total = 0
-	
-	return total
+	#print("TWO PAIR: ", valid_dice_list)

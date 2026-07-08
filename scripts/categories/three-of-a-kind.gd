@@ -44,12 +44,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 			break
 	
 	# test output
-	print("THREE OF A KIND: ", valid_dice_list)
-
-func score_category():
-	for dice in DiceManager.scoring_value_list:
-		if DiceManager.scoring_value_list.count(dice) >= 3:
-			total += dice * 3
-			break
-	
-	return total
+	#print("THREE OF A KIND: ", valid_dice_list)
