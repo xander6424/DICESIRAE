@@ -13,6 +13,7 @@ func _ready() -> void:
 	dice_slots.resize(DiceData.HAND_POSITIONS.size())
 	DiceManager._on_hand_drawn.connect(_on_hand_drawn)
 	DiceManager._on_saved_discarded.connect(_on_saved_discarded)
+	DiceManager._force_unsave.connect(_on_force_unsave)
 
 func _on_hand_drawn() -> void:
 	for dice in DiceManager.rolling_dice_list:
@@ -27,13 +28,17 @@ func _on_saved_discarded(discarded_dice_list: Array[DiceInfo]) -> void:
 		if dice_nodes.has(dice):
 			var node: DiceDisplay = dice_nodes[dice]
 			node.queue_free()
-			dice_nodes.erase(node)
+			dice_nodes.erase(dice)
 			
 			var used_index: int = dice_slots.find(dice)
 			if used_index != -1:
 				dice_slots[used_index] = null
 	
 	print("HAND DISCARDED")
+
+func _on_force_unsave(dice: DiceInfo):
+	if dice_nodes.has(dice):
+		dice_nodes[dice].visually_unsave()
 
 
 func spawn_dice(dice: DiceInfo, open_index: int) -> void:

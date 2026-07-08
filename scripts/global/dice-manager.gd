@@ -2,6 +2,7 @@ extends Node
 
 signal _on_hand_drawn()
 signal _on_saved_discarded(discarded_dice_list: Array[DiceInfo])
+signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _update_round_status()
 
@@ -41,6 +42,7 @@ func draw_dice() -> void:
 
 func discard_dice() -> void:
 	var discarded_dice_list: Array[DiceInfo] = []
+	var unscored_dice_list: Array[DiceInfo] = []
 	
 	for dice in saved_dice_list:
 		if dice.scored:
@@ -48,9 +50,12 @@ func discard_dice() -> void:
 			discarded_dice_list.append(dice)
 			dice.scored = false
 		else:
-			rolling_dice_list.append(dice)
+			unscored_dice_list.append(dice)
 	
 	saved_dice_list.clear()
+	rolling_dice_list.append_array(unscored_dice_list)
+	for dice in unscored_dice_list:
+		_force_unsave.emit(dice)
 	
 	_on_saved_discarded.emit(discarded_dice_list)
 

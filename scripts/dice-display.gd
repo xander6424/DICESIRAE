@@ -98,6 +98,12 @@ func save_dice():
 	if GameData.rerolls > 0:
 		roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
 
+func visually_unsave():
+	if dice_saved:
+		dice_saved = false
+		position.y -= 40
+
+
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1
 	face_sprite.texture = face_textures[index]
