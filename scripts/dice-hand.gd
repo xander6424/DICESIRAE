@@ -34,7 +34,7 @@ func compute_dice_positions(count: int) -> Array[Vector2]:
 	return positions
 
 func spawn_dice(dice: DiceInfo, starting_position) -> void:
-	var node: DiceNode = dice_scene.instantiate()
+	var node: DiceDisplay = dice_scene.instantiate()
 	add_child(node)
 	node.position = starting_position
 	node.setup(dice)

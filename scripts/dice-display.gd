@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-class_name DiceNode
+class_name DiceDisplay
 
 
 @onready var face_sprite: Sprite2D = %FaceSprite

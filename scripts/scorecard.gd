@@ -89,6 +89,7 @@ func _score_button_pressed() -> void:
 				for dice in current_category.valid_dice_list:
 					print("+", str(dice.score_dice()))
 					total_scored += dice.score_dice()
+					
 					dice.scored = true
 				
 					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
