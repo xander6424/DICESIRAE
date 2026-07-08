@@ -51,7 +51,7 @@ func _on_reset_round() -> void:
 
 func _on_update_round_status() -> void:
 	# Checks if all rerolls have been used
-	print("UPDATING ROUND STATUS")
+	print("UPDATING ROUND STATUS\n")
 	
 	if GameData.rerolls <= 0:
 		roll_button.disabled = true

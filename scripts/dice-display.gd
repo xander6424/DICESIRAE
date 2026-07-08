@@ -20,7 +20,8 @@ func _ready() -> void:
 	if dice == null:
 		dice = DiceInfo.new()
 	
-	display_face(dice.get_current_face())
+	# Display a random face upon being drawn
+	display_face(dice.faces[randi() % dice.dice_size])
 	# CHANGE COLOR HERE TOO??
 	
 	roll_button.pressed.connect(roll_button_pressed)
