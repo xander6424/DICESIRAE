@@ -29,8 +29,6 @@ func roll() -> DiceFace:
 	current_face_index = randi() % faces.size()
 	return faces[current_face_index]
 
-# Get current face?
-
 # Upgrade face?
 
 # Upgrade size?

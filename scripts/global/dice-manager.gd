@@ -12,7 +12,7 @@ var rolling_dice_list: Array[DiceInfo] = []
 var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
 
-var scoring_dice_list: Array[DiceInfo] = []
+var all_dice_list: Array[DiceInfo] = []
 
 
 func _ready() -> void:
@@ -41,11 +41,11 @@ func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")
 	
 	# Move all rolled/saved dice in a scoring list to be checked
-	scoring_dice_list.clear()
+	all_dice_list.clear()
 	for dice in rolling_dice_list:
-		scoring_dice_list.append(dice)
+		all_dice_list.append(dice)
 	for dice in saved_dice_list:
-		scoring_dice_list.append(dice)
+		all_dice_list.append(dice)
 	
 	_update_round_status.emit()
 
