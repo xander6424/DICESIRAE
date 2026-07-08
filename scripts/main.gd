@@ -66,7 +66,7 @@ func _on_update_round_status() -> void:
 		GameData.current_lot_scored = false
 		
 		DiceManager.discard_dice()
-		#DiceManager.draw_dice()
+		DiceManager.draw_dice()
 		
 		if GameData.lots <= 0:
 			roll_button.disabled = true

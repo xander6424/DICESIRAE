@@ -1,9 +1,13 @@
 extends Node
 
-
-# active dice list
-# all dice from draw pile
-# all dice from discard pile
+const HAND_POSITIONS: Array[Vector2] = [
+	Vector2(-100.0, 0.0),
+	Vector2(-50.0, 0.0),
+	Vector2(0.0, 0.0),
+	Vector2(50.0, 0.0),
+	Vector2(100.0, 0.0)
+	#Vector2(-100.0, 50.0)  Hypothetical 6th dice drawn
+]
 
 enum Size {
 	D6 = 6, 

@@ -1,7 +1,7 @@
 extends Node
 
 signal _on_hand_drawn()
-signal _on_saved_discarded()
+signal _on_saved_discarded(discarded_dice_list: Array[DiceInfo])
 signal _hand_rolling_done()
 signal _update_round_status()
 
@@ -40,16 +40,19 @@ func draw_dice() -> void:
 	_on_hand_drawn.emit()
 
 func discard_dice() -> void:
+	var discarded_dice_list: Array[DiceInfo] = []
+	
 	for dice in saved_dice_list:
 		if dice.scored:
 			discard_pile.append(dice)
+			discarded_dice_list.append(dice)
 			dice.scored = false
 		else:
 			rolling_dice_list.append(dice)
 	
 	saved_dice_list.clear()
 	
-	_on_saved_discarded.emit()
+	_on_saved_discarded.emit(discarded_dice_list)
 
 func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")
