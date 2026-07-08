@@ -27,6 +27,7 @@ func _update_labels() -> void:
 	draw_pile_label.text = str(DiceManager.draw_pile.size()) + "/" + str(DiceManager.STARTING_DRAW_PILE_SIZE)
 	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.STARTING_DRAW_PILE_SIZE)
 	
+	# Test output
 	print("ROLLING LIST: ", DiceManager.rolling_dice_list)
 	print("SAVED LIST: ", DiceManager.saved_dice_list)
 	print("DISCARD PILE: ", DiceManager.discard_pile)

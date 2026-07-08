@@ -12,6 +12,8 @@ const ROUND_SCORE_SCALING: Array[int] = [100, 150, 250, 500, 1200, 2500, 7800, 1
 
 var lots: int = STARTING_LOTS
 var rerolls: int = STARTING_REROLLS
+var bonus_lots: int = 0
+var bonus_rerolls: int = 0
 var money: int = STARTING_MONEY
 var grand_total: int = 0
 var score_to_beat: int = ROUND_SCORE_SCALING[0]

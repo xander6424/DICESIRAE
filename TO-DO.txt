@@ -1,22 +1,30 @@
 DICESIRAE TO-DO LIST
 
+1. Optimize & Check Code
+	- FIX two pair full house bug
+	- Full walk-through
+	- Make adjustments
+	- Comment & UNDERSTAND!!!
+5. Dice Physics
+	- Starting location
+		- Spawn points (? Max)
+	- Rolling Zone
+	- Saving location
+		- Spawn points (5 MAX)
 1. Scoring Pieces
 	- Reworking the scorecard script
 	- Updating scorecard is still good
 	- Scoring a category needs changed to actually add piece effects
 	- Also include on round start and on round end functionality
-2. Dice Class/Resource
-	- Need a reusable dice object with unique properties
-	- A "deck" of dice to draw from
-	- Reimplement rolling, saving/unsaving, and scoring
 3. Pieces Section
 	- Ordering matters
+	- Display pieces
+	- Selling pieces & deactivation
 4. Other test shop stuff
 	- Level up categories
+	- Add new categories
 	- Modify dice
-5. Dice Physics
-	- Starting location
-	- Saving location
+
 6. Main menu (entering and exiting new scenes)
 	- Loading screen?
 7. Optimize code and comment

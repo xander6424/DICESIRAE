@@ -32,6 +32,15 @@ func create_starting_dice() -> void:
 	
 	draw_pile.shuffle()
 
+func reset_round() -> void:
+	draw_pile.append_array(discard_pile)
+	draw_pile.shuffle()
+	
+	discard_pile.clear()
+	
+	DiceManager.draw_dice()
+
+
 func draw_dice() -> void:
 	while rolling_dice_list.size() < HAND_SIZE:
 		if draw_pile.is_empty():
@@ -58,6 +67,7 @@ func discard_dice() -> void:
 		_force_unsave.emit(dice)
 	
 	_on_saved_discarded.emit(discarded_dice_list)
+
 
 func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")

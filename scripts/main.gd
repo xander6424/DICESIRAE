@@ -28,22 +28,25 @@ func reset_game() -> void:
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
 	round_number += 1
-	print("ROUND ", round_number)
+	print("ROUND ", round_number, "\n")
 	
-	GameData.lots = GameData.STARTING_LOTS
-	GameData.rerolls = GameData.STARTING_REROLLS
+	# Activate pieces at beginning of round (temporary)
+	GameData.bonus_lots = 0
+	GameData.bonus_rerolls = 0
+	for piece in PieceData.active_piece_list:
+		piece.round_started()
+	
+	GameData.lots = GameData.STARTING_LOTS + GameData.bonus_lots
+	GameData.rerolls = GameData.STARTING_REROLLS + GameData.bonus_rerolls
 	GameData.grand_total = 0
 	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[round_number - 1]
 	GameData.round_won = false
-	DiceManager.draw_dice()
+	
+	DiceManager.reset_round()
 	
 	shop.visible = false
 	shop_block.visible = false
 	roll_button.disabled = false
-	
-	# Activate pieces at beginning of round
-	for piece in PieceData.active_piece_list:
-		piece.round_started()
 	
 	_update_labels.emit()
 	_reset_scorecard.emit()
@@ -60,10 +63,11 @@ func _on_update_round_status() -> void:
 	if GameData.current_lot_scored:
 		print("LOT SCORED")
 		GameData.lots -= 1
-		GameData.rerolls = 3
-		#GameData.rolling_dice_list.clear()
+		GameData.rerolls = GameData.STARTING_REROLLS + GameData.bonus_rerolls
 		GameData.first_round_roll = true
 		GameData.current_lot_scored = false
+		DiceManager.all_dice_list.clear()
+		
 		
 		DiceManager.discard_dice()
 		DiceManager.draw_dice()
