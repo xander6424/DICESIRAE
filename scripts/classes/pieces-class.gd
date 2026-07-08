@@ -18,3 +18,5 @@ func dice_scored() -> int: return 0
 func round_started(): pass
 
 func round_ended(): pass
+
+func reset(): pass

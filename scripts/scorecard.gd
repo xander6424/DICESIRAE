@@ -87,23 +87,21 @@ func _score_button_pressed() -> void:
 			if current_category.exists_in_saved:
 				# Score saved dice only
 				for dice in current_category.valid_dice_list:
-					
-					# Make a separate list of what dice will actually be scored that are saved?
-					
-					print(dice.faces[dice.current_face_index].face_value)
+					print("+", str(dice.score_dice()))
 					total_scored += dice.score_dice()
+					dice.scored = true
 				
 					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
-					#for piece in PieceData.active_piece_list:
-						#total_scored += piece.dice_scored()
+					for piece in PieceData.active_piece_list:
+						total_scored += piece.dice_scored()
 				
 				# Full scoring
 				total_scored += current_category.base_score
 				total_scored *= current_category.mult_score
 				GameData.grand_total += total_scored
-				
-				current_category.label.add_theme_color_override("font_color", Color.WHITE)
-				
+			
+			current_category.label.add_theme_color_override("font_color", Color.WHITE)
+			
 			current_category.scored = true
 			current_category.button.disabled = true
 			current_category.button.text = str(total_scored)
