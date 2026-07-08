@@ -54,11 +54,17 @@ func save_dice(dice: DiceInfo) -> void:
 	if rolling_dice_list.has(dice):
 		rolling_dice_list.erase(dice)
 		saved_dice_list.append(dice)
+		
+		# Check if category exists in saved
+		_update_round_status.emit()
 
 func unsave_dice(dice: DiceInfo) -> void:
 	if saved_dice_list.has(dice):
 		saved_dice_list.erase(dice)
 		rolling_dice_list.append(dice)
+		
+		# Check if category exists in saved
+		_update_round_status.emit()
 
 # Roll fully finished (recieve signal to then activate main stuff)
 

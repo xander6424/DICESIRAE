@@ -2,6 +2,7 @@ extends RigidBody2D
 
 class_name DiceNode
 
+
 @onready var face_sprite: Sprite2D = %FaceSprite
 @onready var roll_button = get_parent().get_parent().get_node("RollButton") # THIS SUCKS
 @onready var save_button: TextureButton = %SaveButton
@@ -96,9 +97,6 @@ func save_dice():
 	
 	if GameData.rerolls > 0:
 		roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
-	
-	# Emit a signal to check the TRUE validity of dice from
-	# the SAVED dice list
 
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1

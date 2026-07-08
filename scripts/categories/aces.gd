@@ -14,9 +14,15 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 			exists_in_hand = true
 			break
 
-func score_category() -> int:
-	for dice in DiceManager.scoring_value_list:
-		if dice == VALUE:
-			total += dice
+func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
+	exists_in_saved = false
+	valid_dice_list.clear()
 	
-	return total
+	for i in dice_list.size():
+		var index: int = dice_list[i].current_face_index
+		if dice_list[i].faces[index].face_value == VALUE:
+			exists_in_saved = true
+			valid_dice_list.append(dice_list[i])
+	
+	# test output
+	print("ACES: ", valid_dice_list)

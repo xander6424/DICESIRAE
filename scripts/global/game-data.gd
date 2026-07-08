@@ -2,6 +2,7 @@ extends Node
 
 signal _reset_round()
 
+
 # Constant basic values
 const STARTING_LOTS: int = 3
 const STARTING_REROLLS: int = 3

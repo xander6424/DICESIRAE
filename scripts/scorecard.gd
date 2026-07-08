@@ -54,6 +54,7 @@ func check_category_existance() -> void:
 		# Checks if a category exists in current hand
 		if !category.scored:
 			category.check_hand_existance(DiceManager.all_dice_list)
+			category.check_saved_existance(DiceManager.saved_dice_list)
 			
 			# Indicate if category exists in hand
 			if category.exists_in_saved:
@@ -83,26 +84,23 @@ func _score_button_pressed() -> void:
 			var total_scored: int = 0
 			
 			# Only checks to score if category is even valid
-			if current_category.exists_in_hand: # exists_in_SAVED
-				var dice_scored: int = 0
-				
+			if current_category.exists_in_saved:
 				# Score saved dice only
-				for dice in DiceManager.saved_dice_list:
+				for dice in current_category.valid_dice_list:
 					
 					# Make a separate list of what dice will actually be scored that are saved?
 					
 					print(dice.faces[dice.current_face_index].face_value)
 					total_scored += dice.score_dice()
-					dice_scored += 1
 				
 					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
 					#for piece in PieceData.active_piece_list:
 						#total_scored += piece.dice_scored()
 				
-				if dice_scored > 0:
-					total_scored += current_category.base_score
-					total_scored *= current_category.mult_score
-					GameData.grand_total += total_scored
+				# Full scoring
+				total_scored += current_category.base_score
+				total_scored *= current_category.mult_score
+				GameData.grand_total += total_scored
 				
 				current_category.label.add_theme_color_override("font_color", Color.WHITE)
 				
