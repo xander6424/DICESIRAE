@@ -22,6 +22,7 @@ func _ready() -> void:
 # Signal to fully reset the whole game
 func reset_game() -> void:
 	print("STARTING NEW GAME...")
+	
 	DiceManager.create_starting_dice()
 
 # Reset all labels, dice, and categories
