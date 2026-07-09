@@ -35,7 +35,7 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 	valid_dice_list.clear()
 	
 	var pairs: int = 0
-	var banned_face: int = -1
+	var banned_faces: Array[int] = []
 	var scoring_value_list: Array[int] = []
 	
 	# Create array of face values
@@ -45,14 +45,14 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 	
 	for face in scoring_value_list:
 		# Check for a pair
-		if scoring_value_list.count(face) >= 2 and face != banned_face:
-			banned_face = face
+		if scoring_value_list.count(face) >= 2 and !(face in banned_faces):
+			var dice_added: int = 0
+			banned_faces.append(face)
 			pairs += 1
 			
 			# Only grab valid dice pair
 			for i in dice_list.size():
 				var index: int = dice_list[i].current_face_index
-				var dice_added: int = 0
 				if dice_list[i].faces[index].face_value == face:
 					valid_dice_list.append(dice_list[i])
 					dice_added += 1
@@ -71,4 +71,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 		valid_dice_list.clear()
 	
 	# test output
-	#print("TWO PAIR: ", valid_dice_list)
+	print("TWO PAIR: ", valid_dice_list)
