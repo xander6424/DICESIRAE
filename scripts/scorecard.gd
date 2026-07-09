@@ -3,13 +3,16 @@ extends Control
 signal _on_update_round_status()
 
 @onready var score_button: Button = %ScoreButton
+
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
 @onready var money_label: Label = %Money
 @onready var grand_total_label: Label = %Total
 @onready var total_to_beat_label: Label = %TotalToBeat
+
 @onready var draw_pile_label: Label = %DrawPile
 @onready var discard_pile_label: Label = %DiscardPile
+
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
@@ -24,8 +27,8 @@ func _update_labels() -> void:
 	money_label.text = "Money: $" + str(GameData.money)
 	grand_total_label.text = "TOTAL: " + str(GameData.grand_total)
 	total_to_beat_label.text = "Score to Beat: " + str(GameData.score_to_beat) # Change?
-	draw_pile_label.text = str(DiceManager.draw_pile.size()) + "/" + str(DiceManager.STARTING_DRAW_PILE_SIZE)
-	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.STARTING_DRAW_PILE_SIZE)
+	draw_pile_label.text = str(DiceManager.draw_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
+	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
 	
 	# Test output
 	print("ROLLING LIST: ", DiceManager.rolling_dice_list)
@@ -58,14 +61,14 @@ func _update_scorecard() -> void:
 
 func check_category_existance() -> void:
 	for category in CategoryData.active_category_info_list:
-		category.total = 0
+		category.total = 0 # Possibly remove this eventually?
 		
-		# Checks if a category exists in current hand
+		# Checks if an unscored category exists in current hand
 		if !category.scored:
 			category.check_hand_existance(DiceManager.all_dice_list)
 			category.check_saved_existance(DiceManager.saved_dice_list)
 			
-			# Indicate if category exists in hand
+			# Indicate if category exists by color
 			if category.exists_in_saved:
 				category.label.add_theme_color_override("font_color", Color.GOLD)
 			elif category.exists_in_hand:

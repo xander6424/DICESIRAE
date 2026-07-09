@@ -35,4 +35,4 @@ func roll() -> DiceFace:
 
 
 func score_dice() -> int:
-	return faces[current_face_index].face_value # only number
+	return faces[current_face_index].face_value # only number (for now)

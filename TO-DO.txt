@@ -1,17 +1,12 @@
 DICESIRAE TO-DO LIST
 
-1. Optimize & Check Code
-	- FIX two pair full house bug
-	- Full walk-through
-	- Make adjustments
-	- Comment & UNDERSTAND!!!
-5. Dice Physics
+1. Dice Physics
 	- Starting location
 		- Spawn points (? Max)
 	- Rolling Zone
 	- Saving location
 		- Spawn points (5 MAX)
-1. Scoring Pieces
+2. Scoring Pieces
 	- Reworking the scorecard script
 	- Updating scorecard is still good
 	- Scoring a category needs changed to actually add piece effects
@@ -24,10 +19,9 @@ DICESIRAE TO-DO LIST
 	- Level up categories
 	- Add new categories
 	- Modify dice
-
-6. Main menu (entering and exiting new scenes)
+5. Main menu (entering and exiting new scenes)
 	- Loading screen?
-7. Optimize code and comment
+6. Optimize code and comment
 
 
 ROUND OVER

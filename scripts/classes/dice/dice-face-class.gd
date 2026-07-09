@@ -9,3 +9,5 @@ class_name DiceFace
 func _init(_face_value: int = 1, _face_type: DiceData.FaceType = DiceData.FaceType.NORMAL) -> void:
 	face_value = _face_value
 	face_type = _face_type
+
+# Scoring/activation function?

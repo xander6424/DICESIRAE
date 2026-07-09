@@ -6,15 +6,14 @@ signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _update_round_status()
 
-const HAND_SIZE: int = 5
-const STARTING_DRAW_PILE_SIZE: int = 10
+const MAX_HAND_SIZE: int = 5
+const MAX_DRAW_PILE_SIZE: int = 10
 
 var draw_pile: Array[DiceInfo] = []
+var all_dice_list: Array[DiceInfo] = []
 var rolling_dice_list: Array[DiceInfo] = []
 var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
-
-var all_dice_list: Array[DiceInfo] = []
 
 
 func _ready() -> void:
@@ -22,12 +21,12 @@ func _ready() -> void:
 
 func create_starting_dice() -> void:
 	draw_pile.clear()
+	all_dice_list.clear()
 	rolling_dice_list.clear()
 	saved_dice_list.clear()
-	all_dice_list.clear()
 	discard_pile.clear()
 	
-	for i in range(STARTING_DRAW_PILE_SIZE):
+	for i in range(MAX_DRAW_PILE_SIZE):
 		draw_pile.append(DiceInfo.new())
 	
 	draw_pile.shuffle()
@@ -42,7 +41,7 @@ func reset_round() -> void:
 
 
 func draw_dice() -> void:
-	while rolling_dice_list.size() < HAND_SIZE:
+	while rolling_dice_list.size() < MAX_HAND_SIZE:
 		if draw_pile.is_empty():
 			break
 		rolling_dice_list.append(draw_pile.pop_back())
@@ -53,6 +52,7 @@ func discard_dice() -> void:
 	var discarded_dice_list: Array[DiceInfo] = []
 	var unscored_dice_list: Array[DiceInfo] = []
 	
+	# Only discard valid dice that were used in scoring
 	for dice in saved_dice_list:
 		if dice.scored:
 			discard_pile.append(dice)
@@ -63,6 +63,8 @@ func discard_dice() -> void:
 	
 	saved_dice_list.clear()
 	rolling_dice_list.append_array(unscored_dice_list)
+	
+	# Visually unsave all invalid dice nodes
 	for dice in unscored_dice_list:
 		_force_unsave.emit(dice)
 	
@@ -82,6 +84,7 @@ func _on_hand_rolling_done() -> void:
 	_update_round_status.emit()
 
 
+# Save dice data only
 func save_dice(dice: DiceInfo) -> void:
 	if rolling_dice_list.has(dice):
 		rolling_dice_list.erase(dice)
@@ -90,6 +93,7 @@ func save_dice(dice: DiceInfo) -> void:
 		# Check if category exists in saved
 		_update_round_status.emit()
 
+# Unsave dice data only
 func unsave_dice(dice: DiceInfo) -> void:
 	if saved_dice_list.has(dice):
 		saved_dice_list.erase(dice)

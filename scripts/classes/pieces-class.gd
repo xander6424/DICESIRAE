@@ -19,4 +19,6 @@ func round_started(): pass
 
 func round_ended(): pass
 
+func sell() -> int: return 0
+
 func reset(): pass

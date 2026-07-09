@@ -2,7 +2,6 @@ extends RigidBody2D
 
 class_name DiceDisplay
 
-
 @onready var face_sprite: Sprite2D = %FaceSprite
 @onready var roll_button = get_parent().get_parent().get_node("RollButton") # THIS SUCKS
 @onready var save_button: TextureButton = %SaveButton
@@ -17,12 +16,13 @@ var dice_saved: bool = false
 
 
 func _ready() -> void:
+	# Backup to create a dice class instance for the node
 	if dice == null:
 		dice = DiceInfo.new()
 	
 	# Display a random face upon being drawn
 	display_face(dice.faces[randi() % dice.dice_size])
-	# CHANGE COLOR HERE TOO??
+	# CHANGE COLOR HERE TOO?? (Or possibly in the display face function)
 	
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)
@@ -32,8 +32,8 @@ func setup(new_dice: DiceInfo):
 	dice_saved = false
 	rolling = false
 	
-	# faces display
-	# color change
+	# faces display?
+	# color change?
 
 
 func roll_button_pressed():
@@ -85,20 +85,22 @@ func _save_button_pressed():
 		save_dice()
 
 func save_dice():
-	# Dice to be saved
+	# Dice node to be saved
 	if !dice_saved:
 		dice_saved = true
 		position.y += 40
 		DiceManager.save_dice(dice)
-	# Dice to be unsaved
+	# Dice node to be unsaved
 	elif dice_saved:
 		dice_saved = false
 		position.y -= 40
 		DiceManager.unsave_dice(dice)
 	
+	# Disable roll button if all dice are saved
 	if GameData.rerolls > 0:
 		roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
 
+# Force handles unsaving dice to avoid touching data
 func visually_unsave():
 	if dice_saved:
 		dice_saved = false
@@ -108,4 +110,4 @@ func visually_unsave():
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1
 	face_sprite.texture = face_textures[index]
-	# CHANGE COLOR HERE TOO
+	# CHANGE/DISPLAY COLOR HERE TOO

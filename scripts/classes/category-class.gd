@@ -15,11 +15,13 @@ var scored: bool = false
 var exists_in_hand: bool = false
 var exists_in_saved: bool = false
 
-var valid_dice_list: Array[DiceInfo] = []
-
 # Current label and button associated with a category
 var label: Label = null
 var button: Button = null
+
+# Track which saved dice are valid to be scored in a category
+var valid_dice_list: Array[DiceInfo] = []
+
 
 func check_hand_existance(dice_list: Array[DiceInfo]) -> void: 
 	dice_list.is_empty()
@@ -27,6 +29,6 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 	dice_list.is_empty()
 
-# REMOVE
+# REMOVE (after moving all categories away from this)
 func score_category():
 	pass

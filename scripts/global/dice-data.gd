@@ -6,7 +6,11 @@ const HAND_POSITIONS: Array[Vector2] = [
 	Vector2(0.0, 0.0),
 	Vector2(50.0, 0.0),
 	Vector2(100.0, 0.0)
-	#Vector2(-100.0, 50.0)  Hypothetical 6th dice drawn
+	#Vector2(-100.0, 50.0)  Hypothetical 6th dice drawn?
+]
+
+const SAVED_POSITIONS: Array[Vector2] = [
+	# Add the 5 saved positions
 ]
 
 enum Size {

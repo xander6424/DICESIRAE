@@ -12,7 +12,7 @@ const MAX_ROUNDS: int = 3
 var times_scored: int = 0
 var rounds_passed: int = 0
 
-func dice_scored():
+func dice_scored() -> int:
 	if times_scored < MAX_SCORING:
 		times_scored += 1
 		return 10
