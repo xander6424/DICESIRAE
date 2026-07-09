@@ -88,12 +88,12 @@ func save_dice():
 	# Dice node to be saved
 	if !dice_saved:
 		dice_saved = true
-		position.y += 40
+		position.y += 50
 		DiceManager.save_dice(dice)
 	# Dice node to be unsaved
 	elif dice_saved:
 		dice_saved = false
-		position.y -= 40
+		position.y -= 50
 		DiceManager.unsave_dice(dice)
 	
 	# Disable roll button if all dice are saved
@@ -104,7 +104,7 @@ func save_dice():
 func visually_unsave():
 	if dice_saved:
 		dice_saved = false
-		position.y -= 40
+		position.y -= 50
 
 
 func display_face(face: DiceFace) -> void:

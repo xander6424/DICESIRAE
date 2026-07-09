@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cnpmdpxg85t2q" path="res://scripts/dice-hand.gd" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/rollbutton-32p.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/dice/saved-dice-slots.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
 [ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
@@ -39,6 +40,16 @@ theme_override_font_sizes/font_size = 96
 text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DiceSavedSlots" type="Sprite2D" parent="." unique_id=1170317234]
+position = Vector2(370, 325)
+texture = ExtResource("5_eb6dy")
+
+[node name="DiceHand" type="Node2D" parent="." unique_id=950121212]
+unique_name_in_owner = true
+position = Vector2(370, 275)
+script = ExtResource("3_ya4ey")
+dice_scene = ExtResource("2_h2yge")
 
 [node name="Labels" type="Control" parent="." unique_id=2014806734]
 layout_mode = 3
@@ -104,10 +115,10 @@ text = "Score to Beat: "
 [node name="DrawPile" type="Label" parent="Labels" unique_id=1434327791]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 488.0
-offset_top = 328.0
-offset_right = 525.0
-offset_bottom = 354.0
+offset_left = 496.0
+offset_top = 336.0
+offset_right = 533.0
+offset_bottom = 362.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "0/0"
@@ -116,20 +127,14 @@ horizontal_alignment = 1
 [node name="DiscardPile" type="Label" parent="Labels" unique_id=1020481931]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 216.0
-offset_top = 328.0
-offset_right = 253.0
-offset_bottom = 354.0
+offset_left = 211.0
+offset_top = 336.0
+offset_right = 248.0
+offset_bottom = 362.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "0/0"
 horizontal_alignment = 1
-
-[node name="DiceHand" type="Node2D" parent="." unique_id=950121212]
-unique_name_in_owner = true
-position = Vector2(370, 280)
-script = ExtResource("3_ya4ey")
-dice_scene = ExtResource("2_h2yge")
 
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true

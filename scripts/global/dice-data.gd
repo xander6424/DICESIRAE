@@ -10,7 +10,11 @@ const HAND_POSITIONS: Array[Vector2] = [
 ]
 
 const SAVED_POSITIONS: Array[Vector2] = [
-	# Add the 5 saved positions
+	Vector2(-100.0, 50.0),
+	Vector2(-50.0, 50.0),
+	Vector2(0.0, 50.0),
+	Vector2(50.0, 50.0),
+	Vector2(100.0, 50.0)
 ]
 
 enum Size {
