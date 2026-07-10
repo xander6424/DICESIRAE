@@ -46,7 +46,13 @@ func roll_dice():
 	rolling = true
 	dice_currently_rolling += 1
 	
-	# ADD PHYSICS HERE
+	# PHYSICS
+	#var angle: float = randf_range(0.0, TAU)
+	#var direction: Vector2 = Vector2.from_angle(angle)
+	#var strength: float = randf_range(150.0, 350.0)
+	
+	#apply_central_impulse(direction * strength)
+	#apply_torque_impulse(randf_range(-400.0, 400.0))
 	
 	var duration: float = GameData.ROLL_DURATION
 	var previous_index: int = dice.current_face_index

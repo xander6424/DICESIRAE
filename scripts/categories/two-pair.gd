@@ -71,4 +71,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 		valid_dice_list.clear()
 	
 	# test output
-	print("TWO PAIR: ", valid_dice_list)
+	#print("TWO PAIR: ", valid_dice_list)
