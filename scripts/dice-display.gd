@@ -91,43 +91,34 @@ func _save_button_pressed():
 		save_dice()
 
 func save_dice():
-	# Dice node to be saved
+	# Dice node to be SAVED
 	if !dice_saved:
 		dice_saved = true
-		
-		var empty_index: int = DiceData.dice_saved_slots.find(null)
-		var old_index: int = DiceData.dice_hand_slots.find(dice)
-		DiceData.dice_saved_slots[empty_index] = dice
-		DiceData.dice_hand_slots[old_index] = null
-		position = DiceData.SAVED_POSITIONS[empty_index]
-		
+		swap_slots(DiceData.dice_saved_slots, DiceData.dice_hand_slots, DiceData.SAVED_POSITIONS)
 		DiceManager.save_dice(dice)
-	# Dice node to be unsaved
+	# Dice node to be UNSAVED
 	elif dice_saved:
 		dice_saved = false
-		
-		var empty_index: int = DiceData.dice_hand_slots.find(null)
-		var old_index: int = DiceData.dice_saved_slots.find(dice)
-		DiceData.dice_hand_slots[empty_index] = dice
-		DiceData.dice_saved_slots[old_index] = null
-		position = DiceData.HAND_POSITIONS[empty_index]
-		
+		swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
 		DiceManager.unsave_dice(dice)
 	
 	# Disable roll button if all dice are saved
 	if GameData.rerolls > 0:
 		roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
 
-# Force handles unsaving dice to avoid touching data
+# Force handles unsaving dice visually to avoid touching data
 func visually_unsave():
 	if dice_saved:
 		dice_saved = false
-		
-		var empty_index: int = DiceData.dice_hand_slots.find(null)
-		var old_index: int = DiceData.dice_saved_slots.find(dice)
-		DiceData.dice_hand_slots[empty_index] = dice
-		DiceData.dice_saved_slots[old_index] = null
-		position = DiceData.HAND_POSITIONS[empty_index]
+		swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
+
+# Swaps dice between chosen slots and positions them
+func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -> void:
+	var empty_index: int = new_slots.find(null)
+	var old_index: int = old_slots.find(dice)
+	new_slots[empty_index] = dice
+	old_slots[old_index] = null
+	position = positions[empty_index]
 
 
 func display_face(face: DiceFace) -> void:
