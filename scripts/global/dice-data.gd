@@ -17,6 +17,10 @@ const SAVED_POSITIONS: Array[Vector2] = [
 	Vector2(100.0, 50.0)
 ]
 
+# Stores dice info OR null for closed and opened slots
+var dice_hand_slots: Array = []
+var dice_saved_slots: Array = []
+
 enum Size {
 	D6 = 6, 
 	D8 = 8, 

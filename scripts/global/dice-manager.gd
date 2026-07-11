@@ -37,7 +37,7 @@ func reset_round() -> void:
 	
 	discard_pile.clear()
 	
-	DiceManager.draw_dice()
+	draw_dice()
 
 
 func draw_dice() -> void:

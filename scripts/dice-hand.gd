@@ -4,11 +4,12 @@ class_name DiceHand
 
 @export var dice_scene: PackedScene
 
-var dice_hand_slots: Array = [] # Stores dice info or null for closed and opened slots
 var dice_nodes: Dictionary = {} # Stores actual visible nodes associated with dice info instances
 
+
 func _ready() -> void:
-	dice_hand_slots.resize(DiceData.HAND_POSITIONS.size())
+	DiceData.dice_hand_slots.resize(DiceData.HAND_POSITIONS.size())
+	DiceData.dice_saved_slots.resize(DiceData.SAVED_POSITIONS.size())
 	
 	DiceManager._on_hand_drawn.connect(_on_hand_drawn)
 	DiceManager._on_saved_discarded.connect(_on_saved_discarded)
@@ -18,7 +19,7 @@ func _on_hand_drawn() -> void:
 	# Find the first empty dice slot to display drawn dice
 	for dice in DiceManager.rolling_dice_list:
 		if !dice_nodes.has(dice):
-			var empty_index: int = dice_hand_slots.find(null)
+			var empty_index: int = DiceData.dice_hand_slots.find(null)
 			spawn_dice(dice, empty_index)
 	
 	print("HAND DRAWN")
@@ -31,10 +32,9 @@ func _on_saved_discarded(discarded_dice_list: Array[DiceInfo]) -> void:
 			node.queue_free()
 			dice_nodes.erase(dice)
 			
-			# Frees up space in the hand dice slot
-			var used_index: int = dice_hand_slots.find(dice)
-			if used_index != -1:
-				dice_hand_slots[used_index] = null
+			# Frees up space in the saved dice slot(s)
+			var used_index: int = DiceData.dice_saved_slots.find(dice)
+			DiceData.dice_saved_slots[used_index] = null
 	
 	print("HAND DISCARDED")
 
@@ -52,4 +52,4 @@ func spawn_dice(dice: DiceInfo, open_index: int) -> void:
 	
 	# Fill the once empty dice slot
 	dice_nodes[dice] = node
-	dice_hand_slots[open_index] = dice
+	DiceData.dice_hand_slots[open_index] = dice

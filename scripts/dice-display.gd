@@ -94,12 +94,24 @@ func save_dice():
 	# Dice node to be saved
 	if !dice_saved:
 		dice_saved = true
-		position.y += 50
+		
+		var empty_index: int = DiceData.dice_saved_slots.find(null)
+		var old_index: int = DiceData.dice_hand_slots.find(dice)
+		DiceData.dice_saved_slots[empty_index] = dice
+		DiceData.dice_hand_slots[old_index] = null
+		position = DiceData.SAVED_POSITIONS[empty_index]
+		
 		DiceManager.save_dice(dice)
 	# Dice node to be unsaved
 	elif dice_saved:
 		dice_saved = false
-		position.y -= 50
+		
+		var empty_index: int = DiceData.dice_hand_slots.find(null)
+		var old_index: int = DiceData.dice_saved_slots.find(dice)
+		DiceData.dice_hand_slots[empty_index] = dice
+		DiceData.dice_saved_slots[old_index] = null
+		position = DiceData.HAND_POSITIONS[empty_index]
+		
 		DiceManager.unsave_dice(dice)
 	
 	# Disable roll button if all dice are saved
@@ -110,7 +122,12 @@ func save_dice():
 func visually_unsave():
 	if dice_saved:
 		dice_saved = false
-		position.y -= 50
+		
+		var empty_index: int = DiceData.dice_hand_slots.find(null)
+		var old_index: int = DiceData.dice_saved_slots.find(dice)
+		DiceData.dice_hand_slots[empty_index] = dice
+		DiceData.dice_saved_slots[old_index] = null
+		position = DiceData.HAND_POSITIONS[empty_index]
 
 
 func display_face(face: DiceFace) -> void:
