@@ -98,9 +98,11 @@ func _score_button_pressed() -> void:
 			
 			GameData.total_add_score = 0
 			GameData.total_mult_score = current_category.mult_score
+			DiceManager.scoring_dice_list.clear()
 			
 			# Only checks to score if category is even valid
 			if current_category.exists_in_saved:
+				DiceManager.scoring_dice_list = current_category.valid_dice_list
 				category_total = score_category(category_total, current_category)
 			
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
@@ -121,6 +123,9 @@ func score_category(category_total: int, category: CategoryInfo):
 		dice.scored = true
 		
 		PieceManager.dice_scored()
+	
+	# Score pieces
+	PieceManager.pieces_scored()
 	
 	# Full scoring
 	GameData.total_add_score += category.base_score

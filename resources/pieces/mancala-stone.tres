@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MancalaStone" format=3 uid="uid://cv06ho5uqg750"]
+
+[ext_resource type="Script" uid="uid://d0rdmvxpk656k" path="res://scripts/piece/mancala-stone.gd" id="1_1wjui"]
+[ext_resource type="Texture2D" uid="uid://bgbxc7lpvyg26" path="res://assets/piece/mancala-stone.png" id="2_tiqlx"]
+
+[resource]
+script = ExtResource("1_1wjui")
+piece_id = 1
+piece_name = "Mancala Stone"
+piece_description = "Add the highest scored dice value to the mult score."
+texture = ExtResource("2_tiqlx")
+sell_value = 1
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"

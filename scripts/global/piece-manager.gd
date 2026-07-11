@@ -27,6 +27,18 @@ func dice_scored() -> void:
 		
 		#current_category.mult_score *= score_values[2]
 
+func pieces_scored() -> void:
+	for piece in active_piece_list:
+		var score_values: Array[int] = piece.piece_scored()
+		
+		print(piece.piece_name, " ADD +", score_values[0])
+		GameData.total_add_score += score_values[0]
+		
+		print(piece.piece_name, " MULT +", score_values[1])
+		GameData.total_mult_score += score_values[1]
+		
+		#current_category.mult_score *= score_values[2]
+
 func reset_piece_values() -> void:
 	for piece in active_piece_list:
 		piece.reset_values()

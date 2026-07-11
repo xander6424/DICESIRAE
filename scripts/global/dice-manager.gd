@@ -11,6 +11,7 @@ const MAX_DRAW_PILE_SIZE: int = 10
 
 var draw_pile: Array[DiceInfo] = []
 var all_dice_list: Array[DiceInfo] = [] # Contains all dice for checking
+var scoring_dice_list: Array[DiceInfo] = [] # Contains valid dice for checking
 var rolling_dice_list: Array[DiceInfo] = []
 var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
@@ -22,6 +23,7 @@ func _ready() -> void:
 func create_starting_dice() -> void:
 	draw_pile.clear()
 	all_dice_list.clear()
+	scoring_dice_list.clear()
 	rolling_dice_list.clear()
 	saved_dice_list.clear()
 	discard_pile.clear()

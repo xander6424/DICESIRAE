@@ -7,7 +7,7 @@
 script = ExtResource("1_2xgo2")
 piece_id = 1
 piece_name = "Ladder"
-piece_description = "+1 Lot"
+piece_description = "+1 Reroll"
 texture = ExtResource("2_q04u0")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"
