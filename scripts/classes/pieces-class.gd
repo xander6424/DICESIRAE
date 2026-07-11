@@ -10,13 +10,13 @@ class_name PieceInfo
 
 var using: bool = false
 
-var add_value: int = 0
-var mult_value: int = 0
+# [ADD Value, MULT Value]
+var score_values: Array[int] = [0, 0]
 
 
-func piece_scored() -> int: return 0
+func piece_scored() -> Array[int]: return score_values
 
-func dice_scored() -> int: return 0
+func dice_scored() -> Array[int]: return score_values
 
 func round_started(): pass
 
@@ -24,4 +24,4 @@ func round_ended(): pass
 
 func sell() -> int: return 0
 
-func reset(): pass
+func reset_values() -> void: pass
