@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/dice/saved-dice-slots.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
+[ext_resource type="PackedScene" uid="uid://d1j6276j77155" path="res://scenes/rolling_zone.tscn" id="6_trceg"]
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
 [ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
@@ -40,6 +41,9 @@ theme_override_font_sizes/font_size = 96
 text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RollingZone" parent="." unique_id=1361379270 instance=ExtResource("6_trceg")]
+position = Vector2(370, 160)
 
 [node name="DiceSavedSlots" type="Sprite2D" parent="." unique_id=1170317234]
 position = Vector2(370, 325)
