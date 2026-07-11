@@ -94,41 +94,40 @@ func _score_button_pressed() -> void:
 				break
 		
 		if category_selected:
-			var total_scored: int = 0
+			var category_total: int = 0
+			
+			GameData.total_add_score = 0
+			GameData.total_mult_score = current_category.mult_score
 			
 			# Only checks to score if category is even valid
 			if current_category.exists_in_saved:
-				# Score saved dice only
-				for dice in current_category.valid_dice_list:
-					print("+", str(dice.score_dice()))
-					total_scored += dice.score_dice()
-					dice.scored = true
-					
-					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
-					for piece in PieceData.active_piece_list:
-						var score_values: Array[int] = piece.dice_scored()
-						
-						print(piece.piece_name, " ADD +", score_values[0])
-						total_scored += score_values[0]
-						print(piece.piece_name, " MULT +", score_values[1])
-						current_category.mult_score += score_values[1]
-						#current_category.mult_score *= score_values[2]
-				
-				# Full scoring
-				total_scored += current_category.base_score
-				total_scored *= current_category.mult_score
-				GameData.grand_total += total_scored
-				
-				# TEMP PIECE RESETING
-				for piece in PieceData.active_piece_list:
-					piece.reset()
+				category_total = score_category(category_total, current_category)
 			
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
 			
 			current_category.scored = true
 			current_category.button.disabled = true
-			current_category.button.text = str(total_scored)
+			current_category.button.text = str(category_total)
 			GameData.current_lot_scored = true
 			
 			_update_labels()
 			_on_update_round_status.emit()
+
+func score_category(category_total: int, category: CategoryInfo):
+	# Score saved dice only
+	for dice in category.valid_dice_list:
+		print("+", str(dice.score_dice()))
+		GameData.total_add_score += dice.score_dice()
+		dice.scored = true
+		
+		PieceManager.dice_scored()
+	
+	# Full scoring
+	GameData.total_add_score += category.base_score
+	GameData.total_add_score *= GameData.total_mult_score
+	category_total = GameData.total_add_score
+	GameData.grand_total += category_total
+	
+	PieceManager.reset_piece_values()
+	
+	return category_total

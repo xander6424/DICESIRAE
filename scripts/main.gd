@@ -35,8 +35,8 @@ func _on_reset_round() -> void:
 	# Activate pieces at beginning of round (temporary location)
 	GameData.bonus_lots = 0
 	GameData.bonus_rerolls = 0
-	for piece in PieceData.active_piece_list:
-		piece.round_started()
+	
+	PieceManager.round_started()
 	
 	GameData.lots = GameData.STARTING_LOTS + GameData.bonus_lots
 	GameData.rerolls = GameData.STARTING_REROLLS + GameData.bonus_rerolls

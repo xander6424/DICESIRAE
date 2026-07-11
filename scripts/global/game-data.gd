@@ -22,6 +22,9 @@ var money: int = STARTING_MONEY
 var grand_total: int = 0
 var score_to_beat: int = ROUND_SCORE_SCALING[0]
 
+var total_add_score: int = 0
+var total_mult_score: int = 0
+
 var first_round_roll: bool = true
 var current_lot_scored: bool = false
 var round_won: bool = false
