@@ -10,15 +10,25 @@ class_name CategoryInfo
 @export var mult_score: int
 
 var level: int = 1
-var valid: bool = false
-var scored: bool = false
 var total: int = 0
+var scored: bool = false
+var exists_in_hand: bool = false
+var exists_in_saved: bool = false
 
 # Current label and button associated with a category
 var label: Label = null
 var button: Button = null
 
-func check_validity() -> void: pass
+# Track which saved dice are valid to be scored in a category
+var valid_dice_list: Array[DiceInfo] = []
 
-func score_category() -> int:
-	return 0
+
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void: 
+	dice_list.is_empty()
+
+func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
+	dice_list.is_empty()
+
+# REMOVE (after moving all categories away from this)
+func score_category():
+	pass

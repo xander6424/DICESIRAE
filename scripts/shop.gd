@@ -1,6 +1,7 @@
 extends Control
 
 #signal _buy_piece()
+signal _on_update_round_status()
 
 @onready var piece_button: Button = %PieceButton
 @onready var skip_button: Button = %SkipButton
@@ -19,6 +20,8 @@ func piece_button_pressed() -> void:
 		print("PURCHASED: ", random_piece.piece_name)
 		
 		GameData.money -= 3
+		
+		_on_update_round_status.emit()
 	else:
 		print("NOT ENOUGH MONEY")
 

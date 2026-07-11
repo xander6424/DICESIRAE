@@ -1,13 +1,18 @@
 extends Control
 
-signal _update_round_status()
+signal _on_update_round_status()
 
 @onready var score_button: Button = %ScoreButton
+
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
 @onready var money_label: Label = %Money
 @onready var grand_total_label: Label = %Total
 @onready var total_to_beat_label: Label = %TotalToBeat
+
+@onready var draw_pile_label: Label = %DrawPile
+@onready var discard_pile_label: Label = %DiscardPile
+
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
@@ -22,7 +27,14 @@ func _update_labels() -> void:
 	money_label.text = "Money: $" + str(GameData.money)
 	grand_total_label.text = "TOTAL: " + str(GameData.grand_total)
 	total_to_beat_label.text = "Score to Beat: " + str(GameData.score_to_beat) # Change?
-
+	draw_pile_label.text = str(DiceManager.draw_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
+	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
+	
+	# Test output
+	#print("ROLLING LIST: ", DiceManager.rolling_dice_list)
+	#print("SAVED LIST: ", DiceManager.saved_dice_list)
+	#print("DISCARD PILE: ", DiceManager.discard_pile)
+	
 
 func _reset_scorecard() -> void:
 	# Add only starting categories to the scorecard
@@ -45,18 +57,26 @@ func _reset_scorecard() -> void:
 			scorecard_index += 1
 
 func _update_scorecard() -> void:
-	GameData.scoring_dice_list.clear()
-	for dice in GameData.rolling_dice_list:
-		GameData.scoring_dice_list.append(dice)
-	for dice in GameData.saved_dice_list:
-		GameData.scoring_dice_list.append(dice)
-	
+	# If a new category is purchased, then reset scorecard too
+	check_category_existance()
+
+func check_category_existance() -> void:
 	for category in CategoryData.active_category_info_list:
-		category.total = 0
+		category.total = 0 # Possibly remove this eventually?
 		
-		# Checks if a category exists in current hand
+		# Checks if an unscored category exists in current hand
 		if !category.scored:
-			category.check_validity()
+			category.check_hand_existance(DiceManager.all_dice_list)
+			category.check_saved_existance(DiceManager.saved_dice_list)
+			
+			# Indicate if category exists by color
+			if category.exists_in_saved:
+				category.label.add_theme_color_override("font_color", Color.GOLD)
+			elif category.exists_in_hand:
+				category.label.add_theme_color_override("font_color", Color.YELLOW)
+			else:
+				category.label.add_theme_color_override("font_color", Color.WHITE)
+			
 			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
 
 
@@ -76,22 +96,30 @@ func _score_button_pressed() -> void:
 		if category_selected:
 			var total_scored: int = 0
 			
-			if current_category.valid:
-				total_scored = current_category.base_score + current_category.score_category()
+			# Only checks to score if category is even valid
+			if current_category.exists_in_saved:
+				# Score saved dice only
+				for dice in current_category.valid_dice_list:
+					print("+", str(dice.score_dice()))
+					total_scored += dice.score_dice()
+					
+					dice.scored = true
+					
+					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
+					for piece in PieceData.active_piece_list:
+						total_scored += piece.dice_scored()
 				
-				# TEMP PIECE DICE ACTIVATION (ADD ONLY)
-				for piece in PieceData.active_piece_list:
-					total_scored += piece.dice_scored()
-				
+				# Full scoring
+				total_scored += current_category.base_score
 				total_scored *= current_category.mult_score
 				GameData.grand_total += total_scored
-				
-				current_category.label.add_theme_color_override("font_color", Color.WHITE)
-				
+			
+			current_category.label.add_theme_color_override("font_color", Color.WHITE)
+			
 			current_category.scored = true
 			current_category.button.disabled = true
 			current_category.button.text = str(total_scored)
 			GameData.current_lot_scored = true
 			
 			_update_labels()
-			_update_round_status.emit()
+			_on_update_round_status.emit()

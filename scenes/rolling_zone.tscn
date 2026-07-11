@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d1j6276j77155"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ormmd"]
+size = Vector2(10, 287)
+
+[node name="RollingZone" type="StaticBody2D" unique_id=1361379270]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=361924746]
+position = Vector2(-140, 1.5)
+shape = SubResource("RectangleShape2D_ormmd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1424550554]
+position = Vector2(140, 0)
+shape = SubResource("RectangleShape2D_ormmd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1406831611]
+position = Vector2(0, -141)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ormmd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=105020405]
+position = Vector2(2.1855695e-07, 139)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ormmd")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1941227087]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -136.0
+offset_right = 135.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.22550559, 0.22550562, 0.22550562, 1)

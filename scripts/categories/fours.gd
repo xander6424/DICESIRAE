@@ -5,16 +5,14 @@ class_name Fours
 const VALUE = 4
 
 
-func check_validity() -> void:
-	valid = false
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
+	exists_in_hand = false
 	
-	if VALUE in GameData.scoring_dice_list:
-		valid = true
-	
-	if valid:
-		label.add_theme_color_override("font_color", Color.YELLOW)
-	else:
-		label.add_theme_color_override("font_color", Color.WHITE)
+	for i in dice_list.size():
+		var index: int = dice_list[i].current_face_index
+		if dice_list[i].faces[index].face_value == VALUE:
+			exists_in_hand = true
+			break
 
 func score_category():
 	for dice in GameData.scoring_dice_list:

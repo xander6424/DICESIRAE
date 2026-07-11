@@ -1,25 +1,36 @@
 DICESIRAE TO-DO LIST
 
-1. Scoring Pieces
-	- Reworking the scorecard script
-	- Updating scorecard is still good
+1. Dice Physics
+	- Rolling Zone
+	- Implement physics
+		- Align well/naturally with roll time
+	- Rotation alignment when saving/unsaving
+	- Create a current_position to move rolled dice back to where they landed
+	  to prevent overlapping
+2. Scoring Pieces
+	- Create a piece-manager script to call when scoring
+		- Handle scoring and deletion/selling
 	- Scoring a category needs changed to actually add piece effects
 	- Also include on round start and on round end functionality
-2. Dice Class/Resource
-	- Need a reusable dice object with unique properties
-	- A "deck" of dice to draw from
-	- Reimplement rolling, saving/unsaving, and scoring
+		- Possibly reset as well
 3. Pieces Section
 	- Ordering matters
+	- Display pieces
+	- Selling pieces & deactivation
 4. Other test shop stuff
 	- Level up categories
+		- Add scaling
+	- Add new categories
 	- Modify dice
-5. Dice Physics
-	- Starting location
-	- Saving location
-6. Main menu (entering and exiting new scenes)
+		- Full color types & individual face types
+		- Implement their functionality as well (in dice-manager?)
+		- More sizes?
+5. Main menu (entering and exiting new scenes)
+	- Start game (reset game)
+		- Put this in lose screen too
+	- Options menu
 	- Loading screen?
-7. Optimize code and comment
+6. Optimize code and comment
 
 
 ROUND OVER

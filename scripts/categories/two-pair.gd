@@ -3,16 +3,22 @@ extends CategoryInfo
 class_name TwoPair
 
 
-func check_validity() -> void:
-	valid = false
+func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
+	exists_in_hand = false
 	
 	var pairs: int = 0
 	var banned_face: int = -1
+	var scoring_value_list: Array[int] = []
 	
-	for dice in GameData.scoring_dice_list:
+	# Create array of face values
+	for i in dice_list.size():
+		var index: int = dice_list[i].current_face_index
+		scoring_value_list.append(dice_list[i].faces[index].face_value)
+	
+	for face in scoring_value_list:
 		# Check for a pair
-		if GameData.scoring_dice_list.count(dice) >= 2 and dice != banned_face:
-			banned_face = dice
+		if scoring_value_list.count(face) >= 2 and face != banned_face:
+			banned_face = face
 			pairs += 1
 			
 			# Exit if a two pair is found
@@ -21,29 +27,48 @@ func check_validity() -> void:
 		
 	# Valid if 2 pairs are found
 	if pairs >= 2:
-		valid = true
-	
-	if valid:
-		label.add_theme_color_override("font_color", Color.YELLOW)
-	else:
-		label.add_theme_color_override("font_color", Color.WHITE)
+		exists_in_hand = true
 
-func score_category():
-	var pairs: int = 0
-	var banned_face: int = -1
+# FIX: WILL SCORE A FULL HOUSE
+func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
+	exists_in_saved = false
+	valid_dice_list.clear()
 	
-	for dice in GameData.scoring_dice_list:
+	var pairs: int = 0
+	var banned_faces: Array[int] = []
+	var scoring_value_list: Array[int] = []
+	
+	# Create array of face values
+	for i in dice_list.size():
+		var index: int = dice_list[i].current_face_index
+		scoring_value_list.append(dice_list[i].faces[index].face_value)
+	
+	for face in scoring_value_list:
 		# Check for a pair
-		if GameData.scoring_dice_list.count(dice) >= 2 and dice != banned_face:
-			total += dice * 2
-			banned_face = dice
+		if scoring_value_list.count(face) >= 2 and !(face in banned_faces):
+			var dice_added: int = 0
+			banned_faces.append(face)
 			pairs += 1
+			
+			# Only grab valid dice pair
+			for i in dice_list.size():
+				var index: int = dice_list[i].current_face_index
+				if dice_list[i].faces[index].face_value == face:
+					valid_dice_list.append(dice_list[i])
+					dice_added += 1
+					
+					if dice_added == 2:
+						break
 			
 			# Exit if a two pair is found
 			if pairs == 2:
 				break
 		
-	if pairs < 2:
-		total = 0
+	# Valid if 2 pairs are found
+	if pairs >= 2:
+		exists_in_saved = true
+	else:
+		valid_dice_list.clear()
 	
-	return total
+	# test output
+	#print("TWO PAIR: ", valid_dice_list)
