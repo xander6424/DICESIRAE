@@ -10,6 +10,9 @@ class_name PieceInfo
 
 var using: bool = false
 
+var add_value: int = 0
+var mult_value: int = 0
+
 
 func piece_scored() -> int: return 0
 

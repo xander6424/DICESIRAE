@@ -31,9 +31,9 @@ func _update_labels() -> void:
 	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
 	
 	# Test output
-	print("ROLLING LIST: ", DiceManager.rolling_dice_list)
-	print("SAVED LIST: ", DiceManager.saved_dice_list)
-	print("DISCARD PILE: ", DiceManager.discard_pile)
+	#print("ROLLING LIST: ", DiceManager.rolling_dice_list)
+	#print("SAVED LIST: ", DiceManager.saved_dice_list)
+	#print("DISCARD PILE: ", DiceManager.discard_pile)
 	
 
 func _reset_scorecard() -> void:
@@ -57,6 +57,7 @@ func _reset_scorecard() -> void:
 			scorecard_index += 1
 
 func _update_scorecard() -> void:
+	# If a new category is purchased, then reset scorecard too
 	check_category_existance()
 
 func check_category_existance() -> void:
@@ -103,7 +104,7 @@ func _score_button_pressed() -> void:
 					total_scored += dice.score_dice()
 					
 					dice.scored = true
-				
+					
 					# TEMP PIECE DICE ACTIVATION (ADD ONLY)
 					for piece in PieceData.active_piece_list:
 						total_scored += piece.dice_scored()

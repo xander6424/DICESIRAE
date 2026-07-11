@@ -192,3 +192,4 @@ visible = false
 [connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
 [connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
 [connection signal="_on_update_round_status" from="Scorecard" to="." method="_on_update_round_status"]
+[connection signal="_on_update_round_status" from="Shop" to="." method="_on_update_round_status"]
