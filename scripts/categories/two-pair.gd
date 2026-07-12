@@ -29,7 +29,6 @@ func check_hand_existance(dice_list: Array[DiceInfo]) -> void:
 	if pairs >= 2:
 		exists_in_hand = true
 
-# FIX: WILL SCORE A FULL HOUSE
 func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 	exists_in_saved = false
 	valid_dice_list.clear()
@@ -71,4 +70,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 		valid_dice_list.clear()
 	
 	# test output
-	#print("TWO PAIR: ", valid_dice_list)
+	print("TWO PAIR: ", valid_dice_list)
