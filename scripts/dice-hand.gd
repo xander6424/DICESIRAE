@@ -12,7 +12,7 @@ func _ready() -> void:
 	DiceData.dice_saved_slots.resize(DiceData.SAVED_POSITIONS.size())
 	
 	DiceManager._on_hand_drawn.connect(_on_hand_drawn)
-	DiceManager._on_saved_discarded.connect(_on_saved_discarded)
+	DiceManager._on_dice_discarded.connect(_on_dice_discarded)
 	DiceManager._force_unsave.connect(_on_force_unsave)
 
 func _on_hand_drawn() -> void:
@@ -24,7 +24,7 @@ func _on_hand_drawn() -> void:
 	
 	print("HAND DRAWN")
 
-func _on_saved_discarded(discarded_dice_list: Array[DiceInfo]) -> void:
+func _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array) -> void:
 	for dice in discarded_dice_list:
 		if dice_nodes.has(dice):
 			# Removes the discarded dice node
@@ -33,8 +33,8 @@ func _on_saved_discarded(discarded_dice_list: Array[DiceInfo]) -> void:
 			dice_nodes.erase(dice)
 			
 			# Frees up space in the saved dice slot(s)
-			var used_index: int = DiceData.dice_saved_slots.find(dice)
-			DiceData.dice_saved_slots[used_index] = null
+			var used_index: int = dice_slots.find(dice)
+			dice_slots[used_index] = null
 	
 	print("HAND DISCARDED")
 

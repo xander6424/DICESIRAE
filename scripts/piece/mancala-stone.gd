@@ -3,7 +3,7 @@ extends PieceInfo
 class_name MancalaStone
 
 # ABILITY:
-# Adds the highest scored dice to the mult score.
+# Adds the highest scored dice value to the mult score.
 	# No secret synergies.
 
 func piece_scored() -> Array[int]:

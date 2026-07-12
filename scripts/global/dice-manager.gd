@@ -1,7 +1,7 @@
 extends Node
 
 signal _on_hand_drawn()
-signal _on_saved_discarded(discarded_dice_list: Array[DiceInfo])
+signal _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array)
 signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _update_round_status()
@@ -34,9 +34,12 @@ func create_starting_dice() -> void:
 	draw_pile.shuffle()
 
 func reset_round() -> void:
+	# Discard all remaining dice in hand
+	_on_dice_discarded.emit(rolling_dice_list, DiceData.dice_hand_slots)
+	
+	# Move all dice to draw pile and shuffle
 	draw_pile.append_array(discard_pile)
 	draw_pile.shuffle()
-	
 	discard_pile.clear()
 	
 	draw_dice()
@@ -70,7 +73,7 @@ func discard_dice() -> void:
 	for dice in unscored_dice_list:
 		_force_unsave.emit(dice)
 	
-	_on_saved_discarded.emit(discarded_dice_list)
+	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
 
 
 func _on_hand_rolling_done() -> void:

@@ -44,4 +44,4 @@ func check_saved_existance(dice_list: Array[DiceInfo]) -> void:
 			break
 	
 	# test output
-	print("THREE OF A KIND: ", valid_dice_list)
+	#print("THREE OF A KIND: ", valid_dice_list)
