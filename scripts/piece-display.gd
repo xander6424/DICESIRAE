@@ -11,6 +11,7 @@ class_name PieceDisplay
 			update_visuals()
 
 @onready var piece_sprite: Sprite2D = %PieceSprite
+@onready var piece_collision_shape: CollisionShape2D = %PieceCollisionShape
 
 
 func _ready() -> void:
