@@ -10,7 +10,7 @@ class_name DiceDisplay
 @export var face_textures: Array[Texture2D] = []
  
 # Physics variables
-@export var min_impulse_strength: float = 300.0
+@export var min_impulse_strength: float = 400.0
 @export var max_impulse_strength: float = 550.0
 @export var max_torque_impulse: float = 1000.0
 var current_position: Vector2 = Vector2(0.0, 0.0)
@@ -31,8 +31,8 @@ func _ready() -> void:
 	# CHANGE COLOR HERE TOO?? (Or possibly in the display face function)
 	
 	# Basic table friction.
-	linear_damp = 1.2
-	angular_damp = 1.2
+	linear_damp = 1.5
+	angular_damp = 0.9
 	
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)

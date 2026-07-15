@@ -12,14 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dice/dieblank-pressed_32p.png" id="8_pgf55"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pgf55"]
-friction = 0.6
-bounce = 1.0
+friction = 0.75
+bounce = 0.5
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4jp2"]
-size = Vector2(29, 29)
-
 [node name="Dice" type="RigidBody2D" unique_id=732832586]
+mass = 0.9
 physics_material_override = SubResource("PhysicsMaterial_pgf55")
 gravity_scale = 0.0
 script = ExtResource("1_y4pxb")
@@ -28,8 +26,8 @@ face_textures = Array[Texture2D]([ExtResource("2_pgf55"), ExtResource("3_dlvbc")
 [node name="FaceSprite" type="Sprite2D" parent="." unique_id=389677390]
 unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884191497]
-shape = SubResource("RectangleShape2D_m4jp2")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1051256202]
+polygon = PackedVector2Array(-16, -12, -12, -16, 12, -16, 16, -12, 16, 12, 12, 16, -12, 16, -16, 12)
 
 [node name="SaveButton" type="TextureButton" parent="." unique_id=1849972289]
 unique_name_in_owner = true
