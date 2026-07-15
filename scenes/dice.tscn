@@ -11,10 +11,16 @@
 [ext_resource type="BitMap" uid="uid://cnrn1rs24jdhp" path="res://assets/dice/diemask-32p.png" id="8_ocjtb"]
 [ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dice/dieblank-pressed_32p.png" id="8_pgf55"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pgf55"]
+friction = 0.6
+bounce = 1.0
+absorbent = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4jp2"]
 size = Vector2(29, 29)
 
 [node name="Dice" type="RigidBody2D" unique_id=732832586]
+physics_material_override = SubResource("PhysicsMaterial_pgf55")
 gravity_scale = 0.0
 script = ExtResource("1_y4pxb")
 face_textures = Array[Texture2D]([ExtResource("2_pgf55"), ExtResource("3_dlvbc"), ExtResource("4_skxya"), ExtResource("5_4kp1s"), ExtResource("6_nkpnt"), ExtResource("7_mvkvt")])

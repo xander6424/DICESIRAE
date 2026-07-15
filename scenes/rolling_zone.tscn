@@ -3,6 +3,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ormmd"]
 size = Vector2(10, 287)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qvx6"]
+
 [node name="RollingZone" type="StaticBody2D" unique_id=1361379270]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=361924746]
@@ -22,6 +24,26 @@ shape = SubResource("RectangleShape2D_ormmd")
 position = Vector2(2.1855695e-07, 139)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_ormmd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1743798821]
+position = Vector2(-135, 134)
+rotation = 2.3561945
+shape = SubResource("RectangleShape2D_4qvx6")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1104373764]
+position = Vector2(135, 134)
+rotation = 2.3561945
+shape = SubResource("RectangleShape2D_4qvx6")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=91437790]
+position = Vector2(135.00002, -136)
+rotation = 2.3561945
+shape = SubResource("RectangleShape2D_4qvx6")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=1959813163]
+position = Vector2(-134.99998, -136)
+rotation = 2.3561945
+shape = SubResource("RectangleShape2D_4qvx6")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1941227087]
 anchors_preset = 8
