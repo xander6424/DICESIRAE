@@ -13,6 +13,8 @@ class_name DiceDisplay
 @export var min_impulse_strength: float = 300.0
 @export var max_impulse_strength: float = 550.0
 @export var max_torque_impulse: float = 1000.0
+var current_position: Vector2 = Vector2(0.0, 0.0)
+var current_rotation: float = 0.0
  
 static var dice_currently_rolling: int = 0
 var rolling: bool = false
@@ -85,6 +87,8 @@ func roll_dice():
 	rolling = false
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
+	current_position = position
+	current_rotation = rotation
 	dice_currently_rolling -= 1
 	
 	# Doesn't count a roll until all dice are scored
@@ -103,13 +107,15 @@ func _save_button_pressed():
 func save_dice():
 	# Dice node to be SAVED
 	if !dice_saved:
-		dice_saved = true
 		swap_slots(DiceData.dice_saved_slots, DiceData.dice_hand_slots, DiceData.SAVED_POSITIONS)
+		rotation = 0.0
+		dice_saved = true
 		DiceManager.save_dice(dice)
 	# Dice node to be UNSAVED
 	elif dice_saved:
-		dice_saved = false
 		swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
+		rotation = current_rotation
+		dice_saved = false
 		DiceManager.unsave_dice(dice)
 	
 	# Disable roll button if all dice are saved
@@ -118,9 +124,15 @@ func save_dice():
  
 # Force handles unsaving dice visually to avoid touching data
 func visually_unsave():
+	# Return invalid saved dice to rolling zone
 	if dice_saved:
 		dice_saved = false
 		swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
+	# Return rolling dice to default position
+	else:
+		var current_index: int = DiceData.dice_hand_slots.find(dice)
+		position = DiceData.HAND_POSITIONS[current_index]
+		rotation = 0.0
  
 # Swaps dice between chosen slots and positions them
 func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -> void:
@@ -128,8 +140,12 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 	var old_index: int = old_slots.find(dice)
 	new_slots[empty_index] = dice
 	old_slots[old_index] = null
-	position = positions[empty_index]
- 
+	
+	if !dice_saved:
+		position = positions[empty_index]
+	else:
+		position = current_position
+
  
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1

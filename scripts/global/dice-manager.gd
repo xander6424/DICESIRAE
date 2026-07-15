@@ -73,6 +73,10 @@ func discard_dice() -> void:
 	for dice in unscored_dice_list:
 		_force_unsave.emit(dice)
 	
+	# Reset all remaining dice to default positions
+	for dice in rolling_dice_list:
+		_force_unsave.emit(dice)
+	
 	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
 
 
