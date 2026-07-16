@@ -2,6 +2,7 @@ extends Control
 
 #signal _buy_piece()
 signal _on_update_round_status()
+signal _on_piece_purchased(piece)
 
 @onready var piece_button: Button = %PieceButton
 @onready var skip_button: Button = %SkipButton
@@ -25,6 +26,7 @@ func piece_button_pressed() -> void:
 			
 			PieceManager.active_piece_list.append(random_piece)
 			random_piece.using = true
+			_on_piece_purchased.emit(random_piece)
 			print("PURCHASED: ", random_piece.piece_name)
 			
 			GameData.money -= 3

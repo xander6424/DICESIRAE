@@ -16,3 +16,4 @@ unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_ehkrh")
 
 [node name="HintDisplay REMOVE" type="Node2D" parent="." unique_id=438413726]
+visible = false

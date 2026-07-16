@@ -1,12 +1,14 @@
 extends Node
 
 const PIECE_POSITIONS: Array[Vector2] = [
-	Vector2(50, -100),
-	Vector2(-50, -50),
-	Vector2(50, 0),
-	Vector2(-50, 50),
-	Vector2(50, 100)
+	Vector2(25, -60),
+	Vector2(-25, -30),
+	Vector2(25, 0),
+	Vector2(-25, 30),
+	Vector2(25, 60)
 ]
+
+var piece_hand_slots: Array = []
 
 
 # Constant piece resources

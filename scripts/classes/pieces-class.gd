@@ -10,7 +10,7 @@ class_name PieceInfo
 
 var using: bool = false
 
-# [ADD Value, MULT Value]
+# [ADD Value, MULT Value, ]
 var score_values: Array[int] = [0, 0]
 
 
