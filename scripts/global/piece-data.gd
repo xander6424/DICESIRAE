@@ -1,5 +1,14 @@
 extends Node
 
+const PIECE_POSITIONS: Array[Vector2] = [
+	Vector2(50, -100),
+	Vector2(-50, -50),
+	Vector2(50, 0),
+	Vector2(-50, 50),
+	Vector2(50, 100)
+]
+
+
 # Constant piece resources
 const PAWN = preload("uid://dcnrojwwbbqqs")
 const MANCALA_STONE = preload("uid://cv06ho5uqg750")

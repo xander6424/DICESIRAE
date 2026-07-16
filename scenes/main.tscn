@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/dice/saved-dice-slots.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://d1j6276j77155" path="res://scenes/rolling_zone.tscn" id="6_trceg"]
+[ext_resource type="Script" uid="uid://c0a00isws4lbp" path="res://scenes/piece-hand.gd" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
 [ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
@@ -55,6 +56,11 @@ position = Vector2(370, 275)
 script = ExtResource("3_ya4ey")
 dice_scene = ExtResource("2_h2yge")
 
+[node name="PieceHand" type="Node2D" parent="." unique_id=734763470]
+unique_name_in_owner = true
+position = Vector2(576, 104)
+script = ExtResource("7_a8y0u")
+
 [node name="Labels" type="Control" parent="." unique_id=2014806734]
 layout_mode = 3
 anchors_preset = 0
@@ -65,9 +71,9 @@ offset_bottom = 40.0
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 535.0
-offset_top = 208.0
+offset_top = 221.0
 offset_right = 599.0
-offset_bottom = 234.0
+offset_bottom = 247.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Lots: "
@@ -76,9 +82,9 @@ text = "Lots: "
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 535.0
-offset_top = 234.0
+offset_top = 247.0
 offset_right = 601.0
-offset_bottom = 260.0
+offset_bottom = 273.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Rerolls: "
@@ -87,9 +93,9 @@ text = "Rerolls: "
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 535.0
-offset_top = 260.0
+offset_top = 273.0
 offset_right = 599.0
-offset_bottom = 286.0
+offset_bottom = 299.0
 theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "Money: "
@@ -143,9 +149,9 @@ horizontal_alignment = 1
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true
 offset_left = 528.0
-offset_top = 296.0
+offset_top = 305.0
 offset_right = 624.0
-offset_bottom = 344.0
+offset_bottom = 353.0
 focus_mode = 0
 shortcut = SubResource("Shortcut_sugp2")
 shortcut_in_tooltip = false
