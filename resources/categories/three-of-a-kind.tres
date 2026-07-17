@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_04fer")
-category_name = "Three of A Kind"
+category_name = "3 of a Kind"
 id = 8
 base_score = 20
 mult_score = 3

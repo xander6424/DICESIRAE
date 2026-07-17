@@ -16,7 +16,7 @@ var score_values: Array[int] = [0, 0]
 
 func piece_scored() -> Array[int]: return [0, 0]
 
-func dice_scored() -> Array[int]: return [0, 0]
+func dice_scored(dice: DiceInfo) -> Array[int]: return [0, 0]
 
 func round_started(): pass
 

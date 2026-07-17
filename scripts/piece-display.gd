@@ -20,10 +20,15 @@ func _ready() -> void:
 	
 	piece_sprite.texture = piece.texture
 	hint_display.visible = false
+	
+	PieceManager._update_piece_labels.connect(_on_update_piece_labels)
 
 func setup(new_piece: PieceInfo) -> void:
 	piece = new_piece
 	piece_sprite.texture = piece.texture
+	_on_update_piece_labels()
+
+func _on_update_piece_labels():
 	piece_name_label.text = piece.piece_name
 	piece_description_label.text = piece.piece_description
 

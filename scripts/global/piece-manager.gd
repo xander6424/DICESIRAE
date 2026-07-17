@@ -1,6 +1,7 @@
 extends Node
 
 # Emit signals from here to the display nodes to animate
+signal _update_piece_labels()
 
 var active_piece_list: Array[PieceInfo] = []
 
@@ -11,13 +12,14 @@ func reset_round() -> void:
 func round_started() -> void:
 	for piece in active_piece_list:
 		piece.round_started()
+		_update_piece_labels.emit()
 
 func round_ended() -> void:
 	pass
 
-func dice_scored() -> void:
+func dice_scored(dice: DiceInfo) -> void:
 	for piece in active_piece_list:
-		var score_values: Array[int] = piece.dice_scored()
+		var score_values: Array[int] = piece.dice_scored(dice)
 		
 		print(piece.piece_name, " ADD +", score_values[0])
 		GameData.total_add_score += score_values[0]

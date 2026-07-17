@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="House" format=3 uid="uid://c57wvbamdqd6s"]
+
+[ext_resource type="Script" uid="uid://c2m3aub2q77jv" path="res://scripts/piece/house.gd" id="1_esxkp"]
+[ext_resource type="Texture2D" uid="uid://6fk6w11lp204" path="res://assets/piece/house.png" id="2_esxkp"]
+
+[resource]
+script = ExtResource("1_esxkp")
+piece_id = 2
+piece_name = "House"
+piece_description = "Gain $2 for every 0 scored."
+texture = ExtResource("2_esxkp")
+sell_value = 2
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"

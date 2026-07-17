@@ -124,7 +124,7 @@ func score_category(category_total: int, category: CategoryInfo):
 		GameData.total_add_score += dice.score_dice()
 		dice.scored = true
 		
-		PieceManager.dice_scored()
+		PieceManager.dice_scored(dice)
 	
 	# Score pieces
 	print("\nSCORING PIECES")

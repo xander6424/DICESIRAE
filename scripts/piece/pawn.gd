@@ -13,7 +13,7 @@ const MAX_ROUNDS: int = 2
 var times_scored: int = 0
 var rounds_passed: int = 0
 
-func dice_scored() -> Array[int]:
+func dice_scored(dice: DiceInfo) -> Array[int]:
 	score_values[0] = 0
 	
 	if times_scored < MAX_SCORING:
