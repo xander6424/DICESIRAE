@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/dice/saved-dice-slots.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://d1j6276j77155" path="res://scenes/rolling_zone.tscn" id="6_trceg"]
-[ext_resource type="Script" uid="uid://c0a00isws4lbp" path="res://scenes/piece-hand.gd" id="7_a8y0u"]
+[ext_resource type="Script" uid="uid://c0a00isws4lbp" path="res://scripts/piece-hand.gd" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/scorecard.tscn" id="7_o6xl0"]
 [ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://imrnv22it3bl" path="res://scenes/pieces/piece-display.tscn" id="8_jkv2x"]
@@ -30,6 +30,7 @@ script = ExtResource("1_0xm2m")
 [node name="Background" type="ColorRect" parent="." unique_id=696497787]
 offset_right = 640.0
 offset_bottom = 360.0
+mouse_filter = 1
 color = Color(0.25275356, 0.25275356, 0.25275356, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
@@ -43,25 +44,6 @@ theme_override_font_sizes/font_size = 96
 text = "DICESIRAE"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="RollingZone" parent="." unique_id=1361379270 instance=ExtResource("6_trceg")]
-position = Vector2(370, 160)
-
-[node name="DiceSavedSlots" type="Sprite2D" parent="." unique_id=1170317234]
-position = Vector2(370, 325)
-texture = ExtResource("5_eb6dy")
-
-[node name="DiceHand" type="Node2D" parent="." unique_id=950121212]
-unique_name_in_owner = true
-position = Vector2(370, 275)
-script = ExtResource("3_ya4ey")
-dice_scene = ExtResource("2_h2yge")
-
-[node name="PieceHand" type="Node2D" parent="." unique_id=734763470]
-unique_name_in_owner = true
-position = Vector2(576, 104)
-script = ExtResource("7_a8y0u")
-piece_scene = ExtResource("8_jkv2x")
 
 [node name="Labels" type="Control" parent="." unique_id=2014806734]
 layout_mode = 3
@@ -147,6 +129,25 @@ theme_override_fonts/font = ExtResource("2_tipki")
 theme_override_font_sizes/font_size = 32
 text = "0/0"
 horizontal_alignment = 1
+
+[node name="RollingZone" parent="." unique_id=1361379270 instance=ExtResource("6_trceg")]
+position = Vector2(370, 160)
+
+[node name="DiceSavedSlots" type="Sprite2D" parent="." unique_id=1170317234]
+position = Vector2(370, 325)
+texture = ExtResource("5_eb6dy")
+
+[node name="DiceHand" type="Node2D" parent="." unique_id=950121212]
+unique_name_in_owner = true
+position = Vector2(370, 275)
+script = ExtResource("3_ya4ey")
+dice_scene = ExtResource("2_h2yge")
+
+[node name="PieceHand" type="Node2D" parent="." unique_id=734763470]
+unique_name_in_owner = true
+position = Vector2(576, 104)
+script = ExtResource("7_a8y0u")
+piece_scene = ExtResource("8_jkv2x")
 
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true
