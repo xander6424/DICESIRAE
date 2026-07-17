@@ -15,6 +15,7 @@ var piece_hand_slots: Array = []
 const PAWN = preload("uid://dcnrojwwbbqqs")
 const MANCALA_STONE = preload("uid://cv06ho5uqg750")
 const HOUSE = preload("uid://c57wvbamdqd6s")
+const LOOSE_COIN = preload("uid://bf2qrbfnw2iyg")
 const LADDER = preload("uid://xekun4e8jy6f")
 
 # New piece stuff
@@ -22,6 +23,7 @@ const FULL_PIECE_LIST: Array[PieceInfo] = [
 	PAWN,
 	MANCALA_STONE,
 	HOUSE,
+	LOOSE_COIN,
 	LADDER
 ]
 
@@ -30,5 +32,6 @@ enum Piece {
 	PAWN,
 	MANCALA_STONE,
 	HOUSE,
+	LOOSE_COIN,
 	LADDER
 }

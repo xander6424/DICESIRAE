@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LooseCoin" format=3 uid="uid://bf2qrbfnw2iyg"]
+
+[ext_resource type="Script" uid="uid://cc8fl1xwqmohv" path="res://scripts/piece/loose-coin.gd" id="1_o5po0"]
+[ext_resource type="Texture2D" uid="uid://dot1cs1ck14fn" path="res://assets/piece/loose-coin.png" id="2_o5po0"]
+
+[resource]
+script = ExtResource("1_o5po0")
+piece_id = 3
+piece_name = "Loose Coin"
+piece_description = "Add the current money value to the mult score."
+texture = ExtResource("2_o5po0")
+sell_value = 1
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"
