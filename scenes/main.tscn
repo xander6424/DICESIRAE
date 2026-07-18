@@ -31,7 +31,7 @@ script = ExtResource("1_0xm2m")
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 1
-color = Color(0.25275356, 0.25275356, 0.25275356, 1)
+color = Color(0.21890153, 0.21890156, 0.21890153, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
 offset_left = 8.0

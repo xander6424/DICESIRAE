@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Checker" format=3 uid="uid://d0ad2ucf7321c"]
+
+[ext_resource type="Script" uid="uid://d0tht3wt2boeb" path="res://scripts/piece/checker.gd" id="1_rvy5k"]
+[ext_resource type="Texture2D" uid="uid://dc0631lub1yh5" path="res://assets/piece/checker.png" id="2_rvy5k"]
+
+[resource]
+script = ExtResource("1_rvy5k")
+piece_id = 1
+piece_name = "Checker"
+piece_description = "Add +24 to add score for every even number scored. Permanently add another +4 for every 10 dice scored."
+texture = ExtResource("2_rvy5k")
+sell_value = 1
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"

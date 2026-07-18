@@ -15,7 +15,7 @@ func _ready() -> void:
 
 # Random piece button
 func piece_button_pressed() -> void:
-	if GameData.money >= 3:
+	if GameData.money >= 3 and PieceManager.active_piece_list.size() < PieceData.max_piece_hand_size:
 		# Prevent infinite loop (for now)
 		if PieceManager.active_piece_list.size() != PieceData.FULL_PIECE_LIST.size():
 			# Pick a random piece not in use
@@ -35,7 +35,7 @@ func piece_button_pressed() -> void:
 		else:
 			print("MAXIMUM PIECES MET")
 	else:
-		print("NOT ENOUGH MONEY")
+		print("UNABLE TO PURCHASE PIECE")
 
 # Upgrade category button
 

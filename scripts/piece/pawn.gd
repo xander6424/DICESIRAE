@@ -17,7 +17,7 @@ func dice_scored(dice: DiceInfo) -> Array[int]:
 	score_values[0] = 0
 	
 	if times_scored < MAX_SCORING:
-		score_values[0] = 10
+		score_values[0] = 15
 		times_scored += 1
 	
 	return score_values

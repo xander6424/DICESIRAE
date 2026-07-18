@@ -28,6 +28,8 @@ func dice_scored(dice: DiceInfo) -> void:
 		GameData.total_mult_score += score_values[1]
 		
 		#current_category.mult_score *= score_values[2]
+		
+		_update_piece_labels.emit() # Change these signals?
 
 func pieces_scored() -> void:
 	for piece in active_piece_list:

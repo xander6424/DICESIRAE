@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChineseChecker" format=3 uid="uid://clamoo51stdfq"]
+
+[ext_resource type="Script" uid="uid://dy8dm1c6wkvy3" path="res://scripts/piece/chinese-checker.gd" id="1_yyaja"]
+[ext_resource type="Texture2D" uid="uid://ccr4dvxifncuw" path="res://assets/piece/chinese-checker.png" id="2_yyaja"]
+
+[resource]
+script = ExtResource("1_yyaja")
+piece_id = 2
+piece_name = "Chinese Checker"
+piece_description = "Add +3 to mult score for every odd number scored. Permanently add another +4 for every 13 dice scored."
+texture = ExtResource("2_yyaja")
+sell_value = 1
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"

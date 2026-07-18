@@ -45,6 +45,14 @@ position = Vector2(-134.99998, -136)
 rotation = 2.3561945
 shape = SubResource("RectangleShape2D_4qvx6")
 
+[node name="BackgroundBorder" type="ColorRect" parent="." unique_id=2116102042]
+offset_left = -137.0
+offset_top = -138.0
+offset_right = -97.0
+offset_bottom = -136.05824
+scale = Vector2(6.846047, 141.10965)
+color = Color(0, 0, 0, 1)
+
 [node name="Background" type="ColorRect" parent="." unique_id=1941227087]
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,4 +67,4 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.22550559, 0.22550562, 0.22550562, 1)
+color = Color(0.1239214, 0.123957224, 0.2299057, 1)

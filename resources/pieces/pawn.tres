@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_qwvow")
 piece_name = "Pawn"
-piece_description = "Add +10 to the first 2 dice in scoring."
+piece_description = "Add +15 to the first 2 dice in scoring."
 texture = ExtResource("2_knxm7")
 sell_value = 1
 metadata/_custom_type_script = "uid://cxp2ci6v34r14"
