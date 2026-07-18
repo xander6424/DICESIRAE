@@ -7,6 +7,7 @@ signal _update_scorecard()
 @onready var background: ColorRect = %Background
 @onready var roll_button: TextureButton = %RollButton
 @onready var score_button: Button = %ScoreButton
+@onready var intermission: Control = %Intermission
 @onready var shop: Control = %Shop
 @onready var game_over: Control = %GameOver
 
@@ -55,7 +56,6 @@ func _on_reset_round() -> void:
 		shop.visible = false
 		roll_button.disabled = false
 		score_button.disabled = false
-		
 	
 	_update_labels.emit()
 	_reset_scorecard.emit()
@@ -111,14 +111,12 @@ func _change_scene_status(round_won: bool) -> void:
 	if round_won:
 		print("WIN!!!\n")
 		
-		background.color = Color(0.149, 0.122, 0.235, 1.0)
-		shop.visible = true
+		intermission.visible = true
 	else:
 		print("LOSE.\n")
 		
 		game_over.visible = true
 		# Add a method to restart the game (call reset game)
-
 
 
 

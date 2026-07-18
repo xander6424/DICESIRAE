@@ -10,8 +10,9 @@ const STARTING_MONEY: int = 5
 const ROLL_DURATION: float = 1.0
 const ROUND_SCORE_SCALING: Array[int] = [
 	100, 150, 250, 
-	500, 1200, 2400, 
-	7800, 13500, 25000
+	500, 925, 1375, 
+	2400, 7850, 13500, 
+	25000, 50000, 100000
 ]
 
 var lots: int = STARTING_LOTS

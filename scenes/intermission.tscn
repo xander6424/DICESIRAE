@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b8p5ft131lrrs"]
+
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="1_qwk4e"]
+[ext_resource type="Script" uid="uid://6jo0pnp15fym" path="res://scripts/intermission.gd" id="1_xx0sb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1enbh"]
+bg_color = Color(0.69919205, 0.69919205, 0.69919187, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 30
+border_color = Color(0.6079776, 0.6079777, 0.60797733, 1)
+
+[node name="Intermission" type="Control" unique_id=1607318169]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xx0sb")
+
+[node name="Container" type="PanelContainer" parent="." unique_id=1033374167]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 375.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1enbh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Container" unique_id=1136642290]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/MarginContainer" unique_id=178258514]
+layout_mode = 2
+
+[node name="RoundResults" type="Label" parent="Container/MarginContainer/VBoxContainer" unique_id=1248567077]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qwk4e")
+theme_override_font_sizes/font_size = 64
+text = "ROUND 1 RESULTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=1675818122]
+layout_mode = 2
+
+[node name="Cleared" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer" unique_id=110039136]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qwk4e")
+theme_override_font_sizes/font_size = 32
+text = "Cleared . . . . . . . . . . . . . $0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=530152680]
+layout_mode = 2
+
+[node name="OverkillBonus" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=367174734]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qwk4e")
+theme_override_font_sizes/font_size = 32
+text = "Overkill Bonus . . . . . . . . . $0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=1301957261]
+layout_mode = 2
+
+[node name="Interest" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1019322774]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qwk4e")
+theme_override_font_sizes/font_size = 32
+text = "Interest (per $5) . . . . . . . $0"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Container/MarginContainer" unique_id=1572386911]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ShopButton" type="Button" parent="Container/MarginContainer/HBoxContainer4" unique_id=1012072356]
+unique_name_in_owner = true
+layout_mode = 2
+text = "COLLECT $0"

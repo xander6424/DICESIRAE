@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://imrnv22it3bl" path="res://scenes/pieces/piece-display.tscn" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/game-over.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://b8p5ft131lrrs" path="res://scenes/intermission.tscn" id="16_jbj1t"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -180,6 +181,14 @@ offset_left = 224.0
 offset_top = 16.0
 offset_right = 224.0
 offset_bottom = 16.0
+
+[node name="Intermission" parent="." unique_id=1607318169 instance=ExtResource("16_jbj1t")]
+unique_name_in_owner = true
+visible = false
+offset_left = 224.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 8.0
 
 [node name="PieceHand" type="Node2D" parent="." unique_id=734763470]
 unique_name_in_owner = true
