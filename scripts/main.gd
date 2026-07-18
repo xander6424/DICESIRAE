@@ -4,8 +4,9 @@ signal _update_labels()
 signal _reset_scorecard()
 signal _update_scorecard()
 
+@onready var background: ColorRect = %Background
 @onready var roll_button: TextureButton = %RollButton
-@onready var shop_block: ColorRect = %ShopBlock
+@onready var score_button: Button = %ScoreButton
 @onready var shop: Control = %Shop
 @onready var game_over: Control = %GameOver
 
@@ -24,6 +25,8 @@ func _ready() -> void:
 # Signal (not yet?) to fully reset the whole game
 func reset_game() -> void:
 	print("STARTING NEW GAME...")
+	
+	background.color = Color(0.22, 0.22, 0.22)
 	
 	DiceManager.create_starting_dice()
 
@@ -48,9 +51,11 @@ func _on_reset_round() -> void:
 	DiceManager.reset_round()
 	
 	if shop.visible:
+		background.color = Color(0.22, 0.22, 0.22)
 		shop.visible = false
-		shop_block.visible = false
 		roll_button.disabled = false
+		score_button.disabled = false
+		
 	
 	_update_labels.emit()
 	_reset_scorecard.emit()
@@ -87,6 +92,7 @@ func _on_update_round_status() -> void:
 		if GameData.grand_total >= GameData.score_to_beat or god_mode:
 			GameData.round_won = true
 			roll_button.disabled = true
+			score_button.disabled = true
 			
 			# TEMP GIVE MONEY
 			GameData.money += 2
@@ -97,13 +103,15 @@ func _on_update_round_status() -> void:
 	
 	_update_labels.emit()
 	_update_scorecard.emit()
+	if shop.visible:
+		_reset_scorecard.emit()
 
 
 func _change_scene_status(round_won: bool) -> void:
 	if round_won:
 		print("WIN!!!\n")
 		
-		shop_block.visible = true
+		background.color = Color(0.149, 0.122, 0.235, 1.0)
 		shop.visible = true
 	else:
 		print("LOSE.\n")

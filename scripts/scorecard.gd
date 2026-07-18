@@ -43,7 +43,7 @@ func _reset_scorecard() -> void:
 	
 	for category in CategoryData.FULL_CATEGORY_LIST:
 		if category.id in CategoryData.starting_category_list[0]:
-			category_label_list[scorecard_index].text = category.category_name + ":"
+			category_label_list[scorecard_index].text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
 			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
 			
@@ -77,6 +77,7 @@ func check_category_existance() -> void:
 			else:
 				category.label.add_theme_color_override("font_color", Color.WHITE)
 			
+			category.label.text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
 			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
 
 
@@ -93,7 +94,7 @@ func _score_button_pressed() -> void:
 				category_selected = true
 				break
 		
-		if category_selected:
+		if category_selected and !current_category.scored:
 			var category_total: int = 0
 			
 			GameData.total_add_score = 0

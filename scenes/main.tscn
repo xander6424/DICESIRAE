@@ -28,10 +28,11 @@ events = [SubResource("InputEventKey_0wfyh")]
 script = ExtResource("1_0xm2m")
 
 [node name="Background" type="ColorRect" parent="." unique_id=696497787]
+unique_name_in_owner = true
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 1
-color = Color(0.21890153, 0.21890156, 0.21890153, 1)
+color = Color(0.22, 0.22, 0.22, 1)
 
 [node name="Title" type="Label" parent="." unique_id=837264721]
 offset_left = 8.0
@@ -143,12 +144,6 @@ position = Vector2(370, 275)
 script = ExtResource("3_ya4ey")
 dice_scene = ExtResource("2_h2yge")
 
-[node name="PieceHand" type="Node2D" parent="." unique_id=734763470]
-unique_name_in_owner = true
-position = Vector2(576, 104)
-script = ExtResource("7_a8y0u")
-piece_scene = ExtResource("8_jkv2x")
-
 [node name="RollButton" type="TextureButton" parent="." unique_id=1066270165]
 unique_name_in_owner = true
 offset_left = 528.0
@@ -178,20 +173,19 @@ offset_top = 160.0
 offset_right = 160.0
 offset_bottom = 160.0
 
-[node name="ShopBlock" type="ColorRect" parent="." unique_id=1697646110]
-unique_name_in_owner = true
-visible = false
-offset_right = 640.0
-offset_bottom = 360.0
-color = Color(0, 0, 0, 0.29411766)
-
 [node name="Shop" parent="." unique_id=1416667480 instance=ExtResource("9_85g3d")]
 unique_name_in_owner = true
 visible = false
-offset_left = 225.0
-offset_top = 25.0
-offset_right = 225.0
-offset_bottom = 25.0
+offset_left = 224.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 16.0
+
+[node name="PieceHand" type="Node2D" parent="." unique_id=734763470]
+unique_name_in_owner = true
+position = Vector2(576, 104)
+script = ExtResource("7_a8y0u")
+piece_scene = ExtResource("8_jkv2x")
 
 [node name="GameOver" parent="." unique_id=173250450 instance=ExtResource("10_choun")]
 unique_name_in_owner = true

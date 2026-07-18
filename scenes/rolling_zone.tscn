@@ -51,6 +51,7 @@ offset_top = -138.0
 offset_right = -97.0
 offset_bottom = -136.05824
 scale = Vector2(6.846047, 141.10965)
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="ColorRect" parent="." unique_id=1941227087]
@@ -67,4 +68,5 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 color = Color(0.1239214, 0.123957224, 0.2299057, 1)

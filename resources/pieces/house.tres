@@ -7,7 +7,7 @@
 script = ExtResource("1_esxkp")
 piece_id = 2
 piece_name = "House"
-piece_description = "Gain $2 for every 0 scored."
+piece_description = "Gain $2 for every randomly selected number scored."
 texture = ExtResource("2_esxkp")
 sell_value = 2
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"
