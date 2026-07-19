@@ -37,6 +37,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="RoundResults" type="Label" parent="Container/MarginContainer/VBoxContainer" unique_id=1248567077]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_qwk4e")
 theme_override_font_sizes/font_size = 64
@@ -48,24 +49,37 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="Cleared" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer" unique_id=110039136]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_qwk4e")
 theme_override_font_sizes/font_size = 32
 text = "Cleared . . . . . . . . . . . . . $0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=530152680]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=2086363085]
 layout_mode = 2
 
-[node name="OverkillBonus" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=367174734]
+[node name="SpareLots" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1288119783]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qwk4e")
+theme_override_font_sizes/font_size = 32
+text = "Spare Lots . . . . . . . . . . . $0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=530152680]
+layout_mode = 2
+
+[node name="OverkillBonus" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=367174734]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_qwk4e")
 theme_override_font_sizes/font_size = 32
 text = "Overkill Bonus . . . . . . . . . $0"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=1301957261]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer" unique_id=1301957261]
 layout_mode = 2
 
-[node name="Interest" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1019322774]
+[node name="Interest" type="Label" parent="Container/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1019322774]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_qwk4e")
 theme_override_font_sizes/font_size = 32
@@ -79,4 +93,5 @@ size_flags_vertical = 8
 [node name="ShopButton" type="Button" parent="Container/MarginContainer/HBoxContainer4" unique_id=1012072356]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "COLLECT $0"

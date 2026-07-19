@@ -3,6 +3,7 @@ extends Node2D
 signal _update_labels()
 signal _reset_scorecard()
 signal _update_scorecard()
+signal _update_intermission()
 
 @onready var background: ColorRect = %Background
 @onready var roll_button: TextureButton = %RollButton
@@ -11,7 +12,6 @@ signal _update_scorecard()
 @onready var shop: Control = %Shop
 @onready var game_over: Control = %GameOver
 
-var round_number: int = 0
 var shop_instance: Control
 
 var god_mode: bool = false # REMOVE this later
@@ -33,8 +33,8 @@ func reset_game() -> void:
 
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
-	round_number += 1
-	print("ROUND ", round_number, "\n")
+	GameData.round_number += 1
+	print("ROUND ", GameData.round_number, "\n")
 	
 	# Activate pieces at beginning of round (temporary location)
 	GameData.bonus_lots = 0
@@ -45,7 +45,7 @@ func _on_reset_round() -> void:
 	GameData.lots = GameData.STARTING_LOTS + GameData.bonus_lots
 	GameData.rerolls = GameData.STARTING_REROLLS + GameData.bonus_rerolls
 	GameData.grand_total = 0
-	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[round_number - 1]
+	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[GameData.round_number - 1]
 	GameData.round_won = false
 	
 	# Reshuffle all discarded dice back into draw pile
@@ -94,9 +94,6 @@ func _on_update_round_status() -> void:
 			roll_button.disabled = true
 			score_button.disabled = true
 			
-			# TEMP GIVE MONEY
-			GameData.money += 2
-			
 			_change_scene_status(GameData.round_won)
 		elif GameData.lots <= 0:
 			_change_scene_status(GameData.round_won)
@@ -110,7 +107,7 @@ func _on_update_round_status() -> void:
 func _change_scene_status(round_won: bool) -> void:
 	if round_won:
 		print("WIN!!!\n")
-		
+		_update_intermission.emit()
 		intermission.visible = true
 	else:
 		print("LOSE.\n")

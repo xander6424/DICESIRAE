@@ -201,8 +201,10 @@ unique_name_in_owner = true
 visible = false
 
 [connection signal="_reset_scorecard" from="." to="Scorecard" method="_reset_scorecard"]
+[connection signal="_update_intermission" from="." to="Intermission" method="_on_update_intermission"]
 [connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
 [connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
 [connection signal="_on_update_round_status" from="Scorecard" to="." method="_on_update_round_status"]
 [connection signal="_on_piece_purchased" from="Shop" to="PieceHand" method="_on_piece_purchased"]
 [connection signal="_on_update_round_status" from="Shop" to="." method="_on_update_round_status"]
+[connection signal="_on_update_round_status" from="Intermission" to="." method="_on_update_round_status"]

@@ -6,7 +6,7 @@ signal _reset_round()
 # Constant basic values
 const STARTING_LOTS: int = 3
 const STARTING_REROLLS: int = 3
-const STARTING_MONEY: int = 5
+const STARTING_MONEY: int = 4
 const ROLL_DURATION: float = 1.0
 const ROUND_SCORE_SCALING: Array[int] = [
 	100, 150, 250, 
@@ -15,6 +15,7 @@ const ROUND_SCORE_SCALING: Array[int] = [
 	25000, 50000, 100000
 ]
 
+var round_number: int = 0
 var lots: int = STARTING_LOTS
 var rerolls: int = STARTING_REROLLS
 var bonus_lots: int = 0
