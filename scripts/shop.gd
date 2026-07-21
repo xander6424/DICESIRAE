@@ -57,13 +57,13 @@ func upgrade_button_pressed() -> void:
 		if category_selected:
 			match current_category.id:
 				CategoryData.Category.ACES:
-					current_category.base_score += 10
+					current_category.base_score += 20
 					current_category.mult_score += 1
 				CategoryData.Category.TWOS:
-					current_category.base_score += 10
+					current_category.base_score += 20
 					current_category.mult_score += 1
 				CategoryData.Category.THREES:
-					current_category.base_score += 10
+					current_category.base_score += 20
 					current_category.mult_score += 1
 				CategoryData.Category.TWO_PAIR:
 					current_category.base_score += 15

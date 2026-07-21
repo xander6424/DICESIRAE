@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FamilyCar" format=3 uid="uid://bns4hgh8pp1ms"]
+
+[ext_resource type="Script" uid="uid://cv4u27nc4gxd" path="res://scripts/piece/family-car.gd" id="1_xwg1b"]
+[ext_resource type="Texture2D" uid="uid://hvt0ltr6qewi" path="res://assets/piece/family-car.png" id="2_vuvp4"]
+
+[resource]
+script = ExtResource("1_xwg1b")
+piece_id = 5
+piece_name = "Family Car"
+piece_description = "Adds +150 to add score if the played hand contains unique dice faces."
+texture = ExtResource("2_vuvp4")
+sell_value = 2
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"

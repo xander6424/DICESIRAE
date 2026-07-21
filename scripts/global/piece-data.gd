@@ -18,6 +18,7 @@ const CHECKER = preload("uid://d0ad2ucf7321c")
 const CHINESE_CHECKER = preload("uid://clamoo51stdfq")
 const MANCALA_STONE = preload("uid://cv06ho5uqg750")
 const HOUSE = preload("uid://c57wvbamdqd6s")
+const FAMILY_CAR = preload("uid://bns4hgh8pp1ms")
 const LOOSE_COIN = preload("uid://bf2qrbfnw2iyg")
 const LADDER = preload("uid://xekun4e8jy6f")
 
@@ -28,6 +29,7 @@ const FULL_PIECE_LIST: Array[PieceInfo] = [
 	CHINESE_CHECKER,
 	MANCALA_STONE,
 	HOUSE,
+	FAMILY_CAR,
 	LOOSE_COIN,
 	LADDER
 ]
@@ -39,6 +41,7 @@ enum Piece {
 	CHINESE_CHECKER,
 	MANCALA_STONE,
 	HOUSE,
+	FAMILY_CAR,
 	LOOSE_COIN,
 	LADDER
 }

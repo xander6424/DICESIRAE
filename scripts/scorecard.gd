@@ -13,6 +13,8 @@ signal _on_update_round_status()
 @onready var draw_pile_label: Label = %DrawPile
 @onready var discard_pile_label: Label = %DiscardPile
 
+@onready var piece_count_label: Label = %PieceCount
+
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
 
@@ -27,8 +29,11 @@ func _update_labels() -> void:
 	money_label.text = "Money: $" + str(GameData.money)
 	grand_total_label.text = "TOTAL: " + str(GameData.grand_total)
 	total_to_beat_label.text = "Score to Beat: " + str(GameData.score_to_beat) # Change?
+	
 	draw_pile_label.text = str(DiceManager.draw_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
 	discard_pile_label.text = str(DiceManager.discard_pile.size()) + "/" + str(DiceManager.MAX_DRAW_PILE_SIZE)
+	
+	piece_count_label.text = str(PieceManager.active_piece_list.size()) + "/" + str(PieceManager.MAX_PIECES_SIZE)
 	
 	# Test output
 	#print("ROLLING LIST: ", DiceManager.rolling_dice_list)

@@ -3,6 +3,7 @@ extends Node
 # Emit signals from here to the display nodes to animate
 signal _update_piece_labels()
 
+const MAX_PIECES_SIZE: int = 5
 var active_piece_list: Array[PieceInfo] = []
 
 

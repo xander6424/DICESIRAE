@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/game-over.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://b8p5ft131lrrs" path="res://scenes/intermission.tscn" id="16_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://cch6ic10cnrpr" path="res://assets/piece/pieces-slots.png" id="16_muem4"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -132,6 +133,20 @@ theme_override_font_sizes/font_size = 32
 text = "0/0"
 horizontal_alignment = 1
 
+[node name="PieceCount" type="Label" parent="Labels" unique_id=1435731268]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.947
+anchor_bottom = 0.5
+offset_left = 608.0
+offset_top = 184.0
+offset_right = 610.12
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("2_tipki")
+theme_override_font_sizes/font_size = 32
+text = "0/5"
+
 [node name="RollingZone" parent="." unique_id=1361379270 instance=ExtResource("6_trceg")]
 position = Vector2(370, 160)
 
@@ -195,6 +210,9 @@ unique_name_in_owner = true
 position = Vector2(576, 104)
 script = ExtResource("7_a8y0u")
 piece_scene = ExtResource("8_jkv2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="PieceHand" unique_id=1791608756]
+texture = ExtResource("16_muem4")
 
 [node name="GameOver" parent="." unique_id=173250450 instance=ExtResource("10_choun")]
 unique_name_in_owner = true
