@@ -57,5 +57,13 @@ theme_override_font_sizes/font_size = 16
 text = "Piece description that describes how a piece operates."
 autowrap_mode = 2
 
+[node name="ScorePopup" type="Node2D" parent="." unique_id=2014242943]
+unique_name_in_owner = true
+
+[node name="ScorePopupLabel" type="Label" parent="ScorePopup" unique_id=807369784]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="mouse_entered" from="PieceArea" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PieceArea" to="." method="_on_mouse_exited"]
