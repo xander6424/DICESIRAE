@@ -4,6 +4,7 @@ class_name LooseCoin
 
 # ABILITY:
 # Add the current money value to the mult score.
+	# No secret synergies.
 
 
 func piece_scored() -> Array[int]:

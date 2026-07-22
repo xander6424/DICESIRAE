@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TicTacToeChip" format=3 uid="uid://mgmc3uuv2n3w"]
+
+[ext_resource type="Script" uid="uid://b64q302me6125" path="res://scripts/piece/tic-tac-toe-chip.gd" id="1_us2sp"]
+[ext_resource type="Texture2D" uid="uid://xbh0v2lfici1" path="res://assets/piece/tic-tac-toe-chip.png" id="2_oio25"]
+
+[resource]
+script = ExtResource("1_us2sp")
+piece_id = 6
+piece_name = "Tic-Tac-Toe Chip"
+piece_description = "Add +9 to the mult score if the played hand contains 3 or more dice."
+texture = ExtResource("2_oio25")
+sell_value = 1
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"
