@@ -2,11 +2,12 @@ extends Control
 
 signal _on_update_round_status()
 
-@onready var round_results_title: Label = %RoundResults
 @onready var background: ColorRect = %Background
 @onready var shop_button: Button = %ShopButton
 @onready var shop: Control = %Shop
 @onready var intermission: Control = %Intermission
+
+@onready var round_results_title: Label = %RoundResults
 @onready var cleared_label: Label = %Cleared
 @onready var spare_lots_label: Label = %SpareLots
 @onready var overkill_bonus_label: Label = %OverkillBonus
@@ -37,13 +38,13 @@ func _on_update_intermission() -> void:
 		cleared_label.visible = true
 		money_earned += CLEARED_MONEY
 	# Spare lots for cash
-	if GameData.lots >= 0:
+	if GameData.lots > 0:
 		spare_lots_label.text = "Spare Lots . . . . . . . . . . . $" + str(GameData.lots)
 		spare_lots_label.visible = true
 		money_earned += GameData.lots
 	# Overkill bonus (cleared in one lot)
 	if GameData.lots >= (GameData.STARTING_LOTS + GameData.bonus_lots) - 1:
-		overkill_bonus_label.text = "Overkill Bonus . . . . . . . . . $" + str(OVERKILL_MONEY)
+		overkill_bonus_label.text = "Overkill Bonus  . . . . . . . . . $" + str(OVERKILL_MONEY)
 		overkill_bonus_label.visible = true
 		money_earned += OVERKILL_MONEY
 	# Interest
