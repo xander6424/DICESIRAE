@@ -16,6 +16,8 @@ var rolling_dice_list: Array[DiceInfo] = []
 var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
 
+var active_display_list: Array[DiceDisplay] = []
+
 
 func _ready() -> void:
 	_hand_rolling_done.connect(_on_hand_rolling_done)
@@ -43,6 +45,20 @@ func reset_round() -> void:
 	discard_pile.clear()
 	
 	draw_dice()
+
+func register_display(display: DiceDisplay) -> void:
+	active_display_list.append(display)
+
+func unregister_display(display: DiceDisplay) -> void:
+	active_display_list.erase(display)
+
+func get_display(dice: DiceInfo) -> DiceDisplay:
+	for display in active_display_list:
+		if not is_instance_valid(display):
+			continue
+		if display.dice == dice:
+			return display
+	return null
 
 
 func draw_dice() -> void:

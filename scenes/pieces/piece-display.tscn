@@ -59,11 +59,18 @@ autowrap_mode = 2
 
 [node name="ScorePopup" type="Node2D" parent="." unique_id=2014242943]
 unique_name_in_owner = true
+top_level = true
 
 [node name="ScorePopupLabel" type="Label" parent="ScorePopup" unique_id=807369784]
 unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+theme_override_fonts/font = ExtResource("2_gei3f")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="PieceArea" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PieceArea" to="." method="_on_mouse_exited"]

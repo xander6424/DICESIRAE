@@ -109,7 +109,7 @@ func _score_button_pressed() -> void:
 			# Only checks to score if category is even valid
 			if current_category.exists_in_saved:
 				DiceManager.scoring_dice_list = current_category.valid_dice_list.duplicate()
-				category_total = score_category(category_total, current_category)
+				category_total = await score_category(category_total, current_category)
 			
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
 			
@@ -127,14 +127,22 @@ func score_category(category_total: int, category: CategoryInfo):
 	
 	for dice in dice_to_score:
 		print("+", str(dice.score_dice()))
-		GameData.total_add_score += dice.score_dice()
+		
+		var dice_value: int = dice.score_dice()
+		GameData.total_add_score += dice_value
 		dice.scored = true
 		
-		PieceManager.dice_scored(dice)
+		var dice_display: DiceDisplay = DiceManager.get_display(dice)
+		if dice_display:
+			await dice_display.show_score(dice_value)
+		# UPDATE CATEGORY VISUAL SCORE HERE SIGNAL
+		await get_tree().create_timer(0.35).timeout
+		
+		await PieceManager.dice_scored(dice)
 	
 	# Score pieces
 	print("\nSCORING PIECES")
-	PieceManager.pieces_scored()
+	await PieceManager.pieces_scored()
 	
 	# Full scoring
 	GameData.total_add_score += category.base_score

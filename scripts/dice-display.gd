@@ -19,7 +19,10 @@ var current_rotation: float = 0.0
 static var dice_currently_rolling: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
- 
+
+@onready var score_popup: Node2D = %ScorePopup
+@onready var score_popup_label: Label = %ScorePopupLabel
+var popup_tween: Tween
  
 func _ready() -> void:
 	# Backup to create a dice class instance for the node
@@ -34,8 +37,14 @@ func _ready() -> void:
 	linear_damp = 1.5
 	angular_damp = 0.9
 	
+	score_popup.modulate.a = 0.0
+	DiceManager.register_display(self)
+	
 	roll_button.pressed.connect(roll_button_pressed)
 	save_button.pressed.connect(_save_button_pressed)
+
+func _exit_tree() -> void:
+	DiceManager.unregister_display(self)
  
 func setup(new_dice: DiceInfo):
 	dice = new_dice
@@ -151,3 +160,21 @@ func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1
 	face_sprite.texture = face_textures[index]
 	# CHANGE/DISPLAY COLOR HERE TOO
+
+
+func show_score(value: int):
+	if popup_tween and popup_tween.is_running():
+		popup_tween.kill()
+	
+	score_popup_label.text = "+" + str(value)
+	score_popup.global_position = global_position + Vector2(0, -40)
+	score_popup.scale = Vector2(0.8, 0.8)
+	score_popup.modulate.a = 1.0
+	
+	popup_tween = create_tween()
+	popup_tween.tween_property(score_popup, "scale", Vector2.ONE, 0.12).set_trans(Tween.TRANS_BACK)
+	popup_tween.tween_property(score_popup, "global_position:y", score_popup.global_position.y - 40, 0.4)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	popup_tween.parallel().tween_property(score_popup, "modulate:a", 0.0, 0.25).set_delay(0.15)
+	
+	await popup_tween.finished

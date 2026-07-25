@@ -26,8 +26,11 @@ func piece_button_pressed() -> void:
 			while random_piece.using:
 				random_piece = PieceData.FULL_PIECE_LIST.pick_random()
 			
-			PieceManager.active_piece_list.append(random_piece)
+			var piece_instance: PieceInfo = random_piece.duplicate()
 			random_piece.using = true
+			piece_instance.using = true
+			
+			PieceManager.active_piece_list.append(random_piece)
 			_on_piece_purchased.emit(random_piece)
 			print("PURCHASED: ", random_piece.piece_name)
 			

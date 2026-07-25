@@ -15,8 +15,6 @@ class_name PieceDisplay
 
 @onready var score_popup: Node2D = %ScorePopup
 @onready var score_popup_label: Label = %ScorePopupLabel
-
-var popup_base_position: Vector2
 var popup_tween: Tween
 
 
@@ -27,10 +25,14 @@ func _ready() -> void:
 	piece_sprite.texture = piece.texture
 	hint_display.visible = false
 	
-	popup_base_position = score_popup.position
 	score_popup.modulate.a = 0.0
 	
+	PieceManager.register_display(self)
 	PieceManager._update_piece_labels.connect(_on_update_piece_labels)
+
+func _exit_tree() -> void:
+	pass
+	# same unregister when selling or deletion
 
 func setup(new_piece: PieceInfo) -> void:
 	piece = new_piece
@@ -53,26 +55,28 @@ func show_score(add_value: int, mult_value: int) -> void:
 	elif mult_value != 0:
 		text = "+" + str(mult_value)
 	
-	play_popup(text)
-	
-	
+	await play_popup(text)
 
 func play_popup(text: String) -> void:
 	if popup_tween and popup_tween.is_running():
 		popup_tween.kill()
 	
 	score_popup_label.text = text
-	score_popup.position = popup_base_position
+	score_popup.global_position = global_position + Vector2(0, -40)
 	score_popup.scale = Vector2(0.8, 0.8)
 	score_popup.modulate.a = 1.0
 	
+	var punch: Tween = create_tween()
+	punch.tween_property(piece_sprite, "scale", Vector2(1.15, 1.15), 0.1)
+	punch.tween_property(piece_sprite, "scale", Vector2.ONE, 0.15)
+	
 	popup_tween = create_tween()
-	popup_tween.set_parallel(true)
-	popup_tween.tween_property(score_popup, "position:y", popup_base_position.y - 40, 0.5)\
-		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	popup_tween.tween_property(score_popup, "scale", Vector2.ONE, 0.15)\
-		.set_trans(Tween.TRANS_BACK)
-	popup_tween.chain().tween_property(score_popup, "modulate:a", 0.0, 0.25).set_delay(0.15)
+	popup_tween.tween_interval(0.25)
+	popup_tween.tween_property(score_popup, "global_position:x", score_popup.global_position.x - 400, 0.35)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	popup_tween.parallel().tween_property(score_popup, "modulate:a", 0.0, 0.35)
+	
+	await popup_tween.finished
 
 
 func _on_mouse_entered() -> void:
