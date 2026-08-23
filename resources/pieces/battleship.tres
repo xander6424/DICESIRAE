@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Battleship" format=3 uid="uid://ctdfl66pbcb6q"]
+
+[ext_resource type="Script" uid="uid://c3huqiykj2fre" path="res://scripts/piece/battleship.gd" id="1_8in7d"]
+[ext_resource type="Texture2D" uid="uid://cdx14vyfrjfh1" path="res://assets/piece/battleship.png" id="2_8in7d"]
+
+[resource]
+script = ExtResource("1_8in7d")
+piece_id = 5
+piece_name = "Battleship"
+piece_description = "A random face value each round adds +20 to the add score."
+texture = ExtResource("2_8in7d")
+sell_value = 1
+metadata/_custom_type_script = "uid://clrtmo8q1dyst"

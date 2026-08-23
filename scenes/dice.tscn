@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://t2lnk76opcq5" path="res://assets/dice/dieblank-hover_32p.png" id="8_dicg2"]
 [ext_resource type="BitMap" uid="uid://cnrn1rs24jdhp" path="res://assets/dice/diemask-32p.png" id="8_ocjtb"]
 [ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dice/dieblank-pressed_32p.png" id="8_pgf55"]
-[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="11_dlvbc"]
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/ui/font/m3x6.ttf" id="11_dlvbc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pgf55"]
 friction = 0.75

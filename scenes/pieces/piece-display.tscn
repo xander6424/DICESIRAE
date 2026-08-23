@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://imrnv22it3bl"]
 
 [ext_resource type="Script" uid="uid://u16ww5khy3q" path="res://scripts/piece-display.gd" id="1_ehkrh"]
-[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/m3x6.ttf" id="2_gei3f"]
+[ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/ui/font/m3x6.ttf" id="2_gei3f"]
 [ext_resource type="Texture2D" uid="uid://0g2hw2yi7ahj" path="res://assets/dice/die1-32p.png" id="2_gtf1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehkrh"]
