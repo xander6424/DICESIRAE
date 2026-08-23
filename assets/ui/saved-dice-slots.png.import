@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bybiflpq4gb28"
-path="res://.godot/imported/saved-dice-slots.png-18c39d83cc613b2f2a063c9f449e18fb.ctex"
+path="res://.godot/imported/saved-dice-slots.png-32b54f29fa8550270c61fbaca35c7d3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dice/saved-dice-slots.png"
-dest_files=["res://.godot/imported/saved-dice-slots.png-18c39d83cc613b2f2a063c9f449e18fb.ctex"]
+source_file="res://assets/ui/saved-dice-slots.png"
+dest_files=["res://.godot/imported/saved-dice-slots.png-32b54f29fa8550270c61fbaca35c7d3a.ctex"]
 
 [params]
 

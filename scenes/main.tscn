@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/dice-hand.gd" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/rollbutton-32p.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
-[ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/dice/saved-dice-slots.png" id="5_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/ui/saved-dice-slots.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://d1j6276j77155" path="res://scenes/rolling_zone.tscn" id="6_trceg"]
 [ext_resource type="Script" uid="uid://c0a00isws4lbp" path="res://scripts/piece-hand.gd" id="7_a8y0u"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/game-over.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://b8p5ft131lrrs" path="res://scenes/intermission.tscn" id="16_jbj1t"]
-[ext_resource type="Texture2D" uid="uid://cch6ic10cnrpr" path="res://assets/piece/pieces-slots.png" id="16_muem4"]
+[ext_resource type="Texture2D" uid="uid://cch6ic10cnrpr" path="res://assets/ui/pieces-slots.png" id="16_muem4"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -36,15 +36,17 @@ offset_bottom = 360.0
 mouse_filter = 1
 color = Color(0.22, 0.22, 0.22, 1)
 
-[node name="Title" type="Label" parent="." unique_id=837264721]
-offset_left = 8.0
-offset_top = -8.0
-offset_right = 224.0
-offset_bottom = 68.0
+[node name="Title" type="RichTextLabel" parent="." unique_id=1790892624]
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 227.0
+offset_bottom = 69.0
 pivot_offset = Vector2(112.5, 27.5)
-theme_override_fonts/font = ExtResource("2_tipki")
-theme_override_font_sizes/font_size = 96
-text = "DICESIRAE"
+theme_override_fonts/normal_font = ExtResource("2_tipki")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "[wave amp=30 freq=1.5]DICESIRAE[/wave]"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
