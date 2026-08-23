@@ -134,7 +134,7 @@ func score_category(category_total: int, category: CategoryInfo):
 		
 		var dice_display: DiceDisplay = DiceManager.get_display(dice)
 		if dice_display:
-			await dice_display.show_score(dice_value)
+			await dice_display.play_popup(dice_value)
 		# UPDATE CATEGORY VISUAL SCORE HERE SIGNAL
 		await get_tree().create_timer(0.35).timeout
 		

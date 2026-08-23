@@ -32,7 +32,7 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	pass
-	# same unregister when selling or deletion
+	# same unregister when selling or deletion as dice
 
 func setup(new_piece: PieceInfo) -> void:
 	piece = new_piece

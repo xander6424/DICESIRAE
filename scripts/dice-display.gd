@@ -162,7 +162,7 @@ func display_face(face: DiceFace) -> void:
 	# CHANGE/DISPLAY COLOR HERE TOO
 
 
-func show_score(value: int):
+func play_popup(value: int):
 	if popup_tween and popup_tween.is_running():
 		popup_tween.kill()
 	
