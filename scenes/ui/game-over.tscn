@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgl00tujay1nm"]
 
-[ext_resource type="Script" uid="uid://b7q5gtmr7gekl" path="res://scripts/game-over-screen.gd" id="1_4sy36"]
+[ext_resource type="Script" uid="uid://b7q5gtmr7gekl" path="res://scripts/ui/game-over-screen.gd" id="1_4sy36"]
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/ui/font/m3x6.ttf" id="1_i8wdk"]
 
 [node name="GameOver" type="Control" unique_id=173250450]

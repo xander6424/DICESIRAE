@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8p5ft131lrrs"]
 
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/ui/font/m3x6.ttf" id="1_qwk4e"]
-[ext_resource type="Script" uid="uid://6jo0pnp15fym" path="res://scripts/intermission.gd" id="1_xx0sb"]
+[ext_resource type="Script" uid="uid://6jo0pnp15fym" path="res://scripts/ui/intermission.gd" id="1_xx0sb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1enbh"]
 bg_color = Color(0.69919205, 0.69919205, 0.69919187, 1)

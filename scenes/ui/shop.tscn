@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://digpfyk77xf68"]
 
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/ui/font/m3x6.ttf" id="1_lx5au"]
-[ext_resource type="Script" uid="uid://bdnf42umy2as2" path="res://scripts/shop.gd" id="1_xfvoa"]
+[ext_resource type="Script" uid="uid://bdnf42umy2as2" path="res://scripts/ui/shop.gd" id="1_xfvoa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
 border_width_left = 3
