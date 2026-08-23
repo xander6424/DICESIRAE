@@ -33,6 +33,16 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "purple",
+"res://resources/": "orange",
+"res://scenes/": "green",
+"res://scripts/": "blue",
+"res://scripts/global/": "yellow"
+}
+
 [input]
 
 Roll={
