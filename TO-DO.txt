@@ -1,37 +1,48 @@
 DICESIRAE TO-DO LIST
 
-1. Scoring Pieces
-	- Create a piece-manager script to call when scoring
-		- Handle scoring and deletion/selling
-	- Scoring a category needs changed to actually add piece effects
-	- Also include on round start and on round end functionality
-		- Possibly reset as well
+1. Update UI
+	- Color-coded scoring visuals/popup text
+	- Add popup text stroke/background for readability
+	- Dice & Piece shake animations
+	- Hand draw and discard animations
+	- Add new score button
 2. Pieces Section
-	- Ordering matters
-	- Display pieces
+	- Fix piece balancing and round scaling
 	- Selling pieces & deactivation
-3. Other test shop stuff
-	- Level up categories
-		- Add scaling
-	- Add new categories
-	- Modify dice
-		- Full color types & individual face types
-		- Implement their functionality as well (in dice-manager?)
-		- More sizes?
-4. Main menu (entering and exiting new scenes)
-	- Start game (reset game)
+	- Swapping pieces
+3. Shop Update
+	- Dice Workshop button
+		- Edit dice types
+		- Alter dice face values and types
+		- Buy and sell additional dice
+	- Implement new/remaining categories
+4. Final Round
+	- Every 3rd round is a special boss round with changed rules
+	- Possibly gain better rewards if you go in blind?
+	- Add boss effects
+		- 1 lot and 5 rerolls
+		- The top piece is disabled
+		- Most used and least used categories swap levels temporarily
+		- Faces 3 and below are disabled
+		- Highest face value is disabled
+		- Lose money per reroll
+		- Swap rerolls and lots count
+		- Colored dice effects are disabled
+		- Once dice are saved they can't be unsaved (dice/piece positions locked)
+		- Force save 1 dice minimum per reroll
+	- Add special round rewards at the end
+		- Swap for category
+		- Gain a piece slot (10 max?)
+		- Gain a new dice + free level + money (grab-bag)
+5. Main Menu (entering and exiting new "scenes")
+	- Start new game (reset game)
 		- Put this in lose screen too
 	- Options menu
 	- Loading screen?
-5. Optimize code and comment
-
-
-ROUND OVER
-- Level up a category
-- Gain a game piece
-- Modify a dice
-
-ANTE? OVER
-- Swap for a new category
-- Gain a game piece slot
-- Gain a new dice
+	- User save data
+6. Sound Effects & Music
+	- Add placeholder music and sounds
+7. General Adjustments
+	- Improve code
+	- Add more comments
+	- Make general balancing changes
