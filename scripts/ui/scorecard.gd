@@ -42,6 +42,8 @@ func _update_labels() -> void:
 	
 
 func _reset_scorecard() -> void:
+	print("RESET SCORECARD\n")
+	
 	# Add only starting categories to the scorecard
 	var scorecard_index: int = 0
 	CategoryData.active_category_info_list.clear()
@@ -57,6 +59,7 @@ func _reset_scorecard() -> void:
 			category.button.disabled = false
 			category.button.button_pressed = false
 			category.scored = false
+			category.total = 0
 			
 			CategoryData.active_category_info_list.append(category)
 			scorecard_index += 1
@@ -67,8 +70,6 @@ func _update_scorecard() -> void:
 
 func check_category_existance() -> void:
 	for category in CategoryData.active_category_info_list:
-		category.total = 0 # Possibly remove this eventually?
-		
 		# Checks if an unscored category exists in current hand
 		if !category.scored:
 			category.check_hand_existance(DiceManager.all_dice_list)
@@ -134,8 +135,12 @@ func score_category(category_total: int, category: CategoryInfo):
 		
 		var dice_display: DiceDisplay = DiceManager.get_display(dice)
 		if dice_display:
+			# Update scorecard visual values
+			category.total += dice_value
+			_update_scorecard()
+			
 			await dice_display.show_score(dice_value)
-		# UPDATE CATEGORY VISUAL SCORE HERE SIGNAL
+		
 		await get_tree().create_timer(0.35).timeout
 		
 		await PieceManager.dice_scored(dice)
@@ -151,5 +156,6 @@ func score_category(category_total: int, category: CategoryInfo):
 	GameData.grand_total += category_total
 	
 	PieceManager.reset_piece_values()
+	
 	
 	return category_total
