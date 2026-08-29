@@ -7,7 +7,7 @@ signal _update_piece_labels()
 const MAX_PIECES_SIZE: int = 5
 var active_piece_list: Array[PieceInfo] = []
 var active_display_list: Array[PieceDisplay] = []
-
+var display_text_color: Color = Color.PURPLE # in case of issues
 
 func register_display(display: PieceDisplay) -> void:
 	active_display_list.append(display)
@@ -38,22 +38,24 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
 			GameData.total_add_score += score_values[0]
 			
 			current_category.total += score_values[0]
+			display_text_color = Color.AQUA
 			_update_scorecard.emit()
 			
 			# SIGNAL TO UPDATE VISUAL SCORE
 			
-			await dice_display.show_score(score_values[0])
+			await dice_display.show_score(score_values[0], display_text_color)
 		# Piece gains MULT score
 		else:
 			print(piece.piece_name, " MULT +", score_values[1])
 			GameData.total_mult_score += score_values[1]
 			
 			current_category.mult_score += score_values[1]
+			display_text_color = Color.RED
 			_update_scorecard.emit()
 			
 			# SIGNAL TO UPDATE VISUAL SCORE
 			
-			await dice_display.show_score(score_values[1])
+			await dice_display.show_score(score_values[1], display_text_color)
 		
 		# Potentially add multiplying mult
 		#current_category.mult_score *= score_values[2]
@@ -76,6 +78,7 @@ func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> voi
 			GameData.total_add_score += score_values[0]
 			
 			current_category.total += score_values[0]
+			display_text_color = Color.AQUA
 			_update_scorecard.emit()
 		# Piece gains MULT score
 		else:
@@ -83,6 +86,7 @@ func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> voi
 			GameData.total_mult_score += score_values[1]
 			
 			current_category.mult_score += score_values[1]
+			display_text_color = Color.RED
 			_update_scorecard.emit()
 		
 		# Potentially add multiplying mult
@@ -90,7 +94,7 @@ func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> voi
 		
 		# SIGNAL TO UPDATE VISUAL SCORE
 		
-		await display.show_score(score_values[0], score_values[1])
+		await display.show_score(score_values[0], score_values[1], display_text_color)
 		await get_tree().create_timer(0.5).timeout
 
 func reset_piece_values() -> void:

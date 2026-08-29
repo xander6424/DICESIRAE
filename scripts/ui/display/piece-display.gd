@@ -44,7 +44,7 @@ func _on_update_piece_labels():
 	piece_description_label.text = piece.piece_description
 
 
-func show_score(add_value: int, mult_value: int) -> void:
+func show_score(add_value: int, mult_value: int, text_color: Color) -> void:
 	if add_value == 0 and mult_value == 0:
 		return
 	
@@ -55,13 +55,14 @@ func show_score(add_value: int, mult_value: int) -> void:
 	elif mult_value != 0:
 		text = "+" + str(mult_value)
 	
-	await play_popup(text)
+	await play_popup(text, text_color)
 
-func play_popup(text: String) -> void:
+func play_popup(text: String, text_color: Color) -> void:
 	if popup_tween and popup_tween.is_running():
 		popup_tween.kill()
 	
 	score_popup_label.text = text
+	score_popup_label.add_theme_color_override("font_color", text_color)
 	score_popup.global_position = global_position + Vector2(0, -40)
 	score_popup.scale = Vector2(0.8, 0.8)
 	score_popup.modulate.a = 1.0

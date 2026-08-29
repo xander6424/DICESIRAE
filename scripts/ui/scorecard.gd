@@ -143,7 +143,7 @@ func score_category(category_total: int, category: CategoryInfo):
 			category.total += dice_value
 			_update_scorecard()
 			
-			await dice_display.show_score(dice_value)
+			await dice_display.show_score(dice_value, Color.WHITE)
 		
 		await get_tree().create_timer(0.35).timeout
 		
