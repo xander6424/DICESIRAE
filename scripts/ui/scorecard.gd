@@ -20,6 +20,7 @@ signal _on_update_round_status()
 
 
 func _ready() -> void:
+	PieceManager._update_scorecard.connect(_update_scorecard)
 	score_button.pressed.connect(_score_button_pressed)
 	_update_labels()
 
@@ -50,8 +51,12 @@ func _reset_scorecard() -> void:
 	
 	for category in CategoryData.FULL_CATEGORY_LIST:
 		if category.id in CategoryData.starting_category_list[0]:
+			category.total = 0
+			category.add_score = category.base_add_score
+			category.mult_score = category.base_mult_score
+			
 			category_label_list[scorecard_index].text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
-			category_button_list[scorecard_index].text = str(category.base_score) + " + 0 x " + str(category.mult_score)
+			category_button_list[scorecard_index].text = str(category.add_score) + " + 0 x " + str(category.mult_score)
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
 			
 			category.label = category_label_list[scorecard_index]
@@ -59,7 +64,6 @@ func _reset_scorecard() -> void:
 			category.button.disabled = false
 			category.button.button_pressed = false
 			category.scored = false
-			category.total = 0
 			
 			CategoryData.active_category_info_list.append(category)
 			scorecard_index += 1
@@ -84,7 +88,7 @@ func check_category_existance() -> void:
 				category.label.add_theme_color_override("font_color", Color.WHITE)
 			
 			category.label.text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
-			category.button.text = str(category.base_score) + " + " + str(category.total) + " x " + str(category.mult_score)
+			category.button.text = str(category.add_score) + " + " + str(category.total) + " x " + str(category.mult_score)
 
 
 func _score_button_pressed() -> void:
@@ -143,14 +147,16 @@ func score_category(category_total: int, category: CategoryInfo):
 		
 		await get_tree().create_timer(0.35).timeout
 		
-		await PieceManager.dice_scored(dice)
+		await PieceManager.dice_scored(dice, category)
 	
 	# Score pieces
 	print("\nSCORING PIECES")
-	await PieceManager.pieces_scored()
+	
+	for display in PieceManager.active_display_list:
+		await PieceManager.pieces_scored(display, category)
 	
 	# Full scoring
-	GameData.total_add_score += category.base_score
+	GameData.total_add_score += category.add_score
 	GameData.total_add_score *= GameData.total_mult_score
 	category_total = GameData.total_add_score
 	GameData.grand_total += category_total

@@ -60,20 +60,20 @@ func upgrade_button_pressed() -> void:
 		if category_selected:
 			match current_category.id:
 				CategoryData.Category.ACES:
-					current_category.base_score += 20
-					current_category.mult_score += 1
+					current_category.base_add_score += 20
+					current_category.base_mult_score += 1
 				CategoryData.Category.TWOS:
-					current_category.base_score += 20
-					current_category.mult_score += 1
+					current_category.base_add_score += 20
+					current_category.base_mult_score += 1
 				CategoryData.Category.THREES:
-					current_category.base_score += 20
-					current_category.mult_score += 1
+					current_category.base_add_score += 20
+					current_category.base_mult_score += 1
 				CategoryData.Category.TWO_PAIR:
-					current_category.base_score += 15
-					current_category.mult_score += 1
+					current_category.base_add_score += 15
+					current_category.base_mult_score += 1
 				CategoryData.Category.THREE_OF_A_KIND:
-					current_category.base_score += 15
-					current_category.mult_score += 2
+					current_category.base_add_score += 15
+					current_category.base_mult_score += 2
 			
 			current_category.level += 1
 			GameData.money -= 4

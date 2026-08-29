@@ -1,5 +1,6 @@
 extends Node
 
+signal _update_scorecard()
 # Emit signals from here to the display nodes to animate
 signal _update_piece_labels()
 
@@ -22,41 +23,74 @@ func round_started() -> void:
 func round_ended() -> void:
 	pass
 
-func dice_scored(dice: DiceInfo) -> void:
+func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
+	var dice_display: DiceDisplay = DiceManager.get_display(dice)
+	
 	for display in active_display_list:
 		var piece: PieceInfo = display.piece
 		var score_values: Array[int] = piece.dice_scored(dice)
 		if score_values[0] == 0 and score_values[1] == 0:
 			continue
 		
-		print(piece.piece_name, " ADD +", score_values[0])
-		GameData.total_add_score += score_values[0]
-		print(piece.piece_name, " MULT +", score_values[1])
-		GameData.total_mult_score += score_values[1]
+		# Piece gains ADD score
+		if score_values[0] > 0:
+			print(piece.piece_name, " ADD +", score_values[0])
+			GameData.total_add_score += score_values[0]
+			
+			current_category.total += score_values[0]
+			_update_scorecard.emit()
+			
+			# SIGNAL TO UPDATE VISUAL SCORE
+			
+			await dice_display.show_score(score_values[0])
+		# Piece gains MULT score
+		else:
+			print(piece.piece_name, " MULT +", score_values[1])
+			GameData.total_mult_score += score_values[1]
+			
+			current_category.mult_score += score_values[1]
+			_update_scorecard.emit()
+			
+			# SIGNAL TO UPDATE VISUAL SCORE
+			
+			await dice_display.show_score(score_values[1])
+		
+		# Potentially add multiplying mult
 		#current_category.mult_score *= score_values[2]
 		
 		_update_piece_labels.emit() # Change these signals?
 		
-		await display.show_score(score_values[0], score_values[1])
-		# SIGNAL TO UPDATE VISUAL SCORE
 		await get_tree().create_timer(0.35).timeout
 
 
-func pieces_scored() -> void:
-	for display in active_display_list:
-		var piece: PieceInfo = display.piece
-		var score_values: Array[int] = piece.piece_scored()
-		if score_values[0] == 0 and score_values[1] == 0:
-			continue
+func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> void:
+	#for display in active_display_list:
+	var piece: PieceInfo = display.piece
+	var score_values: Array[int] = piece.piece_scored()
+	
+	# Checks if piece can be scored individually
+	if !(score_values[0] == 0 and score_values[1] == 0):
+		# Piece gains ADD score
+		if score_values[0] > 0:
+			print(piece.piece_name, " ADD +", score_values[0])
+			GameData.total_add_score += score_values[0]
+			
+			current_category.total += score_values[0]
+			_update_scorecard.emit()
+		# Piece gains MULT score
+		else:
+			print(piece.piece_name, " MULT +", score_values[1])
+			GameData.total_mult_score += score_values[1]
+			
+			current_category.mult_score += score_values[1]
+			_update_scorecard.emit()
 		
-		print(piece.piece_name, " ADD +", score_values[0])
-		GameData.total_add_score += score_values[0]
-		print(piece.piece_name, " MULT +", score_values[1])
-		GameData.total_mult_score += score_values[1]
+		# Potentially add multiplying mult
 		#current_category.mult_score *= score_values[2]
 		
-		await display.show_score(score_values[0], score_values[1])
 		# SIGNAL TO UPDATE VISUAL SCORE
+		
+		await display.show_score(score_values[0], score_values[1])
 		await get_tree().create_timer(0.5).timeout
 
 func reset_piece_values() -> void:

@@ -6,16 +6,19 @@ class_name CategoryInfo
 @export var id: CategoryData.Category
 
 # (Base Score + Total Rolled) * Mult Score
-@export var base_score: int
-@export var mult_score: int
+@export var level: int = 1
+@export var base_add_score: int = 0
+@export var base_mult_score: int = 0
 
-var level: int = 1
+# Reset per time scored
+var add_score: int = base_add_score
+var mult_score: int = base_mult_score
 var total: int = 0
 var scored: bool = false
+
+# Current label and button associated with a category & checking existance
 var exists_in_hand: bool = false
 var exists_in_saved: bool = false
-
-# Current label and button associated with a category
 var label: Label = null
 var button: Button = null
 

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_8hfg2")
 category_name = "Aces"
-base_score = 5
-mult_score = 1
+base_add_score = 15
+base_mult_score = 1
 metadata/_custom_type_script = "uid://dcpdfdj5nx56f"
