@@ -7,7 +7,7 @@ signal _update_intermission()
 
 @onready var background: ColorRect = %Background
 @onready var roll_button: TextureButton = %RollButton
-@onready var score_button: Button = %ScoreButton
+@onready var score_button: TextureButton = %ScoreButton
 @onready var intermission: Control = %Intermission
 @onready var shop: Control = %Shop
 @onready var game_over: Control = %GameOver

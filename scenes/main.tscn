@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://imrnv22it3bl" path="res://scenes/pieces/piece-display.tscn" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/ui/shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/ui/game-over.tscn" id="10_choun"]
+[ext_resource type="Texture2D" uid="uid://cbu740jokytb4" path="res://assets/button/scorebutton.png" id="11_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://bdommmoswq7f1" path="res://assets/button/scorebutton-hover.png" id="12_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bbygmmx12ysr2" path="res://assets/button/scorebutton-disabled.png" id="13_yc10j"]
+[ext_resource type="BitMap" uid="uid://opb03iwa5bvd" path="res://assets/button/scorebutton-mask.png" id="14_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b8p5ft131lrrs" path="res://scenes/ui/intermission.tscn" id="16_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://cch6ic10cnrpr" path="res://assets/ui/pieces-slots.png" id="16_muem4"]
 
@@ -176,14 +180,17 @@ texture_hover = ExtResource("5_85g3d")
 texture_disabled = ExtResource("6_choun")
 texture_click_mask = ExtResource("7_ya4ey")
 
-[node name="ScoreButton" type="Button" parent="." unique_id=2064507988]
+[node name="ScoreButton" type="TextureButton" parent="." unique_id=608628168]
 unique_name_in_owner = true
 offset_left = 11.0
-offset_top = 296.0
+offset_top = 305.0
 offset_right = 211.0
-offset_bottom = 336.0
+offset_bottom = 353.0
 focus_mode = 0
-text = "SCORE"
+texture_normal = ExtResource("11_dp3eg")
+texture_hover = ExtResource("12_gqmmt")
+texture_disabled = ExtResource("13_yc10j")
+texture_click_mask = ExtResource("14_yc10j")
 
 [node name="Scorecard" parent="." unique_id=1927596429 instance=ExtResource("7_o6xl0")]
 offset_left = 160.0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://opb03iwa5bvd"
+path="res://.godot/imported/scorebutton-mask.png-8bbeaa82b0590932486fe508f6ca62ab.res"
+
+[deps]
+
+source_file="res://assets/button/scorebutton-mask.png"
+dest_files=["res://.godot/imported/scorebutton-mask.png-8bbeaa82b0590932486fe508f6ca62ab.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

@@ -2,7 +2,12 @@ extends Control
 
 signal _on_update_round_status()
 
-@onready var score_button: Button = %ScoreButton
+@onready var roll_button: TextureButton = %RollButton
+@onready var score_button: TextureButton = %ScoreButton
+const SCOREBUTTON_NORMAL = preload("uid://cbu740jokytb4")
+const SCOREBUTTON_HOVER = preload("uid://bdommmoswq7f1")
+const SCOREBUTTON_READY = preload("uid://c0wiui8qe21ky")
+const SCOREBUTTON_READY_HOVER = preload("uid://b208a58qjpalq")
 
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
@@ -73,6 +78,8 @@ func _update_scorecard() -> void:
 	check_category_existance()
 
 func check_category_existance() -> void:
+	var category_exists: bool = false
+	
 	for category in CategoryData.active_category_info_list:
 		# Checks if an unscored category exists in current hand
 		if !category.scored:
@@ -82,6 +89,10 @@ func check_category_existance() -> void:
 			# Indicate if category exists by color
 			if category.exists_in_saved:
 				category.label.add_theme_color_override("font_color", Color.GOLD)
+				
+				category_exists = true
+				score_button.texture_normal = SCOREBUTTON_READY
+				score_button.texture_hover = SCOREBUTTON_READY_HOVER
 			elif category.exists_in_hand:
 				category.label.add_theme_color_override("font_color", Color.YELLOW)
 			else:
@@ -89,7 +100,10 @@ func check_category_existance() -> void:
 			
 			category.label.text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
 			category.button.text = str(category.add_score) + " + " + str(category.total) + " x " + str(category.mult_score)
-
+	
+	if !category_exists:
+		score_button.texture_normal = SCOREBUTTON_NORMAL
+		score_button.texture_hover = SCOREBUTTON_HOVER
 
 func _score_button_pressed() -> void:
 	# Category won't score until dice have been rolled once
@@ -105,6 +119,9 @@ func _score_button_pressed() -> void:
 				break
 		
 		if category_selected and !current_category.scored:
+			score_button.disabled = true
+			roll_button.disabled = true
+			
 			var category_total: int = 0
 			
 			GameData.total_add_score = 0
@@ -118,6 +135,8 @@ func _score_button_pressed() -> void:
 			
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
 			
+			score_button.disabled = false
+			roll_button.disabled = false
 			current_category.scored = true
 			current_category.button.disabled = true
 			current_category.button.text = str(category_total)
