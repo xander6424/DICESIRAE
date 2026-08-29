@@ -44,7 +44,7 @@ func _on_update_piece_labels():
 	piece_description_label.text = piece.piece_description
 
 
-func show_score(add_value: int, mult_value: int, text_color: Color) -> void:
+func show_score(add_value: int, mult_value: int, text_color: Color) -> Tween:
 	if add_value == 0 and mult_value == 0:
 		return
 	
@@ -55,14 +55,15 @@ func show_score(add_value: int, mult_value: int, text_color: Color) -> void:
 	elif mult_value != 0:
 		text = "+" + str(mult_value)
 	
-	await play_popup(text, text_color)
+	score_popup_label.text = text
+	score_popup_label.add_theme_color_override("font_color", text_color)
+	
+	return play_popup()
 
-func play_popup(text: String, text_color: Color) -> void:
+func play_popup() -> Tween:
 	if popup_tween and popup_tween.is_running():
 		popup_tween.kill()
 	
-	score_popup_label.text = text
-	score_popup_label.add_theme_color_override("font_color", text_color)
 	score_popup.global_position = global_position + Vector2(0, -40)
 	score_popup.scale = Vector2(0.8, 0.8)
 	score_popup.modulate.a = 1.0
@@ -77,7 +78,7 @@ func play_popup(text: String, text_color: Color) -> void:
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	popup_tween.parallel().tween_property(score_popup, "modulate:a", 0.0, 0.35)
 	
-	await popup_tween.finished
+	return popup_tween
 
 
 func _on_mouse_entered() -> void:

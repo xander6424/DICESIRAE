@@ -32,6 +32,8 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
 		if score_values[0] == 0 and score_values[1] == 0:
 			continue
 		
+		var value: int = 0
+		
 		# Piece gains ADD score
 		if score_values[0] > 0:
 			print(piece.piece_name, " ADD +", score_values[0])
@@ -39,11 +41,8 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
 			
 			current_category.total += score_values[0]
 			display_text_color = Color.AQUA
-			_update_scorecard.emit()
+			value = score_values[0]
 			
-			# SIGNAL TO UPDATE VISUAL SCORE
-			
-			await dice_display.show_score(score_values[0], display_text_color)
 		# Piece gains MULT score
 		else:
 			print(piece.piece_name, " MULT +", score_values[1])
@@ -51,16 +50,21 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
 			
 			current_category.mult_score += score_values[1]
 			display_text_color = Color.RED
-			_update_scorecard.emit()
-			
-			# SIGNAL TO UPDATE VISUAL SCORE
-			
-			await dice_display.show_score(score_values[1], display_text_color)
+			value = score_values[1]
 		
 		# Potentially add multiplying mult
 		#current_category.mult_score *= score_values[2]
 		
-		_update_piece_labels.emit() # Change these signals?
+		_update_scorecard.emit()
+		_update_piece_labels.emit() # Change this signal?
+		
+		var dice_tween: Tween = dice_display.show_score(value, display_text_color)
+		var piece_tween: Tween = display.play_popup()
+		
+		if dice_tween:
+			await dice_tween.finished
+		if piece_tween:
+			await piece_tween.finished
 		
 		await get_tree().create_timer(0.35).timeout
 
@@ -92,9 +96,10 @@ func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> voi
 		# Potentially add multiplying mult
 		#current_category.mult_score *= score_values[2]
 		
-		# SIGNAL TO UPDATE VISUAL SCORE
 		
-		await display.show_score(score_values[0], score_values[1], display_text_color)
+		var piece_tween: Tween = display.show_score(score_values[0], score_values[1], display_text_color)
+		if piece_tween:
+			await piece_tween.finished
 		await get_tree().create_timer(0.5).timeout
 
 func reset_piece_values() -> void:

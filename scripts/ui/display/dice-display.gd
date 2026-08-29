@@ -162,7 +162,7 @@ func display_face(face: DiceFace) -> void:
 	# CHANGE/DISPLAY COLOR HERE TOO
 
 
-func show_score(value: int, text_color: Color):
+func show_score(value: int, text_color: Color) -> Tween:
 	if popup_tween and popup_tween.is_running():
 		popup_tween.kill()
 	
@@ -178,4 +178,4 @@ func show_score(value: int, text_color: Color):
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	popup_tween.parallel().tween_property(score_popup, "modulate:a", 0.0, 0.25).set_delay(0.15)
 	
-	await popup_tween.finished
+	return popup_tween
