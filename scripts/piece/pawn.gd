@@ -7,6 +7,7 @@ class_name Pawn
 	# Enchances to a random chess piece after 2 rounds.
 		# No secret synergies.
 
+const ADD_VALUE: int = 15
 const MAX_SCORING: int = 2
 const MAX_ROUNDS: int = 2
 
@@ -14,13 +15,11 @@ var times_scored: int = 0
 var rounds_passed: int = 0
 
 func dice_scored(dice: DiceInfo) -> Array[int]:
-	score_values[0] = 0
-	
 	if times_scored < MAX_SCORING:
-		score_values[0] = 15
 		times_scored += 1
+		return [ADD_VALUE, 0]
 	
-	return score_values
+	return [0, 0]
 
 func reset_values() -> void:
 	times_scored = 0

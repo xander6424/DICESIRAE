@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_o5po0")
-piece_id = 3
+piece_id = 8
 piece_name = "Loose Coin"
-piece_description = "Add the current money value to the mult score."
+piece_description = "Add the [color=yellow]current money value[/color] to the [color=red]mult score.[/color]"
 texture = ExtResource("2_o5po0")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

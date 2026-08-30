@@ -139,7 +139,7 @@ func _score_button_pressed() -> void:
 			roll_button.disabled = false
 			current_category.scored = true
 			current_category.button.disabled = true
-			current_category.button_label.text = str(category_total)
+			current_category.button_label.text = "[color=purple]" + str(category_total) + "[/color]"
 			GameData.current_lot_scored = true
 			
 			_update_labels()
@@ -175,11 +175,18 @@ func score_category(category_total: int, category: CategoryInfo):
 	
 	# Full scoring
 	category.total += category.add_score
+	
+	category.button_label.text = "[color=aqua]" + str(category.total) + "[/color][color=red] x " + str(category.mult_score) + "[/color]"
+	await get_tree().create_timer(0.5).timeout
+	
 	category.total *= category.mult_score
+	
+	category.button_label.text = "[color=purple]" + str(category.total) + "[/color]"
+	await get_tree().create_timer(0.5).timeout
+	
 	category_total = category.total
 	GameData.grand_total += category_total
 	
 	PieceManager.reset_piece_values()
-	
 	
 	return category_total

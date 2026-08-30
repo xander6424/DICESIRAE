@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_2xgo2")
-piece_id = 1
+piece_id = 9
 piece_name = "Ladder"
 piece_description = "+1 Reroll"
 texture = ExtResource("2_q04u0")

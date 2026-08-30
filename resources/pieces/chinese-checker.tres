@@ -7,7 +7,7 @@
 script = ExtResource("1_yyaja")
 piece_id = 2
 piece_name = "Chinese Checker"
-piece_description = "Add +3 to mult score for every odd number scored."
+piece_description = "Add [color=red]+3[/color] to the [color=red]mult score[/color] for every [color=yellow]odd number[/color] scored."
 texture = ExtResource("2_yyaja")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

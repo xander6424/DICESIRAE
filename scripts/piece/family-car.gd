@@ -3,11 +3,10 @@ extends PieceInfo
 class_name FamilyCar
 
 # ABILITY:
-# Adds +150 to add score if the played hand contains unique
-# dice face values.
+# Adds +150 to add score if the played hand contains unique dice face values.
 	# No secret synergies.
 
-const ADD_VALUE: int = 150
+const ADD_VALUE: int = 100
 
 var banned_faces: Array[int] = []
 var unique_faces: bool = false

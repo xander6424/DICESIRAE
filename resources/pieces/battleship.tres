@@ -7,7 +7,7 @@
 script = ExtResource("1_8in7d")
 piece_id = 5
 piece_name = "Battleship"
-piece_description = "A random face value each round adds +20 to the add score."
+piece_description = "A [color=yellow]random face value[/color] each round adds [color=aqua]+33[/color] to the [color=aqua]add score.[/color]"
 texture = ExtResource("2_8in7d")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

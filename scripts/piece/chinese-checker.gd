@@ -6,11 +6,11 @@ class_name ChineseChecker
 # Add +3 to mult score for every odd number scored.
 	# No secret synergies.
 
-var base_mult_score: int = 3
+const MULT_VALUE: int = 3
 
 
 func dice_scored(dice: DiceInfo) -> Array[int]:
 	if dice.faces[dice.current_face_index].face_value % 2 != 0:
-		return [0, base_mult_score]
+		return [0, MULT_VALUE]
 	
 	return [0, 0]

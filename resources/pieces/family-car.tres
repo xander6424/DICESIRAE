@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_xwg1b")
-piece_id = 5
+piece_id = 6
 piece_name = "Family Car"
-piece_description = "Adds +150 to add score if the played hand contains unique dice faces."
+piece_description = "Adds [color=aqua]+100[/color] to the [color=aqua]add score[/color] if the played hand contains [color=yellow]unique dice faces.[/color]"
 texture = ExtResource("2_vuvp4")
 sell_value = 2
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

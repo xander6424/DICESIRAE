@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_1wjui")
-piece_id = 1
+piece_id = 3
 piece_name = "Mancala Stone"
-piece_description = "Add the highest scored dice value to the mult score."
+piece_description = "Add the [color=yellow]highest scored dice value[/color] to the [color=red]mult score.[/color]"
 texture = ExtResource("2_tiqlx")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_us2sp")
-piece_id = 6
+piece_id = 7
 piece_name = "Tic-Tac-Toe Chip"
-piece_description = "Add +9 to the mult score if the played hand contains 3 or more dice."
+piece_description = "Add [color=red]+9[/color] to the [color=red]mult score[/color] if the played hand contains [color=yellow]3 or more dice.[/color]"
 texture = ExtResource("2_oio25")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

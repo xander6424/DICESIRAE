@@ -7,7 +7,7 @@
 script = ExtResource("1_rvy5k")
 piece_id = 1
 piece_name = "Checker"
-piece_description = "Add +24 to add score for every even number scored."
+piece_description = "Add [color=aqua]+16[/color] to the [color=aqua]add score[/color] for every [color=yellow]even number[/color] scored."
 texture = ExtResource("2_rvy5k")
 sell_value = 1
 metadata/_custom_type_script = "uid://clrtmo8q1dyst"

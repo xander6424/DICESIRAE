@@ -11,7 +11,7 @@ class_name PieceDisplay
 @onready var piece_collision_shape: CollisionShape2D = %PieceCollisionShape
 @onready var hint_display: Control = %HintDisplay
 @onready var piece_name_label: Label = %PieceName
-@onready var piece_description_label: Label = %PieceDescription
+@onready var piece_description_label: RichTextLabel = %PieceDescription
 
 @onready var score_popup: Node2D = %ScorePopup
 @onready var score_popup_label: Label = %ScorePopupLabel
