@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbu740jokytb4"
-path="res://.godot/imported/scorebutton.png-bf597d50e8a0421e40f4cf5fd1c26ce9.ctex"
+uid="uid://cctu5thu5j8qp"
+path="res://.godot/imported/rollbutton-32p.png-9e9f288bf4583c996e2226f7c46b56df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/button/scorebutton.png"
-dest_files=["res://.godot/imported/scorebutton.png-bf597d50e8a0421e40f4cf5fd1c26ce9.ctex"]
+source_file="res://assets/button/roll/rollbutton-32p.png"
+dest_files=["res://.godot/imported/rollbutton-32p.png-9e9f288bf4583c996e2226f7c46b56df.ctex"]
 
 [params]
 

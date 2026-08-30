@@ -4,21 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://5ueudmkrdrm3" path="res://scenes/game/dice.tscn" id="2_h2yge"]
 [ext_resource type="FontFile" uid="uid://dife3qiih4s8x" path="res://assets/ui/font/m3x6.ttf" id="2_tipki"]
 [ext_resource type="Script" uid="uid://cnpmdpxg85t2q" path="res://scripts/ui/display/dice-hand.gd" id="3_ya4ey"]
-[ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/rollbutton-32p.png" id="4_tipki"]
-[ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/rollbutton-hover-32p.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://cctu5thu5j8qp" path="res://assets/button/roll/rollbutton-32p.png" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://0y1mpioim66n" path="res://assets/button/roll/rollbutton-hover-32p.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bybiflpq4gb28" path="res://assets/ui/saved-dice-slots.png" id="5_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/rollbutton-disabled-32p.png" id="6_choun"]
+[ext_resource type="Texture2D" uid="uid://cja3760rqtt23" path="res://assets/button/roll/rollbutton-disabled-32p.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://d1j6276j77155" path="res://scenes/game/rolling_zone.tscn" id="6_trceg"]
 [ext_resource type="Script" uid="uid://c0a00isws4lbp" path="res://scripts/ui/display/piece-hand.gd" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dxbwxwmifxg8x" path="res://scenes/ui/scorecard.tscn" id="7_o6xl0"]
-[ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/rollbutton-mask-32p.png" id="7_ya4ey"]
+[ext_resource type="BitMap" uid="uid://bdnjd1palx2yv" path="res://assets/button/roll/rollbutton-mask-32p.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://imrnv22it3bl" path="res://scenes/pieces/piece-display.tscn" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/ui/shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/ui/game-over.tscn" id="10_choun"]
-[ext_resource type="Texture2D" uid="uid://cbu740jokytb4" path="res://assets/button/scorebutton.png" id="11_dp3eg"]
-[ext_resource type="Texture2D" uid="uid://bdommmoswq7f1" path="res://assets/button/scorebutton-hover.png" id="12_gqmmt"]
-[ext_resource type="Texture2D" uid="uid://bbygmmx12ysr2" path="res://assets/button/scorebutton-disabled.png" id="13_yc10j"]
-[ext_resource type="BitMap" uid="uid://opb03iwa5bvd" path="res://assets/button/scorebutton-mask.png" id="14_yc10j"]
+[ext_resource type="Texture2D" uid="uid://cbu740jokytb4" path="res://assets/button/score/scorebutton.png" id="11_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://bdommmoswq7f1" path="res://assets/button/score/scorebutton-hover.png" id="12_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bbygmmx12ysr2" path="res://assets/button/score/scorebutton-disabled.png" id="13_yc10j"]
+[ext_resource type="BitMap" uid="uid://opb03iwa5bvd" path="res://assets/button/score/scorebutton-mask.png" id="14_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b8p5ft131lrrs" path="res://scenes/ui/intermission.tscn" id="16_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://cch6ic10cnrpr" path="res://assets/ui/pieces-slots.png" id="16_muem4"]
 
@@ -41,6 +41,7 @@ mouse_filter = 1
 color = Color(0.22, 0.22, 0.22, 1)
 
 [node name="Title" type="RichTextLabel" parent="." unique_id=1790892624]
+unique_name_in_owner = true
 offset_left = 3.0
 offset_top = -7.0
 offset_right = 227.0

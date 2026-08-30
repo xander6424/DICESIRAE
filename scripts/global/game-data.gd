@@ -10,8 +10,8 @@ const STARTING_MONEY: int = 4
 const ROLL_DURATION: float = 1.0
 const ROUND_SCORE_SCALING: Array[int] = [
 	100, 150, 250, 
-	500, 925, 1375, 
-	2400, 7850, 13500, 
+	525, 950, 1775, 
+	3900, 8650, 14500, 
 	25000, 50000, 100000
 ]
 

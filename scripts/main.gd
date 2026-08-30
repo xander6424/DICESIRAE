@@ -6,6 +6,7 @@ signal _update_scorecard()
 signal _update_intermission()
 
 @onready var background: ColorRect = %Background
+@onready var title: RichTextLabel = %Title
 @onready var roll_button: TextureButton = %RollButton
 @onready var score_button: TextureButton = %ScoreButton
 @onready var intermission: Control = %Intermission
@@ -111,9 +112,9 @@ func _change_scene_status(round_won: bool) -> void:
 		intermission.visible = true
 	else:
 		print("LOSE.\n")
-		
+		title.text = "[wave amp=30 freq=0]DICESIRAE[/wave]" # Freeze title wave in place
 		game_over.visible = true
-		# Add a method to restart the game (call reset game)
+		# Add a method to restart the game (call reset game in game over script)
 
 
 
