@@ -21,6 +21,7 @@ var exists_in_hand: bool = false
 var exists_in_saved: bool = false
 var label: Label = null
 var button: Button = null
+var button_label: RichTextLabel = null
 
 # Track which saved dice are valid to be scored in a category
 var valid_dice_list: Array[DiceInfo] = []

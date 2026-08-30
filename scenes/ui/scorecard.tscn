@@ -91,8 +91,21 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_fuxe3")
-text = "0"
 alignment = 2
+
+[node name="CategoryButtonLabel1" type="RichTextLabel" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer1/CategoryButton1" unique_id=184055670]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_bv5yb")
+bbcode_enabled = true
+text = "0"
+horizontal_alignment = 2
 
 [node name="HCategoryContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1051480724]
 layout_mode = 2
@@ -117,8 +130,21 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_fuxe3")
-text = "0"
 alignment = 2
+
+[node name="CategoryButtonLabel2" type="RichTextLabel" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer2/CategoryButton2" unique_id=681865244]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_bv5yb")
+bbcode_enabled = true
+text = "0"
+horizontal_alignment = 2
 
 [node name="HCategoryContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1371584541]
 layout_mode = 2
@@ -143,8 +169,21 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_fuxe3")
-text = "0"
 alignment = 2
+
+[node name="CategoryButtonLabel3" type="RichTextLabel" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer3/CategoryButton3" unique_id=1936329353]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_bv5yb")
+bbcode_enabled = true
+text = "0"
+horizontal_alignment = 2
 
 [node name="HCategoryContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1342339284]
 layout_mode = 2
@@ -169,8 +208,21 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_fuxe3")
-text = "0"
 alignment = 2
+
+[node name="CategoryButtonLabel4" type="RichTextLabel" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer4/CategoryButton4" unique_id=363029385]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_bv5yb")
+bbcode_enabled = true
+text = "0"
+horizontal_alignment = 2
 
 [node name="HCategoryContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VCategoryContainer" unique_id=1763710265]
 layout_mode = 2
@@ -195,5 +247,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fuxe3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3d4b4")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_fuxe3")
-text = "0"
 alignment = 2
+
+[node name="CategoryButtonLabel5" type="RichTextLabel" parent="PanelContainer/MarginContainer/VCategoryContainer/HCategoryContainer5/CategoryButton5" unique_id=523246784]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_bv5yb")
+bbcode_enabled = true
+text = "0"
+horizontal_alignment = 2

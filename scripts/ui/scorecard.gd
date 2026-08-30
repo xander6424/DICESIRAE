@@ -22,7 +22,7 @@ const SCOREBUTTON_READY_HOVER = preload("uid://cia4rmehekym7")
 
 @onready var category_label_list = [%CategoryLabel1, %CategoryLabel2, %CategoryLabel3, %CategoryLabel4, %CategoryLabel5]
 @onready var category_button_list = [%CategoryButton1, %CategoryButton2, %CategoryButton3, %CategoryButton4, %CategoryButton5]
-
+@onready var category_button_label_list = [%CategoryButtonLabel1, %CategoryButtonLabel2, %CategoryButtonLabel3, %CategoryButtonLabel4, %CategoryButtonLabel5]
 
 func _ready() -> void:
 	PieceManager._update_scorecard.connect(_update_scorecard)
@@ -61,11 +61,12 @@ func _reset_scorecard() -> void:
 			category.mult_score = category.base_mult_score
 			
 			category_label_list[scorecard_index].text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
-			category_button_list[scorecard_index].text = str(category.add_score) + " + 0 x " + str(category.mult_score)
+			category_button_label_list[scorecard_index].text = str(category.add_score) + "[color=aqua] + 0[/color][color=red] x " + str(category.mult_score) + "[/color]"
 			#category_button_list[scorecard_index].pressed.connect(category_button_pressed)
 			
 			category.label = category_label_list[scorecard_index]
 			category.button = category_button_list[scorecard_index]
+			category.button_label = category_button_label_list[scorecard_index]
 			category.button.disabled = false
 			category.button.button_pressed = false
 			category.scored = false
@@ -99,7 +100,7 @@ func check_category_existance() -> void:
 				category.label.add_theme_color_override("font_color", Color.WHITE)
 			
 			category.label.text = "LVL. " + str(category.level) + " | " + category.category_name + ":"
-			category.button.text = str(category.add_score) + " + " + str(category.total) + " x " + str(category.mult_score)
+			category.button_label.text = str(category.add_score) + "[color=aqua] + " + str(category.total) + "[/color][color=red] x " + str(category.mult_score) + "[/color]"
 	
 	if !category_exists:
 		score_button.texture_normal = SCOREBUTTON_NORMAL
@@ -124,8 +125,7 @@ func _score_button_pressed() -> void:
 			
 			var category_total: int = 0
 			
-			GameData.total_add_score = 0
-			GameData.total_mult_score = current_category.mult_score
+			current_category.total = 0
 			DiceManager.scoring_dice_list.clear()
 			
 			# Only checks to score if category is even valid
@@ -139,7 +139,7 @@ func _score_button_pressed() -> void:
 			roll_button.disabled = false
 			current_category.scored = true
 			current_category.button.disabled = true
-			current_category.button.text = str(category_total)
+			current_category.button_label.text = str(category_total)
 			GameData.current_lot_scored = true
 			
 			_update_labels()
@@ -153,13 +153,12 @@ func score_category(category_total: int, category: CategoryInfo):
 		print("+", str(dice.score_dice()))
 		
 		var dice_value: int = dice.score_dice()
-		GameData.total_add_score += dice_value
 		dice.scored = true
 		
 		var dice_display: DiceDisplay = DiceManager.get_display(dice)
 		if dice_display:
 			# Update scorecard visual values
-			category.total += dice_value
+			category.add_score += dice_value
 			_update_scorecard()
 			
 			await dice_display.show_score(dice_value, Color.WHITE).finished
@@ -175,9 +174,9 @@ func score_category(category_total: int, category: CategoryInfo):
 		await PieceManager.pieces_scored(display, category)
 	
 	# Full scoring
-	GameData.total_add_score += category.add_score
-	GameData.total_add_score *= GameData.total_mult_score
-	category_total = GameData.total_add_score
+	category.total += category.add_score
+	category.total *= category.mult_score
+	category_total = category.total
 	GameData.grand_total += category_total
 	
 	PieceManager.reset_piece_values()

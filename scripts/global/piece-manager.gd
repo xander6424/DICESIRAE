@@ -37,7 +37,6 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
 		# Piece gains ADD score
 		if score_values[0] > 0:
 			print(piece.piece_name, " ADD +", score_values[0])
-			GameData.total_add_score += score_values[0]
 			
 			current_category.total += score_values[0]
 			display_text_color = Color.AQUA
@@ -79,7 +78,6 @@ func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> voi
 		# Piece gains ADD score
 		if score_values[0] > 0:
 			print(piece.piece_name, " ADD +", score_values[0])
-			GameData.total_add_score += score_values[0]
 			
 			current_category.total += score_values[0]
 			display_text_color = Color.AQUA
