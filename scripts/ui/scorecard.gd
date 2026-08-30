@@ -6,8 +6,8 @@ signal _on_update_round_status()
 @onready var score_button: TextureButton = %ScoreButton
 const SCOREBUTTON_NORMAL = preload("uid://cbu740jokytb4")
 const SCOREBUTTON_HOVER = preload("uid://bdommmoswq7f1")
-const SCOREBUTTON_READY = preload("uid://c0wiui8qe21ky")
-const SCOREBUTTON_READY_HOVER = preload("uid://b208a58qjpalq")
+const SCOREBUTTON_READY = preload("uid://dd5x7v6oocnth")
+const SCOREBUTTON_READY_HOVER = preload("uid://cia4rmehekym7")
 
 @onready var lots_label: Label = %Lots
 @onready var reroll_label: Label = %Rerolls
