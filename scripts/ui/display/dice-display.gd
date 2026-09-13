@@ -5,7 +5,7 @@ class_name DiceDisplay
 @onready var face_sprite: Sprite2D = %FaceSprite
 @onready var roll_button = get_parent().get_parent().get_node("RollButton") # THIS SUCKS
 @onready var save_button: TextureButton = %SaveButton
- 
+
 @export var dice: DiceInfo
 @export var face_textures: Array[Texture2D] = []
  
@@ -15,7 +15,7 @@ class_name DiceDisplay
 @export var max_torque_impulse: float = 1000.0
 var current_position: Vector2 = Vector2(0.0, 0.0)
 var current_rotation: float = 0.0
- 
+
 static var dice_currently_rolling: int = 0
 var rolling: bool = false
 var dice_saved: bool = false
@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	DiceManager.unregister_display(self)
- 
+
 func setup(new_dice: DiceInfo):
 	dice = new_dice
 	dice_saved = false
@@ -59,6 +59,7 @@ func roll_button_pressed():
 	if !rolling and !dice_saved:
 		GameData.first_round_roll = false
 		roll_button.disabled = true
+		
 		roll_dice()
  
 func roll_dice():
@@ -155,7 +156,7 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 	else:
 		position = current_position
 
- 
+
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1
 	face_sprite.texture = face_textures[index]

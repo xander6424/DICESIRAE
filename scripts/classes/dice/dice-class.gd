@@ -4,8 +4,8 @@ class_name DiceInfo
 
 @export var dice_size: DiceData.Size = DiceData.Size.D6
 @export var dice_type: DiceData.DiceType = DiceData.DiceType.NORMAL
-
 var faces: Array[DiceFace] = []
+
 var current_face_index: int = 0
 var scored: bool = false
 

@@ -45,7 +45,6 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo) -> void:
 		# Piece gains MULT score
 		else:
 			print(piece.piece_name, " MULT +", score_values[1])
-			GameData.total_mult_score += score_values[1]
 			
 			current_category.mult_score += score_values[1]
 			display_text_color = Color.RED
@@ -85,7 +84,6 @@ func pieces_scored(display: PieceDisplay, current_category: CategoryInfo) -> voi
 		# Piece gains MULT score
 		else:
 			print(piece.piece_name, " MULT +", score_values[1])
-			GameData.total_mult_score += score_values[1]
 			
 			current_category.mult_score += score_values[1]
 			display_text_color = Color.RED

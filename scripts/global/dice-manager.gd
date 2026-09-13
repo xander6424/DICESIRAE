@@ -17,6 +17,8 @@ var saved_dice_list: Array[DiceInfo] = []
 var discard_pile: Array[DiceInfo] = []
 
 var active_display_list: Array[DiceDisplay] = []
+const ENABLE: bool = false
+const DISABLE: bool = true
 
 
 func _ready() -> void:
@@ -60,6 +62,10 @@ func get_display(dice: DiceInfo) -> DiceDisplay:
 			return display
 	return null
 
+func toggle_all_dice(toggle: bool) -> void:
+	for display in active_display_list:
+		display.save_button.disabled = toggle
+
 
 func draw_dice() -> void:
 	while rolling_dice_list.size() < MAX_HAND_SIZE:
@@ -98,6 +104,7 @@ func discard_dice() -> void:
 
 func _on_hand_rolling_done() -> void:
 	print("HAND DONE ROLLING")
+	toggle_all_dice(ENABLE)
 	
 	# Move all rolled/saved dice in a scoring list to be checked
 	all_dice_list.clear()

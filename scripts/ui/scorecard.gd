@@ -122,6 +122,7 @@ func _score_button_pressed() -> void:
 		if category_selected and !current_category.scored:
 			score_button.disabled = true
 			roll_button.disabled = true
+			DiceManager.toggle_all_dice(DiceManager.DISABLE)
 			
 			var category_total: int = 0
 			
@@ -133,8 +134,9 @@ func _score_button_pressed() -> void:
 				DiceManager.scoring_dice_list = current_category.valid_dice_list.duplicate()
 				category_total = await score_category(category_total, current_category)
 			
+			# Reset everything
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
-			
+			DiceManager.toggle_all_dice(DiceManager.ENABLE)
 			score_button.disabled = false
 			roll_button.disabled = false
 			current_category.scored = true
@@ -156,6 +158,7 @@ func score_category(category_total: int, category: CategoryInfo):
 		dice.scored = true
 		
 		var dice_display: DiceDisplay = DiceManager.get_display(dice)
+		
 		if dice_display:
 			# Update scorecard visual values
 			category.add_score += dice_value

@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://digpfyk77xf68" path="res://scenes/ui/shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bgl00tujay1nm" path="res://scenes/ui/game-over.tscn" id="10_choun"]
 [ext_resource type="Texture2D" uid="uid://cbu740jokytb4" path="res://assets/button/score/scorebutton.png" id="11_dp3eg"]
+[ext_resource type="Script" uid="uid://d3ao3seil1224" path="res://scenes/roll-button.gd" id="11_jscy8"]
 [ext_resource type="Texture2D" uid="uid://bdommmoswq7f1" path="res://assets/button/score/scorebutton-hover.png" id="12_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bbygmmx12ysr2" path="res://assets/button/score/scorebutton-disabled.png" id="13_yc10j"]
 [ext_resource type="BitMap" uid="uid://opb03iwa5bvd" path="res://assets/button/score/scorebutton-mask.png" id="14_yc10j"]
@@ -180,6 +181,7 @@ texture_normal = ExtResource("4_tipki")
 texture_hover = ExtResource("5_85g3d")
 texture_disabled = ExtResource("6_choun")
 texture_click_mask = ExtResource("7_ya4ey")
+script = ExtResource("11_jscy8")
 
 [node name="ScoreButton" type="TextureButton" parent="." unique_id=608628168]
 unique_name_in_owner = true
@@ -232,6 +234,7 @@ visible = false
 [connection signal="_update_intermission" from="." to="Intermission" method="_on_update_intermission"]
 [connection signal="_update_labels" from="." to="Scorecard" method="_update_labels"]
 [connection signal="_update_scorecard" from="." to="Scorecard" method="_update_scorecard"]
+[connection signal="pressed" from="RollButton" to="." method="_on_roll_button_pressed"]
 [connection signal="_on_update_round_status" from="Scorecard" to="." method="_on_update_round_status"]
 [connection signal="_on_piece_purchased" from="Shop" to="PieceHand" method="_on_piece_purchased"]
 [connection signal="_on_update_round_status" from="Shop" to="." method="_on_update_round_status"]

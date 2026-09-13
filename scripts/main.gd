@@ -51,6 +51,7 @@ func _on_reset_round() -> void:
 	
 	# Reshuffle all discarded dice back into draw pile
 	DiceManager.reset_round()
+	DiceManager.toggle_all_dice(DiceManager.DISABLE)
 	
 	if shop.visible:
 		background.color = Color(0.22, 0.22, 0.22)
@@ -117,6 +118,8 @@ func _change_scene_status(round_won: bool) -> void:
 		# Add a method to restart the game (call reset game in game over script)
 
 
+func _on_roll_button_pressed() -> void:
+	DiceManager.toggle_all_dice(DiceManager.DISABLE)
 
 
 # GOD MODE (Shift + G) - FOR DEBUGGING

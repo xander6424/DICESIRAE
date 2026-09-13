@@ -21,6 +21,7 @@ const SAVED_POSITIONS: Array[Vector2] = [
 var dice_hand_slots: Array = []
 var dice_saved_slots: Array = []
 
+# Number of alterable faces on each dice
 enum Size {
 	D6 = 6, 
 	D8 = 8, 
