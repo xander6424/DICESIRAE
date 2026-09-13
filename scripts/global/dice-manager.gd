@@ -5,6 +5,7 @@ signal _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Arra
 signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _update_round_status()
+signal _update_scorecard()
 
 const MAX_HAND_SIZE: int = 5
 const MAX_DRAW_PILE_SIZE: int = 10
@@ -133,3 +134,23 @@ func unsave_dice(dice: DiceInfo) -> void:
 		
 		# Check if category exists in saved
 		_update_round_status.emit()
+
+
+func dice_scored(dice: DiceInfo, current_category: CategoryInfo):
+	print("+", str(dice.score_dice()))
+		
+	var dice_value: int = dice.score_dice()
+	dice.scored = true
+	
+	var dice_display: DiceDisplay = DiceManager.get_display(dice)
+	
+	if dice_display:
+		# Update scorecard visual values
+		current_category.add_score += dice_value
+		_update_scorecard.emit()
+		
+		await dice_display.show_score(dice_value, Color.WHITE).finished
+	
+	await get_tree().create_timer(0.35).timeout
+	
+	await PieceManager.dice_scored(dice, current_category)

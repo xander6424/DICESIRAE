@@ -25,6 +25,7 @@ const SCOREBUTTON_READY_HOVER = preload("uid://cia4rmehekym7")
 @onready var category_button_label_list = [%CategoryButtonLabel1, %CategoryButtonLabel2, %CategoryButtonLabel3, %CategoryButtonLabel4, %CategoryButtonLabel5]
 
 func _ready() -> void:
+	DiceManager._update_scorecard.connect(_update_scorecard)
 	PieceManager._update_scorecard.connect(_update_scorecard)
 	score_button.pressed.connect(_score_button_pressed)
 	_update_labels()
@@ -125,16 +126,19 @@ func _score_button_pressed() -> void:
 			DiceManager.toggle_all_dice(DiceManager.DISABLE)
 			
 			var category_total: int = 0
-			
 			current_category.total = 0
 			DiceManager.scoring_dice_list.clear()
 			
 			# Only checks to score if category is even valid
 			if current_category.exists_in_saved:
-				DiceManager.scoring_dice_list = current_category.valid_dice_list.duplicate()
+				# Create scoring array in correct saved order
+				for dice in DiceData.dice_saved_slots:
+					if dice in current_category.valid_dice_list:
+						DiceManager.scoring_dice_list.append(dice)
+				
 				category_total = await score_category(category_total, current_category)
 			
-			# Reset everything
+			# Reset everything after scoring
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
 			DiceManager.toggle_all_dice(DiceManager.ENABLE)
 			score_button.disabled = false
@@ -152,31 +156,11 @@ func score_category(category_total: int, category: CategoryInfo):
 	var dice_to_score = DiceManager.scoring_dice_list.duplicate()
 	
 	for dice in dice_to_score:
-		print("+", str(dice.score_dice()))
-		
-		var dice_value: int = dice.score_dice()
-		dice.scored = true
-		
-		var dice_display: DiceDisplay = DiceManager.get_display(dice)
-		
-		if dice_display:
-			# Update scorecard visual values
-			category.add_score += dice_value
-			_update_scorecard()
-			
-			await dice_display.show_score(dice_value, Color.WHITE).finished
-		
-		await get_tree().create_timer(0.35).timeout
-		
-		await PieceManager.dice_scored(dice, category)
-	
-	# Score pieces
-	print("\nSCORING PIECES")
-	
+		await DiceManager.dice_scored(dice, category)
 	for display in PieceManager.active_display_list:
 		await PieceManager.pieces_scored(display, category)
 	
-	# Full scoring
+	# Full final scoring
 	category.total += category.add_score
 	
 	category.button_label.text = "[color=aqua]" + str(category.total) + "[/color][color=red] x " + str(category.mult_score) + "[/color]"
