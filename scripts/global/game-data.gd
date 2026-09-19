@@ -21,7 +21,7 @@ var bonus_lots: int = 0
 var bonus_rerolls: int = 0
 var grand_total: int = 0
 var score_to_beat: int = ROUND_SCORE_SCALING[0]
-var first_round_roll: bool = true
+var first_lot_roll: bool = true
 var current_lot_scored: bool = false
 var round_won: bool = false
 

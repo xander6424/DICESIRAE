@@ -109,7 +109,7 @@ func check_category_existance() -> void:
 
 func _score_button_pressed() -> void:
 	# Category won't score until dice have been rolled once
-	if !GameData.first_round_roll:
+	if !GameData.first_lot_roll:
 		var current_category: CategoryInfo
 		var category_selected: bool = false
 		
@@ -141,8 +141,6 @@ func _score_button_pressed() -> void:
 			# Reset everything after scoring
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
 			DiceManager.toggle_all_dice(DiceManager.ENABLE)
-			score_button.disabled = false
-			roll_button.disabled = false
 			current_category.scored = true
 			current_category.button.disabled = true
 			current_category.button_label.text = "[color=purple]" + str(category_total) + "[/color]"
@@ -164,7 +162,7 @@ func score_category(category_total: int, category: CategoryInfo):
 	category.total += category.add_score
 	
 	category.button_label.text = "[color=aqua]" + str(category.total) + "[/color][color=red] x " + str(category.mult_score) + "[/color]"
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.7).timeout
 	
 	category.total *= category.mult_score
 	

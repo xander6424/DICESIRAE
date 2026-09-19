@@ -57,7 +57,7 @@ func setup(new_dice: DiceInfo):
  
 func roll_button_pressed():
 	if !rolling and !dice_saved:
-		GameData.first_round_roll = false
+		GameData.first_lot_roll = false
 		roll_button.disabled = true
 		
 		roll_dice()
@@ -111,7 +111,7 @@ func roll_dice():
  
  
 func _save_button_pressed():
-	if !rolling and !GameData.first_round_roll:
+	if !rolling and !GameData.first_lot_roll:
 		save_dice()
  
 func save_dice():

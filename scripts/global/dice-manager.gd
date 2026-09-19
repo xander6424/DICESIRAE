@@ -6,6 +6,7 @@ signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _update_round_status()
 signal _update_scorecard()
+signal _discard_animation_done()
 
 const MAX_HAND_SIZE: int = 5
 const MAX_DRAW_PILE_SIZE: int = 10
@@ -101,6 +102,7 @@ func discard_dice() -> void:
 		_force_unsave.emit(dice)
 	
 	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
+	await _discard_animation_done
 
 
 func _on_hand_rolling_done() -> void:

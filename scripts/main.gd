@@ -77,20 +77,24 @@ func _on_update_round_status() -> void:
 		
 		GameData.lots -= 1
 		GameData.rerolls = GameData.STARTING_REROLLS + GameData.bonus_rerolls
-		GameData.first_round_roll = true
+		GameData.first_lot_roll = true
 		GameData.current_lot_scored = false
 		DiceManager.all_dice_list.clear()
 		
 		# Remove scored dice and replace them with drawn dice
-		DiceManager.discard_dice()
+		await DiceManager.discard_dice()
 		DiceManager.draw_dice()
+		DiceManager.toggle_all_dice(DiceManager.DISABLE)
+		
+		score_button.disabled = false
+		roll_button.disabled = false
 		
 		if GameData.lots <= 0:
 			roll_button.disabled = true
 		else:
 			roll_button.disabled = false
 		
-		# Manages win condition
+		# Checks and manages win condition
 		if GameData.grand_total >= GameData.score_to_beat or god_mode:
 			GameData.round_won = true
 			roll_button.disabled = true
@@ -128,6 +132,6 @@ func _input(event: InputEvent) -> void:
 		GameData.current_lot_scored = true
 		god_mode = true
 		
-		_on_update_round_status()
+		await _on_update_round_status()
 		
 		god_mode = false

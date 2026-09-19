@@ -27,8 +27,11 @@ func _on_hand_drawn() -> void:
 func _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array) -> void:
 	for dice in discarded_dice_list:
 		if dice_nodes.has(dice):
-			# Removes the discarded dice node
 			var node: DiceDisplay = dice_nodes[dice]
+			
+			await play_discard(node)
+			
+			# Removes the discarded dice node
 			node.queue_free()
 			dice_nodes.erase(dice)
 			
@@ -36,7 +39,16 @@ func _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array)
 			var used_index: int = dice_slots.find(dice)
 			dice_slots[used_index] = null
 	
+	await get_tree().process_frame
+	DiceManager._discard_animation_done.emit()
 	print("HAND DISCARDED")
+
+func play_discard(node: DiceDisplay) -> void:
+	var discard_tween = create_tween()
+	discard_tween.set_parallel()
+	discard_tween.tween_property(node, "position", Vector2(-140.0, 85.0), 0.3).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	discard_tween.tween_property(node, "modulate:a", 0.0, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	await discard_tween.finished
 
 func _on_force_unsave(dice: DiceInfo):
 	if dice_nodes.has(dice):
