@@ -39,16 +39,17 @@ func create_starting_dice() -> void:
 	
 	draw_pile.shuffle()
 
-func reset_round() -> void:
+func round_started() -> void:
+	DiceManager.draw_pile.append_array(DiceManager.discard_pile)
+	DiceManager.draw_pile.shuffle()
+	DiceManager.discard_pile.clear()
+	DiceManager.draw_dice()
+
+func round_ended() -> void:
 	# Discard all remaining dice in hand
 	_on_dice_discarded.emit(rolling_dice_list, DiceData.dice_hand_slots)
-	
-	# Move all dice to draw pile and shuffle
-	draw_pile.append_array(discard_pile)
-	draw_pile.shuffle()
-	discard_pile.clear()
-	
-	draw_dice()
+	await _discard_animation_done
+
 
 func register_display(display: DiceDisplay) -> void:
 	active_display_list.append(display)
@@ -75,7 +76,8 @@ func draw_dice() -> void:
 			break
 		rolling_dice_list.append(draw_pile.pop_back())
 	
-	_on_hand_drawn.emit()
+	_on_hand_drawn.emit() # pass in new variable & slot
+	# await new signal
 
 func discard_dice() -> void:
 	var discarded_dice_list: Array[DiceInfo] = []
@@ -93,16 +95,16 @@ func discard_dice() -> void:
 	saved_dice_list.clear()
 	rolling_dice_list.append_array(unscored_dice_list)
 	
+	# Play dice discarding animation
+	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
+	await _discard_animation_done
+	
 	# Visually unsave all invalid dice nodes
 	for dice in unscored_dice_list:
 		_force_unsave.emit(dice)
-	
 	# Reset all remaining dice to default positions
 	for dice in rolling_dice_list:
 		_force_unsave.emit(dice)
-	
-	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
-	await _discard_animation_done
 
 
 func _on_hand_rolling_done() -> void:

@@ -27,9 +27,7 @@ func _ready() -> void:
 # Signal (not yet?) to fully reset the whole game
 func reset_game() -> void:
 	print("STARTING NEW GAME...")
-	
 	background.color = Color(0.22, 0.22, 0.22)
-	
 	DiceManager.create_starting_dice()
 
 # Reset all labels, dice, and categories
@@ -40,7 +38,6 @@ func _on_reset_round() -> void:
 	# Activate pieces at beginning of round (temporary location)
 	GameData.bonus_lots = 0
 	GameData.bonus_rerolls = 0
-	
 	PieceManager.round_started()
 	
 	GameData.lots = GameData.STARTING_LOTS + GameData.bonus_lots
@@ -49,8 +46,8 @@ func _on_reset_round() -> void:
 	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[GameData.round_number - 1]
 	GameData.round_won = false
 	
-	# Reshuffle all discarded dice back into draw pile
-	DiceManager.reset_round()
+	# Move all dice to draw pile and shuffle
+	DiceManager.round_started()
 	DiceManager.toggle_all_dice(DiceManager.DISABLE)
 	
 	if shop.visible:
@@ -83,15 +80,13 @@ func _on_update_round_status() -> void:
 		
 		# Remove scored dice and replace them with drawn dice
 		await DiceManager.discard_dice()
-		DiceManager.draw_dice()
-		DiceManager.toggle_all_dice(DiceManager.DISABLE)
-		
-		score_button.disabled = false
-		roll_button.disabled = false
 		
 		if GameData.lots <= 0:
 			roll_button.disabled = true
 		else:
+			DiceManager.draw_dice()
+			DiceManager.toggle_all_dice(DiceManager.DISABLE)
+			score_button.disabled = false
 			roll_button.disabled = false
 		
 		# Checks and manages win condition
@@ -99,6 +94,9 @@ func _on_update_round_status() -> void:
 			GameData.round_won = true
 			roll_button.disabled = true
 			score_button.disabled = true
+			
+			# Discard all remaining dice
+			DiceManager.round_ended()
 			
 			_change_scene_status(GameData.round_won)
 		elif GameData.lots <= 0:
