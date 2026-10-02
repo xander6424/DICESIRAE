@@ -65,7 +65,6 @@ func _on_reset_round() -> void:
 func _on_update_round_status() -> void:
 	print("UPDATING ROUND STATUS\n")
 	
-	# Checks if all rerolls have been used
 	if GameData.rerolls <= 0:
 		roll_button.disabled = true
 	
@@ -78,30 +77,28 @@ func _on_update_round_status() -> void:
 		GameData.first_lot_roll = true
 		GameData.current_lot_scored = false
 		DiceManager.all_dice_list.clear()
-		
-		# Remove scored dice and replace them with drawn dice
 		await DiceManager.discard_dice()
 		
+		# Check if the game has been automatically lost
 		if GameData.lots <= 0:
 			roll_button.disabled = true
+			_change_scene_status(GameData.round_won)
 		else:
-			await DiceManager.draw_dice()
-			DiceManager.toggle_all_dice(DiceManager.DISABLE)
-			score_button.disabled = false
-			roll_button.disabled = false
-		
-		# Checks and manages win condition
-		if GameData.grand_total >= GameData.score_to_beat or god_mode:
-			GameData.round_won = true
-			roll_button.disabled = true
-			score_button.disabled = true
-			
-			# Discard all remaining dice
-			await DiceManager.round_ended()
-			
-			_change_scene_status(GameData.round_won)
-		elif GameData.lots <= 0:
-			_change_scene_status(GameData.round_won)
+			# Checks and manages win condition
+			if GameData.grand_total >= GameData.score_to_beat or god_mode:
+				GameData.round_won = true
+				roll_button.disabled = true
+				score_button.disabled = true
+				
+				# Discard all remaining dice
+				await DiceManager.round_ended()
+				
+				_change_scene_status(GameData.round_won)
+			else:
+				await DiceManager.draw_dice()
+				DiceManager.toggle_all_dice(DiceManager.DISABLE)
+				score_button.disabled = false
+				roll_button.disabled = false
 	
 	_update_labels.emit()
 	_update_scorecard.emit()
