@@ -29,6 +29,8 @@ func _ready() -> void:
 	if dice == null:
 		dice = DiceInfo.new()
 	
+	freeze = true
+	
 	# Display a random face upon being drawn
 	display_face(dice.faces[randi() % dice.dice_size])
 	# CHANGE COLOR HERE TOO?? (Or possibly in the display face function)

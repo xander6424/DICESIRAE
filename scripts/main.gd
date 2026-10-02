@@ -46,18 +46,19 @@ func _on_reset_round() -> void:
 	GameData.score_to_beat = GameData.ROUND_SCORE_SCALING[GameData.round_number - 1]
 	GameData.round_won = false
 	
+	_reset_scorecard.emit()
+	
 	# Move all dice to draw pile and shuffle
-	DiceManager.round_started()
+	await DiceManager.round_started()
 	DiceManager.toggle_all_dice(DiceManager.DISABLE)
+	
+	_update_labels.emit()
 	
 	if shop.visible:
 		background.color = Color(0.22, 0.22, 0.22)
 		shop.visible = false
 		roll_button.disabled = false
 		score_button.disabled = false
-	
-	_update_labels.emit()
-	_reset_scorecard.emit()
 
 
 # Checks the status of the current round after events happen
@@ -84,7 +85,7 @@ func _on_update_round_status() -> void:
 		if GameData.lots <= 0:
 			roll_button.disabled = true
 		else:
-			DiceManager.draw_dice()
+			await DiceManager.draw_dice()
 			DiceManager.toggle_all_dice(DiceManager.DISABLE)
 			score_button.disabled = false
 			roll_button.disabled = false
@@ -96,7 +97,7 @@ func _on_update_round_status() -> void:
 			score_button.disabled = true
 			
 			# Discard all remaining dice
-			DiceManager.round_ended()
+			await DiceManager.round_ended()
 			
 			_change_scene_status(GameData.round_won)
 		elif GameData.lots <= 0:

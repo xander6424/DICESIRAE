@@ -15,14 +15,43 @@ func _ready() -> void:
 	DiceManager._on_dice_discarded.connect(_on_dice_discarded)
 	DiceManager._force_unsave.connect(_on_force_unsave)
 
+
 func _on_hand_drawn() -> void:
 	# Find the first empty dice slot to display drawn dice
 	for dice in DiceManager.rolling_dice_list:
 		if !dice_nodes.has(dice):
 			var empty_index: int = DiceData.dice_hand_slots.find(null)
-			spawn_dice(dice, empty_index)
+			
+			await spawn_dice(dice, empty_index)
 	
+	await get_tree().process_frame
+	DiceManager._draw_animation_done.emit()
 	print("HAND DRAWN")
+
+func spawn_dice(dice: DiceInfo, open_index: int) -> void:
+	# Create a node, instantiate its values, and place it
+	var open_slot = DiceData.HAND_POSITIONS[open_index]
+	var node: DiceDisplay = dice_scene.instantiate()
+	add_child(node)
+	node.setup(dice)
+	node.position = DiceData.DRAW_PILE_POSITION
+	node.modulate.a = 0.0
+	
+	await play_draw(node, open_slot)
+	node.position = open_slot
+	node.freeze = false
+	
+	# Fill the once empty dice slot
+	dice_nodes[dice] = node
+	DiceData.dice_hand_slots[open_index] = dice
+
+func play_draw(node: DiceDisplay, open_slot: Vector2) -> void:
+	var draw_tween = create_tween()
+	draw_tween.set_parallel()
+	draw_tween.tween_property(node, "position", open_slot, 0.3).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	draw_tween.tween_property(node, "modulate:a", 1.0, 0.15).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	await draw_tween.finished
+
 
 func _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array) -> void:
 	for dice in discarded_dice_list:
@@ -46,22 +75,10 @@ func _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array)
 func play_discard(node: DiceDisplay) -> void:
 	var discard_tween = create_tween()
 	discard_tween.set_parallel()
-	discard_tween.tween_property(node, "position", Vector2(-140.0, 85.0), 0.3).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	discard_tween.tween_property(node, "position", DiceData.DISCARD_PILE_POSITION, 0.3).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 	discard_tween.tween_property(node, "modulate:a", 0.0, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	await discard_tween.finished
 
 func _on_force_unsave(dice: DiceInfo):
 	if dice_nodes.has(dice):
 		dice_nodes[dice].visually_unsave()
-
-
-func spawn_dice(dice: DiceInfo, open_index: int) -> void:
-	# Create a node, instantiate its values, and place it
-	var node: DiceDisplay = dice_scene.instantiate()
-	add_child(node) # Add to hand container
-	node.position = DiceData.HAND_POSITIONS[open_index]
-	node.setup(dice)
-	
-	# Fill the once empty dice slot
-	dice_nodes[dice] = node
-	DiceData.dice_hand_slots[open_index] = dice

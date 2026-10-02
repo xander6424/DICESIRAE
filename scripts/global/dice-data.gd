@@ -1,5 +1,8 @@
 extends Node
 
+const DRAW_PILE_POSITION: Vector2 = Vector2(140.0, 85.0)
+const DISCARD_PILE_POSITION: Vector2 = Vector2(-140.0, 85.0)
+
 const HAND_POSITIONS: Array[Vector2] = [
 	Vector2(-100.0, 0.0),
 	Vector2(-50.0, 0.0),

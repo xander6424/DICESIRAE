@@ -6,6 +6,7 @@ signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _update_round_status()
 signal _update_scorecard()
+signal _draw_animation_done()
 signal _discard_animation_done()
 
 const MAX_HAND_SIZE: int = 5
@@ -43,7 +44,8 @@ func round_started() -> void:
 	DiceManager.draw_pile.append_array(DiceManager.discard_pile)
 	DiceManager.draw_pile.shuffle()
 	DiceManager.discard_pile.clear()
-	DiceManager.draw_dice()
+	
+	await DiceManager.draw_dice()
 
 func round_ended() -> void:
 	# Discard all remaining dice in hand
@@ -76,8 +78,9 @@ func draw_dice() -> void:
 			break
 		rolling_dice_list.append(draw_pile.pop_back())
 	
-	_on_hand_drawn.emit() # pass in new variable & slot
-	# await new signal
+	# Play dice drawing animation
+	_on_hand_drawn.emit()
+	await _draw_animation_done
 
 func discard_dice() -> void:
 	var discarded_dice_list: Array[DiceInfo] = []
