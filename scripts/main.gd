@@ -27,11 +27,17 @@ func _ready() -> void:
 # Signal (not yet?) to fully reset the whole game
 func reset_game() -> void:
 	print("STARTING NEW GAME...")
+	roll_button.disabled = true
+	score_button.disabled = true
 	background.color = Color(0.22, 0.22, 0.22)
 	DiceManager.create_starting_dice()
 
 # Reset all labels, dice, and categories
 func _on_reset_round() -> void:
+	if shop.visible:
+		background.color = Color(0.22, 0.22, 0.22)
+		shop.visible = false
+	
 	GameData.round_number += 1
 	print("ROUND ", GameData.round_number, "\n")
 	
@@ -51,14 +57,10 @@ func _on_reset_round() -> void:
 	# Move all dice to draw pile and shuffle
 	await DiceManager.round_started()
 	DiceManager.toggle_all_dice(DiceManager.DISABLE)
+	roll_button.disabled = false
+	score_button.disabled = false
 	
 	_update_labels.emit()
-	
-	if shop.visible:
-		background.color = Color(0.22, 0.22, 0.22)
-		shop.visible = false
-		roll_button.disabled = false
-		score_button.disabled = false
 
 
 # Checks the status of the current round after events happen

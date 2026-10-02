@@ -4,6 +4,7 @@ class_name DiceDisplay
  
 @onready var face_sprite: Sprite2D = %FaceSprite
 @onready var roll_button = get_parent().get_parent().get_node("RollButton") # THIS SUCKS
+@onready var score_button = get_parent().get_parent().get_node("ScoreButton")
 @onready var save_button: TextureButton = %SaveButton
 
 @export var dice: DiceInfo
@@ -61,6 +62,7 @@ func roll_button_pressed():
 	if !rolling and !dice_saved:
 		GameData.first_lot_roll = false
 		roll_button.disabled = true
+		score_button.disabled = true
 		
 		roll_dice()
  
@@ -109,6 +111,7 @@ func roll_dice():
 			roll_button.disabled = false
 		
 		GameData.rerolls -= 1 # change this?
+		score_button.disabled = false
 		DiceManager._hand_rolling_done.emit()
  
  
