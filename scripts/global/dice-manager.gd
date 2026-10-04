@@ -71,8 +71,14 @@ func toggle_all_dice(toggle: bool) -> void:
 	for display in active_display_list:
 		display.save_button.disabled = toggle
 
+func freeze_all_dice(toggle: bool) -> void:
+	for display in active_display_list:
+		display.freeze = toggle
+
 
 func draw_dice() -> void:
+	freeze_all_dice(DISABLE)
+	
 	while rolling_dice_list.size() < MAX_HAND_SIZE:
 		if draw_pile.is_empty():
 			break
@@ -81,6 +87,8 @@ func draw_dice() -> void:
 	# Play dice drawing animation
 	_on_hand_drawn.emit()
 	await _draw_animation_done
+	
+	freeze_all_dice(ENABLE)
 
 func discard_dice() -> void:
 	var discarded_dice_list: Array[DiceInfo] = []

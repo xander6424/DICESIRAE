@@ -153,7 +153,7 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 	var old_index: int = old_slots.find(dice)
 	new_slots[empty_index] = dice
 	old_slots[old_index] = null
-	freeze = true
+	DiceManager.freeze_all_dice(DiceManager.DISABLE)
 	
 	if !dice_saved:
 		var open_slot: Vector2 = positions[empty_index]
@@ -166,7 +166,7 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 		position = old_slot
 		rotation = current_rotation
 	
-	freeze = false
+	DiceManager.freeze_all_dice(DiceManager.ENABLE)
 
 func play_swap(slot: Vector2, new_rotation: float) -> void:
 	var swap_tween = create_tween()
