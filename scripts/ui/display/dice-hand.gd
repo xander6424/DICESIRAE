@@ -81,4 +81,4 @@ func play_discard(node: DiceDisplay) -> void:
 
 func _on_force_unsave(dice: DiceInfo):
 	if dice_nodes.has(dice):
-		dice_nodes[dice].visually_unsave()
+		await dice_nodes[dice].visually_unsave()

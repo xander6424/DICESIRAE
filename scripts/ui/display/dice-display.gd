@@ -117,19 +117,17 @@ func roll_dice():
  
 func _save_button_pressed():
 	if !rolling and !GameData.first_lot_roll:
-		save_dice()
+		await save_dice()
  
 func save_dice():
 	# Dice node to be SAVED
 	if !dice_saved:
-		swap_slots(DiceData.dice_saved_slots, DiceData.dice_hand_slots, DiceData.SAVED_POSITIONS)
-		rotation = 0.0
+		await swap_slots(DiceData.dice_saved_slots, DiceData.dice_hand_slots, DiceData.SAVED_POSITIONS)
 		dice_saved = true
 		DiceManager.save_dice(dice)
 	# Dice node to be UNSAVED
 	elif dice_saved:
-		swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
-		rotation = current_rotation
+		await swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
 		dice_saved = false
 		DiceManager.unsave_dice(dice)
 	
@@ -142,7 +140,7 @@ func visually_unsave():
 	# Return invalid saved dice to rolling zone
 	if dice_saved:
 		dice_saved = false
-		swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
+		await swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
 	# Return rolling dice to default position
 	else:
 		var current_index: int = DiceData.dice_hand_slots.find(dice)
@@ -155,11 +153,28 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 	var old_index: int = old_slots.find(dice)
 	new_slots[empty_index] = dice
 	old_slots[old_index] = null
+	freeze = true
 	
 	if !dice_saved:
-		position = positions[empty_index]
+		var open_slot: Vector2 = positions[empty_index]
+		await play_swap(open_slot, 0.0)
+		position = open_slot
+		rotation = 0.0
 	else:
-		position = current_position
+		var old_slot: Vector2 = current_position
+		await play_swap(old_slot, current_rotation)
+		position = old_slot
+		rotation = current_rotation
+	
+	freeze = false
+
+func play_swap(slot: Vector2, new_rotation: float) -> void:
+	var swap_tween = create_tween()
+	swap_tween.set_parallel()
+	swap_tween.tween_property(self, "position", slot, 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	swap_tween.tween_property(self, "rotation", new_rotation, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	await swap_tween.finished
+
 
 
 func display_face(face: DiceFace) -> void:
