@@ -4,10 +4,10 @@ signal _on_hand_drawn()
 signal _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array)
 signal _force_unsave(dice: DiceInfo)
 signal _hand_rolling_done()
-signal _update_round_status()
-signal _update_scorecard()
 signal _draw_animation_done()
 signal _discard_animation_done()
+signal _update_round_status()
+signal _update_scorecard()
 
 const MAX_HAND_SIZE: int = 5
 const MAX_DRAW_PILE_SIZE: int = 10
@@ -113,10 +113,6 @@ func discard_dice() -> void:
 	await _discard_animation_done
 	
 	if !GameData.round_won:
-		# Visually unsave all invalid dice nodes
-		for dice in unscored_dice_list:
-			_force_unsave.emit(dice)
-			await _discard_animation_done
 		# Reset all remaining dice to default positions
 		for dice in rolling_dice_list:
 			_force_unsave.emit(dice)

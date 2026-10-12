@@ -81,7 +81,7 @@ func _on_update_round_status() -> void:
 		DiceManager.all_dice_list.clear()
 		
 		# Check if the game has been automatically lost
-		if GameData.lots <= 0 and GameData.grand_total < GameData.score_to_beat:
+		if GameData.lots <= 0 and GameData.grand_total < GameData.score_to_beat and !god_mode:
 			roll_button.disabled = true
 			_change_scene_status(GameData.round_won)
 		else:
