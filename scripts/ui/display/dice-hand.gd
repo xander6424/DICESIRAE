@@ -82,3 +82,7 @@ func play_discard(node: DiceDisplay) -> void:
 func _on_force_unsave(dice: DiceInfo):
 	if dice_nodes.has(dice):
 		await dice_nodes[dice].visually_unsave()
+	
+	await get_tree().process_frame
+	DiceManager._discard_animation_done.emit()
+	print("FORCE SAVED ", dice.faces[dice.current_face_index].face_value)

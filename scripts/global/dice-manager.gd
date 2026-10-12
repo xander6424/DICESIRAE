@@ -13,11 +13,11 @@ const MAX_HAND_SIZE: int = 5
 const MAX_DRAW_PILE_SIZE: int = 10
 
 var draw_pile: Array[DiceInfo] = []
+var discard_pile: Array[DiceInfo] = []
 var all_dice_list: Array[DiceInfo] = [] # Contains all dice for checking
 var scoring_dice_list: Array[DiceInfo] = [] # Contains valid dice for checking
-var rolling_dice_list: Array[DiceInfo] = []
-var saved_dice_list: Array[DiceInfo] = []
-var discard_pile: Array[DiceInfo] = []
+var rolling_dice_list: Array[DiceInfo] = [] # Contains all dice being rolled
+var saved_dice_list: Array[DiceInfo] = [] # Contains all dice saved
 
 var active_display_list: Array[DiceDisplay] = []
 const ENABLE: bool = false
@@ -91,6 +91,8 @@ func draw_dice() -> void:
 	freeze_all_dice(ENABLE)
 
 func discard_dice() -> void:
+	freeze_all_dice(DISABLE)
+	
 	var discarded_dice_list: Array[DiceInfo] = []
 	var unscored_dice_list: Array[DiceInfo] = []
 	
@@ -110,12 +112,17 @@ func discard_dice() -> void:
 	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
 	await _discard_animation_done
 	
-	# Visually unsave all invalid dice nodes
-	for dice in unscored_dice_list:
-		_force_unsave.emit(dice)
-	# Reset all remaining dice to default positions
-	for dice in rolling_dice_list:
-		_force_unsave.emit(dice)
+	if !GameData.round_won:
+		# Visually unsave all invalid dice nodes
+		for dice in unscored_dice_list:
+			_force_unsave.emit(dice)
+			await _discard_animation_done
+		# Reset all remaining dice to default positions
+		for dice in rolling_dice_list:
+			_force_unsave.emit(dice)
+			await _discard_animation_done
+	
+	freeze_all_dice(ENABLE)
 
 
 func _on_hand_rolling_done() -> void:

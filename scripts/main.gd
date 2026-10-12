@@ -79,10 +79,9 @@ func _on_update_round_status() -> void:
 		GameData.first_lot_roll = true
 		GameData.current_lot_scored = false
 		DiceManager.all_dice_list.clear()
-		await DiceManager.discard_dice()
 		
 		# Check if the game has been automatically lost
-		if GameData.lots <= 0:
+		if GameData.lots <= 0 and GameData.grand_total < GameData.score_to_beat:
 			roll_button.disabled = true
 			_change_scene_status(GameData.round_won)
 		else:
@@ -93,10 +92,12 @@ func _on_update_round_status() -> void:
 				score_button.disabled = true
 				
 				# Discard all remaining dice
+				await DiceManager.discard_dice()
 				await DiceManager.round_ended()
 				
 				_change_scene_status(GameData.round_won)
 			else:
+				await DiceManager.discard_dice()
 				await DiceManager.draw_dice()
 				DiceManager.toggle_all_dice(DiceManager.DISABLE)
 				score_button.disabled = false

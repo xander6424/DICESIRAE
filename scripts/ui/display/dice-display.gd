@@ -31,6 +31,7 @@ func _ready() -> void:
 		dice = DiceInfo.new()
 	
 	freeze = true
+	save_button.disabled = true
 	
 	# Display a random face upon being drawn
 	display_face(dice.faces[randi() % dice.dice_size])
@@ -120,6 +121,8 @@ func _save_button_pressed():
 		await save_dice()
  
 func save_dice():
+	DiceManager.freeze_all_dice(DiceManager.DISABLE)
+	
 	# Dice node to be SAVED
 	if !dice_saved:
 		await swap_slots(DiceData.dice_saved_slots, DiceData.dice_hand_slots, DiceData.SAVED_POSITIONS)
@@ -131,6 +134,8 @@ func save_dice():
 		dice_saved = false
 		DiceManager.unsave_dice(dice)
 	
+	DiceManager.freeze_all_dice(DiceManager.ENABLE)
+	
 	# Disable roll button if all dice are saved
 	if GameData.rerolls > 0:
 		roll_button.disabled = DiceManager.rolling_dice_list.is_empty()
@@ -141,9 +146,10 @@ func visually_unsave():
 	if dice_saved:
 		dice_saved = false
 		await swap_slots(DiceData.dice_hand_slots, DiceData.dice_saved_slots, DiceData.HAND_POSITIONS)
-	# Return rolling dice to default position
+	# Return rolling dice to hand position
 	else:
 		var current_index: int = DiceData.dice_hand_slots.find(dice)
+		await play_swap(DiceData.HAND_POSITIONS[current_index], 0.0)
 		position = DiceData.HAND_POSITIONS[current_index]
 		rotation = 0.0
  
@@ -153,7 +159,6 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 	var old_index: int = old_slots.find(dice)
 	new_slots[empty_index] = dice
 	old_slots[old_index] = null
-	DiceManager.freeze_all_dice(DiceManager.DISABLE)
 	
 	if !dice_saved:
 		var open_slot: Vector2 = positions[empty_index]
@@ -165,8 +170,6 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 		await play_swap(old_slot, current_rotation)
 		position = old_slot
 		rotation = current_rotation
-	
-	DiceManager.freeze_all_dice(DiceManager.ENABLE)
 
 func play_swap(slot: Vector2, new_rotation: float) -> void:
 	var swap_tween = create_tween()
