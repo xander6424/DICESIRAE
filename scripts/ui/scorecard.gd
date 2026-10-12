@@ -140,7 +140,6 @@ func _score_button_pressed() -> void:
 			
 			# Reset everything after scoring
 			current_category.label.add_theme_color_override("font_color", Color.WHITE)
-			DiceManager.toggle_all_dice(DiceManager.ENABLE)
 			current_category.scored = true
 			current_category.button.disabled = true
 			current_category.button_label.text = "[color=purple]" + str(category_total) + "[/color]"

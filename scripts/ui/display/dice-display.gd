@@ -9,17 +9,17 @@ class_name DiceDisplay
 
 @export var dice: DiceInfo
 @export var face_textures: Array[Texture2D] = []
+
+static var dice_currently_rolling: int = 0
+var rolling: bool = false
+var dice_saved: bool = false
  
-# Physics variables
 @export var min_impulse_strength: float = 400.0
 @export var max_impulse_strength: float = 550.0
 @export var max_torque_impulse: float = 1000.0
 var current_position: Vector2 = Vector2(0.0, 0.0)
 var current_rotation: float = 0.0
-
-static var dice_currently_rolling: int = 0
-var rolling: bool = false
-var dice_saved: bool = false
+var closest_rotation: float = 0.0
 
 @onready var score_popup: Node2D = %ScorePopup
 @onready var score_popup_label: Label = %ScorePopupLabel
@@ -103,7 +103,10 @@ func roll_dice():
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 	current_position = position
+	rotation = wrapf(rotation, -PI, PI)
 	current_rotation = rotation
+	closest_rotation = snappedf(current_rotation, TAU/4)
+	
 	dice_currently_rolling -= 1
 	
 	# Doesn't count a roll until all dice are scored
@@ -149,9 +152,9 @@ func visually_unsave():
 	# Return rolling dice to hand position
 	else:
 		var current_index: int = DiceData.dice_hand_slots.find(dice)
-		await play_swap(DiceData.HAND_POSITIONS[current_index], 0.0)
+		await play_swap(DiceData.HAND_POSITIONS[current_index], closest_rotation)
 		position = DiceData.HAND_POSITIONS[current_index]
-		rotation = 0.0
+		rotation = closest_rotation
  
 # Swaps dice between chosen slots and positions them
 func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -> void:
@@ -162,9 +165,9 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 	
 	if !dice_saved:
 		var open_slot: Vector2 = positions[empty_index]
-		await play_swap(open_slot, 0.0)
+		await play_swap(open_slot, closest_rotation)
 		position = open_slot
-		rotation = 0.0
+		rotation = closest_rotation
 	else:
 		var old_slot: Vector2 = current_position
 		await play_swap(old_slot, current_rotation)
@@ -172,10 +175,13 @@ func swap_slots(new_slots: Array, old_slots: Array, positions: Array[Vector2]) -
 		rotation = current_rotation
 
 func play_swap(slot: Vector2, new_rotation: float) -> void:
+	# Prevents the tween from taking the longest path around to the new rotation
+	var target_rotation: float = rotation + angle_difference(rotation, new_rotation)
+	
 	var swap_tween = create_tween()
 	swap_tween.set_parallel()
 	swap_tween.tween_property(self, "position", slot, 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
-	swap_tween.tween_property(self, "rotation", new_rotation, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	swap_tween.tween_property(self, "rotation", target_rotation, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	await swap_tween.finished
 
 
