@@ -48,9 +48,21 @@ func round_started() -> void:
 	await DiceManager.draw_dice()
 
 func round_ended() -> void:
-	# Discard all remaining dice in hand
-	_on_dice_discarded.emit(rolling_dice_list, DiceData.dice_hand_slots)
+	# Discard all remaining dice
+	var remaining_dice: Array[DiceInfo] = []
+	
+	for dice in rolling_dice_list + saved_dice_list:
+		if !remaining_dice.has(dice):
+			remaining_dice.append(dice)
+	
+	discard_pile.append_array(remaining_dice)
+	_on_dice_discarded.emit(remaining_dice, DiceData.dice_hand_slots)
 	await _discard_animation_done
+	
+	rolling_dice_list.clear()
+	saved_dice_list.clear()
+	all_dice_list.clear()
+	scoring_dice_list.clear()
 
 
 func register_display(display: DiceDisplay) -> void:
@@ -112,6 +124,7 @@ func discard_dice() -> void:
 	_on_dice_discarded.emit(discarded_dice_list, DiceData.dice_saved_slots)
 	await _discard_animation_done
 	
+	# Don't save dice back to hand when the round is won
 	if !GameData.round_won:
 		# Reset all remaining dice to default positions
 		for dice in rolling_dice_list:

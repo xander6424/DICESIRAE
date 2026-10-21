@@ -63,10 +63,12 @@ func _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array)
 			# Removes the discarded dice node
 			node.queue_free()
 			dice_nodes.erase(dice)
-			
-			# Frees up space in the saved dice slot(s)
-			var used_index: int = dice_slots.find(dice)
-			dice_slots[used_index] = null
+		
+		# Frees up space in the saved dice slot(s)
+		for slots in [DiceData.dice_hand_slots, DiceData.dice_saved_slots]:
+			var used_index: int = slots.find(dice)
+			if used_index != -1:
+				slots[used_index] = null
 	
 	await get_tree().process_frame
 	DiceManager._discard_animation_done.emit()
