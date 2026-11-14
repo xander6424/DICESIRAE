@@ -22,6 +22,7 @@
 [ext_resource type="BitMap" uid="uid://opb03iwa5bvd" path="res://assets/button/score/scorebutton-mask.png" id="14_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b8p5ft131lrrs" path="res://scenes/ui/intermission.tscn" id="16_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://cch6ic10cnrpr" path="res://assets/ui/pieces-slots.png" id="16_muem4"]
+[ext_resource type="PackedScene" uid="uid://ce5wxy5hqd3ok" path="res://scenes/ui/face-display.tscn" id="17_pm3ni"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0wfyh"]
 device = -1
@@ -208,6 +209,14 @@ offset_left = 224.0
 offset_top = 16.0
 offset_right = 224.0
 offset_bottom = 16.0
+
+[node name="FaceDisplay" parent="." unique_id=927316884 instance=ExtResource("17_pm3ni")]
+unique_name_in_owner = true
+visible = false
+offset_left = 301.0
+offset_top = 99.0
+offset_right = 301.0
+offset_bottom = 99.0
 
 [node name="Intermission" parent="." unique_id=1607318169 instance=ExtResource("16_jbj1t")]
 unique_name_in_owner = true

@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://ce5wxy5hqd3ok"]
+
+[ext_resource type="Texture2D" uid="uid://cogrse307h7pm" path="res://assets/dice/die-blank-32p.png" id="1_5xgxs"]
+[ext_resource type="Script" uid="uid://dw34wqnkfv6p2" path="res://scripts/ui/face-display.gd" id="1_sfljy"]
+[ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dice/dieblank-pressed_32p.png" id="2_ep0kx"]
+[ext_resource type="Texture2D" uid="uid://t2lnk76opcq5" path="res://assets/dice/dieblank-hover_32p.png" id="3_sfljy"]
+[ext_resource type="BitMap" uid="uid://cnrn1rs24jdhp" path="res://assets/dice/diemask-32p.png" id="4_fv3yw"]
+
+[node name="FaceDisplay" type="Control" unique_id=927316884]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sfljy")
+
+[node name="Face1" type="Node2D" parent="." unique_id=919810119]
+
+[node name="FaceSprite" type="Sprite2D" parent="Face1" unique_id=609812134]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5xgxs")
+
+[node name="FaceButton" type="TextureButton" parent="Face1" unique_id=143842703]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(1.5, 1.5)
+texture_pressed = ExtResource("2_ep0kx")
+texture_hover = ExtResource("3_sfljy")
+texture_click_mask = ExtResource("4_fv3yw")
+
+[node name="Face2" type="Node2D" parent="." unique_id=803565884]
+position = Vector2(48, 0)
+
+[node name="FaceSprite" type="Sprite2D" parent="Face2" unique_id=1243376807]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5xgxs")
+
+[node name="FaceButton" type="TextureButton" parent="Face2" unique_id=421517642]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(1.5, 1.5)
+texture_pressed = ExtResource("2_ep0kx")
+texture_hover = ExtResource("3_sfljy")
+texture_click_mask = ExtResource("4_fv3yw")
+
+[node name="Face3" type="Node2D" parent="." unique_id=2013484198]
+position = Vector2(48, -48)
+
+[node name="FaceSprite" type="Sprite2D" parent="Face3" unique_id=424717631]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5xgxs")
+
+[node name="FaceButton" type="TextureButton" parent="Face3" unique_id=1645907399]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(1.5, 1.5)
+texture_pressed = ExtResource("2_ep0kx")
+texture_hover = ExtResource("3_sfljy")
+texture_click_mask = ExtResource("4_fv3yw")
+
+[node name="Face4" type="Node2D" parent="." unique_id=530554899]
+position = Vector2(48, 48)
+
+[node name="FaceSprite" type="Sprite2D" parent="Face4" unique_id=959514062]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5xgxs")
+
+[node name="FaceButton" type="TextureButton" parent="Face4" unique_id=895069127]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(1.5, 1.5)
+texture_pressed = ExtResource("2_ep0kx")
+texture_hover = ExtResource("3_sfljy")
+texture_click_mask = ExtResource("4_fv3yw")
+
+[node name="Face5" type="Node2D" parent="." unique_id=1318215504]
+position = Vector2(96, 0)
+
+[node name="FaceSprite" type="Sprite2D" parent="Face5" unique_id=853263828]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5xgxs")
+
+[node name="FaceButton" type="TextureButton" parent="Face5" unique_id=446658842]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(1.5, 1.5)
+texture_pressed = ExtResource("2_ep0kx")
+texture_hover = ExtResource("3_sfljy")
+texture_click_mask = ExtResource("4_fv3yw")
+
+[node name="Face6" type="Node2D" parent="." unique_id=991593846]
+position = Vector2(144, 0)
+
+[node name="FaceSprite" type="Sprite2D" parent="Face6" unique_id=689010709]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5xgxs")
+
+[node name="FaceButton" type="TextureButton" parent="Face6" unique_id=1082948260]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(1.5, 1.5)
+texture_pressed = ExtResource("2_ep0kx")
+texture_hover = ExtResource("3_sfljy")
+texture_click_mask = ExtResource("4_fv3yw")

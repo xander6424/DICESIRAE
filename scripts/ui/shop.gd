@@ -8,6 +8,7 @@ signal _on_piece_purchased(piece)
 @onready var upgrade_category_button: Button = %UpgradeCategoryButton
 @onready var modify_dice_button: Button = %ModifyDiceButton
 @onready var skip_button: Button = %SkipButton
+@onready var face_display: Control = %FaceDisplay
 
 var current_dice: DiceInfo = null
 var current_display: DiceDisplay = null
@@ -90,6 +91,7 @@ func upgrade_button_pressed() -> void:
 func dice_button_pressed():
 	GameData.intermission = true
 	self.visible = false
+	face_display.visible = true
 	await DiceManager.round_started() # Called solely for drawing dice
 	DiceManager.toggle_all_dice(DiceManager.ENABLE)
 
@@ -102,7 +104,7 @@ func _on_dice_selected(dice: DiceInfo):
 		current_display = DiceManager.get_display(current_dice)
 		current_display.position.y -= 32
 		
-		# Display current dice faces
+		face_display.display_faces(current_dice)
 	else:
 		current_display.position.y += 32
 		
