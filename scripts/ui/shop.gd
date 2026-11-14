@@ -6,14 +6,19 @@ signal _on_piece_purchased(piece)
 
 @onready var piece_button: Button = %PieceButton
 @onready var upgrade_category_button: Button = %UpgradeCategoryButton
+@onready var modify_dice_button: Button = %ModifyDiceButton
 @onready var skip_button: Button = %SkipButton
+
+var current_dice: DiceInfo = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	piece_button.pressed.connect(piece_button_pressed)
 	upgrade_category_button.pressed.connect(upgrade_button_pressed)
+	modify_dice_button.pressed.connect(dice_button_pressed)
 	skip_button.pressed.connect(_shop_skip_button_pressed)
+	DiceManager._alert_shop.connect(_on_dice_selected)
 
 # Random piece button
 func piece_button_pressed() -> void:
@@ -81,7 +86,23 @@ func upgrade_button_pressed() -> void:
 			_on_update_round_status.emit()
 
 # Modify dice button
+func dice_button_pressed():
+	GameData.intermission = true
+	self.visible = false
+	await DiceManager.round_started() # Called solely for drawing dice
+	DiceManager.toggle_all_dice(DiceManager.ENABLE)
+	
+	# Display current dice faces
+	# Possibly? await face selection
+	# Upgrade dice or dice face (cost $3/$2)
+	# Return to normal shop scene
+		# Properly discard dice
 
+func _on_dice_selected(dice: DiceInfo):
+	if dice != current_dice:
+		current_dice = dice
+		print("NEW DICE: ", current_dice)
 
 func _shop_skip_button_pressed() -> void:
+	GameData.intermission = false
 	GameData._reset_round.emit()

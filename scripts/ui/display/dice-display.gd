@@ -122,6 +122,9 @@ func roll_dice():
 func _save_button_pressed():
 	if !rolling and !GameData.first_lot_roll:
 		await save_dice()
+	elif GameData.intermission:
+		position.y -= 32
+		DiceManager._dice_selected.emit(dice)
  
 func save_dice():
 	DiceManager.freeze_all_dice(DiceManager.DISABLE)

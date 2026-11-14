@@ -24,6 +24,7 @@ var score_to_beat: int = ROUND_SCORE_SCALING[0]
 var first_lot_roll: bool = true
 var current_lot_scored: bool = false
 var round_won: bool = false
+var intermission: bool = false
 
 # Player-managed game values
 var lots: int = STARTING_LOTS

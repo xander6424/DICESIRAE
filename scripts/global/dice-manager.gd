@@ -3,6 +3,8 @@ extends Node
 signal _on_hand_drawn()
 signal _on_dice_discarded(discarded_dice_list: Array[DiceInfo], dice_slots: Array)
 signal _force_unsave(dice: DiceInfo)
+signal _dice_selected(dice: DiceInfo)
+signal _alert_shop(dice: DiceInfo)
 signal _hand_rolling_done()
 signal _draw_animation_done()
 signal _discard_animation_done()
@@ -26,6 +28,7 @@ const DISABLE: bool = true
 
 func _ready() -> void:
 	_hand_rolling_done.connect(_on_hand_rolling_done)
+	_dice_selected.connect(_on_dice_selected)
 
 func create_starting_dice() -> void:
 	draw_pile.clear()
@@ -165,6 +168,9 @@ func unsave_dice(dice: DiceInfo) -> void:
 		
 		# Check if category exists in saved
 		_update_round_status.emit()
+
+func _on_dice_selected(dice: DiceInfo) -> void:
+	_alert_shop.emit(dice)
 
 
 func dice_scored(dice: DiceInfo, current_category: CategoryInfo):
