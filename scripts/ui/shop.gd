@@ -10,6 +10,7 @@ signal _on_piece_purchased(piece)
 @onready var skip_button: Button = %SkipButton
 
 var current_dice: DiceInfo = null
+var current_display: DiceDisplay = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -91,17 +92,27 @@ func dice_button_pressed():
 	self.visible = false
 	await DiceManager.round_started() # Called solely for drawing dice
 	DiceManager.toggle_all_dice(DiceManager.ENABLE)
-	
-	# Display current dice faces
-	# Possibly? await face selection
-	# Upgrade dice or dice face (cost $3/$2)
-	# Return to normal shop scene
-		# Properly discard dice
 
 func _on_dice_selected(dice: DiceInfo):
-	if dice != current_dice:
+	if dice != current_dice or dice == null:
+		if current_display != null:
+			current_display.position.y += 32
+			
 		current_dice = dice
-		print("NEW DICE: ", current_dice)
+		current_display = DiceManager.get_display(current_dice)
+		current_display.position.y -= 32
+		
+		# Display current dice faces
+	else:
+		current_display.position.y += 32
+		
+		current_dice = null
+		current_display = null
+		
+		# Undisplay current dice faces
+	
+	#print("CURRENT DICE: ", current_dice)
+
 
 func _shop_skip_button_pressed() -> void:
 	GameData.intermission = false
