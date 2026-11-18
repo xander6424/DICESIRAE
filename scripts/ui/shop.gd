@@ -103,16 +103,13 @@ func _on_dice_selected(dice: DiceInfo):
 		current_dice = dice
 		current_display = DiceManager.get_display(current_dice)
 		current_display.position.y -= 32
-		
-		face_display.display_faces(current_dice)
 	else:
 		current_display.position.y += 32
 		
 		current_dice = null
 		current_display = null
-		
-		# Undisplay current dice faces
 	
+	face_display.display_dice_faces(current_dice, current_display)
 	#print("CURRENT DICE: ", current_dice)
 
 

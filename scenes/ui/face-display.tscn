@@ -12,6 +12,7 @@ anchors_preset = 0
 script = ExtResource("1_sfljy")
 
 [node name="Face1" type="Node2D" parent="." unique_id=919810119]
+unique_name_in_owner = true
 
 [node name="FaceSprite" type="Sprite2D" parent="Face1" unique_id=609812134]
 scale = Vector2(1.5, 1.5)
@@ -28,6 +29,7 @@ texture_hover = ExtResource("3_sfljy")
 texture_click_mask = ExtResource("4_fv3yw")
 
 [node name="Face2" type="Node2D" parent="." unique_id=803565884]
+unique_name_in_owner = true
 position = Vector2(48, 0)
 
 [node name="FaceSprite" type="Sprite2D" parent="Face2" unique_id=1243376807]
@@ -45,6 +47,7 @@ texture_hover = ExtResource("3_sfljy")
 texture_click_mask = ExtResource("4_fv3yw")
 
 [node name="Face3" type="Node2D" parent="." unique_id=2013484198]
+unique_name_in_owner = true
 position = Vector2(48, -48)
 
 [node name="FaceSprite" type="Sprite2D" parent="Face3" unique_id=424717631]
@@ -62,6 +65,7 @@ texture_hover = ExtResource("3_sfljy")
 texture_click_mask = ExtResource("4_fv3yw")
 
 [node name="Face4" type="Node2D" parent="." unique_id=530554899]
+unique_name_in_owner = true
 position = Vector2(48, 48)
 
 [node name="FaceSprite" type="Sprite2D" parent="Face4" unique_id=959514062]
@@ -79,7 +83,8 @@ texture_hover = ExtResource("3_sfljy")
 texture_click_mask = ExtResource("4_fv3yw")
 
 [node name="Face5" type="Node2D" parent="." unique_id=1318215504]
-position = Vector2(96, 0)
+unique_name_in_owner = true
+position = Vector2(142, 0)
 
 [node name="FaceSprite" type="Sprite2D" parent="Face5" unique_id=853263828]
 scale = Vector2(1.5, 1.5)
@@ -96,7 +101,8 @@ texture_hover = ExtResource("3_sfljy")
 texture_click_mask = ExtResource("4_fv3yw")
 
 [node name="Face6" type="Node2D" parent="." unique_id=991593846]
-position = Vector2(144, 0)
+unique_name_in_owner = true
+position = Vector2(95, 0)
 
 [node name="FaceSprite" type="Sprite2D" parent="Face6" unique_id=689010709]
 scale = Vector2(1.5, 1.5)
