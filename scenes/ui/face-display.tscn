@@ -205,12 +205,22 @@ text = "6"
 [node name="ButtonType" type="Button" parent="Buttons" unique_id=792435575]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 170.0
-offset_top = 100.0
-offset_right = 231.0
-offset_bottom = 120.0
+offset_left = 169.0
+offset_top = 94.0
+offset_right = 230.0
+offset_bottom = 125.0
 theme_override_font_sizes/font_size = 8
 text = "Random Type"
+
+[node name="ButtonReturn" type="Button" parent="Buttons" unique_id=1552349792]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 169.0
+offset_top = 69.0
+offset_right = 230.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 8
+text = "RETURN"
 
 [connection signal="pressed" from="Buttons/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/Button2" to="." method="_on_button_pressed"]
@@ -219,3 +229,4 @@ text = "Random Type"
 [connection signal="pressed" from="Buttons/Button5" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/Button6" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/ButtonType" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Buttons/ButtonReturn" to="." method="_on_return_button_pressed"]

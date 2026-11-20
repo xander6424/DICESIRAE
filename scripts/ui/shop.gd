@@ -129,7 +129,7 @@ func _on_type_modification_selected() -> void:
 				DiceData.DiceType.RED:
 					type_color = Color.RED
 				DiceData.DiceType.BLUE:
-					type_color = Color.BLUE
+					type_color = Color.CYAN
 			
 			var dice_index: int = DiceManager.rolling_dice_list.find(current_dice)
 			DiceManager.rolling_dice_list[dice_index].dice_type = random_type

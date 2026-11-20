@@ -35,7 +35,6 @@ func _ready() -> void:
 	
 	# Display a random face upon being drawn
 	display_face(dice.faces[randi() % dice.dice_size])
-	# CHANGE COLOR HERE TOO?? (Or possibly in the display face function)
 	
 	# Basic table friction.
 	linear_damp = 1.5
@@ -55,6 +54,7 @@ func setup(new_dice: DiceInfo):
 	dice_saved = false
 	rolling = false
 	
+	face_sprite.modulate = dice.dice_color
 	# faces display?
 	# color change?
  
@@ -192,7 +192,7 @@ func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1
 	face_sprite.texture = face_textures[index]
 	
-	face_sprite.modulate = dice.dice_color
+	# display unique face color
 
 
 func show_score(value: int, text_color: Color) -> Tween:

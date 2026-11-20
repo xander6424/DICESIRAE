@@ -3,6 +3,8 @@ extends Control
 signal _face_modification_selected(value)
 signal _type_modification_selected()
 
+@onready var shop: Control = %Shop
+
 class FaceDisplay:
 	var face_sprite: Sprite2D
 	var face_button: TextureButton
@@ -32,6 +34,7 @@ var button4: Button
 var button5: Button
 var button6: Button
 var button_type: Button
+@onready var button_return: Button = %ButtonReturn
 var value_button_list: Array[Button] = [button1, button2, button3, button4, button5, button6, button_type]
 
 
@@ -83,3 +86,10 @@ func _on_button_pressed() -> void:
 				_face_modification_selected.emit(value)
 			else:
 				_type_modification_selected.emit()
+
+
+func _on_return_button_pressed() -> void:
+	await DiceManager.round_ended() # called solely for discarding dice
+	GameData.intermission = false
+	self.visible = false
+	shop.visible = true
