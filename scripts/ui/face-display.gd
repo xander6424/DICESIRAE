@@ -93,3 +93,6 @@ func _on_return_button_pressed() -> void:
 	GameData.intermission = false
 	self.visible = false
 	shop.visible = true
+	shop.current_dice = null
+	shop.current_display = null
+	display_dice_faces(shop.current_dice, shop.current_display)

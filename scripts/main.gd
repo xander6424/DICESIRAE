@@ -130,6 +130,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("God Mode"):
 		GameData.current_lot_scored = true
 		god_mode = true
+		GameData.money = 999
 		
 		await _on_update_round_status()
 		

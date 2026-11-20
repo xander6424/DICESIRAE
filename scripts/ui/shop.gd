@@ -134,6 +134,7 @@ func _on_type_modification_selected() -> void:
 			var dice_index: int = DiceManager.rolling_dice_list.find(current_dice)
 			DiceManager.rolling_dice_list[dice_index].dice_type = random_type
 			DiceManager.rolling_dice_list[dice_index].dice_color = type_color
+			current_display.modulate = type_color
 			
 			GameData.money -= 6
 			_on_update_round_status.emit()

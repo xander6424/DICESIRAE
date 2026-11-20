@@ -190,4 +190,19 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo):
 	
 	await get_tree().create_timer(0.35).timeout
 	
+	# Score unique dice type values
+	if dice.dice_type != DiceData.DiceType.NORMAL:
+		var type_value: int = 0
+		match dice.dice_type:
+			DiceData.DiceType.RED:
+				type_value = 5
+				current_category.mult_score += type_value
+			DiceData.DiceType.BLUE:
+				type_value = 25
+				current_category.total += type_value
+		
+		_update_scorecard.emit()
+		await dice_display.show_score(type_value, dice.dice_color).finished
+		await get_tree().create_timer(0.35).timeout
+	
 	await PieceManager.dice_scored(dice, current_category)
