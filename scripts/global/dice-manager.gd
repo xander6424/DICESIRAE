@@ -200,6 +200,9 @@ func dice_scored(dice: DiceInfo, current_category: CategoryInfo):
 			DiceData.DiceType.BLUE:
 				type_value = 25
 				current_category.total += type_value
+			DiceData.DiceType.GREEN:
+				type_value = 3
+				GameData.money += type_value
 		
 		_update_scorecard.emit()
 		await dice_display.show_score(type_value, dice.dice_color).finished

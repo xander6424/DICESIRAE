@@ -199,7 +199,7 @@ func show_score(value: int, text_color: Color) -> Tween:
 	if popup_tween and popup_tween.is_running():
 		popup_tween.kill()
 	
-	score_popup_label.text = "+" + str(value)
+	score_popup_label.text = ("+" if text_color != Color.GREEN else "+$") + str(value)
 	score_popup_label.add_theme_color_override("font_color", text_color)
 	score_popup.global_position = global_position + Vector2(0, -40)
 	score_popup.scale = Vector2(0.8, 0.8)

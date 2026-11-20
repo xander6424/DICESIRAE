@@ -42,8 +42,8 @@ enum DiceType {
 	
 	RED, # Add value to mult score
 	BLUE, # Add value to add score
+	GREEN, # Add value to money
 	#YELLOW, # ???
-	#GREEN, # Add value to money
 	
 	#CRYSTAL, # Score dice no matter what
 	#GHOST, # Score top and bottom dice faces in scoring

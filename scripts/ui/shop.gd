@@ -121,7 +121,7 @@ func _on_face_modification_selected(value: Variant) -> void:
 func _on_type_modification_selected() -> void:
 	if current_dice != null:
 		if GameData.money >= 6:
-			var random_index: int = randi_range(1, 2)
+			var random_index: int = randi_range(1, 3)
 			var random_type: DiceData.DiceType = random_index as DiceData.DiceType
 			var type_color: Color = Color.WHITE
 			
@@ -130,6 +130,8 @@ func _on_type_modification_selected() -> void:
 					type_color = Color.RED
 				DiceData.DiceType.BLUE:
 					type_color = Color.CYAN
+				DiceData.DiceType.GREEN:
+					type_color = Color.GREEN
 			
 			var dice_index: int = DiceManager.rolling_dice_list.find(current_dice)
 			DiceManager.rolling_dice_list[dice_index].dice_type = random_type
