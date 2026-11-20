@@ -73,10 +73,6 @@ text = "UPGRADE CATEGORY"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Price" type="Label" parent="ShopContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=159340442]
-layout_mode = 2
-text = "$4"
-
 [node name="ModifyDiceButton" type="Button" parent="ShopContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=331295347]
 unique_name_in_owner = true
 layout_mode = 2
@@ -87,4 +83,4 @@ text = "MODIFY DICE"
 [node name="SkipButton" type="Button" parent="ShopContainer/MarginContainer/VBoxContainer" unique_id=2049923186]
 unique_name_in_owner = true
 layout_mode = 2
-text = "SKIP"
+text = "CONTINUE"

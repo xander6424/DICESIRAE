@@ -87,6 +87,7 @@ func upgrade_button_pressed() -> void:
 			
 			_on_update_round_status.emit()
 
+
 # Modify dice button
 func dice_button_pressed():
 	GameData.intermission = true
@@ -111,6 +112,17 @@ func _on_dice_selected(dice: DiceInfo):
 	
 	face_display.display_dice_faces(current_dice, current_display)
 	#print("CURRENT DICE: ", current_dice)
+
+func _on_face_modification_selected(value: Variant) -> void:
+	print(value)
+	# if FACE selected
+		# subtract money
+		# change value
+
+# _on_type_modification_selected()
+	# if DICE selected
+		# subtract money
+		# assign new random modification based on dicedata enums
 
 
 func _shop_skip_button_pressed() -> void:
