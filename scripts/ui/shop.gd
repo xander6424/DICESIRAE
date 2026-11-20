@@ -122,8 +122,8 @@ func _on_face_modification_selected(value: int, face_index) -> void:
 			
 			# Update the current dice faces
 			face_display.display_dice_faces(current_dice, current_display)
-			if current_dice.get_current_face() == DiceManager.rolling_dice_list[dice_index].faces[face_index]:
-				current_display.display_face(current_dice.get_current_face())
+			#if current_dice.get_current_face() == DiceManager.rolling_dice_list[dice_index].faces[face_index]:
+				#current_display.display_face(current_dice.get_current_face())
 			
 			GameData.money -= value
 			_on_update_round_status.emit()

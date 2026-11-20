@@ -9,10 +9,11 @@ const STARTING_REROLLS: int = 3
 const STARTING_MONEY: int = 4
 const ROLL_DURATION: float = 1.0
 const ROUND_SCORE_SCALING: Array[int] = [
-	100, 150, 250, # Ante1
-	525, 950, 1775, # Ante2
-	3900, 8650, 14500, #Ante3
-	25000, 50000, 100000 #Ante4
+	100, 150, 300, # Ante1
+	525, 950, 1600, # Ante2
+	2800, 4900, 8575, #Ante3
+	15000, 25000, 50000, #Ante4
+	75000, 100000, 500000 #Ante5
 ]
 
 # Internal game values
