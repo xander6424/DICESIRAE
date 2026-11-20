@@ -191,7 +191,8 @@ func play_swap(slot: Vector2, new_rotation: float) -> void:
 func display_face(face: DiceFace) -> void:
 	var index: int = face.face_value - 1
 	face_sprite.texture = face_textures[index]
-	# CHANGE/DISPLAY COLOR HERE TOO
+	
+	face_sprite.modulate = dice.dice_color
 
 
 func show_score(value: int, text_color: Color) -> Tween:

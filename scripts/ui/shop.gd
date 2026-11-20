@@ -29,7 +29,6 @@ func piece_button_pressed() -> void:
 		if PieceManager.active_piece_list.size() != PieceData.FULL_PIECE_LIST.size():
 			# Pick a random piece not in use
 			var random_piece: PieceInfo = PieceData.FULL_PIECE_LIST.pick_random()
-			
 			while random_piece.using:
 				random_piece = PieceData.FULL_PIECE_LIST.pick_random()
 			
@@ -119,10 +118,25 @@ func _on_face_modification_selected(value: Variant) -> void:
 		# subtract money
 		# change value
 
-# _on_type_modification_selected()
-	# if DICE selected
-		# subtract money
-		# assign new random modification based on dicedata enums
+func _on_type_modification_selected() -> void:
+	if current_dice != null:
+		if GameData.money >= 6:
+			var random_index: int = randi_range(1, 2)
+			var random_type: DiceData.DiceType = random_index as DiceData.DiceType
+			var type_color: Color = Color.WHITE
+			
+			match random_type:
+				DiceData.DiceType.RED:
+					type_color = Color.RED
+				DiceData.DiceType.BLUE:
+					type_color = Color.BLUE
+			
+			var dice_index: int = DiceManager.rolling_dice_list.find(current_dice)
+			DiceManager.rolling_dice_list[dice_index].dice_type = random_type
+			DiceManager.rolling_dice_list[dice_index].dice_color = type_color
+			
+			GameData.money -= 6
+			_on_update_round_status.emit()
 
 
 func _shop_skip_button_pressed() -> void:

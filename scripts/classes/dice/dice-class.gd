@@ -4,6 +4,7 @@ class_name DiceInfo
 
 @export var dice_size: DiceData.Size = DiceData.Size.D6
 @export var dice_type: DiceData.DiceType = DiceData.DiceType.NORMAL
+@export var dice_color: Color = Color.WHITE
 var faces: Array[DiceFace] = []
 
 var current_face_index: int = 0

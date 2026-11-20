@@ -1,6 +1,7 @@
 extends Control
 
-signal _modification_selected(value)
+signal _face_modification_selected(value)
+signal _type_modification_selected()
 
 class FaceDisplay:
 	var face_sprite: Sprite2D
@@ -73,12 +74,12 @@ func display_dice_faces(dice: DiceInfo, dice_display: DiceDisplay) -> void:
 
 func _on_button_pressed() -> void:
 	#var selection: Button = null
-	var value: int = -9
+	var value: int = 0
 	
 	for button in value_button_list:
 		if button.button_pressed:
 			if button != %ButtonType:
 				value = int(button.text)
-				_modification_selected.emit(value)
+				_face_modification_selected.emit(value)
 			else:
-				print(button.text)
+				_type_modification_selected.emit()

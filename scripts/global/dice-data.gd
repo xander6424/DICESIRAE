@@ -42,13 +42,13 @@ enum DiceType {
 	
 	RED, # Add value to mult score
 	BLUE, # Add value to add score
-	YELLOW, # ???
-	GREEN, # Add value to money
+	#YELLOW, # ???
+	#GREEN, # Add value to money
 	
-	CRYSTAL, # Score dice no matter what
-	GHOST, # Score top and bottom dice faces in scoring
-	MITOSIS, # Dice duplicates and splits in two during rolling
-	VOID # Extra powerful but absorbs all other scored faces
+	#CRYSTAL, # Score dice no matter what
+	#GHOST, # Score top and bottom dice faces in scoring
+	#MITOSIS, # Dice duplicates and splits in two during rolling
+	#VOID # Extra powerful but absorbs all other scored faces
 }
 
 # For individual dice faces
