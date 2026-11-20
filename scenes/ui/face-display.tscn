@@ -222,6 +222,12 @@ offset_bottom = 89.0
 theme_override_font_sizes/font_size = 8
 text = "RETURN"
 
+[connection signal="toggled" from="Face1/FaceButton" to="." method="_on_face_toggled"]
+[connection signal="toggled" from="Face2/FaceButton" to="." method="_on_face_toggled"]
+[connection signal="toggled" from="Face3/FaceButton" to="." method="_on_face_toggled"]
+[connection signal="toggled" from="Face4/FaceButton" to="." method="_on_face_toggled"]
+[connection signal="toggled" from="Face5/FaceButton" to="." method="_on_face_toggled"]
+[connection signal="toggled" from="Face6/FaceButton" to="." method="_on_face_toggled"]
 [connection signal="pressed" from="Buttons/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/Button2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/Button3" to="." method="_on_button_pressed"]

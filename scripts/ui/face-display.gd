@@ -8,6 +8,7 @@ signal _type_modification_selected()
 class FaceDisplay:
 	var face_sprite: Sprite2D
 	var face_button: TextureButton
+	var index: int
 	# color
 	# value?
 	
@@ -37,8 +38,7 @@ var button_type: Button
 @onready var button_return: Button = %ButtonReturn
 var value_button_list: Array[Button] = [button1, button2, button3, button4, button5, button6, button_type]
 
-
-# current selected face variable
+var current_face_index = null
 
 func _ready() -> void:
 	var face_nodes: Array[Node2D] = [%Face1, %Face2, %Face3, %Face4, %Face5, %Face6]
@@ -61,19 +61,35 @@ func display_dice_faces(dice: DiceInfo, dice_display: DiceDisplay) -> void:
 		var texture_index: int = 0
 		
 		for display in face_display_list:
-			display.face_sprite.texture = dice_display.face_textures[texture_index]
+			display.index = texture_index
+			display.face_sprite.texture = dice.faces[texture_index].face_texture
+			display.face_sprite.modulate = dice.dice_color
 			texture_index += 1
+		
+		print("[", 
+			dice.faces[0].face_value, ", ",
+			dice.faces[1].face_value, ", ",
+			dice.faces[2].face_value, ", ",
+			dice.faces[3].face_value, ", ",
+			dice.faces[4].face_value, ", ",
+			dice.faces[5].face_value, "]"
+		)
 	else:
 		for display in face_display_list:
 			display.face_sprite.texture = DEFAULT_TEXTURE
-	
-	#print("DISPLAY FACES FOR: ", dice)
+			display.face_sprite.modulate = Color.WHITE
 
 
 
 # face selected
-
-# Signal that send current face value and selected face number button
+func _on_face_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		for face in face_display_list:
+			if face.face_button.button_pressed:
+				print("FACE INDEX ", face.index)
+				current_face_index = face.index
+	else:
+		current_face_index = null
 
 func _on_button_pressed() -> void:
 	#var selection: Button = null
@@ -83,7 +99,7 @@ func _on_button_pressed() -> void:
 		if button.button_pressed:
 			if button != %ButtonType:
 				value = int(button.text)
-				_face_modification_selected.emit(value)
+				_face_modification_selected.emit(value, current_face_index)
 			else:
 				_type_modification_selected.emit()
 
@@ -95,4 +111,5 @@ func _on_return_button_pressed() -> void:
 	shop.visible = true
 	shop.current_dice = null
 	shop.current_display = null
+	current_face_index = null
 	display_dice_faces(shop.current_dice, shop.current_display)

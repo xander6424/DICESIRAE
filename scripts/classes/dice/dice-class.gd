@@ -19,8 +19,8 @@ func _init(_dice_size: DiceData.Size = DiceData.Size.D6, _dice_type: DiceData.Di
 		generate_default_faces()
 
 func generate_default_faces() -> void:
-	for i in range(1, dice_size + 1):
-		faces.append(DiceFace.new(i, DiceData.FaceType.NORMAL))
+	for i in range(0, dice_size):
+		faces.append(DiceFace.new(i + 1, DiceData.FaceType.NORMAL, DiceData.FACE_TEXTURES[i]))
 
 func get_current_face() -> DiceFace:
 	return faces[current_face_index]

@@ -247,5 +247,6 @@ visible = false
 [connection signal="_on_update_round_status" from="Scorecard" to="." method="_on_update_round_status"]
 [connection signal="_on_piece_purchased" from="Shop" to="PieceHand" method="_on_piece_purchased"]
 [connection signal="_on_update_round_status" from="Shop" to="." method="_on_update_round_status"]
+[connection signal="_face_modification_selected" from="FaceDisplay" to="Shop" method="_on_face_modification_selected"]
 [connection signal="_type_modification_selected" from="FaceDisplay" to="Shop" method="_on_type_modification_selected"]
 [connection signal="_on_update_round_status" from="Intermission" to="." method="_on_update_round_status"]

@@ -112,10 +112,22 @@ func _on_dice_selected(dice: DiceInfo):
 	face_display.display_dice_faces(current_dice, current_display)
 	#print("CURRENT DICE: ", current_dice)
 
-func _on_face_modification_selected(value: Variant) -> void:
-	print(value)
-	# if FACE selected
-		# subtract money
+func _on_face_modification_selected(value: int, face_index) -> void:
+	if face_index != null:
+		if GameData.money >= value:
+			var dice_index: int = DiceManager.rolling_dice_list.find(current_dice)
+			
+			DiceManager.rolling_dice_list[dice_index].faces[face_index].face_value = value
+			DiceManager.rolling_dice_list[dice_index].faces[face_index].face_texture = DiceData.FACE_TEXTURES[value - 1]
+			
+			# Update the current dice faces
+			face_display.display_dice_faces(current_dice, current_display)
+			if current_dice.get_current_face() == DiceManager.rolling_dice_list[dice_index].faces[face_index]:
+				current_display.display_face(current_dice.get_current_face())
+			
+			GameData.money -= value
+			_on_update_round_status.emit()
+
 		# change value
 
 func _on_type_modification_selected() -> void:
@@ -137,6 +149,7 @@ func _on_type_modification_selected() -> void:
 			DiceManager.rolling_dice_list[dice_index].dice_type = random_type
 			DiceManager.rolling_dice_list[dice_index].dice_color = type_color
 			current_display.modulate = type_color
+			face_display.display_dice_faces(current_dice, current_display)
 			
 			GameData.money -= 6
 			_on_update_round_status.emit()

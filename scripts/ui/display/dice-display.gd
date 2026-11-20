@@ -8,7 +8,6 @@ class_name DiceDisplay
 @onready var save_button: TextureButton = %SaveButton
 
 @export var dice: DiceInfo
-@export var face_textures: Array[Texture2D] = []
 
 static var dice_currently_rolling: int = 0
 var rolling: bool = false
@@ -109,6 +108,7 @@ func roll_dice():
 	
 	dice_currently_rolling -= 1
 	
+	print(result.face_value)
 	# Doesn't count a roll until all dice are scored
 	if dice_currently_rolling == 0:
 		if GameData.rerolls > 0:
@@ -189,9 +189,7 @@ func play_swap(slot: Vector2, new_rotation: float) -> void:
 
 
 func display_face(face: DiceFace) -> void:
-	var index: int = face.face_value - 1
-	face_sprite.texture = face_textures[index]
-	
+	face_sprite.texture = face.face_texture
 	# display unique face color
 
 

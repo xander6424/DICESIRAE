@@ -1,12 +1,6 @@
 [gd_scene format=3 uid="uid://5ueudmkrdrm3"]
 
 [ext_resource type="Script" uid="uid://b7su0mda6y3af" path="res://scripts/ui/display/dice-display.gd" id="1_y4pxb"]
-[ext_resource type="Texture2D" uid="uid://0g2hw2yi7ahj" path="res://assets/dice/die1-32p.png" id="2_pgf55"]
-[ext_resource type="Texture2D" uid="uid://y5k4sgd7m0ax" path="res://assets/dice/die2-32p.png" id="3_dlvbc"]
-[ext_resource type="Texture2D" uid="uid://cgeuufgijyfrm" path="res://assets/dice/die3-32p.png" id="4_skxya"]
-[ext_resource type="Texture2D" uid="uid://b41ewysw5q5w8" path="res://assets/dice/die4-32p.png" id="5_4kp1s"]
-[ext_resource type="Texture2D" uid="uid://d0wtavxqx5a2a" path="res://assets/dice/die5-32p.png" id="6_nkpnt"]
-[ext_resource type="Texture2D" uid="uid://c78k2icikwp7g" path="res://assets/dice/die6-32p.png" id="7_mvkvt"]
 [ext_resource type="Texture2D" uid="uid://t2lnk76opcq5" path="res://assets/dice/dieblank-hover_32p.png" id="8_dicg2"]
 [ext_resource type="BitMap" uid="uid://cnrn1rs24jdhp" path="res://assets/dice/diemask-32p.png" id="8_ocjtb"]
 [ext_resource type="Texture2D" uid="uid://cuq8ea5g4lcj" path="res://assets/dice/dieblank-pressed_32p.png" id="8_pgf55"]
@@ -22,7 +16,6 @@ mass = 0.9
 physics_material_override = SubResource("PhysicsMaterial_pgf55")
 gravity_scale = 0.0
 script = ExtResource("1_y4pxb")
-face_textures = Array[Texture2D]([ExtResource("2_pgf55"), ExtResource("3_dlvbc"), ExtResource("4_skxya"), ExtResource("5_4kp1s"), ExtResource("6_nkpnt"), ExtResource("7_mvkvt")])
 
 [node name="FaceSprite" type="Sprite2D" parent="." unique_id=389677390]
 unique_name_in_owner = true

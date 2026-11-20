@@ -1,5 +1,13 @@
 extends Node
 
+const FACE_TEXTURES: Array[Texture2D] = [
+	preload("uid://0g2hw2yi7ahj"),
+	preload("uid://y5k4sgd7m0ax"),
+	preload("uid://cgeuufgijyfrm"),
+	preload("uid://b41ewysw5q5w8"),
+	preload("uid://d0wtavxqx5a2a"),
+	preload("uid://c78k2icikwp7g")
+]
 const DRAW_PILE_POSITION: Vector2 = Vector2(140.0, 85.0)
 const DISCARD_PILE_POSITION: Vector2 = Vector2(-140.0, 85.0)
 
